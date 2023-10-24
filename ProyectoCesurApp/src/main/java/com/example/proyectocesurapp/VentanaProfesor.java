@@ -5,6 +5,7 @@ import clase.Sesion;
 import domain.AlumnoDAOImp;
 import domain.DBConnection;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.MapChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
@@ -55,6 +56,7 @@ public class VentanaProfesor implements Initializable {
     private TableColumn<Alumno,String> cHorasDUAL;
     @javafx.fxml.FXML
     private TableColumn <Alumno,String>cHorasFCT;
+    private Alumno alumno;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -101,13 +103,24 @@ public class VentanaProfesor implements Initializable {
             Sesion.getProfesor().getAlumnos().add(alumnos.get(i));
             tabla.getItems().add(alumnos.get(i));
         }
-
-
+        tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
+            alumno=t1;
+        });
 
     }
 
     @javafx.fxml.FXML
     public void editar(ActionEvent actionEvent) {
+        if(alumno==null){
+            Alert alerta=new Alert(Alert.AlertType.INFORMATION);
+            alerta.setTitle("Seleccion Tabla");
+            alerta.setHeaderText("Porfavor Selecciona un alumno en la tabla");
+            alerta.showAndWait();
+        }else{
+            Sesion.setAlumno(alumno);
+            HelloApplication.nuevaVentana("ventana-editar.fxml");
+        }
+
     }
 
     @javafx.fxml.FXML
