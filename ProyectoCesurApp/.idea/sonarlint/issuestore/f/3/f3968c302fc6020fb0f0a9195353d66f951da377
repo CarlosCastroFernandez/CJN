@@ -1,0 +1,46 @@
+
+g	java:S1123"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸×‚”¶1
+g	java:S1125"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸×‚”¶1
+g	java:S1127"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸×‚”¶1
+g	java:S1129"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸×‚”¶1
+g	java:S112;"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹×‚”¶1
+g	java:S112U"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹×‚”¶1
+g	java:S112W"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹×‚”¶1
+g	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹×‚”¶1
+g	java:S112["FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹×‚”¶1
+g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹×‚”¶1
+{
+java:S2293C"YReplace the type specification in this constructor call with the diamond operator ("<>").(™šù—úÿÿÿÿ8»×‚”¶1
+k
+java:S1192*"IDefine a constant instead of duplicating this literal "profesor" 3 times.(º”÷Ñùÿÿÿÿ8½×‚”¶1
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(åñºÃùÿÿÿÿ8Ä×‚”¶1
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(Ç‡ŸÁúÿÿÿÿ8Ä×‚”¶1
+v	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(ÍÚ½ì8Ä×‚”¶1
+ž
+java:S1186m"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(·Ð²¡8Å×‚”¶1
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(åñºÃùÿÿÿÿ8Ë×‚”¶1
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Ç‡ŸÁúÿÿÿÿ8Ë×‚”¶1
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ÍÚ½ì8Ì×‚”¶1
+D
+java:S3010"'Remove this assignment of "connection".(žã¶¬8Ì×‚”¶1
+a
+java:S21474"DCombine this catch with the one at line 50, which has the same body.(¹³£ç8Ó×‚”¶1
+f
+java:S21476"DCombine this catch with the one at line 52, which has the same body.(­íÉçûÿÿÿÿ8Ó×‚”¶1
+f
+java:S21478"DCombine this catch with the one at line 54, which has the same body.(Ý»øžøÿÿÿÿ8Ô×‚”¶1
+a
+java:S2147:"DCombine this catch with the one at line 56, which has the same body.(äÄÏ±8Ô×‚”¶1
+a
+java:S2147V"DCombine this catch with the one at line 84, which has the same body.(¹³£ç8Þ×‚”¶1
+f
+java:S2147X"DCombine this catch with the one at line 86, which has the same body.(­íÉçûÿÿÿÿ8Þ×‚”¶1
+f
+java:S2147Z"DCombine this catch with the one at line 88, which has the same body.(Ý»øžøÿÿÿÿ8Þ×‚”¶1
+a
+java:S2147\"DCombine this catch with the one at line 90, which has the same body.(äÄÏ±8ß×‚”¶1
+N
+java:S1068"1Remove this unused "queryRegister" private field.(ÍÚ½ì8å×‚”¶1
