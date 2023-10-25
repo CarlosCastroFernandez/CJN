@@ -2,6 +2,8 @@ package com.example.proyectocesurapp;
 
 import clase.ActividadDiaria;
 import clase.Sesion;
+import domain.ActividaDiariaDAOImp;
+import domain.DBConnection;
 import enums.TipoPractica;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -43,6 +45,7 @@ public class VentanaAlumno implements Initializable {
     private Spinner<Integer> spHoras;
     @javafx.fxml.FXML
     private TextField fieldActivity;
+    private ObservableList<ActividadDiaria> observableActividad;
 
     @javafx.fxml.FXML
     public void activityInsert(ActionEvent actionEvent) {
@@ -52,9 +55,12 @@ public class VentanaAlumno implements Initializable {
         dayActivity.setTotalHoras(spHoras.getValue());
         dayActivity.setNombreTarea(fieldActivity.getText());
         dayActivity.setObservaciones(taObservations.getText());
-
+        ActividaDiariaDAOImp dao = new ActividaDiariaDAOImp(DBConnection.getConnection());
+        Sesion.setActividadDiaria(dao.insercion(dayActivity));
         Sesion.getListaActividades().add(dayActivity);
+        observableActividad.add(dayActivity);
         tvUser.getItems().add(dayActivity);
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -85,6 +91,12 @@ public class VentanaAlumno implements Initializable {
         });
 
         //Consulta a bbdd: "Todas las actividades diarias que tiene el alumno logeado".
+        Integer idAlumno = Sesion.getAlumno().getId();
+        ActividaDiariaDAOImp dao=new ActividaDiariaDAOImp(DBConnection.getConnection());
+        Sesion.setListaActividades(dao.loadall(idAlumno));
+        observableActividad = FXCollections.observableArrayList();
+        observableActividad.addAll(Sesion.getListaActividades());
+        tvUser.setItems(observableActividad);
         /* Los datos de esta consulta a Array de Sesion, de este array al observable y del observable a la tabla. */
     }
 

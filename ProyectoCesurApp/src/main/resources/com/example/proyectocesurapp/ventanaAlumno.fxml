@@ -60,7 +60,7 @@
         </HBox>
     </top>
     <center>
-        <SplitPane dividerPositions="0.5" prefHeight="297.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <SplitPane dividerPositions="0.5" prefHeight="447.0" prefWidth="773.0" BorderPane.alignment="CENTER">
             <items>
                 <VBox prefHeight="445.0" prefWidth="272.0">
                     <children>

@@ -3,14 +3,16 @@ package clase;
 import enums.TipoPractica;
 
 public class ActividadDiaria {
-    private String idAlumno;
+    private Integer id;
+    private Integer idAlumno;
     private String fecha;
     private TipoPractica tipoPractica;
-    private int totalHoras;
+    private Integer totalHoras;
     private String nombreTarea;
     private String observaciones;
 
-    public ActividadDiaria(String idAlumno, String fecha, TipoPractica tipoPractica, int totalHoras, String nombreTarea, String observaciones) {
+    public ActividadDiaria(Integer id, Integer idAlumno, String fecha, TipoPractica tipoPractica, Integer totalHoras, String nombreTarea, String observaciones) {
+        this.id = id;
         this.idAlumno = idAlumno;
         this.fecha = fecha;
         this.tipoPractica = tipoPractica;
@@ -23,11 +25,19 @@ public class ActividadDiaria {
 
     }
 
-    public String getIdAlumno() {
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getIdAlumno() {
         return idAlumno;
     }
 
-    public void setIdAlumno(String idAlumno) {
+    public void setIdAlumno(Integer idAlumno) {
         this.idAlumno = idAlumno;
     }
 
@@ -47,11 +57,11 @@ public class ActividadDiaria {
         this.tipoPractica = tipoPractica;
     }
 
-    public int getTotalHoras() {
+    public Integer getTotalHoras() {
         return totalHoras;
     }
 
-    public void setTotalHoras(int totalHoras) {
+    public void setTotalHoras(Integer totalHoras) {
         this.totalHoras = totalHoras;
     }
 

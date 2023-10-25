@@ -1,6 +1,7 @@
 package com.example.proyectocesurapp;
 
 import clase.Sesion;
+import domain.AlumnoDAOImp;
 import domain.DBConnection;
 import domain.ProfesorDAOImp;
 import exception.*;
@@ -27,8 +28,14 @@ public class Login implements Initializable {
         String usuarioDni = txtEmail.getText();
         String usuarioContrasenha = txtPassword.getText();
         ProfesorDAOImp dao=new ProfesorDAOImp(DBConnection.getConnection());
+        AlumnoDAOImp daoA=new AlumnoDAOImp(DBConnection.getConnection());
         try {
             Sesion.setProfesor(dao.loadTeacher(usuarioDni,usuarioContrasenha));
+            if(Sesion.getProfesor()==null){
+                Sesion.setAlumno(daoA.loadActivity(usuarioDni,usuarioContrasenha));
+            }
+
+
             System.out.println(Sesion.getProfesor());
             Alert alerta=new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Login");

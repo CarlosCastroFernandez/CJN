@@ -2,10 +2,7 @@ package domain;
 
 import clase.Alumno;
 import enums.Curso;
-import exception.ApellidoConNumero;
-import exception.DNIInvalido;
-import exception.NombreConNumero;
-import exception.UsuarioInexistente;
+import exception.*;
 import lombok.extern.java.Log;
 
 import java.sql.Connection;
@@ -28,7 +25,7 @@ public class AlumnoDAOImp implements AlumnoDAO{
     public AlumnoDAOImp(Connection c){ connection = c;}
 
     @Override
-    public Alumno loadActivity(String dni){
+    public Alumno loadActivity(String dni, String contrasenha) throws ContrasenhaIncorrecta, UsuarioInexistente {
         Alumno salida = null;
 
         try {
@@ -44,9 +41,11 @@ public class AlumnoDAOImp implements AlumnoDAO{
                         Curso.valueOf(rs.getString("curso")) ,rs.getString("observaciones"));
                 salida.setProfesor(new ProfesorDAOImp(DBConnection.getConnection()).loadTeacherById(rs.getInt("profesor")));
 
-
+                if(!contrasenha.equals(salida.getPassword())){
+                    throw new ContrasenhaIncorrecta ("Contraseña Incorrecta");
+                }
             }else{
-                log.warning("Usuario no existe");
+                throw new UsuarioInexistente("No Existe El Usuario");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -55,8 +54,6 @@ public class AlumnoDAOImp implements AlumnoDAO{
         } catch (DNIInvalido e) {
             throw new RuntimeException(e);
         } catch (ApellidoConNumero e) {
-            throw new RuntimeException(e);
-        } catch (UsuarioInexistente e) {
             throw new RuntimeException(e);
         }
         return salida;

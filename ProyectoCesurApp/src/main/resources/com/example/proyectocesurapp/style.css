@@ -12,8 +12,15 @@
 #menuBar{
     -fx-background-color: transparent;
 }
-#imagen{
-    -fx-border-radius: 20px;
+#formulario{
+    /*-fx-background-image: url("imagenes/fondo.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;*/
+    -fx-background-radius: 10px;
+    -fx-background-color: rgba(255, 255, 255, 0.7);
+}
+#splitpane {
+    -fx-background-color: transparent;
 }
 
 /* formato para las celdas del tableview*/

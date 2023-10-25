@@ -4,8 +4,11 @@ import clase.Alumno;
 import clase.Sesion;
 import domain.AlumnoDAOImp;
 import domain.DBConnection;
+import enums.Curso;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
@@ -57,6 +60,27 @@ public class VentanaProfesor implements Initializable {
     @javafx.fxml.FXML
     private TableColumn <Alumno,String>cHorasFCT;
     private Alumno alumno;
+    private ObservableList<Alumno>obs;
+    @javafx.fxml.FXML
+    private TextField textNombre;
+    @javafx.fxml.FXML
+    private TextField textApellidos;
+    @javafx.fxml.FXML
+    private TextField textEmail;
+    @javafx.fxml.FXML
+    private TextField textTelefono;
+    @javafx.fxml.FXML
+    private DatePicker Datecalender;
+    @javafx.fxml.FXML
+    private ComboBox<Curso>comboCurso;
+    @javafx.fxml.FXML
+    private TextField textNombreProfesor;
+    @javafx.fxml.FXML
+    private Spinner spinnerDUAL;
+    @javafx.fxml.FXML
+    private Spinner spinnerFCT;
+    @javafx.fxml.FXML
+    private ComboBox comboNombreEmpresa;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -97,16 +121,19 @@ public class VentanaProfesor implements Initializable {
             String nombre=fila.getValue().getHorasFCT();
             return new SimpleStringProperty(nombre);
         });
+        obs= FXCollections.observableArrayList();
         AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
-        ArrayList<Alumno>alumnos=conexion.loadAll(Sesion.getProfesor().getId());
-        for(int i=0;i<alumnos.size();i++){
-            Sesion.getProfesor().getAlumnos().add(alumnos.get(i));
-            tabla.getItems().add(alumnos.get(i));
-        }
+        Sesion.setListaAlumno(conexion.loadAll(Sesion.getProfesor().getId()));
+        obs.addAll(Sesion.getListaAlumno());
+        tabla.setItems(obs);
         tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
             alumno=t1;
         });
-
+        ObservableList<Curso>cursos=FXCollections.observableArrayList();
+        cursos.addAll(Curso.ASIR1,Curso.DAM1,Curso.ASIR2,Curso.DAM2,Curso.DAW1,Curso.DAW2);
+        comboCurso.setItems(cursos);
+        spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
+        spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
     }
 
     @javafx.fxml.FXML
@@ -129,6 +156,8 @@ public class VentanaProfesor implements Initializable {
 
     @javafx.fxml.FXML
     public void nuevoALumno(ActionEvent actionEvent) {
+       // Alumno alumno=new Alumno();
+
     }
 
     @javafx.fxml.FXML
