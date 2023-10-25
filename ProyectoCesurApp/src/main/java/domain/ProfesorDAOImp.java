@@ -108,7 +108,7 @@ public class ProfesorDAOImp implements ProfesorDAO{
             pst.setInt(7,profesor.getTelefono());
             Integer fila=pst.executeUpdate();
             pst.close();
-            conexion.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
