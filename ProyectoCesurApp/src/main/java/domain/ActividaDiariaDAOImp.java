@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class ActividaDiariaDAOImp implements ActividadDiariaDAO{
     private static Connection conexion;
     private static String loadActivity = "select * from actividadDiaria where alumnoId = ?";
-    private static String insertActivity = "insert into actividadDiaria(nombre, totalHoras, obervaciones, tipoPractica, fecha, alumnoId)\n"+"VALUE (?, ?, ?, ?, ?, ?)";
+    private static String insertActivity = "insert into actividadDiaria(nombre, totalHoras, observaciones, tipoPractica, fecha, alumnoId)\n"+"VALUE (?, ?, ?, ?, ?, ?)";
    public ActividaDiariaDAOImp(Connection conn){
        conexion=conn;
    }

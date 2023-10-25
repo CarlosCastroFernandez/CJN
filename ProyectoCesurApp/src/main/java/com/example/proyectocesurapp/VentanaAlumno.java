@@ -59,7 +59,7 @@ public class VentanaAlumno implements Initializable {
         Sesion.setActividadDiaria(dao.insercion(dayActivity));
         Sesion.getListaActividades().add(dayActivity);
         observableActividad.add(dayActivity);
-        tvUser.getItems().add(dayActivity);
+        tvUser.getItems().add(Sesion.getActividadDiaria());
 
     }
     @Override
@@ -93,10 +93,20 @@ public class VentanaAlumno implements Initializable {
         //Consulta a bbdd: "Todas las actividades diarias que tiene el alumno logeado".
         Integer idAlumno = Sesion.getAlumno().getId();
         ActividaDiariaDAOImp dao=new ActividaDiariaDAOImp(DBConnection.getConnection());
-        Sesion.setListaActividades(dao.loadall(idAlumno));
-        observableActividad = FXCollections.observableArrayList();
-        observableActividad.addAll(Sesion.getListaActividades());
-        tvUser.setItems(observableActividad);
+        if(Sesion.getListaActividades().isEmpty()){
+            Sesion.setListaActividades(dao.loadall(idAlumno));
+            observableActividad = FXCollections.observableArrayList();
+            observableActividad.addAll(Sesion.getListaActividades());
+            tvUser.setItems(observableActividad);
+        }else{
+            tvUser.getItems().clear();
+            Sesion.setListaActividades(dao.loadall(idAlumno));
+            observableActividad = FXCollections.observableArrayList();
+            observableActividad.addAll(Sesion.getListaActividades());
+            tvUser.setItems(observableActividad);
+        }
+
+
         /* Los datos de esta consulta a Array de Sesion, de este array al observable y del observable a la tabla. */
     }
 

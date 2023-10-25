@@ -31,10 +31,6 @@ public class Login implements Initializable {
         AlumnoDAOImp daoA=new AlumnoDAOImp(DBConnection.getConnection());
         try {
             Sesion.setProfesor(dao.loadTeacher(usuarioDni,usuarioContrasenha));
-            if(Sesion.getProfesor()==null){
-                Sesion.setAlumno(daoA.loadActivity(usuarioDni,usuarioContrasenha));
-            }
-
 
             System.out.println(Sesion.getProfesor());
             Alert alerta=new Alert(Alert.AlertType.CONFIRMATION);
@@ -45,11 +41,19 @@ public class Login implements Initializable {
             HelloApplication.loadFXML("ventanaProfesor.fxml");
 
         } catch (UsuarioInexistente e) {
-            Alert alerta=new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("Usuario Inexistente.");
-            alerta.showAndWait();
-            throw new RuntimeException(e);
+            System.out.println("Hola");
+            try {
+                Sesion.setAlumno(daoA.loadActivity(usuarioDni,usuarioContrasenha));
+                HelloApplication.loadFXML("ventanaAlumno.fxml");
+            } catch (ContrasenhaIncorrecta ex) {
+                throw new RuntimeException(ex);
+            } catch (UsuarioInexistente ex) {
+                Alert alerta=new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Usuario Inexistente.");
+                alerta.showAndWait();
+                throw new RuntimeException(ex);
+            }
         } catch (ContrasenhaIncorrecta e) {
             Alert alerta=new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Error");
