@@ -22,7 +22,7 @@ public class ProfesorDAOImp implements ProfesorDAO{
     }
 
     @Override
-    public Profesor loadTeacher(String dni,String contrasenha) throws UsuarioInexistente {
+    public Profesor loadTeacher(String dni,String contrasenha) throws UsuarioInexistente, ContrasenhaIncorrecta {
 
         Profesor profesor=null;
         try {
@@ -49,11 +49,9 @@ public class ProfesorDAOImp implements ProfesorDAO{
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        } catch (ContrasenhaIncorrecta e) {
+        } catch (NombreConNumero e) {
             throw new RuntimeException(e);
         } catch (DNIInvalido e) {
-            throw new RuntimeException(e);
-        } catch (NombreConNumero e) {
             throw new RuntimeException(e);
         } catch (ApellidoConNumero e) {
             throw new RuntimeException(e);

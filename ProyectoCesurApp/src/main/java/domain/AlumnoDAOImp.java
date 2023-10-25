@@ -21,6 +21,7 @@ public class AlumnoDAOImp implements AlumnoDAO{
     private final static String queryLoad = "select * from alumno where dni = ?";
 
     private final static String queryloadAll="select * from alumno where profesor=?";
+
     private final static String queryRegister = "insert into alumno(dni, email, nombre, apellido1, apellido2, telefono, " +
             "contrasenha, profesor, empresa, fechaNacimiento, horasDual, horasFCT, curso, observaciones)" + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 

@@ -1,9 +1,12 @@
 package clase;
 
+import domain.ActividadDiariaDAO;
 import enums.Curso;
 import exception.ApellidoConNumero;
 import exception.DNIInvalido;
 import exception.NombreConNumero;
+
+import java.util.ArrayList;
 
 public class Alumno extends Usuario {
     private String horasDUAL;
@@ -16,6 +19,7 @@ public class Alumno extends Usuario {
     private Integer id;
     private Curso curso;
     private String observaciones;
+    private ArrayList<ActividadDiaria> actividadDiaria;
 
     public Alumno(Integer id,String nombre, String apellido1, String apellido2, String password, String correo, String dni, Integer telefono, String horasDUAL,
                   String horasFCT,Integer profesorId,Profesor profe,String fechaNacimiento,Integer empresaId,
@@ -58,6 +62,9 @@ public class Alumno extends Usuario {
         this.empresaId=empresaId;
         this.observaciones=obs;
 
+    }
+    public Alumno(String dni,String contraseña){
+    this.actividadDiaria = new ArrayList<ActividadDiaria>();
     }
 
     public String getHorasDUAL() {

@@ -11,10 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -57,10 +54,22 @@ public class Registro implements Initializable {
             ProfesorDAOImp dao=new ProfesorDAOImp(DBConnection.getConnection());
             dao.injection(profe);
         } catch (NombreConNumero e) {
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Nombre con número.");
+            alerta.showAndWait();
             throw new RuntimeException(e);
         } catch (ApellidoConNumero e) {
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Apellido con número.");
+            alerta.showAndWait();
             throw new RuntimeException(e);
         } catch (DNIInvalido e) {
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("DNI inválido.");
+            alerta.showAndWait();
             throw new RuntimeException(e);
         }
         Stage nuevaVentana = new Stage();

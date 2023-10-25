@@ -118,7 +118,7 @@ public class VentanaProfesor implements Initializable {
             alerta.showAndWait();
         }else{
             Sesion.setAlumno(alumno);
-            HelloApplication.nuevaVentana("ventana-editar.fxml");
+            HelloApplication.loadFXML("ventana-editar.fxml");
         }
 
     }

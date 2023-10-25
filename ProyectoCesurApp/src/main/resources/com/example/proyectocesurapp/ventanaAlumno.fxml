@@ -5,6 +5,11 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -17,12 +22,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="657.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectocesurapp.VentanaAlumno">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="657.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectocesurapp.VentanaAlumno">
     <top>
         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="610.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="btnLogOut" mnemonicParsing="false" text="Log Out" />
                 <Label text="Gestión de Tareas">
                     <HBox.margin>
                         <Insets left="150.0" right="150.0" />
@@ -31,21 +34,35 @@
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="ivUser" fitHeight="64.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@imagenes/usuario.png" />
-                    </image>
-                    <HBox.margin>
-                        <Insets />
-                    </HBox.margin>
-                </ImageView>
+            <HBox alignment="CENTER" prefHeight="53.0" prefWidth="82.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <children>
+                      <ImageView fx:id="ivUser" fitHeight="64.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@imagenes/usuario.png" />
+                          </image>
+                      </ImageView>
+                  <MenuBar id="menuBar" fx:id="menu">
+                    <menus>
+                      <Menu id="menu" mnemonicParsing="false">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Log Out" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </children>
+            </HBox>
             </children>
         </HBox>
     </top>
     <center>
         <SplitPane dividerPositions="0.5" prefHeight="297.0" prefWidth="600.0" BorderPane.alignment="CENTER">
             <items>
-                <VBox prefHeight="445.0" prefWidth="269.0">
+                <VBox prefHeight="445.0" prefWidth="272.0">
                     <children>
                         <Label text="Fecha">
                             <VBox.margin>
@@ -62,7 +79,7 @@
                                 <Insets bottom="5.0" left="10.0" />
                             </VBox.margin>
                         </Label>
-                        <ComboBox fx:id="tpCombo" prefWidth="150.0">
+                        <ComboBox fx:id="comboPracticeType" prefWidth="150.0">
                             <VBox.margin>
                                 <Insets bottom="10.0" left="10.0" />
                             </VBox.margin>
@@ -72,21 +89,21 @@
                                 <Insets bottom="5.0" left="10.0" />
                             </VBox.margin>
                         </Label>
-                        <TextField fx:id="fHours">
-                            <VBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="150.0" />
-                            </VBox.margin>
-                        </TextField>
+                  <Spinner fx:id="spHoras" prefHeight="25.0" prefWidth="77.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" />
+                     </VBox.margin>
+                  </Spinner>
                         <Label text="Actividad realizada">
                             <VBox.margin>
                                 <Insets bottom="5.0" left="10.0" />
                             </VBox.margin>
                         </Label>
-                        <TextArea fx:id="taActivityRealised" prefHeight="200.0" prefWidth="200.0">
-                            <VBox.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" />
-                            </VBox.margin>
-                        </TextArea>
+                  <TextField fx:id="fieldActivity">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="10.0" right="30.0" />
+                     </VBox.margin>
+                  </TextField>
                         <Label text="Observaciones">
                             <VBox.margin>
                                 <Insets bottom="5.0" left="10.0" />
@@ -104,13 +121,13 @@
                         </Button>
                     </children>
                 </VBox>
-                <TableView fx:id="tvUser" prefHeight="445.0" prefWidth="365.0">
+                <TableView fx:id="tvUser" prefHeight="445.0" prefWidth="391.0">
                     <columns>
-                        <TableColumn fx:id="cDate" prefWidth="75.0" text="C1" />
-                        <TableColumn fx:id="cTPractice" prefWidth="75.0" text="C2" />
-                        <TableColumn fx:id="cTHours" prefWidth="75.0" text="Column X" />
-                        <TableColumn fx:id="cActivityRealised" prefWidth="75.0" text="Column X" />
-                        <TableColumn fx:id="cObservations" prefWidth="75.0" text="Column X" />
+                        <TableColumn fx:id="cDate" prefWidth="75.0" text="Fecha" />
+                        <TableColumn fx:id="cTPractice" prefWidth="75.0" text="Tipo de práctica" />
+                        <TableColumn fx:id="cTHours" prefWidth="75.0" text="Total de horas" />
+                        <TableColumn fx:id="cActivityRealised" prefWidth="75.0" text="Actividad realizada" />
+                        <TableColumn fx:id="cObservations" prefWidth="75.0" text="Observaciones" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -120,4 +137,3 @@
         </SplitPane>
     </center>
 </BorderPane>
-

@@ -21,7 +21,6 @@ public class HelloApplication extends Application {
     public static void loadFXML(String ruta){
 
         try {
-
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(ruta));
             Scene scene = new Scene(fxmlLoader.load(), 1125, 600);
             myStage.setScene(scene);
@@ -29,17 +28,7 @@ public class HelloApplication extends Application {
             throw new RuntimeException(e);
         }
     }
-    public static void nuevaVentana(String ruta){
 
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(ruta));
-            Scene scene = new Scene(fxmlLoader.load(), 1125, 600);
-            Stage ventana=new Stage();
-            ventana.setScene(scene);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     public static void main(String[] args) {
         launch();

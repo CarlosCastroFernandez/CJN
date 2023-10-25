@@ -3,7 +3,7 @@ package com.example.proyectocesurapp;
 import clase.Sesion;
 import domain.DBConnection;
 import domain.ProfesorDAOImp;
-import exception.UsuarioInexistente;
+import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -38,6 +38,16 @@ public class Login implements Initializable {
             HelloApplication.loadFXML("ventanaProfesor.fxml");
 
         } catch (UsuarioInexistente e) {
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Usuario Inexistente.");
+            alerta.showAndWait();
+            throw new RuntimeException(e);
+        } catch (ContrasenhaIncorrecta e) {
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Contraseña incorrecta.");
+            alerta.showAndWait();
             throw new RuntimeException(e);
         }
 
