@@ -80,4 +80,17 @@ public class ActividadDiaria {
     public void setObservaciones(String observaciones) {
         this.observaciones = observaciones;
     }
+
+    @Override
+    public String toString() {
+        return "ActividadDiaria{" +
+                "id=" + id +
+                ", idAlumno=" + idAlumno +
+                ", fecha='" + fecha + '\'' +
+                ", tipoPractica=" + tipoPractica +
+                ", totalHoras=" + totalHoras +
+                ", nombreTarea='" + nombreTarea + '\'' +
+                ", observaciones='" + observaciones + '\'' +
+                '}';
+    }
 }

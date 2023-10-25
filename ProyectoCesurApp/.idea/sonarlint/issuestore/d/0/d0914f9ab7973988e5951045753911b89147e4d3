@@ -1,29 +1,42 @@
 
-£
-java:S1186n"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ù¾Úöùÿÿÿÿ8ü”¶1
-
-java:S1186r"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¦¹8ü”¶1
-£
-java:S1186v"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‘ŒÏ÷ıÿÿÿÿ8ı”¶1
-
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â†…‡8ı”¶1
+Q
+java:S3740O"/Provide the parametrized type for this generic.(©·Ìµøÿÿÿÿ8®¿ØÁ¶1
+L
+java:S3740Q"/Provide the parametrized type for this generic.(¾àÜ8¯¿ØÁ¶1
+Q
+java:S3740S"/Provide the parametrized type for this generic.(«ÊÈ…şÿÿÿÿ8¯¿ØÁ¶1
+r	java:S116I"WRename this field "Datecalender" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„ô°$8ÀØÁ¶1
 Ÿ
-java:S1186ˆ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ˆßÙö8ı”¶1
+java:S1186š"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¦¹8ü”¶1
+Ÿ
+java:S1186©"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â†…‡8ı”¶1
+Ÿ
+java:S1186²"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ˆßÙö8ı”¶1
+t
+java:S1450?"RRemove the "obs" field and declare it as a local variable in the relevant methods.(ÓÇ×ïøÿÿÿÿ8¤ÀØÁ¶1
 O
-java:S1611="2Remove the parentheses around the "fila" parameter(™ƒ½Õ8”¶1
+java:S1611W"2Remove the parentheses around the "fila" parameter(™ƒ½Õ8”¶1
 T
-java:S1611A"2Remove the parentheses around the "fila" parameter(À«Úúÿÿÿÿ8‚”¶1
+java:S1611["2Remove the parentheses around the "fila" parameter(À«Úúÿÿÿÿ8‚”¶1
 T
-java:S1611E"2Remove the parentheses around the "fila" parameter(ÓåøÂùÿÿÿÿ8‚”¶1
+java:S1611_"2Remove the parentheses around the "fila" parameter(ÓåøÂùÿÿÿÿ8‚”¶1
 O
-java:S1611I"2Remove the parentheses around the "fila" parameter(ö±Ùİ8ƒ”¶1
+java:S1611c"2Remove the parentheses around the "fila" parameter(ö±Ùİ8ƒ”¶1
 T
-java:S1611M"2Remove the parentheses around the "fila" parameter(ÅÿœÊøÿÿÿÿ8ƒ”¶1
+java:S1611g"2Remove the parentheses around the "fila" parameter(ÅÿœÊøÿÿÿÿ8ƒ”¶1
 T
-java:S1611Q"2Remove the parentheses around the "fila" parameter(í¾Ï¬úÿÿÿÿ8ƒ”¶1
+java:S1611k"2Remove the parentheses around the "fila" parameter(í¾Ï¬úÿÿÿÿ8ƒ”¶1
 T
-java:S1611U"2Remove the parentheses around the "fila" parameter(£ëá×ùÿÿÿÿ8„”¶1
+java:S1611o"2Remove the parentheses around the "fila" parameter(£ëá×ùÿÿÿÿ8„”¶1
 T
-java:S1611Z"2Remove the parentheses around the "fila" parameter(«–¡Ùşÿÿÿÿ8„”¶1
+java:S1611t"2Remove the parentheses around the "fila" parameter(«–¡Ùşÿÿÿÿ8„”¶1
 T
-java:S1611^"2Remove the parentheses around the "fila" parameter(¶æ×ûÿÿÿÿ8…”¶1
+java:S1611x"2Remove the parentheses around the "fila" parameter(¶æ×ûÿÿÿÿ8…”¶1
+J
+java:S1602",Remove useless curly braces around statement(Á«Ü¯8ĞÀØÁ¶1
+^	java:S125Ÿ"<This block of commented-out lines of code should be removed.(²Ñãßúÿÿÿÿ8ÛÀØÁ¶1
+^
+java:S1128
+"ARemove this unused import 'javafx.collections.MapChangeListener'.(ÿĞ£×8àÀØÁ¶1
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8àÀØÁ¶1

@@ -41,3 +41,7 @@ O
 src/main/java/clase/Sesion.java,1\a\1afb12d3efb02377cbee27724bdbb20429ab1848
 o
 ?src/main/java/com/example/proyectocesurapp/VentanaProfesor.java,d\0\d0914f9ab7973988e5951045753911b89147e4d3
+m
+=src/main/java/com/example/proyectocesurapp/VentanaAlumno.java,9\7\97a61df5767669bb30a7f969f848c513ba80bab7
+^
+.src/main/java/domain/ActividaDiariaDAOImp.java,d\c\dcbd8fa9965ac123c439b372cf7aa615f6c54117

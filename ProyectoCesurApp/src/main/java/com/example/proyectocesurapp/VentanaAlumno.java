@@ -47,21 +47,6 @@ public class VentanaAlumno implements Initializable {
     private TextField fieldActivity;
     private ObservableList<ActividadDiaria> observableActividad;
 
-    @javafx.fxml.FXML
-    public void activityInsert(ActionEvent actionEvent) {
-        ActividadDiaria dayActivity = new ActividadDiaria();
-        dayActivity.setFecha(String.valueOf(dpDate.getValue()));
-        dayActivity.setTipoPractica(comboPracticeType.getSelectionModel().getSelectedItem());
-        dayActivity.setTotalHoras(spHoras.getValue());
-        dayActivity.setNombreTarea(fieldActivity.getText());
-        dayActivity.setObservaciones(taObservations.getText());
-        ActividaDiariaDAOImp dao = new ActividaDiariaDAOImp(DBConnection.getConnection());
-        Sesion.setActividadDiaria(dao.insercion(dayActivity));
-        Sesion.getListaActividades().add(dayActivity);
-        observableActividad.add(dayActivity);
-        tvUser.getItems().add(Sesion.getActividadDiaria());
-
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ObservableList<TipoPractica> practiceType = FXCollections.observableArrayList();
@@ -111,4 +96,21 @@ public class VentanaAlumno implements Initializable {
     }
 
 
+    @javafx.fxml.FXML
+    public void añadirTarea(ActionEvent actionEvent) {
+        System.out.println("activityInsert method called."); // Antes de la inserción
+        ActividadDiaria dayActivity = new ActividadDiaria();
+        dayActivity.setFecha(String.valueOf(dpDate.getValue()));
+        dayActivity.setTipoPractica(comboPracticeType.getSelectionModel().getSelectedItem());
+        dayActivity.setTotalHoras(spHoras.getValue());
+        dayActivity.setNombreTarea(fieldActivity.getText());
+        dayActivity.setObservaciones(taObservations.getText());
+        ActividaDiariaDAOImp dao = new ActividaDiariaDAOImp(DBConnection.getConnection());
+        Sesion.setActividadDiaria(dao.insercion(dayActivity));
+        System.out.println(Sesion.getActividadDiaria().toString());
+        Sesion.getListaActividades().add(Sesion.getActividadDiaria());
+        observableActividad.add(Sesion.getActividadDiaria());
+        tvUser.getItems().add(Sesion.getActividadDiaria());
+        System.out.println("activityInsert method finished.");
+    }
 }
