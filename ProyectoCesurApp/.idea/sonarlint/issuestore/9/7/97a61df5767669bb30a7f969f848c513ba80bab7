@@ -1,15 +1,15 @@
 
 O
-java:S16119"2Remove the parentheses around the "fila" parameter(Á¦ÿ¹8ÿœ¾Ç¶1
+java:S16119"2Remove the parentheses around the "fila" parameter(Á¦ÿ¹8ïĞŞÔ¶1
 O
-java:S1611="2Remove the parentheses around the "fila" parameter(¬·à´8€¾Ç¶1
+java:S1611="2Remove the parentheses around the "fila" parameter(¬·à´8ñĞŞÔ¶1
 T
-java:S1611A"2Remove the parentheses around the "fila" parameter(¨›Ãƒûÿÿÿÿ8¾Ç¶1
+java:S1611A"2Remove the parentheses around the "fila" parameter(¨›Ãƒûÿÿÿÿ8òĞŞÔ¶1
 T
-java:S1611E"2Remove the parentheses around the "fila" parameter(½›Ÿøÿÿÿÿ8‚¾Ç¶1
+java:S1611E"2Remove the parentheses around the "fila" parameter(½›Ÿøÿÿÿÿ8ôĞŞÔ¶1
 T
-java:S1611I"2Remove the parentheses around the "fila" parameter(éšâÑşÿÿÿÿ8ƒ¾Ç¶1
-j	java:S100d"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àöÊ¡8Ò«íÇ¶1
-G	java:S106e"+Replace this use of System.out by a logger.(†¹ªó8ëßíÇ¶1
-G	java:S106n"+Replace this use of System.out by a logger.(Œ¹­8ïßíÇ¶1
-G	java:S106r"+Replace this use of System.out by a logger.(¡ªí8ñßíÇ¶1
+java:S1611I"2Remove the parentheses around the "fila" parameter(éšâÑşÿÿÿÿ8õĞŞÔ¶1
+j	java:S100d"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àöÊ¡8ıĞŞÔ¶1
+F	java:S106e"+Replace this use of System.out by a logger.(¤Ñ§}8şĞŞÔ¶1
+G	java:S106n"+Replace this use of System.out by a logger.(Œ¹­8ƒÑŞÔ¶1
+G	java:S106r"+Replace this use of System.out by a logger.(¡ªí8†ÑŞÔ¶1

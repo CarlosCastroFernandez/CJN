@@ -41,7 +41,6 @@ public class Login implements Initializable {
             HelloApplication.loadFXML("ventanaProfesor.fxml");
 
         } catch (UsuarioInexistente e) {
-            System.out.println("Hola");
             try {
                 Sesion.setAlumno(daoA.loadActivity(usuarioDni,usuarioContrasenha));
                 HelloApplication.loadFXML("ventanaAlumno.fxml");

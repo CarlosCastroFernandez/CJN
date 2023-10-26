@@ -98,7 +98,7 @@ public class VentanaAlumno implements Initializable {
 
     @javafx.fxml.FXML
     public void añadirTarea(ActionEvent actionEvent) {
-        System.out.println("activityInsert method called."); // Antes de la inserción
+        System.out.println("activityInsert method called.");
         ActividadDiaria dayActivity = new ActividadDiaria();
         dayActivity.setFecha(String.valueOf(dpDate.getValue()));
         dayActivity.setTipoPractica(comboPracticeType.getSelectionModel().getSelectedItem());
