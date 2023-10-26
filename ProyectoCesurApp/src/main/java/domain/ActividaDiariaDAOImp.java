@@ -5,11 +5,12 @@ import clase.Sesion;
 import enums.TipoPractica;
 import exception.ContrasenhaIncorrecta;
 import exception.UsuarioInexistente;
+import lombok.extern.java.Log;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ActividaDiariaDAOImp implements ActividadDiariaDAO{
+@Log public class ActividaDiariaDAOImp implements ActividadDiariaDAO{
     private static Connection conexion;
     private static String loadActivity = "select * from actividadDiaria where alumnoId = ?";
     private static String insertActivity = "insert into actividadDiaria(nombre, totalHoras, observaciones, tipoPractica, fecha, alumnoId)\n"+"VALUE (?, ?, ?, ?, ?, ?)";

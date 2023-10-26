@@ -98,7 +98,7 @@ public class VentanaAlumno implements Initializable {
 
     @javafx.fxml.FXML
     public void añadirTarea(ActionEvent actionEvent) {
-        System.out.println("activityInsert method called.");
+        System.out.println("Entra");
         ActividadDiaria dayActivity = new ActividadDiaria();
         dayActivity.setFecha(String.valueOf(dpDate.getValue()));
         dayActivity.setTipoPractica(comboPracticeType.getSelectionModel().getSelectedItem());
@@ -110,7 +110,6 @@ public class VentanaAlumno implements Initializable {
         System.out.println(Sesion.getActividadDiaria().toString());
         Sesion.getListaActividades().add(Sesion.getActividadDiaria());
         observableActividad.add(Sesion.getActividadDiaria());
-        tvUser.getItems().add(Sesion.getActividadDiaria());
-        System.out.println("activityInsert method finished.");
+        System.out.println("Sale.");
     }
 }
