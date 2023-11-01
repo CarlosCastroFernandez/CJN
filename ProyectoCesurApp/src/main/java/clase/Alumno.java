@@ -63,6 +63,9 @@ public class Alumno extends Usuario {
         this.observaciones=obs;
 
     }
+    public Alumno(){
+
+    }
     public Alumno(String dni,String contraseña){
     this.actividadDiaria = new ArrayList<ActividadDiaria>();
     }

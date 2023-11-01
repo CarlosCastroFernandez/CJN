@@ -1,20 +1,30 @@
 package clase;
 
+import java.util.ArrayList;
+
 public class Empresa {
     private String email;
     private String nombre;
     private Integer telefono;
     private String responsable;
     private String observaciones;
-    private String alumno;
+    private ArrayList<Alumno>alumnos;
 
-    public Empresa(String email, String nombre, Integer telefono, String responsable, String observaciones, String alumno) {
+    public ArrayList<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(ArrayList<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+
+    public Empresa(String email, String nombre, Integer telefono, String responsable, String observaciones) {
         this.email = email;
         this.nombre = nombre;
         this.telefono = telefono;
         this.responsable = responsable;
         this.observaciones = observaciones;
-        this.alumno = alumno;
+        this.alumnos=null;
     }
 
     public String getEmail() {
@@ -57,11 +67,5 @@ public class Empresa {
         this.observaciones = observaciones;
     }
 
-    public String getAlumno() {
-        return alumno;
-    }
 
-    public void setAlumno(String alumno) {
-        this.alumno = alumno;
-    }
 }

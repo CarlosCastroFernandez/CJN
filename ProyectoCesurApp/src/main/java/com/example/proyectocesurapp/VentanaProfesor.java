@@ -1,10 +1,14 @@
 package com.example.proyectocesurapp;
 
 import clase.Alumno;
+import clase.Empresa;
 import clase.Sesion;
 import domain.AlumnoDAOImp;
 import domain.DBConnection;
 import enums.Curso;
+import exception.ApellidoConNumero;
+import exception.DNIInvalido;
+import exception.NombreConNumero;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
@@ -13,9 +17,18 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.util.StringConverter;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 public class VentanaProfesor implements Initializable {
@@ -70,20 +83,79 @@ public class VentanaProfesor implements Initializable {
     @javafx.fxml.FXML
     private TextField textTelefono;
     @javafx.fxml.FXML
-    private DatePicker Datecalender;
-    @javafx.fxml.FXML
     private ComboBox<Curso>comboCurso;
-    @javafx.fxml.FXML
-    private TextField textNombreProfesor;
     @javafx.fxml.FXML
     private Spinner spinnerDUAL;
     @javafx.fxml.FXML
     private Spinner spinnerFCT;
     @javafx.fxml.FXML
     private ComboBox comboNombreEmpresa;
+    @javafx.fxml.FXML
+    private DatePicker dateCalender;
+    @javafx.fxml.FXML
+    private RadioButton radioDUal;
+    @javafx.fxml.FXML
+    private RadioButton radioFCT;
+    @javafx.fxml.FXML
+    private ToggleGroup botones;
+    @javafx.fxml.FXML
+    private Label labelFCT;
+    @javafx.fxml.FXML
+    private Label labelDUAL;
+    @javafx.fxml.FXML
+    private TextField contraseñaAlumno;
+    @javafx.fxml.FXML
+    private TextField textDNI;
+    private ObservableList<Curso>obsCursos;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        File carpeta=new File ("./imagenes de "+Sesion.getProfesor().getDni());
+        if(carpeta.exists()){
+            File[]hijo=carpeta.listFiles();
+            Image imagenProfe=new Image("file:"+carpeta.getName()+"/"+hijo[0].getName());
+
+            System.out.println(carpeta.getName()+"/"+hijo[0].getName());
+            imagen.setImage(imagenProfe);
+        }else{
+            Image imagenPrincipal = new Image(VentanaProfesor.class.getClassLoader().getResource("com/example/proyectocesurapp/imagenes/usuario.png").toExternalForm());
+            imagen.setImage(imagenPrincipal);
+        }
+
+        radioDUal.setSelected(true);
+        spinnerFCT.setVisible(false);
+        labelFCT.setVisible(false);
+        radioDUal.setOnAction(actionEvent -> {
+            spinnerFCT.setVisible(false);
+            labelFCT.setVisible(false);
+            spinnerDUAL.setVisible(true);
+            labelDUAL.setVisible(true);
+        });
+        radioFCT.setOnAction(actionEvent -> {
+            spinnerDUAL.setVisible(false);
+            labelDUAL.setVisible(false);
+            spinnerFCT.setVisible(true);
+            labelFCT.setVisible(true);
+        });
+        obsCursos=FXCollections.observableArrayList();
+        obsCursos.addAll(Curso.ASIR1,Curso.ASIR2,Curso.DAM1,Curso.DAM2,Curso.DAW1,Curso.DAW2);
+        comboCurso.setConverter(new StringConverter<Curso>() {
+            @Override
+            public String toString(Curso curso) {
+                if(curso!=null){
+                    return String.valueOf(curso);
+                }else{
+                    return null;
+                }
+
+            }
+
+            @Override
+            public Curso fromString(String s) {
+                return null;
+            }
+        });
+        comboCurso.setItems(obsCursos);
         cNombre.setCellValueFactory((fila)->{
             String nombre=fila.getValue().getNombre();
             return new SimpleStringProperty(nombre);
@@ -121,6 +193,29 @@ public class VentanaProfesor implements Initializable {
             String nombre=fila.getValue().getHorasFCT();
             return new SimpleStringProperty(nombre);
         });
+        cEmpresa.setCellValueFactory((fila)->{
+            String nombre="";
+            if(fila.getValue().getEmpresa()==null){
+               nombre="<<vacio>>";
+            }else{
+                nombre=fila.getValue().getEmpresa().getNombre();
+            }
+
+            return new SimpleStringProperty(nombre);
+        });
+        tabla.setOnMousePressed(mouseEvent -> {
+            if(mouseEvent.isSecondaryButtonDown()&&alumno!=null){
+                ContextMenu context=new ContextMenu();
+                MenuItem menuItem1=new MenuItem("Editar");
+                context.getItems().add(menuItem1);
+                context.getItems().add(new SeparatorMenuItem());
+                MenuItem menuItem2=new MenuItem("Borrar");
+                context.getItems().add(menuItem2);
+                tabla.setContextMenu(context);
+                context.show(tabla,mouseEvent.getScreenX(),mouseEvent.getScreenY());
+
+            }
+        });
         obs= FXCollections.observableArrayList();
         AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
         Sesion.setListaAlumno(conexion.loadAll(Sesion.getProfesor().getId()));
@@ -129,9 +224,6 @@ public class VentanaProfesor implements Initializable {
         tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
             alumno=t1;
         });
-        ObservableList<Curso>cursos=FXCollections.observableArrayList();
-        cursos.addAll(Curso.ASIR1,Curso.DAM1,Curso.ASIR2,Curso.DAM2,Curso.DAW1,Curso.DAW2);
-        comboCurso.setItems(cursos);
         spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
         spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
     }
@@ -156,8 +248,106 @@ public class VentanaProfesor implements Initializable {
 
     @javafx.fxml.FXML
     public void nuevoALumno(ActionEvent actionEvent) {
-       // Alumno alumno=new Alumno();
+        try {
+            Alumno alumno = new Alumno();
+            if (!textApellidos.getText().isEmpty() && !textNombre.getText().isEmpty() && !textEmail.getText().isEmpty()
+                    && !textTelefono.getText().isEmpty() && !comboCurso.getSelectionModel().getSelectedItem().equals(null)
+                    && !contraseñaAlumno.getText().isEmpty() && !textDNI.getText().isEmpty()) {
+                textApellidos.getText().strip();
+                textNombre.getText().strip();
 
+                alumno.setNombre(textNombre.getText());
+
+                textDNI.getText().strip();
+                textEmail.getText().strip();
+                alumno.setCorreo(textEmail.getText());
+                textTelefono.getText().strip();
+                alumno.setTelefono(Integer.valueOf(textTelefono.getText()));
+                String fecha = String.valueOf(dateCalender.getValue());
+                System.out.println(fecha);
+                if(fecha.equals("null")){
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("Error");
+                    alerta.setHeaderText("Fecha De Nacimiento No Seleccionada");
+                    alerta.setContentText("Asegurese de que los datos de la fecha de nacimiento\n sean correctos.");
+                    alerta.showAndWait();
+                }
+                alumno.setFechaNacimiento(fecha);
+                alumno.setPassword(contraseñaAlumno.getText());
+                alumno.setObservaciones("");
+                alumno.setProfesorId(Sesion.getProfesor().getId());
+                alumno.setProfesor(Sesion.getProfesor());
+
+                alumno.setDni(textDNI.getText());
+
+                String[] apellidos = textApellidos.getText().split(" ");
+                if (apellidos.length != 2) {
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("Error");
+                    alerta.setHeaderText("Apellidos Mal Transcritos");
+                    alerta.setContentText("Asegurese de que los apellidos sean dos y \nseparados por un espacio.");
+                    alerta.showAndWait();
+
+                } else {
+
+                    alumno.setApellido1((String) apellidos[0]);
+                    alumno.setApellido2(apellidos[1]);
+
+                }
+                alumno.setCurso((Curso) comboCurso.getSelectionModel().getSelectedItem());
+
+                if (radioDUal.isSelected()) {
+                    alumno.setHorasDUAL(spinnerDUAL.getValue() + "/270");
+                } else {
+                    alumno.setHorasFCT(spinnerFCT.getValue() + "/270");
+                }
+                if (comboNombreEmpresa.getValue() == null) {
+                    alumno.setEmpresa(null);
+                    alumno.setEmpresaId(0);
+                } else {
+                    Empresa empresa = (Empresa) comboNombreEmpresa.getSelectionModel().getSelectedItem();
+                    alumno.setEmpresa(empresa);
+                    empresa.setAlumnos(new ArrayList<>());
+                    empresa.getAlumnos().add(alumno);
+                    System.out.println(empresa);
+                }
+                System.out.println(alumno);
+
+                AlumnoDAOImp dao = new AlumnoDAOImp(DBConnection.getConnection());
+               Alumno alumnoValido= dao.injection(alumno);
+                obs.add(alumnoValido);
+
+            }else{
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setWidth(300);
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Campos Incorrectos");
+                alerta.setContentText("Asegurese de que los datos de todos los campos son correctos.");
+                alerta.showAndWait();
+            }
+
+        } catch (NombreConNumero e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Nombre con Numeros");
+            alerta.setContentText("El nombre del alumno no puede contener numeros.");
+            alerta.showAndWait();
+            throw new RuntimeException(e);
+        } catch (DNIInvalido e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("DNI Invalido");
+            alerta.setContentText("El DNI es Imposible que pueda existir.");
+            alerta.showAndWait();
+            throw new RuntimeException(e);
+        } catch (ApellidoConNumero e) {
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Apellido Con Numeros");
+            alerta.setContentText("El Apellido del alumno no puede contener numeros.");
+            alerta.showAndWait();
+            throw new RuntimeException(e);
+        }
     }
 
     @javafx.fxml.FXML
@@ -176,5 +366,38 @@ public class VentanaProfesor implements Initializable {
 
     @javafx.fxml.FXML
     public void clickImagen(Event event) {
+        FileChooser open=new FileChooser();
+       File ruta= open.showOpenDialog(null);
+        System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
+        if(ruta!=null){
+            File carpeta=new File("imagenes de "+Sesion.getProfesor().getDni());
+            if(!carpeta.exists()&&(ruta.getName().endsWith("jpg")||ruta.getName().endsWith("png")||ruta.getName().endsWith("PNG")||ruta.getName().endsWith("JPG"))){
+                try {
+                    carpeta.mkdir();
+                    Path origen= Path.of(ruta.getAbsolutePath());
+                    Path destino= Path.of(carpeta.getName());
+                    Path destinoArchivo=destino.resolve(Sesion.getProfesor().getNombre()+" "+Sesion.getProfesor().getApellido1()+ruta.getName().substring(ruta.getName().indexOf(".")));
+                    Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                    imagen.setImage(new Image("file:"+destinoArchivo));
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }else{
+                File[]hijos=carpeta.listFiles();
+                hijos[0].delete();
+                Path origen= Path.of(ruta.getAbsolutePath());
+                Path destino= Path.of(carpeta.getName());
+                Path destinoArchivo=destino.resolve(Sesion.getProfesor().getNombre()+" "+Sesion.getProfesor().getApellido1()+ruta.getName().substring(ruta.getName().indexOf(".")));
+                try {
+                    Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                imagen.setImage(new Image("file:"+destinoArchivo));
+            }
+        }
+
+
     }
 }

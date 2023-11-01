@@ -5,10 +5,7 @@ import enums.Curso;
 import exception.*;
 import lombok.extern.java.Log;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -20,7 +17,7 @@ public class AlumnoDAOImp implements AlumnoDAO{
     private final static String queryloadAll="select * from alumno where profesor=?";
 
     private final static String queryRegister = "insert into alumno(dni, email, nombre, apellido1, apellido2, telefono, " +
-            "contrasenha, profesor, empresa, fechaNacimiento, horasDual, horasFCT, curso, observaciones)" + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            "contraseña, profesor, empresa, fechaNacimiento, horasDual, horasFCT, curso, observaciones)" + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
     public AlumnoDAOImp(Connection c){ connection = c;}
 
@@ -106,5 +103,38 @@ public class AlumnoDAOImp implements AlumnoDAO{
     @Override
     public void removeActivity(Alumno a) {
 
+    }
+
+    @Override
+    public Alumno injection(Alumno alumno) {
+        Alumno alum=null;
+        try {
+            PreparedStatement pst=connection.prepareStatement(queryRegister, Statement.RETURN_GENERATED_KEYS);
+            pst.setString(1,alumno.getDni());
+            pst.setString(2,alumno.getCorreo());
+            pst.setString(3,alumno.getNombre());
+            pst.setString(4,alumno.getApellido1());
+            pst.setString(5,alumno.getApellido2());
+            pst.setInt(6,alumno.getTelefono());
+            pst.setString(7,alumno.getPassword());
+            pst.setInt(8,alumno.getProfesorId());
+            pst.setInt(9,alumno.getEmpresaId());
+            pst.setString(10,alumno.getFechaNacimiento());
+            pst.setString(11,alumno.getHorasDUAL());
+            pst.setString(12,alumno.getHorasFCT());
+            pst.setString(13,alumno.getCurso().name());
+            pst.setString(14,alumno.getObservaciones());
+            int filas=pst.executeUpdate();
+            if(filas==1){
+                ResultSet rs=pst.getGeneratedKeys();
+                rs.next();
+                alum=alumno;
+                alum.setId(rs.getInt(1));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return alum;
     }
 }

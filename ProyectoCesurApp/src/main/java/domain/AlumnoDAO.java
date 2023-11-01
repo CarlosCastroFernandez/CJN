@@ -12,4 +12,5 @@ public interface AlumnoDAO {
     public Alumno saveActivity (Alumno a);
     public Alumno updateActivity (Alumno a);
     public void removeActivity (Alumno a);
+    public Alumno injection(Alumno alumno);
 }

@@ -72,28 +72,7 @@ public class Registro implements Initializable {
             alerta.showAndWait();
             throw new RuntimeException(e);
         }
-        Stage nuevaVentana = new Stage();
-        nuevaVentana.setTitle("Login");
-
-        // Cargar el archivo FXML de la nueva ventana (reemplaza 'NuevaVentana.fxml' con el nombre de tu archivo FXML)
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
-        Parent root = null;
-        try {
-            root = loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        // Crear una nueva escena con el contenido del archivo FXML
-        Scene nuevaEscena = new Scene(root);
-
-        // Establecer la escena en la nueva ventana
-        nuevaVentana.setScene(nuevaEscena);
-
-        // Mostrar la nueva ventana
-        nuevaVentana.show();
-        Stage ventanaActual=(Stage)botonRegistro.getScene().getWindow();
-        ventanaActual.close();
+        HelloApplication.loadFXML("login.fxml");
 
     }
 
