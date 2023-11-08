@@ -8,22 +8,26 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="401.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectocesurapp.Registro">
-   <top>
-      <VBox alignment="CENTER" prefHeight="78.0" prefWidth="424.0" BorderPane.alignment="CENTER">
+<BorderPane prefHeight="684.0" prefWidth="1084.0" styleClass="imagenRegistro" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectocesurapp.Registro">
+   <right>
+      <VBox alignment="CENTER" prefHeight="684.0" prefWidth="523.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="labelTitulo" text="Registro" />
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <VBox alignment="TOP_CENTER">
-         <children>
+            <Label text="REGISTRATE EN CESUR" textAlignment="CENTER">
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+            </Label>
             <FlowPane alignment="TOP_CENTER" hgap="50.0" prefHeight="31.0" prefWidth="424.0">
                <children>
-                  <Label text="Email" />
+                  <Label text="Email">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
                   <TextField fx:id="txtEmail" prefHeight="0.0" prefWidth="149.0">
                      <FlowPane.margin>
                         <Insets bottom="10.0" />
@@ -33,7 +37,10 @@
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" hgap="60.0" prefHeight="19.0" prefWidth="424.0">
                <children>
-                  <Label text="DNI" />
+                  <Label text="DNI">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
                   <TextField fx:id="txtDNI" />
                </children>
                <VBox.margin>
@@ -42,7 +49,10 @@
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" hgap="20.0" prefHeight="23.0" prefWidth="424.0">
                <children>
-                  <Label text="Contraseña" />
+                  <Label text="Contraseña">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
                   <PasswordField fx:id="passField" />
                </children>
                <VBox.margin>
@@ -51,7 +61,10 @@
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" hgap="40.0" prefHeight="20.0" prefWidth="424.0">
                <children>
-                  <Label text="Nombre" />
+                  <Label text="Nombre">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
                   <TextField fx:id="txtNombre" prefHeight="27.0" prefWidth="149.0" />
                </children>
                <VBox.margin>
@@ -60,7 +73,10 @@
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" hgap="25.0" prefHeight="25.0" prefWidth="424.0">
                <children>
-                  <Label text="1º Apellido" />
+                  <Label text="1º Apellido">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
                   <TextField fx:id="txtApellido1" />
                </children>
                <VBox.margin>
@@ -69,7 +85,10 @@
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" hgap="25.0" prefHeight="21.0" prefWidth="424.0">
                <children>
-                  <Label text="2º Apellido" />
+                  <Label text="2º Apellido">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
                   <TextField fx:id="txtApellido2" />
                </children>
                <VBox.margin>
@@ -78,7 +97,10 @@
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" hgap="40.0" prefHeight="23.0" prefWidth="424.0">
                <children>
-                  <Label text="Telefono" />
+                  <Label text="Telefono">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font></Label>
                   <TextField fx:id="txtTelefono" />
                </children>
                <VBox.margin>
@@ -93,5 +115,5 @@
             </FlowPane>
          </children>
       </VBox>
-   </center>
+   </right>
 </BorderPane>

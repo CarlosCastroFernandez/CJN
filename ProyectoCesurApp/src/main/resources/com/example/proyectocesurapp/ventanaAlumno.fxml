@@ -39,7 +39,7 @@
                   <Insets />
                </HBox.margin>
                <children>
-                      <ImageView fx:id="ivUser" fitHeight="64.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                      <ImageView fx:id="ivUser" fitHeight="64.0" fitWidth="32.0" onMouseClicked="#clickImage" pickOnBounds="true" preserveRatio="true">
                           <image>
                               <Image url="@imagenes/usuario.png" />
                           </image>

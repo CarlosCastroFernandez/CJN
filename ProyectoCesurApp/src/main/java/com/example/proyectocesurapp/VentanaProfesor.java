@@ -106,6 +106,9 @@ public class VentanaProfesor implements Initializable {
     private TextField contraseñaAlumno;
     @javafx.fxml.FXML
     private TextField textDNI;
+    private ContextMenu contextMenu=new ContextMenu();
+    private MenuItem menuItem1=new MenuItem();
+    private MenuItem menuItem2=new MenuItem();
     private ObservableList<Curso>obsCursos;
 
     @Override
@@ -205,14 +208,18 @@ public class VentanaProfesor implements Initializable {
         });
         tabla.setOnMousePressed(mouseEvent -> {
             if(mouseEvent.isSecondaryButtonDown()&&alumno!=null){
-                ContextMenu context=new ContextMenu();
-                MenuItem menuItem1=new MenuItem("Editar");
-                context.getItems().add(menuItem1);
-                context.getItems().add(new SeparatorMenuItem());
-                MenuItem menuItem2=new MenuItem("Borrar");
-                context.getItems().add(menuItem2);
-                tabla.setContextMenu(context);
-                context.show(tabla,mouseEvent.getScreenX(),mouseEvent.getScreenY());
+                 contextMenu=new ContextMenu();
+                 menuItem1=new MenuItem("Editar");
+                contextMenu.getItems().add(menuItem1);
+                contextMenu.getItems().add(new SeparatorMenuItem());
+                 menuItem2=new MenuItem("Borrar");
+                contextMenu.getItems().add(menuItem2);
+                tabla.setContextMenu(contextMenu);
+                contextMenu.show(tabla,mouseEvent.getScreenX(),mouseEvent.getScreenY());
+                menuItem1.setOnAction(actionEvent -> {
+                    System.out.println("Paso por aqui");
+                    HelloApplication.loadFXML("editar-alumno-view.fxml");
+                });
 
             }
         });
@@ -223,6 +230,12 @@ public class VentanaProfesor implements Initializable {
         tabla.setItems(obs);
         tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
             alumno=t1;
+            Sesion.setAlumno(alumno);
+        });
+
+
+        menuItem2.setOnAction(actionEvent -> {
+            //Se borra usuario junto con todas las tareas diarias de ese usuario
         });
         spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
         spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
@@ -253,11 +266,12 @@ public class VentanaProfesor implements Initializable {
             if (!textApellidos.getText().isEmpty() && !textNombre.getText().isEmpty() && !textEmail.getText().isEmpty()
                     && !textTelefono.getText().isEmpty() && !comboCurso.getSelectionModel().getSelectedItem().equals(null)
                     && !contraseñaAlumno.getText().isEmpty() && !textDNI.getText().isEmpty()) {
+
+
                 textApellidos.getText().strip();
+
                 textNombre.getText().strip();
-
                 alumno.setNombre(textNombre.getText());
-
                 textDNI.getText().strip();
                 textEmail.getText().strip();
                 alumno.setCorreo(textEmail.getText());
@@ -352,6 +366,7 @@ public class VentanaProfesor implements Initializable {
 
     @javafx.fxml.FXML
     public void logout(ActionEvent actionEvent) {
+        Sesion.setProfesor(null);
         HelloApplication.loadFXML("login.fxml");
     }
 
@@ -367,7 +382,7 @@ public class VentanaProfesor implements Initializable {
     @javafx.fxml.FXML
     public void clickImagen(Event event) {
         FileChooser open=new FileChooser();
-       File ruta= open.showOpenDialog(null);
+        File ruta= open.showOpenDialog(null);
         System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
         if(ruta!=null){
             File carpeta=new File("imagenes de "+Sesion.getProfesor().getDni());

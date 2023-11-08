@@ -29,7 +29,7 @@ public class EmpresaDAOImp implements EmpresaDAO {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()){
-                empresa = new Empresa(rs.getString("email"), rs.getString("nombre"), rs.getInt("telefono"), rs.getString("responsable"), rs.getString("observaciones"));
+                empresa = new Empresa(rs.getInt("id"),rs.getString("email"), rs.getString("nombre"), rs.getInt("telefono"), rs.getString("responsable"), rs.getString("observaciones"));
             } else {
                 log.warning("La empresa no existe");
             }
@@ -47,7 +47,7 @@ public class EmpresaDAOImp implements EmpresaDAO {
             PreparedStatement pst = connection.prepareStatement(QUERY_LOAD_ALL);
             ResultSet rs = pst.executeQuery();
             while (rs.next()){
-                empresa = new Empresa(rs.getString("email"), rs.getString("nombre"), rs.getInt("telefono"), rs.getString("responsable"), rs.getString("observaciones"));
+                empresa = new Empresa(rs.getInt("id"),rs.getString("email"), rs.getString("nombre"), rs.getInt("telefono"), rs.getString("responsable"), rs.getString("observaciones"));
                 allEnterprise.add(empresa);
             }
 

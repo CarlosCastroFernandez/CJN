@@ -3,6 +3,7 @@ package clase;
 import java.util.ArrayList;
 
 public class Empresa {
+    private Integer id;
     private String email;
     private String nombre;
     private Integer telefono;
@@ -18,7 +19,8 @@ public class Empresa {
         this.alumnos = alumnos;
     }
 
-    public Empresa(String email, String nombre, Integer telefono, String responsable, String observaciones) {
+    public Empresa(Integer id,String email, String nombre, Integer telefono, String responsable, String observaciones) {
+        this.id=id;
         this.email = email;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -29,6 +31,12 @@ public class Empresa {
 
     public String getEmail() {
         return email;
+    }
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setEmail(String email) {
