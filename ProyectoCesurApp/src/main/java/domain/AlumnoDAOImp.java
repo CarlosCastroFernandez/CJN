@@ -8,6 +8,7 @@ import lombok.extern.java.Log;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Log
 public class AlumnoDAOImp implements AlumnoDAO{
@@ -18,6 +19,14 @@ public class AlumnoDAOImp implements AlumnoDAO{
 
     private final static String queryRegister = "insert into alumno(dni, email, nombre, apellido1, apellido2, telefono, " +
             "contraseña, profesor, empresa, fechaNacimiento, horasDual, horasFCT, curso, observaciones)" + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    private final static String actualizacion="update alumno set dni=?,email=?,nombre=?,apellido1=?,apellido2=?," +
+            "telefono=?,empresa=?,fechaNacimiento=?,horasDual=?,horasFCT=?,curso=? where id=?";
+    private static final HashMap<String,String> decision;
+    static {
+        decision=new HashMap<>();
+        decision.put("horasDual","update alumno set horasDual=? where id=?");
+        decision.put("horasFCT","update alumno set horasFCT=? where id=?");
+    }
 
     public AlumnoDAOImp(Connection c){ connection = c;}
 
@@ -97,12 +106,57 @@ public class AlumnoDAOImp implements AlumnoDAO{
 
     @Override
     public Alumno updateActivity(Alumno a) {
-        return null;
+        Alumno alumno=a;
+        try {
+            PreparedStatement pst=connection.prepareStatement(actualizacion);
+            pst.setString(1,a.getDni());
+            pst.setString(2,a.getCorreo());
+            pst.setString(3,a.getNombre());
+            pst.setString(4,a.getApellido1());
+            pst.setString(5,a.getApellido2());
+            pst.setInt(6,a.getTelefono());
+            pst.setInt(7,a.getEmpresaId());
+            pst.setString(8,a.getFechaNacimiento());
+            pst.setString(9,a.getHorasDUAL());
+            pst.setString(10,a.getHorasFCT());
+            pst.setString(11,String.valueOf(a.getCurso()));
+            pst.setInt(12,a.getId());
+            int filas=pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return alumno;
     }
 
     @Override
-    public void removeActivity(Alumno a) {
+    public void removeActivity(Alumno a,String attr) {
+        try {
+            System.out.println(decision.get(attr));
+            PreparedStatement pst=connection.prepareStatement(decision.get(attr));
+            pst.setInt(1,a.getId());
+            int filas=pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void updateHoras(Alumno a,String attr) {
+        try {
+            System.out.println(decision.get(attr));
+            PreparedStatement pst=connection.prepareStatement(decision.get(attr));
+            if(attr.equals("horasDual")){
+                System.out.println("PASO POR AQUI");
+                pst.setString(1,"");
+                pst.setInt(2,a.getId());
+            }else {
+                System.out.println("PASO POR AQUI");
+                pst.setString(1,"");
+                pst.setInt(2,a.getId());
+            }
 
+            int filas=pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

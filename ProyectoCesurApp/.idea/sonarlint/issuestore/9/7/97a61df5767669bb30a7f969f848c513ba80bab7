@@ -1,15 +1,31 @@
 
+h	java:S112Å"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¢ ­†»1
+h	java:S112Ğ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¢ ­†»1
+c
+java:S1192C"FDefine a constant instead of duplicating this literal "file:" 3 times.(º¡¸´8£ ­†»1
+Z
+java:S2589“"7Remove this expression which always evaluates to "true"(ø˜êáúÿÿÿÿ8Ô ­†»1
+Z
+java:S2589º"7Remove this expression which always evaluates to "true"(š¤øÎüÿÿÿÿ8Ô ­†»1
+L	java:S106E"+Replace this use of System.out by a logger.(ŞÊÉôşÿÿÿÿ8è ­†»1
 O
-java:S16119"2Remove the parentheses around the "fila" parameter(Á¦ÿ¹8²å›Ø¶1
+java:S1611Q"2Remove the parentheses around the "fila" parameter(Á¦ÿ¹8ï ­†»1
 O
-java:S1611="2Remove the parentheses around the "fila" parameter(¬·à´8³å›Ø¶1
+java:S1611U"2Remove the parentheses around the "fila" parameter(¬·à´8ò ­†»1
 T
-java:S1611A"2Remove the parentheses around the "fila" parameter(¨›Ãƒûÿÿÿÿ8´å›Ø¶1
+java:S1611Y"2Remove the parentheses around the "fila" parameter(¨›Ãƒûÿÿÿÿ8õ ­†»1
 T
-java:S1611E"2Remove the parentheses around the "fila" parameter(½›Ÿøÿÿÿÿ8µå›Ø¶1
+java:S1611]"2Remove the parentheses around the "fila" parameter(½›Ÿøÿÿÿÿ8÷ ­†»1
 T
-java:S1611I"2Remove the parentheses around the "fila" parameter(éšâÑşÿÿÿÿ8¶å›Ø¶1
-j	java:S100d"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àöÊ¡8¹å›Ø¶1
-G	java:S106e"+Replace this use of System.out by a logger.(äÂâœ8»å›Ø¶1
-G	java:S106n"+Replace this use of System.out by a logger.(Œ¹­8½å›Ø¶1
-G	java:S106r"+Replace this use of System.out by a logger.(‹´ä¬8¿å›Ø¶1
+java:S1611a"2Remove the parentheses around the "fila" parameter(éšâÑşÿÿÿÿ8ø ­†»1
+F	java:S106p"+Replace this use of System.out by a logger.(§Å«68ı ­†»1
+k	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àöÊ¡8„¡­†»1
+H	java:S106‘"+Replace this use of System.out by a logger.(äÂâœ8ˆ¡­†»1
+
+java:S2159“"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(ø˜êáúÿÿÿÿ8‰¡­†»1
+H	java:S106¦"+Replace this use of System.out by a logger.(Œ¹­8¡­†»1
+H	java:S106©"+Replace this use of System.out by a logger.(‹´ä¬8’¡­†»1
+M	java:S106¹"+Replace this use of System.out by a logger.(àÿÙŠûÿÿÿÿ8˜¡­†»1
+]	java:S899É";Do something with the "boolean" value returned by "delete".(ù™×òıÿÿÿÿ8Ÿ¡­†»1
+q
+java:S4042É"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ù™×òıÿÿÿÿ8Ÿ¡­†»1

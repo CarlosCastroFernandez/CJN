@@ -45,3 +45,5 @@ O
 .src/main/java/domain/ActividaDiariaDAOImp.java,d\c\dcbd8fa9965ac123c439b372cf7aa615f6c54117
 m
 =src/main/java/com/example/proyectocesurapp/VentanaAlumno.java,9\7\97a61df5767669bb30a7f969f848c513ba80bab7
+p
+@src/main/java/com/example/proyectocesurapp/EditarAlumnoView.java,6\d\6d5379cd878cd644000f0d213d490af2a9f997cf

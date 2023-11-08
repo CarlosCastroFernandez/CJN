@@ -1,7 +1,9 @@
 package com.example.proyectocesurapp;
 
+import clase.Alumno;
 import clase.Sesion;
 import clase.Empresa;
+import domain.AlumnoDAOImp;
 import domain.DBConnection;
 import enums.Curso;
 import domain.EmpresaDAOImp;
@@ -117,6 +119,21 @@ public class EditarAlumnoView implements Initializable {
 
         }
         choiceTipoPractica.getItems().addAll(TipoPractica.DUAL,TipoPractica.FCT);
+        choiceTipoPractica.getSelectionModel().selectedItemProperty().addListener((observableValue, tipoPractica, t1) -> {
+
+                if (t1==TipoPractica.DUAL) {
+                    choiceTipoPractica.setValue(TipoPractica.DUAL);
+                    spinnerFCT.setVisible(false);
+                    spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, 0, 1));
+                    spinnerDUAL.setVisible(true);
+
+                } else{
+                choiceTipoPractica.setValue(TipoPractica.FCT);
+                spinnerDUAL.setVisible(false);
+                spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, 0, 1));
+                spinnerFCT.setVisible(true);
+            }
+        });
         try {
             if (Sesion.getAlumno().getHorasDUAL().contains("/270")) {
                 choiceTipoPractica.setValue(TipoPractica.DUAL);
@@ -163,6 +180,22 @@ public class EditarAlumnoView implements Initializable {
             Sesion.getAlumno().setCorreo(textEmail.getText());
             Sesion.getAlumno().setFechaNacimiento(String.valueOf(dateCalender.getValue()));
             Sesion.getAlumno().setTelefono(Integer.valueOf(textTelefono.getText()));
+            Sesion.getAlumno().setCurso(comboCurso.getValue());
+            Sesion.getAlumno().setEmpresa(comboNombreEmpresa.getValue());
+            if(choiceTipoPractica.getValue()==TipoPractica.DUAL){
+                Sesion.getAlumno().setHorasDUAL(spinnerDUAL.getValue()+"/270");
+                Sesion.getAlumno().setHorasFCT(null);
+                //HACER DELETE DE LO horasFCT
+                new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasFCT");
+            }else{
+                Sesion.getAlumno().setHorasFCT(spinnerFCT.getValue()+"/270");
+                Sesion.getAlumno().setHorasDUAL(null);
+                new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasDual");
+            }
+
+            Alumno alumno=(new AlumnoDAOImp(DBConnection.getConnection()).updateActivity(Sesion.getAlumno()));
+
+
 
         } catch (DNIInvalido | NombreConNumero e) {
             throw new RuntimeException(e);
