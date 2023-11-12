@@ -14,6 +14,7 @@ import java.util.ArrayList;
     private static Connection conexion;
     private static String loadActivity = "select * from actividadDiaria where alumnoId = ?";
     private static String insertActivity = "insert into actividadDiaria(nombre, totalHoras, observaciones, tipoPractica, fecha, alumnoId)\n"+"VALUE (?, ?, ?, ?, ?, ?)";
+    private static String actualizacion = "update actividadDiaria set nombre=?, totalHoras=?, observaciones=?, tipoPractica=?, fecha=?, alumnoId=?";
    public ActividaDiariaDAOImp(Connection conn){
        conexion=conn;
    }
@@ -69,5 +70,23 @@ import java.util.ArrayList;
            throw new RuntimeException(e);
        }
        return actividades;
+    }
+
+    @Override
+    public ActividadDiaria update(ActividadDiaria actividadDiaria) {
+        ActividadDiaria actividad = actividadDiaria;
+        try{
+            PreparedStatement preparedStatement = conexion.prepareStatement(actualizacion);
+            preparedStatement.setString(1, actividad.getNombreTarea());
+            preparedStatement.setInt(2, actividad.getTotalHoras());
+            preparedStatement.setString(3, actividad.getObservaciones());
+            preparedStatement.setString(4, String.valueOf(actividad.getTipoPractica()));
+            preparedStatement.setString(5, actividad.getFecha());
+            preparedStatement.setInt(6, Sesion.getAlumno().getId());
+            int filas = preparedStatement.executeUpdate();
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+        return actividad;
     }
 }

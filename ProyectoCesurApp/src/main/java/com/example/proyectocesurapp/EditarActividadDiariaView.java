@@ -15,9 +15,9 @@ public class EditarActividadDiariaView implements Initializable {
     @javafx.fxml.FXML
     private DatePicker dpDate;
     @javafx.fxml.FXML
-    private ComboBox comboPracticeType;
+    private ComboBox<TipoPractica> comboPracticeType;
     @javafx.fxml.FXML
-    private Spinner spHoras;
+    private Spinner<Integer> spHoras;
     @javafx.fxml.FXML
     private TextField fieldActivity;
     @javafx.fxml.FXML
@@ -56,6 +56,19 @@ public class EditarActividadDiariaView implements Initializable {
 
     @javafx.fxml.FXML
     public void guardar(ActionEvent actionEvent) {
+        if (!(dpDate.getValue() == null) &&
+        !fieldActivity.getText().isEmpty()){
+             Sesion.getActividadDiaria().setNombreTarea(fieldActivity.getText());
+             Sesion.getActividadDiaria().setFecha(String.valueOf(dpDate.getValue()));
+             Sesion.getActividadDiaria().setTipoPractica(comboPracticeType.getValue());
+             Sesion.getActividadDiaria().setTotalHoras(spHoras.getValue());
+             Sesion.getActividadDiaria().setObservaciones(taObservations.getText());
+        } else {
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Porfavor comprueba de que los campos estén rellenos");
+            alerta.showAndWait();
+        }
     }
 
     @javafx.fxml.FXML

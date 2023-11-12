@@ -134,6 +134,7 @@ public class EditarAlumnoView implements Initializable {
                 spinnerFCT.setVisible(true);
             }
         });
+
         try {
             if (Sesion.getAlumno().getHorasDUAL().contains("/270")) {
                 choiceTipoPractica.setValue(TipoPractica.DUAL);
@@ -143,7 +144,6 @@ public class EditarAlumnoView implements Initializable {
             choiceTipoPractica.setValue(TipoPractica.FCT);
             spinnerDUAL.setVisible(false);
         }
-
 
         comboCurso.getItems().addAll(Curso.ASIR1, Curso.ASIR2, Curso.DAM1, Curso.DAM2, Curso.DAW1, Curso.DAW2);
         comboCurso.setValue(Sesion.getAlumno().getCurso());
@@ -164,46 +164,46 @@ public class EditarAlumnoView implements Initializable {
                 spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(horasIniciales[0]), 1));
             }
         }
-
-
-
-
     }
 
     @javafx.fxml.FXML
     public void guardar(ActionEvent actionEvent) {
-        try {
-            Sesion.getAlumno().setDni(textDNI.getText());
-            Sesion.getAlumno().setNombre(textNombre.getText());
-            Sesion.getAlumno().setApellido1(textApellido1.getText());
-            Sesion.getAlumno().setApellido2(textApellido2.getText());
-            Sesion.getAlumno().setCorreo(textEmail.getText());
-            Sesion.getAlumno().setFechaNacimiento(String.valueOf(dateCalender.getValue()));
-            Sesion.getAlumno().setTelefono(Integer.valueOf(textTelefono.getText()));
-            Sesion.getAlumno().setCurso(comboCurso.getValue());
-            Sesion.getAlumno().setEmpresa(comboNombreEmpresa.getValue());
-            if(choiceTipoPractica.getValue()==TipoPractica.DUAL){
-                Sesion.getAlumno().setHorasDUAL(spinnerDUAL.getValue()+"/270");
-                Sesion.getAlumno().setHorasFCT(null);
-                //HACER DELETE DE LO horasFCT
-                new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasFCT");
-            }else{
-                Sesion.getAlumno().setHorasFCT(spinnerFCT.getValue()+"/270");
-                Sesion.getAlumno().setHorasDUAL(null);
-                new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasDual");
+        if(!textDNI.getText().isEmpty()&&!textNombre.getText().isEmpty()&&!textEmail.getText().isEmpty()
+        &&!textApellido1.getText().isEmpty()&&!textApellido2.getText().isEmpty()&&!(dateCalender.getValue()==null) &&
+        !textTelefono.getText().isEmpty()){
+            try {
+                Sesion.getAlumno().setDni(textDNI.getText());
+                Sesion.getAlumno().setNombre(textNombre.getText());
+                Sesion.getAlumno().setApellido1(textApellido1.getText());
+                Sesion.getAlumno().setApellido2(textApellido2.getText());
+                Sesion.getAlumno().setCorreo(textEmail.getText());
+                Sesion.getAlumno().setFechaNacimiento(String.valueOf(dateCalender.getValue()));
+                Sesion.getAlumno().setTelefono(Integer.valueOf(textTelefono.getText()));
+                Sesion.getAlumno().setCurso(comboCurso.getValue());
+                Sesion.getAlumno().setEmpresa(comboNombreEmpresa.getValue());
+                if(choiceTipoPractica.getValue()==TipoPractica.DUAL){
+                    Sesion.getAlumno().setHorasDUAL(spinnerDUAL.getValue()+"/270");
+                    Sesion.getAlumno().setHorasFCT(null);
+                    new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasFCT");
+                }else{
+                    Sesion.getAlumno().setHorasFCT(spinnerFCT.getValue()+"/270");
+                    Sesion.getAlumno().setHorasDUAL(null);
+                    new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasDual");
+                }
+
+                Alumno alumno=(new AlumnoDAOImp(DBConnection.getConnection()).update(Sesion.getAlumno()));
+            } catch (DNIInvalido | NombreConNumero e) {
+                throw new RuntimeException(e);
+            } catch (ApellidoConNumero e) {
+                throw new RuntimeException(e);
             }
-
-            Alumno alumno=(new AlumnoDAOImp(DBConnection.getConnection()).updateActivity(Sesion.getAlumno()));
-
-
-
-        } catch (DNIInvalido | NombreConNumero e) {
-            throw new RuntimeException(e);
-        } catch (ApellidoConNumero e) {
-            throw new RuntimeException(e);
+        }else{
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Porfavor comprueba de que los campos esten rellenos");
+            alerta.showAndWait();
         }
-    }
-
+            }
     @javafx.fxml.FXML
     public void cancelar(ActionEvent actionEvent) {
     }

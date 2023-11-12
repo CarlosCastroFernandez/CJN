@@ -105,7 +105,7 @@ public class AlumnoDAOImp implements AlumnoDAO{
     }
 
     @Override
-    public Alumno updateActivity(Alumno a) {
+    public Alumno update(Alumno a) {
         Alumno alumno=a;
         try {
             PreparedStatement pst=connection.prepareStatement(actualizacion);

@@ -198,7 +198,7 @@
                   </VBox>
                   <TableView fx:id="tabla" prefHeight="487.0" prefWidth="793.0">
                     <columns>
-                      <TableColumn id="tNombre" fx:id="cNombre" prefWidth="75.0" text="Nombre" />
+                      <TableColumn fx:id="cNombre" prefWidth="75.0" text="Nombre" />
                       <TableColumn fx:id="cApellidos" prefWidth="84.0" text="Apellidos" />
                         <TableColumn fx:id="cEmail" prefWidth="69.0" text="Email" />
                         <TableColumn fx:id="cTelefono" prefWidth="88.0" text="Teléfono" />
