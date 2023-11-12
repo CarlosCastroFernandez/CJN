@@ -19,7 +19,7 @@ public class Empresa {
         this.alumnos = alumnos;
     }
 
-    public Empresa(Integer id,String email, String nombre, Integer telefono, String responsable, String observaciones) {
+    public Empresa(Integer id, String email, String nombre, Integer telefono, String responsable, String observaciones) {
         this.id=id;
         this.email = email;
         this.nombre = nombre;

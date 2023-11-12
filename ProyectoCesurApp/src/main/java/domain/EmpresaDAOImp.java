@@ -1,6 +1,8 @@
 package domain;
 
+import clase.ActividadDiaria;
 import clase.Empresa;
+import clase.Sesion;
 import exception.NombreConNumero;
 import lombok.extern.java.Log;
 
@@ -15,6 +17,7 @@ public class EmpresaDAOImp implements EmpresaDAO {
     private static Connection connection;
     private static final String QUERY_LOAD = "select * from empresa where nombre = ?";
     private static final String QUERY_LOAD_ALL = "select * from empresa";
+    private static final String actualizacion = "update empresa set email=?, nombre=?, telefono=?, responsable=?, observaciones=?";
 
     public EmpresaDAOImp(Connection conn) {
         connection = conn;
@@ -55,5 +58,22 @@ public class EmpresaDAOImp implements EmpresaDAO {
             throw new RuntimeException(e);
         }
         return allEnterprise;
+    }
+
+    @Override
+    public Empresa update(Empresa empresa) {
+        Empresa empresaImp = empresa;
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(actualizacion);
+            preparedStatement.setString(1, empresaImp.getNombre());
+            preparedStatement.setInt(2, empresaImp.getTelefono());
+            preparedStatement.setString(3, empresaImp.getObservaciones());
+            preparedStatement.setString(4, empresaImp.getResponsable());
+            preparedStatement.setString(5, empresaImp.getEmail());
+            int filas = preparedStatement.executeUpdate();
+        }catch(SQLException e){
+            throw new RuntimeException(e);
+        }
+        return empresaImp;
     }
 }

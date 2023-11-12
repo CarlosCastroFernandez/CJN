@@ -190,7 +190,6 @@ public class EditarAlumnoView implements Initializable {
                     Sesion.getAlumno().setHorasDUAL(null);
                     new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasDual");
                 }
-
                 Alumno alumno=(new AlumnoDAOImp(DBConnection.getConnection()).update(Sesion.getAlumno()));
             } catch (DNIInvalido | NombreConNumero e) {
                 throw new RuntimeException(e);

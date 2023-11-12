@@ -5,6 +5,7 @@ import clase.Empresa;
 import clase.Sesion;
 import domain.AlumnoDAOImp;
 import domain.DBConnection;
+import domain.EmpresaDAOImp;
 import enums.Curso;
 import exception.ApellidoConNumero;
 import exception.DNIInvalido;
@@ -159,6 +160,7 @@ public class VentanaProfesor implements Initializable {
             }
         });
         comboCurso.setItems(obsCursos);
+
         cNombre.setCellValueFactory((fila)->{
             String nombre=fila.getValue().getNombre();
             return new SimpleStringProperty(nombre);
@@ -187,7 +189,6 @@ public class VentanaProfesor implements Initializable {
             String nombre=fila.getValue().getProfesor().getNombre()+" "+fila.getValue().getProfesor().getApellido1();
             return new SimpleStringProperty(nombre);
         });
-
         cHorasDUAL.setCellValueFactory((fila)->{
             String nombre=fila.getValue().getHorasDUAL();
             return new SimpleStringProperty(nombre);
@@ -220,12 +221,19 @@ public class VentanaProfesor implements Initializable {
                     System.out.println("Paso por aqui");
                     HelloApplication.loadFXML("editar-alumno-view.fxml");
                 });
+                menuItem2.setOnAction(actionEvent -> {
+                    System.out.println("Paso por aqui");
+                    Alumno alumnoLista=Sesion.getProfesor().getAlumnos().get(Sesion.getProfesor().getAlumnos().indexOf(alumno));
+                    System.out.println(alumnoLista.getActividadDiaria());
+
+                });
 
             }
         });
         obs= FXCollections.observableArrayList();
         AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
         Sesion.setListaAlumno(conexion.loadAll(Sesion.getProfesor().getId()));
+        Sesion.getProfesor().getAlumnos().addAll(Sesion.getListaAlumno());
         obs.addAll(Sesion.getListaAlumno());
         tabla.setItems(obs);
         tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {

@@ -77,6 +77,7 @@ public class VentanaAlumno implements Initializable {
         practiceType.addAll(TipoPractica.DUAL, TipoPractica.FCT);
         comboPracticeType.setItems(practiceType);
         comboPracticeType.getSelectionModel().selectFirst();
+        comboPracticeType.setDisable(true);
         spHoras.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,8,0,1));
         cDate.setCellValueFactory((fila)->{
             String fecha=fila.getValue().getFecha();
@@ -165,6 +166,7 @@ public class VentanaAlumno implements Initializable {
                 Sesion.setActividadDiaria(dao.insercion(dayActivity));
                 System.out.println(Sesion.getActividadDiaria().toString());
                 Sesion.getListaActividades().add(Sesion.getActividadDiaria());
+                Sesion.getAlumno().getActividadDiaria().add(Sesion.getActividadDiaria());
                 observableActividad.add(Sesion.getActividadDiaria());
                 System.out.println("Sale.");
 

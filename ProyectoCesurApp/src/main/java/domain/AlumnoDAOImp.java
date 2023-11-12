@@ -21,6 +21,7 @@ public class AlumnoDAOImp implements AlumnoDAO{
             "contraseña, profesor, empresa, fechaNacimiento, horasDual, horasFCT, curso, observaciones)" + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     private final static String actualizacion="update alumno set dni=?,email=?,nombre=?,apellido1=?,apellido2=?," +
             "telefono=?,empresa=?,fechaNacimiento=?,horasDual=?,horasFCT=?,curso=? where id=?";
+    private final static String DELETEALUMNO="delete from alumno where id=?";
     private static final HashMap<String,String> decision;
     static {
         decision=new HashMap<>();
@@ -190,5 +191,14 @@ public class AlumnoDAOImp implements AlumnoDAO{
             throw new RuntimeException(e);
         }
         return alum;
+    }
+    public void delete(Alumno alumno){
+        try {
+            PreparedStatement pst=connection.prepareStatement(DELETEALUMNO);
+            pst.setInt(1,alumno.getId());
+            int filas=pst.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

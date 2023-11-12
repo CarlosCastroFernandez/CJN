@@ -8,6 +8,15 @@ public class Sesion {
     private static Profesor profesor;
     private static Alumno alumno;
     private static ActividadDiaria actividadDiaria;
+    private static Empresa empresa;
+
+    public static Empresa getEmpresa(){
+        return empresa;
+    }
+
+    public static void setEmpresa(Empresa empresa){
+        Sesion.empresa = empresa;
+    }
 
     public static ActividadDiaria getActividadDiaria(){
         return actividadDiaria;

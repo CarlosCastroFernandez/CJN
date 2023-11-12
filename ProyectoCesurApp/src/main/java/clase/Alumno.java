@@ -41,10 +41,30 @@ public class Alumno extends Usuario {
         this.empresaId=empresaId;
         this.empresa=empresa;
         this.observaciones=obs;
+        this.actividadDiaria=new ArrayList<>();
     }
-    public Alumno(Integer id,String nombre, String apellido1, String apellido2, String password, String correo, String dni, Integer telefono, String horasDUAL,
-                  String horasFCT,Integer profesorId,String fechaNacimiento,Integer empresaId
-            ,Curso curso,String obs) throws NombreConNumero, ApellidoConNumero, DNIInvalido {
+
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public ArrayList<ActividadDiaria> getActividadDiaria() {
+        return actividadDiaria;
+    }
+
+    public void setActividadDiaria(ArrayList<ActividadDiaria> actividadDiaria) {
+        this.actividadDiaria = actividadDiaria;
+    }
+
+    public Alumno(Integer id, String nombre, String apellido1, String apellido2, String password, String correo, String dni, Integer telefono, String horasDUAL,
+                  String horasFCT, Integer profesorId, String fechaNacimiento, Integer empresaId
+            , Curso curso, String obs) throws NombreConNumero, ApellidoConNumero, DNIInvalido {
         super(nombre, apellido1, apellido2, password, correo, dni, telefono);
         this.setNombre(nombre);
         this.setId(id);
@@ -61,6 +81,7 @@ public class Alumno extends Usuario {
         this.profesorId=profesorId;
         this.empresaId=empresaId;
         this.observaciones=obs;
+        this.actividadDiaria=new ArrayList<>();
 
     }
     public Alumno(){

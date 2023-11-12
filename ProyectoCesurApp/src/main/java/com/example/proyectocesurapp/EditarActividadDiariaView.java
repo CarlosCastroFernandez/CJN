@@ -1,6 +1,10 @@
 package com.example.proyectocesurapp;
 
+import clase.ActividadDiaria;
 import clase.Sesion;
+import domain.ActividadDiariaDAO;
+import domain.ActividaDiariaDAOImp;
+import domain.DBConnection;
 import enums.TipoPractica;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -45,13 +49,12 @@ public class EditarActividadDiariaView implements Initializable {
                 return null;
             }
         });
-
         comboPracticeType.getItems().addAll(TipoPractica.FCT,TipoPractica.DUAL);
         comboPracticeType.setValue(Sesion.getActividadDiaria().getTipoPractica());
+        comboPracticeType.setDisable(true);
         fieldActivity.setText(Sesion.getActividadDiaria().getNombreTarea());
         taObservations.setText(Sesion.getActividadDiaria().getObservaciones());
         spHoras.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,8,Sesion.getActividadDiaria().getTotalHoras(),1));
-
     }
 
     @javafx.fxml.FXML
@@ -63,6 +66,7 @@ public class EditarActividadDiariaView implements Initializable {
              Sesion.getActividadDiaria().setTipoPractica(comboPracticeType.getValue());
              Sesion.getActividadDiaria().setTotalHoras(spHoras.getValue());
              Sesion.getActividadDiaria().setObservaciones(taObservations.getText());
+            ActividadDiaria actividadDiaria = (new ActividaDiariaDAOImp(DBConnection.getConnection()).update(Sesion.getActividadDiaria()));
         } else {
             Alert alerta=new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Error");
