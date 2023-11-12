@@ -47,3 +47,13 @@ m
 =src/main/java/com/example/proyectocesurapp/VentanaAlumno.java,9\7\97a61df5767669bb30a7f969f848c513ba80bab7
 p
 @src/main/java/com/example/proyectocesurapp/EditarAlumnoView.java,6\d\6d5379cd878cd644000f0d213d490af2a9f997cf
+y
+Isrc/main/java/com/example/proyectocesurapp/EditarActividadDiariaView.java,6\b\6b3f9e6f03eee1cc6600f0a82da446b88fefb526
+m
+=src/main/java/com/example/proyectocesurapp/EditarEmpresa.java,7\8\78d4bf5d3dafe25443e8d3c8110e204d758903a2
+\
+,src/main/java/domain/ActividadDiariaDAO.java,6\e\6e0a9c27405e2429eb154c47afadaa270ea399ec
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e

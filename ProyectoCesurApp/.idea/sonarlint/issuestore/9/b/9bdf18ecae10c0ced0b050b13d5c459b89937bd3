@@ -1,5 +1,13 @@
 
-`	java:S112%"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S1127"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112("FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+g	java:S112K"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ØÐ¡§¼1
+l
+java:S2095C"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚º×ä8æÐ¡§¼1
+{	java:S115"ZRename this constant name to match the regular expression '^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$'.(‡©ˆ¹ÿÿÿÿÿ8éÐ¡§¼1
 =
-java:S3010"'Remove this assignment of "connection".(«£¬Ù
+java:S3010"'Remove this assignment of "connection".(«£¬Ù
+[
+java:S1854I"9Remove this useless assignment to local variable "filas".(ð§ø™þÿÿÿÿ8ùÐ¡§¼1
+L
+java:S1481I"*Remove this unused "filas" local variable.(ð§ø™þÿÿÿÿ8ûÐ¡§¼1

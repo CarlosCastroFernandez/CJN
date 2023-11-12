@@ -1,0 +1,7 @@
+
+
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ç‡Õä8Ô‰›§¼1
+‰
+java:S1319"gThe type of "alumnos" should be an interface such as "List" rather than the implementation "ArrayList".(Ò¨¨úÿÿÿÿ8Õ‰›§¼1
+M
+java:S1128"0Remove this unused import 'java.sql.Connection'.(¥ËôÖ8Å¹¢§¼1

@@ -5,10 +5,19 @@ import java.util.ArrayList;
 public class Sesion {
     private static ArrayList<ActividadDiaria> listaActividades = new ArrayList<>();
     private static ArrayList<Alumno>listaAlumnos=new ArrayList<Alumno>();
+    private static  ArrayList<Empresa> listaEmpresas = new ArrayList<>();
     private static Profesor profesor;
     private static Alumno alumno;
     private static ActividadDiaria actividadDiaria;
     private static Empresa empresa;
+
+    public static ArrayList<Empresa> getListaEmpresas() {
+        return listaEmpresas;
+    }
+
+    public static void setListaEmpresas(ArrayList<Empresa> listaEmpresas) {
+        Sesion.listaEmpresas = listaEmpresas;
+    }
 
     public static Empresa getEmpresa(){
         return empresa;

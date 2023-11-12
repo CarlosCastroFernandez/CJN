@@ -1,11 +1,23 @@
 
-`	java:S112*"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112E"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112,"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+g	java:S112Y"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8––§¼1
+g	java:S112c"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‘––§¼1
+q
+java:S2095P"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(í¦±ßûÿÿÿÿ8–—–§¼1
+q
+java:S2095_"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(òœçªüÿÿÿÿ8——–§¼1
 e
-java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¤¢ØŠ
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¤¢ØŠ
+g
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(»ÍÓİùÿÿÿÿ8³—–§¼1
 @
-java:S3010"%Remove this assignment of "conexion".(¯×Ñ™ûÿÿÿÿ
-R
-java:S1128"<Remove this unused import 'exception.ContrasenhaIncorrecta'.(èË
-O
-java:S1128"9Remove this unused import 'exception.UsuarioInexistente'.(²µèƒ
+java:S3010"%Remove this assignment of "conexion".(¯×Ñ™ûÿÿÿÿ
+[
+java:S1854W"9Remove this useless assignment to local variable "filas".(ğ§ø™şÿÿÿÿ8ä˜–§¼1
+L
+java:S1481W"*Remove this unused "filas" local variable.(ğ§ø™şÿÿÿÿ8ò˜–§¼1
+V
+java:S1854a"9Remove this useless assignment to local variable "filas".(Ø©å8ô˜–§¼1
+G
+java:S1481a"*Remove this unused "filas" local variable.(Ø©å8ş˜–§¼1

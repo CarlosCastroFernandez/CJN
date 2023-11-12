@@ -1,3 +1,7 @@
 
 †
 java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(¶ÊËÒ
+K
+java:S1128")Remove this unused import 'clase.Alumno'.(†ˆÅøÿÿÿÿ8ô‚¸¨¼1
+L
+java:S1128"*Remove this unused import 'clase.Usuario'.(Í’­®øÿÿÿÿ8ô‚¸¨¼1

@@ -1,3 +1,17 @@
 
-U
-java:S1118":Add a private constructor to hide the implicit public one.(ãªÒÿÿÿÿÿ
+u
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(‘ '8‚ º§¼1
+
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(–İáÓ8„ º§¼1
+Š
+java:S1319"mThe type of "listaEmpresas" should be an interface such as "List" rather than the implementation "ArrayList".(ùÔª±8… º§¼1
+
+java:S13196"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ñ–ˆ8… º§¼1
+
+java:S1319;"pThe type of "listaActividades" should be an interface such as "List" rather than the implementation "ArrayList".(æãô©8… º§¼1
+
+java:S1319>"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(²Áğ’8ğµ»§¼1
+‰
+java:S1319A"lThe type of "listaAlumnos" should be an interface such as "List" rather than the implementation "ArrayList".(İ·Ï¶8ğµ»§¼1
+\
+java:S1118":Add a private constructor to hide the implicit public one.(ãªÒÿÿÿÿÿ8— º§¼1

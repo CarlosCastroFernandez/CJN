@@ -49,6 +49,7 @@ public class EditarActividadDiariaView implements Initializable {
                 return null;
             }
         });
+
         comboPracticeType.getItems().addAll(TipoPractica.FCT,TipoPractica.DUAL);
         comboPracticeType.setValue(Sesion.getActividadDiaria().getTipoPractica());
         comboPracticeType.setDisable(true);
