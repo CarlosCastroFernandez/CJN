@@ -244,8 +244,6 @@ public class VentanaProfesor implements Initializable {
                     Alumno alumnoLista=Sesion.getProfesor().getAlumnos().get(Sesion.getProfesor().getAlumnos().indexOf(alumno));
 
                     ActividaDiariaDAOImp actDIB=new ActividaDiariaDAOImp(DBConnection.getConnection());
-                    alumnoLista.getActividadDiaria().addAll(actDIB.loadall(alumnoLista.getId()));
-                    System.out.println(alumnoLista.getActividadDiaria());
 
                     for(int i=0;i<alumnoLista.getActividadDiaria().size();i++){
                         actDIB.deleteActividad(alumnoLista.getActividadDiaria().get(i));

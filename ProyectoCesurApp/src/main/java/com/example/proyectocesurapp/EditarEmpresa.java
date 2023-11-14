@@ -51,9 +51,9 @@ public class EditarEmpresa implements Initializable {
     private ArrayList<Empresa>listaEmpresas=new ArrayList<>();
     private ChangeListener<Empresa> selectionListener;
     @javafx.fxml.FXML
-    private PasswordField txtEmail;
-    @javafx.fxml.FXML
     private Button botonBorrar;
+    @javafx.fxml.FXML
+    private TextField txtEmail;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -146,7 +146,10 @@ public class EditarEmpresa implements Initializable {
         txtNombre.clear();
         txtResponsable.clear();
         txtObservaciones.clear();
+        tvEmpresas.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
         tvEmpresas.getSelectionModel().select(null);
+        tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
+
     }
 
     @javafx.fxml.FXML

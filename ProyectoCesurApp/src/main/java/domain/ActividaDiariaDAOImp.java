@@ -37,7 +37,6 @@ import java.util.ArrayList;
                 actividad.setTotalHoras(rs.getInt("totalHoras"));
                 actividad.setNombreTarea(rs.getString("nombre"));
                 actividad.setObservaciones(rs.getString("observaciones"));
-
                 actividadDiaria.add(actividad);
             }
         } catch (SQLException e) {

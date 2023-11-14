@@ -85,7 +85,8 @@ public class AlumnoDAOImp implements AlumnoDAO{
                 if(alumno.getEmpresaId()!=0){
                     alumno.setEmpresa((new EmpresaDAOImp(DBConnection.getConnection()).loadEnterprise(alumno.getEmpresaId())));
                 }
-
+                ActividaDiariaDAOImp actividad=new ActividaDiariaDAOImp(DBConnection.getConnection());
+                alumno.setActividadDiaria(actividad.loadall(alumno.getId()));
                 alumno.setProfesor(new ProfesorDAOImp(DBConnection.getConnection()).loadTeacherById(id));
                 salida.add(alumno);
 
