@@ -10,4 +10,6 @@ public interface EmpresaDAO {
     public Empresa loadEnterprise(Integer id);
     public ArrayList<Empresa> loadAllEnterprise();
     public Empresa update(Empresa empresa);
+    public Empresa insert(Empresa empresa);
+    public void delete(Empresa empresa);
 }

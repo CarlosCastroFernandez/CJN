@@ -439,8 +439,6 @@ public class VentanaProfesor implements Initializable {
                 imagen.setImage(new Image("file:"+destinoArchivo));
             }
         }
-
-
     }
 
     @javafx.fxml.FXML

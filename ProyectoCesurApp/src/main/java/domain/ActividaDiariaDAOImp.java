@@ -90,6 +90,7 @@ import java.util.ArrayList;
         }
         return actividad;
     }
+
     public void deleteActividad(ActividadDiaria acD){
         try {
             PreparedStatement pst=conexion.prepareStatement(DELETEACTIVIDAD);

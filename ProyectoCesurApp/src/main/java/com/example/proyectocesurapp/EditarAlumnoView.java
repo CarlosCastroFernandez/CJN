@@ -212,8 +212,10 @@ public class EditarAlumnoView implements Initializable {
             alerta.showAndWait();
         }
             }
+
     @javafx.fxml.FXML
     public void cancelar(ActionEvent actionEvent) {
+
     }
 }
 

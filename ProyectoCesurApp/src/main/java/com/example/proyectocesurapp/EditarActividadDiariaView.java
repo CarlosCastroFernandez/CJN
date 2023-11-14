@@ -78,6 +78,6 @@ public class EditarActividadDiariaView implements Initializable {
 
     @javafx.fxml.FXML
     public void cancelar(ActionEvent actionEvent) {
-
+        HelloApplication.loadFXML("ventanaAlumno.fxml");
     }
 }

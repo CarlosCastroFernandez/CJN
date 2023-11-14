@@ -1,11 +1,13 @@
 package com.example.proyectocesurapp;
 
+import clase.ActividadDiaria;
 import clase.Empresa;
 import clase.Sesion;
 import domain.ActividaDiariaDAOImp;
 import domain.DBConnection;
 import domain.EmpresaDAOImp;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -128,18 +130,6 @@ public class EditarEmpresa implements Initializable {
                 alerta.setTitle("Error");
                 alerta.setHeaderText("Porfavor comprueba de que los campos estén rellenos");
                 alerta.showAndWait();
-            }
-        } else {
-            if (!txtTelefono.getText().isEmpty() && !txtEmail.getText().isEmpty()
-                    && !txtNombre.getText().isEmpty() && !txtResponsable.getText().isEmpty()) {
-                Sesion.getEmpresa().setTelefono(Integer.valueOf(txtTelefono.getText()));
-                Sesion.getEmpresa().setEmail(txtEmail.getText());
-                Sesion.getEmpresa().setNombre(txtNombre.getText());
-                Sesion.getEmpresa().setResponsable(txtResponsable.getText());
-                Sesion.getEmpresa().setObservaciones(txtObservaciones.getText());
-                //Empresa empresita = //SE PONE INJECTION PARA INSERTAR LA EMPRESA NUEVA
-            } else {
-                //////
             }
         }
 
