@@ -9,8 +9,8 @@ public class Profesor extends Usuario{
     private Image imagenPerfil;
     private ArrayList<Alumno> alumnos;
 
-    public Profesor(String nombre, String apellido1, String apellido2, String contrasenha, String correo, String dni,Integer telefono) throws NombreConNumero, ApellidoConNumero, DNIInvalido {
-        super(nombre, apellido1, apellido2, contrasenha, correo, dni, telefono);
+    public Profesor(Integer id,String nombre, String apellido1, String apellido2, String contrasenha, String correo, String dni,Integer telefono) throws NombreConNumero, ApellidoConNumero, DNIInvalido {
+        super(id,nombre, apellido1, apellido2, contrasenha, correo, dni, telefono);
         this.alumnos = null;
         this.setNombre(nombre);
         this.setApellido1(apellido1);

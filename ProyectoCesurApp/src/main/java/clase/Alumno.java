@@ -24,7 +24,7 @@ public class Alumno extends Usuario {
     public Alumno(Integer id,String nombre, String apellido1, String apellido2, String password, String correo, String dni, Integer telefono, String horasDUAL,
                   String horasFCT,Integer profesorId,Profesor profe,String fechaNacimiento,Integer empresaId,
                   Empresa empresa,Curso curso,String obs) throws NombreConNumero, ApellidoConNumero, DNIInvalido {
-        super(nombre, apellido1, apellido2, password, correo, dni, telefono);
+        super(id,nombre, apellido1, apellido2, password, correo, dni, telefono);
         this.setNombre(nombre);
         this.setId(id);
         this.setApellido1(apellido1);
@@ -65,7 +65,7 @@ public class Alumno extends Usuario {
     public Alumno(Integer id, String nombre, String apellido1, String apellido2, String password, String correo, String dni, Integer telefono, String horasDUAL,
                   String horasFCT, Integer profesorId, String fechaNacimiento, Integer empresaId
             , Curso curso, String obs) throws NombreConNumero, ApellidoConNumero, DNIInvalido {
-        super(nombre, apellido1, apellido2, password, correo, dni, telefono);
+        super(id,nombre, apellido1, apellido2, password, correo, dni, telefono);
         this.setNombre(nombre);
         this.setId(id);
         this.setApellido1(apellido1);

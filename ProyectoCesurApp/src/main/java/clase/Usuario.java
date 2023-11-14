@@ -14,9 +14,9 @@ public class Usuario {
      private String dni;
      private Integer telefono;
 
-     public Usuario(String nombre,String apellido1,String apellido2,
+     public Usuario(Integer id,String nombre,String apellido1,String apellido2,
                     String password,String correo,String dni,Integer telefono) {
-          this.id=null;
+          this.id=id;
           this.nombre=nombre;
           this.apellido1=apellido1;
           this.apellido2=apellido2;

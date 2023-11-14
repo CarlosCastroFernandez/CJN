@@ -3,6 +3,7 @@ package com.example.proyectocesurapp;
 import clase.Alumno;
 import clase.Empresa;
 import clase.Sesion;
+import domain.ActividaDiariaDAOImp;
 import domain.AlumnoDAOImp;
 import domain.DBConnection;
 import domain.EmpresaDAOImp;
@@ -241,7 +242,18 @@ public class VentanaProfesor implements Initializable {
                 menuItem2.setOnAction(actionEvent -> {
                     System.out.println("Paso por aqui");
                     Alumno alumnoLista=Sesion.getProfesor().getAlumnos().get(Sesion.getProfesor().getAlumnos().indexOf(alumno));
+
+                    ActividaDiariaDAOImp actDIB=new ActividaDiariaDAOImp(DBConnection.getConnection());
+                    alumnoLista.getActividadDiaria().addAll(actDIB.loadall(alumnoLista.getId()));
                     System.out.println(alumnoLista.getActividadDiaria());
+
+                    for(int i=0;i<alumnoLista.getActividadDiaria().size();i++){
+                        actDIB.deleteActividad(alumnoLista.getActividadDiaria().get(i));
+                    }
+                    (new AlumnoDAOImp(DBConnection.getConnection())).delete(alumnoLista);
+                    AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
+                    obs.setAll(conexion.loadAll(Sesion.getProfesor().getId()));
+
 
                 });
 

@@ -54,9 +54,9 @@ public class Registro implements Initializable {
         Integer telefono=Integer.valueOf(txtTelefono.getText());
         String contraseña=passField.getText();
         try {
-            Profesor profe=new Profesor(nombre,apellido1,apellido2,contraseña,email,dni,telefono);
+            Profesor profe=new Profesor(null,nombre,apellido1,apellido2,contraseña,email,dni,telefono);
             ProfesorDAOImp dao=new ProfesorDAOImp(DBConnection.getConnection());
-            dao.injection(profe);
+            profe=dao.injection(profe);
         } catch (NombreConNumero e) {
             Alert alerta=new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Error");

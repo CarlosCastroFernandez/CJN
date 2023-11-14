@@ -1,84 +1,95 @@
 
-h	java:S112å"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸Ïè§¼1
-h	java:S112ì"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸Ïè§¼1
-h	java:S112ó"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¸Ïè§¼1
-h	java:S112—"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹Ïè§¼1
-h	java:S112¢"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹Ïè§¼1
+h	java:S112ø"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Öÿïû¼1
+h	java:S112ÿ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8×ÿïû¼1
+h	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8×ÿïû¼1
+h	java:S112ª"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8×ÿïû¼1
+h	java:S112µ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Øÿïû¼1
 Q
-java:S3740Y"/Provide the parametrized type for this generic.(©·Ìµøÿÿÿÿ8¹Ïè§¼1
+java:S3740U"/Provide the parametrized type for this generic.(©·Ìµøÿÿÿÿ8Å³Õû¼1
 L
-java:S3740["/Provide the parametrized type for this generic.(¾àÜ8¹Ïè§¼1
-Q
-java:S3740]"/Provide the parametrized type for this generic.(«ÊÈ…şÿÿÿÿ8¹Ïè§¼1
+java:S3740W"/Provide the parametrized type for this generic.(¾àÜ8Å³Õû¼1
 d
-java:S1192¤"FDefine a constant instead of duplicating this literal "Error" 6 times.(ìŞ…á8¼Ïè§¼1
+java:S1192µ"FDefine a constant instead of duplicating this literal "Error" 6 times.(ìŞ…á8Úÿïû¼1
 c
-java:S1192x"FDefine a constant instead of duplicating this literal "file:" 3 times.(½ÅÉâ8¼Ïè§¼1
+java:S1192v"FDefine a constant instead of duplicating this literal "file:" 3 times.(½ÅÉâ8Ç³Õû¼1
+U
+java:S2589¤"7Remove this expression which always evaluates to "true"(±¯”8ãĞ‰ü¼1
 Z
-java:S2589‹"7Remove this expression which always evaluates to "true"(š¤øÎüÿÿÿÿ8 Ğè§¼1
-U
-java:S2589“"7Remove this expression which always evaluates to "true"(±¯”8 Ğè§¼1
-x	java:S116k"\Rename this field "contraseÃ±aAlumno" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•œ†€8¢Ğè§¼1
+java:S2589"7Remove this expression which always evaluates to "true"(š¤øÎüÿÿÿÿ8¤€ğû¼1
+x	java:S116g"\Rename this field "contraseÃ±aAlumno" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(•œ†€8™´Õû¼1
 Ÿ
-java:S1186‹"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¦¹8¢Ğè§¼1
+java:S1186œ"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ê¦¹8¥€ğû¼1
 Ÿ
-java:S1186ş"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â†…‡8¢Ğè§¼1
+java:S1186‘"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(â†…‡8¦€ğû¼1
 z
-java:S1450q"XRemove the "obsCursos" field and declare it as a local variable in the relevant methods.(ÿÇöµùÿÿÿÿ8¦Ğè§¼1
-L	java:S106z"+Replace this use of System.out by a logger.(ŞÊÉôşÿÿÿÿ8³Ğè§¼1
+java:S1450m"XRemove the "obsCursos" field and declare it as a local variable in the relevant methods.(ÿÇöµùÿÿÿÿ8›´Õû¼1
+L	java:S106x"+Replace this use of System.out by a logger.(ŞÊÉôşÿÿÿÿ8¨´Õû¼1
 P
-java:S1611¤"2Remove the parentheses around the "fila" parameter(™ƒ½Õ8¸Ğè§¼1
+java:S1611µ"2Remove the parentheses around the "fila" parameter(™ƒ½Õ8°´Õû¼1
 U
-java:S1611¨"2Remove the parentheses around the "fila" parameter(À«Úúÿÿÿÿ8¹Ğè§¼1
+java:S1611¹"2Remove the parentheses around the "fila" parameter(À«Úúÿÿÿÿ8±´Õû¼1
 U
-java:S1611¬"2Remove the parentheses around the "fila" parameter(ÓåøÂùÿÿÿÿ8¹Ğè§¼1
+java:S1611½"2Remove the parentheses around the "fila" parameter(ÓåøÂùÿÿÿÿ8±´Õû¼1
 P
-java:S1611°"2Remove the parentheses around the "fila" parameter(ö±Ùİ8ºĞè§¼1
+java:S1611Á"2Remove the parentheses around the "fila" parameter(ö±Ùİ8²´Õû¼1
 U
-java:S1611´"2Remove the parentheses around the "fila" parameter(ÅÿœÊøÿÿÿÿ8ºĞè§¼1
+java:S1611Å"2Remove the parentheses around the "fila" parameter(ÅÿœÊøÿÿÿÿ8²´Õû¼1
 U
-java:S1611¸"2Remove the parentheses around the "fila" parameter(í¾Ï¬úÿÿÿÿ8»Ğè§¼1
+java:S1611É"2Remove the parentheses around the "fila" parameter(í¾Ï¬úÿÿÿÿ8³´Õû¼1
 U
-java:S1611¼"2Remove the parentheses around the "fila" parameter(£ëá×ùÿÿÿÿ8»Ğè§¼1
+java:S1611Í"2Remove the parentheses around the "fila" parameter(£ëá×ùÿÿÿÿ8³´Õû¼1
 U
-java:S1611À"2Remove the parentheses around the "fila" parameter(«–¡Ùşÿÿÿÿ8ÆĞè§¼1
+java:S1611Ñ"2Remove the parentheses around the "fila" parameter(«–¡Ùşÿÿÿÿ8´´Õû¼1
 U
-java:S1611Ä"2Remove the parentheses around the "fila" parameter(¶æ×ûÿÿÿÿ8ÇĞè§¼1
+java:S1611Õ"2Remove the parentheses around the "fila" parameter(¶æ×ûÿÿÿÿ8µ´Õû¼1
 P
-java:S1611È"2Remove the parentheses around the "fila" parameter(Šã°‹8ÈĞè§¼1
-M	java:S106İ"+Replace this use of System.out by a logger.(ë¾¹üÿÿÿÿ8ËĞè§¼1
-M	java:S106á"+Replace this use of System.out by a logger.(ë¾¹üÿÿÿÿ8ËĞè§¼1
-M	java:S106ã"+Replace this use of System.out by a logger.(¼¥•Ñøÿÿÿÿ8Ø“½ï¼1
-u
-java:S3776"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(‘ŒÏ÷ıÿÿÿÿ8¸«÷§¼1
-]
-java:S1117‘":Rename "alumno" which hides the field declared at line 76.(³ã•úÿÿÿÿ8¿«÷§¼1
-˜
-java:S2159“"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(±¯”8Å«÷§¼1
-L
-java:S2201—")The return value of "strip" must be used.(æ¸Ò ùÿÿÿÿ8È«÷§¼1
-G
-java:S2201™")The return value of "strip" must be used.(¶Œô¤8×Ğè§¼1
-L
-java:S2201›")The return value of "strip" must be used.(…¨Îùÿÿÿÿ8ØĞè§¼1
-L
-java:S2201œ")The return value of "strip" must be used.(Ë¹Ëéùÿÿÿÿ8Í«÷§¼1
-G
-java:S2201")The return value of "strip" must be used.(ìö¿Ô8Î«÷§¼1
-M	java:S106¡"+Replace this use of System.out by a logger.(°Ô§ñıÿÿÿÿ8Ó«÷§¼1
-L
-java:S1905»")Remove this unnecessary cast to "String".(ƒ–®¬ıÿÿÿÿ8İ«÷§¼1
+java:S1611Ù"2Remove the parentheses around the "fila" parameter(Šã°‹8¶´Õû¼1
+M	java:S106î"+Replace this use of System.out by a logger.(ë¾¹üÿÿÿÿ8¸´Õû¼1
+M	java:S106ò"+Replace this use of System.out by a logger.(ë¾¹üÿÿÿÿ8¹´Õû¼1
+M	java:S106ô"+Replace this use of System.out by a logger.(¼¥•Ñøÿÿÿÿ8¹´Õû¼1
+H	java:S106ı"+Replace this use of System.out by a logger.(„³±È8Ğ€ğû¼1
+f
+java:S6355"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8Æ€ğû¼1
+X
+java:S1133"5Do not forget to remove this deprecated code someday.(Ù¾Úöùÿÿÿÿ8Æ€ğû¼1
 K
-java:S1905¿"(Remove this unnecessary cast to "Curso".(ª•ö®üÿÿÿÿ8Ş«÷§¼1
-M	java:S106Î"+Replace this use of System.out by a logger.(¡ÂªÛúÿÿÿÿ8å«÷§¼1
-M	java:S106Ğ"+Replace this use of System.out by a logger.(ÿµ€Óùÿÿÿÿ8æ«÷§¼1
-M	java:S106Š"+Replace this use of System.out by a logger.(àÿÙŠûÿÿÿÿ8û«÷§¼1
-]	java:S899›";Do something with the "boolean" value returned by "delete".(ù™×òıÿÿÿÿ8¬÷§¼1
-q
-java:S4042›"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ù™×òıÿÿÿÿ8¬÷§¼1
+java:S1123"(Add the missing @deprecated Javadoc tag.(Ù¾Úöùÿÿÿÿ8Æ€ğû¼1
+f
+java:S6355›"HAdd 'since' and/or 'forRemoval' arguments to the @Deprecated annotation.(õˆúš8È€ğû¼1
+S
+java:S1133œ"5Do not forget to remove this deprecated code someday.(Ê¦¹8É€ğû¼1
+F
+java:S1123œ"(Add the missing @deprecated Javadoc tag.(Ê¦¹8É€ğû¼1
+u
+java:S3776 "RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(‘ŒÏ÷ıÿÿÿÿ8Ê€ğû¼1
+]
+java:S1117¢":Rename "alumno" which hides the field declared at line 72.(³ã•úÿÿÿÿ8Ì€ğû¼1
+˜
+java:S2159¤"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(±¯”8Í€ğû¼1
+L
+java:S2201¨")The return value of "strip" must be used.(æ¸Ò ùÿÿÿÿ8Î€ğû¼1
+G
+java:S2201ª")The return value of "strip" must be used.(¶Œô¤8Î€ğû¼1
+L
+java:S2201¬")The return value of "strip" must be used.(…¨Îùÿÿÿÿ8Î€ğû¼1
+L
+java:S2201­")The return value of "strip" must be used.(Ë¹Ëéùÿÿÿÿ8Ã´Õû¼1
+G
+java:S2201¯")The return value of "strip" must be used.(ìö¿Ô8Ï€ğû¼1
+M	java:S106²"+Replace this use of System.out by a logger.(°Ô§ñıÿÿÿÿ8Ö€ğû¼1
+L
+java:S1905Ì")Remove this unnecessary cast to "String".(ƒ–®¬ıÿÿÿÿ8Ó€ğû¼1
+K
+java:S1905Ğ"(Remove this unnecessary cast to "Curso".(ª•ö®üÿÿÿÿ8Ó€ğû¼1
 M
-java:S1128"1Remove this unused import 'domain.EmpresaDAOImp'.(“÷çX8§àõ§¼1
+java:S1905Û"*Remove this unnecessary cast to "Empresa".(Ò´‘ìÿÿÿÿÿ8Ô€ğû¼1
+M	java:S106à"+Replace this use of System.out by a logger.(¡ÂªÛúÿÿÿÿ8Ö€ğû¼1
+M	java:S106â"+Replace this use of System.out by a logger.(ÿµ€Óùÿÿÿÿ8İ€ğû¼1
+M	java:S106"+Replace this use of System.out by a logger.(àÿÙŠûÿÿÿÿ8Óÿû¼1
+]	java:S899®";Do something with the "boolean" value returned by "delete".(ù™×òıÿÿÿÿ8à€ğû¼1
+q
+java:S4042®"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ù™×òıÿÿÿÿ8à€ğû¼1
 ^
-java:S1128"ARemove this unused import 'javafx.collections.MapChangeListener'.(ÿĞ£×8§àõ§¼1
+java:S1128"ARemove this unused import 'javafx.collections.MapChangeListener'.(ÿĞ£×8å™ü¼1
 k
-java:S1128 "NRemove this unused import 'java.sql.SQLIntegrityConstraintViolationException'.(¤¡†8¨àõ§¼1
+java:S1128 "NRemove this unused import 'java.sql.SQLIntegrityConstraintViolationException'.(¤¡†8å™ü¼1
