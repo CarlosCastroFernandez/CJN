@@ -28,6 +28,9 @@ public class Empresa {
         this.observaciones = observaciones;
         this.alumnos=null;
     }
+    public Empresa(){
+
+    }
 
     public String getEmail() {
         return email;
@@ -75,5 +78,15 @@ public class Empresa {
         this.observaciones = observaciones;
     }
 
-
+    @Override
+    public String toString() {
+        return "Empresa{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", telefono=" + telefono +
+                ", responsable='" + responsable + '\'' +
+                ", observaciones='" + observaciones + '\'' +
+                '}';
+    }
 }

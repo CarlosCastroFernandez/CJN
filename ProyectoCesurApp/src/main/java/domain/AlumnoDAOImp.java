@@ -82,6 +82,10 @@ public class AlumnoDAOImp implements AlumnoDAO{
                         rs.getInt("telefono"),rs.getString("horasDual"),rs.getString("horasFCT"),
                         rs.getInt("profesor"),sdf.format(rs.getDate("fechaNacimiento")), rs.getInt("empresa"),
                         Curso.valueOf(rs.getString("curso")) ,rs.getString("observaciones"));
+                if(alumno.getEmpresaId()!=0){
+                    alumno.setEmpresa((new EmpresaDAOImp(DBConnection.getConnection()).loadEnterprise(alumno.getEmpresaId())));
+                }
+
                 alumno.setProfesor(new ProfesorDAOImp(DBConnection.getConnection()).loadTeacherById(id));
                 salida.add(alumno);
 

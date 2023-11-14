@@ -10,11 +10,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EditarEmpresa implements Initializable {
@@ -23,8 +22,6 @@ public class EditarEmpresa implements Initializable {
     private TextField txtNombre;
     @javafx.fxml.FXML
     private TextField txtTelefono;
-    @javafx.fxml.FXML
-    private PasswordField txtEmail;
     @javafx.fxml.FXML
     private TextField txtResponsable;
     @javafx.fxml.FXML
@@ -43,6 +40,18 @@ public class EditarEmpresa implements Initializable {
     private TableColumn<Empresa, String> cObservaciones;
     private ObservableList<Empresa> observableEmpresas;
     private Empresa empresa;
+    @javafx.fxml.FXML
+    private Button botonLimpiar;
+    @javafx.fxml.FXML
+    private Button botonAñadirEmpresa;
+    @javafx.fxml.FXML
+    private Button botonActualizar;
+    private ArrayList<Empresa>listaEmpresas=new ArrayList<>();
+    private ChangeListener<Empresa> selectionListener;
+    @javafx.fxml.FXML
+    private PasswordField txtEmail;
+    @javafx.fxml.FXML
+    private Button botonBorrar;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,40 +78,51 @@ public class EditarEmpresa implements Initializable {
         });
 
         EmpresaDAOImp dao = new EmpresaDAOImp(DBConnection.getConnection());
-        if (Sesion.getListaEmpresas().isEmpty()) {
-            Sesion.setListaEmpresas(dao.loadAllEnterprise());
+        listaEmpresas.addAll(dao.loadAllEnterprise());
+        if (listaEmpresas.isEmpty()) {
+            listaEmpresas.addAll(dao.loadAllEnterprise());
             observableEmpresas = FXCollections.observableArrayList();
-            observableEmpresas.addAll(Sesion.getListaEmpresas());
+            observableEmpresas.addAll(listaEmpresas);
             tvEmpresas.setItems(observableEmpresas);
         } else {
             tvEmpresas.getItems().clear();
-            Sesion.setListaEmpresas(dao.loadAllEnterprise());
             observableEmpresas = FXCollections.observableArrayList();
-            observableEmpresas.addAll(Sesion.getListaEmpresas());
+            observableEmpresas.addAll(listaEmpresas);
             tvEmpresas.setItems(observableEmpresas);
         }
-        tvEmpresas.getSelectionModel().selectedItemProperty().addListener((observableValue, old, t1) -> {
-            empresa = t1;
-        });
 
-        txtTelefono.setText(String.valueOf(Sesion.getEmpresa().getTelefono()));
-        txtEmail.setText(Sesion.getEmpresa().getEmail());
-        txtNombre.setText(Sesion.getEmpresa().getNombre());
-        txtResponsable.setText(Sesion.getEmpresa().getResponsable());
-        txtObservaciones.setText(Sesion.getEmpresa().getObservaciones());
+        selectionListener = (observableValue, old, t1) -> {
+
+                System.out.println("PASO POR AQUI");
+                empresa = t1;
+                txtTelefono.setText(""+empresa.getTelefono());
+                txtEmail.setText(empresa.getEmail());
+                txtNombre.setText(empresa.getNombre());
+                txtResponsable.setText(empresa.getResponsable());
+                txtObservaciones.setText(empresa.getObservaciones());
+        };
+        tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
     }
 
     @javafx.fxml.FXML
-    public void guardar(ActionEvent actionEvent) {
-        if (empresa != null) {
+    public void actualizar(ActionEvent actionEvent) {
+        tvEmpresas.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
             if (!txtTelefono.getText().isEmpty() && !txtEmail.getText().isEmpty()
                     && !txtNombre.getText().isEmpty() && !txtResponsable.getText().isEmpty()) {
-                Sesion.getEmpresa().setTelefono(Integer.valueOf(txtTelefono.getText()));
-                Sesion.getEmpresa().setEmail(txtEmail.getText());
-                Sesion.getEmpresa().setNombre(txtNombre.getText());
-                Sesion.getEmpresa().setResponsable(txtResponsable.getText());
-                Sesion.getEmpresa().setObservaciones(txtObservaciones.getText());
-                Empresa empresa = (new EmpresaDAOImp(DBConnection.getConnection()).update(Sesion.getEmpresa()));
+                System.out.println(empresa.toString());
+                empresa.setTelefono(Integer.valueOf(txtTelefono.getText()));
+                empresa.setEmail(txtEmail.getText());
+                empresa.setNombre(txtNombre.getText());
+                empresa.setResponsable(txtResponsable.getText());
+                empresa.setObservaciones(txtObservaciones.getText());
+                Empresa empresaActualizada = (new EmpresaDAOImp(DBConnection.getConnection()).update(empresa));
+
+                listaEmpresas = (new EmpresaDAOImp(DBConnection.getConnection()).loadAllEnterprise());
+                empresa=empresaActualizada;
+                System.out.println(listaEmpresas);
+                tvEmpresas.getItems().clear();
+                observableEmpresas.addAll(listaEmpresas);
+            tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
             } else {
                 Alert alerta = new Alert(Alert.AlertType.ERROR);
                 alerta.setTitle("Error");
@@ -122,10 +142,59 @@ public class EditarEmpresa implements Initializable {
                 //////
             }
         }
+
+
+    @Deprecated
+    public void cancelar (ActionEvent actionEvent){
+
     }
 
     @javafx.fxml.FXML
-    public void cancelar (ActionEvent actionEvent){
+    public void limpiar(ActionEvent actionEvent) {
+        txtTelefono.clear();
+        txtEmail.clear();
+        txtNombre.clear();
+        txtResponsable.clear();
+        txtObservaciones.clear();
+        tvEmpresas.getSelectionModel().select(null);
+    }
+
+    @javafx.fxml.FXML
+    public void añadirEmpresa(ActionEvent actionEvent) {
+
+        try{
+            Empresa empresaNueva=new Empresa();
+            empresaNueva.setTelefono(Integer.valueOf(txtTelefono.getText()));
+            empresaNueva.setEmail(txtEmail.getText());
+            empresaNueva.setNombre(txtNombre.getText());
+            empresaNueva.setResponsable(txtResponsable.getText());
+            empresaNueva.setObservaciones(txtObservaciones.getText());
+            Empresa empresaAnhadida =(new EmpresaDAOImp(DBConnection.getConnection()).insert(empresaNueva));
+            observableEmpresas.add(empresaAnhadida);
+        }catch(Exception e){
+            e.printStackTrace();
+            Alert alerta = new Alert(Alert.AlertType.ERROR);
+            alerta.setTitle("Error");
+            alerta.setHeaderText("Esta empresa ya existe, añade otra empresa.");
+            ButtonType tipo= alerta.showAndWait().get();
+            if(tipo.getButtonData()== ButtonBar.ButtonData.OK_DONE){
+                txtTelefono.clear();
+                txtEmail.clear();
+                txtNombre.clear();
+                txtResponsable.clear();
+                txtObservaciones.clear();
+            }
+        }
+
+    }
+
+    @javafx.fxml.FXML
+    public void borrar(ActionEvent actionEvent) {
+        tvEmpresas.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
+        listaEmpresas.remove(listaEmpresas.get(listaEmpresas.indexOf(empresa)));
+        (new EmpresaDAOImp(DBConnection.getConnection())).delete(empresa);
+        observableEmpresas.setAll(listaEmpresas);
+        tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
 
     }
 }

@@ -109,37 +109,40 @@ public class VentanaAlumno implements Initializable {
                 contextMenu.getItems().add(menuItem2);
                 tvUser.setContextMenu(contextMenu);
                 contextMenu.show(tvUser, mouseEvent.getScreenX(), mouseEvent.getScreenY());
-                menuItem1.setOnAction(actionEvent -> {
-                    System.out.println("Paso por aquí");
-                    HelloApplication.loadFXML("editar-actividadDiaria-view.fxml");
+                menuItem1.setOnAction(actionEvent -> HelloApplication.loadFXML("editar-actividadDiaria-view.fxml"));
+
+                menuItem2.setOnAction(actionEvent -> {
+                  ActividadDiaria actividadDiariaDelete = Sesion.getAlumno().getActividadDiaria().remove(Sesion.getAlumno().getActividadDiaria().indexOf(actividadDiaria));
+                    observableActividad.setAll(Sesion.getAlumno().getActividadDiaria());
+                    tvUser.setItems(observableActividad);
+                    ActividaDiariaDAOImp delete=new ActividaDiariaDAOImp(DBConnection.getConnection());
+                    delete.deleteActividad(actividadDiariaDelete);
                 });
             }
-        });
 
+        });
         //Consulta a bbdd: "Todas las actividades diarias que tiene el alumno logeado".
         Integer idAlumno = Sesion.getAlumno().getId();
-        ActividaDiariaDAOImp dao=new ActividaDiariaDAOImp(DBConnection.getConnection());
-        if(Sesion.getListaActividades().isEmpty()){
-            Sesion.setListaActividades(dao.loadall(idAlumno));
+        ActividaDiariaDAOImp dao = new ActividaDiariaDAOImp(DBConnection.getConnection());
+        Sesion.getAlumno().getActividadDiaria().addAll(dao.loadall(idAlumno));
+        if (Sesion.getAlumno().getActividadDiaria().isEmpty()) {
+            Sesion.getAlumno().getActividadDiaria().addAll(dao.loadall(idAlumno));
             observableActividad = FXCollections.observableArrayList();
-            observableActividad.addAll(Sesion.getListaActividades());
+            observableActividad.addAll(Sesion.getAlumno().getActividadDiaria());
             tvUser.setItems(observableActividad);
-        }else{
+        } else {
             tvUser.getItems().clear();
-            Sesion.setListaActividades(dao.loadall(idAlumno));
+            Sesion.getAlumno().setActividadDiaria(dao.loadall(idAlumno));
             observableActividad = FXCollections.observableArrayList();
-            observableActividad.addAll(Sesion.getListaActividades());
+            observableActividad.addAll(Sesion.getAlumno().getActividadDiaria());
             tvUser.setItems(observableActividad);
         }
         tvUser.getSelectionModel().selectedItemProperty().addListener((observable, t0, t1) -> {
             actividadDiaria = t1;
             Sesion.setActividadDiaria(actividadDiaria);
         });
-
-
         /* Los datos de esta consulta a Array de Sesion, de este array al observable y del observable a la tabla. */
     }
-
 
     @javafx.fxml.FXML
     public void añadirTarea(ActionEvent actionEvent) {

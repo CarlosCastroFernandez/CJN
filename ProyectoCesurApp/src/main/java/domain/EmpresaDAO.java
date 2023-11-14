@@ -7,7 +7,7 @@ import clase.Usuario;
 import java.util.ArrayList;
 
 public interface EmpresaDAO {
-    public Empresa loadEnterprise(String nombre);
+    public Empresa loadEnterprise(Integer id);
     public ArrayList<Empresa> loadAllEnterprise();
     public Empresa update(Empresa empresa);
 }

@@ -105,7 +105,7 @@ public class EditarAlumnoView implements Initializable {
                     if (empresa != null) {
                         return empresa.getNombre();
                     } else {
-                        return "";
+                        return "<<Sin Empresa>>";
                     }
 
                 }
@@ -149,6 +149,7 @@ public class EditarAlumnoView implements Initializable {
         comboCurso.setValue(Sesion.getAlumno().getCurso());
         comboNombreEmpresa.getItems().addAll(new EmpresaDAOImp(DBConnection.getConnection()).loadAllEnterprise());
         comboNombreEmpresa.setValue(Sesion.getAlumno().getEmpresa());
+        comboNombreEmpresa.getItems().add(null);
         try{
             String[] horasIniciales = Sesion.getAlumno().getHorasDUAL().split("/");
             if (choiceTipoPractica.getValue().equals(TipoPractica.DUAL)) {
@@ -180,7 +181,14 @@ public class EditarAlumnoView implements Initializable {
                 Sesion.getAlumno().setFechaNacimiento(String.valueOf(dateCalender.getValue()));
                 Sesion.getAlumno().setTelefono(Integer.valueOf(textTelefono.getText()));
                 Sesion.getAlumno().setCurso(comboCurso.getValue());
-                Sesion.getAlumno().setEmpresa(comboNombreEmpresa.getValue());
+                if(comboNombreEmpresa.getValue()==null){
+                    Sesion.getAlumno().setEmpresaId(0);
+                    Sesion.getAlumno().setEmpresa(null);
+                }else{
+                    Sesion.getAlumno().setEmpresa(comboNombreEmpresa.getValue());
+                    Sesion.getAlumno().setEmpresaId(comboNombreEmpresa.getValue().getId());
+                }
+
                 if(choiceTipoPractica.getValue()==TipoPractica.DUAL){
                     Sesion.getAlumno().setHorasDUAL(spinnerDUAL.getValue()+"/270");
                     Sesion.getAlumno().setHorasFCT(null);
@@ -190,6 +198,7 @@ public class EditarAlumnoView implements Initializable {
                     Sesion.getAlumno().setHorasDUAL(null);
                     new AlumnoDAOImp(DBConnection.getConnection()).updateHoras(Sesion.getAlumno(),"horasDual");
                 }
+                System.out.println(Sesion.getAlumno());
                 Alumno alumno=(new AlumnoDAOImp(DBConnection.getConnection()).update(Sesion.getAlumno()));
             } catch (DNIInvalido | NombreConNumero e) {
                 throw new RuntimeException(e);

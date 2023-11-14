@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="705.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.proyectocesurapp.EditarEmpresa">
    <top>
       <Label text="Gestión Empresa" BorderPane.alignment="CENTER">
@@ -41,10 +40,12 @@
                   <TextField fx:id="txtResponsable" />
                   <Label text="Label" />
                   <TextArea fx:id="txtObservaciones" prefHeight="200.0" prefWidth="200.0" />
+                  <Button fx:id="botonLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
                   <HBox>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#guardar" text="Guardar" />
-                        <Button mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+                        <Button fx:id="botonAñadirEmpresa" mnemonicParsing="false" onAction="#añadirEmpresa" text="Añadir Empresa" />
+                        <Button fx:id="botonActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
+                        <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrar" text="Borrar" />
                      </children>
                   </HBox>
                </children>

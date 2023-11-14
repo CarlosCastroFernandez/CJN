@@ -15,7 +15,7 @@ import java.util.ArrayList;
 @Log
 public class EmpresaDAOImp implements EmpresaDAO {
     private static Connection connection;
-    private static final String QUERY_LOAD = "select * from empresa where nombre = ?";
+    private static final String QUERY_LOAD = "select * from empresa where id = ?";
     private static final String QUERY_LOAD_ALL = "select * from empresa";
     private static final String actualizacion = "update empresa set email=?, nombre=?, telefono=?, responsable=?, observaciones=?";
 
@@ -24,11 +24,11 @@ public class EmpresaDAOImp implements EmpresaDAO {
     }
 
     @Override
-    public Empresa loadEnterprise(String dni){
+    public Empresa loadEnterprise(Integer id){
         Empresa empresa = null;
         try {
             PreparedStatement pst = connection.prepareStatement(QUERY_LOAD);
-            pst.setString(1, empresa.getNombre());
+            pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()){
@@ -65,9 +65,9 @@ public class EmpresaDAOImp implements EmpresaDAO {
         Empresa empresaImp = empresa;
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(actualizacion);
-            preparedStatement.setString(1, empresaImp.getNombre());
-            preparedStatement.setInt(2, empresaImp.getTelefono());
-            preparedStatement.setString(3, empresaImp.getObservaciones());
+            preparedStatement.setString(1, empresaImp.getEmail());
+            preparedStatement.setString(2, empresaImp.getNombre());
+            preparedStatement.setInt(3, empresaImp.getTelefono());
             preparedStatement.setString(4, empresaImp.getResponsable());
             preparedStatement.setString(5, empresaImp.getEmail());
             int filas = preparedStatement.executeUpdate();

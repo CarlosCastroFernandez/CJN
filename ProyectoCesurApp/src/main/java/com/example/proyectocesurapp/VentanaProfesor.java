@@ -36,10 +36,6 @@ public class VentanaProfesor implements Initializable {
     @javafx.fxml.FXML
     private TableView <Alumno>tabla;
     @javafx.fxml.FXML
-    private Button btnEditar;
-    @javafx.fxml.FXML
-    private Button btnBorrar;
-    @javafx.fxml.FXML
     private Button btnNuevoAlumno;
     @javafx.fxml.FXML
     private Menu menu;
@@ -90,7 +86,7 @@ public class VentanaProfesor implements Initializable {
     @javafx.fxml.FXML
     private Spinner spinnerFCT;
     @javafx.fxml.FXML
-    private ComboBox comboNombreEmpresa;
+    private ComboBox <Empresa>comboNombreEmpresa;
     @javafx.fxml.FXML
     private DatePicker dateCalender;
     @javafx.fxml.FXML
@@ -111,6 +107,8 @@ public class VentanaProfesor implements Initializable {
     private MenuItem menuItem1=new MenuItem();
     private MenuItem menuItem2=new MenuItem();
     private ObservableList<Curso>obsCursos;
+    @javafx.fxml.FXML
+    private Button botonEmpresa;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -160,6 +158,25 @@ public class VentanaProfesor implements Initializable {
             }
         });
         comboCurso.setItems(obsCursos);
+        comboNombreEmpresa.setConverter(new StringConverter<Empresa>() {
+            @Override
+            public String toString(Empresa empresa) {
+                if (empresa!=null){
+                    return empresa.getNombre();
+                }else{
+                    return "<<Sin empresa>>";
+                }
+
+            }
+
+            @Override
+            public Empresa fromString(String s) {
+                return null;
+            }
+        });
+        comboNombreEmpresa.getItems().addAll((new EmpresaDAOImp(DBConnection.getConnection()).loadAllEnterprise()));
+        comboNombreEmpresa.getItems().add(null);
+        comboNombreEmpresa.getSelectionModel().selectFirst();
 
         cNombre.setCellValueFactory((fila)->{
             String nombre=fila.getValue().getNombre();
@@ -232,9 +249,9 @@ public class VentanaProfesor implements Initializable {
         });
         obs= FXCollections.observableArrayList();
         AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
-        Sesion.setListaAlumno(conexion.loadAll(Sesion.getProfesor().getId()));
-        Sesion.getProfesor().getAlumnos().addAll(Sesion.getListaAlumno());
-        obs.addAll(Sesion.getListaAlumno());
+        Sesion.getProfesor().getAlumnos().addAll(conexion.loadAll(Sesion.getProfesor().getId()));
+        System.out.println(Sesion.getProfesor().getAlumnos());
+        obs.addAll(Sesion.getProfesor().getAlumnos());
         tabla.setItems(obs);
         tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
             alumno=t1;
@@ -249,7 +266,7 @@ public class VentanaProfesor implements Initializable {
         spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void editar(ActionEvent actionEvent) {
         if(alumno==null){
             Alert alerta=new Alert(Alert.AlertType.INFORMATION);
@@ -263,7 +280,7 @@ public class VentanaProfesor implements Initializable {
 
     }
 
-    @javafx.fxml.FXML
+    @Deprecated
     public void borrar(ActionEvent actionEvent) {
     }
 
@@ -329,6 +346,7 @@ public class VentanaProfesor implements Initializable {
                 } else {
                     Empresa empresa = (Empresa) comboNombreEmpresa.getSelectionModel().getSelectedItem();
                     alumno.setEmpresa(empresa);
+                    alumno.setEmpresaId(empresa.getId());
                     empresa.setAlumnos(new ArrayList<>());
                     empresa.getAlumnos().add(alumno);
                     System.out.println(empresa);
@@ -337,6 +355,7 @@ public class VentanaProfesor implements Initializable {
 
                 AlumnoDAOImp dao = new AlumnoDAOImp(DBConnection.getConnection());
                Alumno alumnoValido= dao.injection(alumno);
+               Sesion.getProfesor().getAlumnos().add(alumnoValido);
                 obs.add(alumnoValido);
 
             }else{
@@ -422,5 +441,10 @@ public class VentanaProfesor implements Initializable {
         }
 
 
+    }
+
+    @javafx.fxml.FXML
+    public void goEmpresa(ActionEvent actionEvent) {
+        HelloApplication.loadFXML("editar-empresa-view.fxml");
     }
 }
