@@ -238,17 +238,30 @@ public class VentanaProfesor implements Initializable {
                     HelloApplication.loadFXML("editar-alumno-view.fxml");
                 });
                 menuItem2.setOnAction(actionEvent -> {
-                    System.out.println("Paso por aqui");
-                    Alumno alumnoLista=Sesion.getTeacher().getAlumn().get(Sesion.getTeacher().getAlumn().indexOf(alumno));
+                    try{
+                        Alert alerta=new Alert(Alert.AlertType.INFORMATION);
+                        alerta.setTitle("Eliminar");
+                        alerta.setHeaderText("¿Seguro que deseas BORRAR al alumno?");
+                        alerta.setContentText("Si ELIMINAS a este alumno boraras TODAS sus ACTIVIDADES");
+                        ButtonType tipo= alerta.showAndWait().get();
+                        if(tipo.getButtonData()== ButtonBar.ButtonData.OK_DONE){
+                            System.out.println("Paso por aqui");
+                            Alumno alumnoLista=Sesion.getTeacher().getAlumn().get(Sesion.getTeacher().getAlumn().indexOf(alumno));
 
-                    ActividaDiariaDAOImp actDIB=new ActividaDiariaDAOImp(DBConnection.getConnection());
+                            ActividaDiariaDAOImp actDIB=new ActividaDiariaDAOImp(DBConnection.getConnection());
 
-                    for(int i = 0; i<alumnoLista.getActivity().size(); i++){
-                        actDIB.deleteActividad(alumnoLista.getActivity().get(i));
+                            for(int i = 0; i<alumnoLista.getActivity().size(); i++){
+                                actDIB.deleteActividad(alumnoLista.getActivity().get(i));
+                            }
+                            (new AlumnoDAOImp(DBConnection.getConnection())).delete(alumnoLista);
+                            AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
+                            obs.setAll(conexion.loadAll(Sesion.getTeacher().getId()));
+                        }
+                    }catch(Exception e){
+
                     }
-                    (new AlumnoDAOImp(DBConnection.getConnection())).delete(alumnoLista);
-                    AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
-                    obs.setAll(conexion.loadAll(Sesion.getTeacher().getId()));
+
+
 
 
                 });
@@ -257,6 +270,7 @@ public class VentanaProfesor implements Initializable {
         });
         obs= FXCollections.observableArrayList();
         AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
+        Sesion.getTeacher().getAlumn().clear();
         Sesion.getTeacher().getAlumn().addAll(conexion.loadAll(Sesion.getTeacher().getId()));
         System.out.println(Sesion.getTeacher().getAlumn());
         obs.addAll(Sesion.getTeacher().getAlumn());
@@ -267,9 +281,6 @@ public class VentanaProfesor implements Initializable {
         });
 
 
-        menuItem2.setOnAction(actionEvent -> {
-            //Se borra usuario junto con todas las tareas diarias de ese usuario
-        });
         spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
         spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
     }
@@ -416,37 +427,42 @@ public class VentanaProfesor implements Initializable {
 
     @javafx.fxml.FXML
     public void clickImagen(Event event) {
-        FileChooser open=new FileChooser();
-        File ruta= open.showOpenDialog(null);
-        System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
-        if(ruta!=null){
-            File carpeta=new File("imagenes de "+Sesion.getTeacher().getDni());
-            if(!carpeta.exists()&&(ruta.getName().endsWith("jpg")||ruta.getName().endsWith("png")||ruta.getName().endsWith("PNG")||ruta.getName().endsWith("JPG"))){
-                try {
-                    carpeta.mkdir();
+        try{
+            FileChooser open=new FileChooser();
+            File ruta= open.showOpenDialog(null);
+            System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
+            if(ruta!=null){
+                File carpeta=new File("imagenes de "+Sesion.getTeacher().getDni());
+                if(!carpeta.exists()&&(ruta.getName().endsWith("jpg")||ruta.getName().endsWith("png")||ruta.getName().endsWith("PNG")||ruta.getName().endsWith("JPG"))){
+                    try {
+                        carpeta.mkdir();
+                        Path origen= Path.of(ruta.getAbsolutePath());
+                        Path destino= Path.of(carpeta.getName());
+                        Path destinoArchivo=destino.resolve(Sesion.getTeacher().getName()+" "+Sesion.getTeacher().getLastName()+ruta.getName().substring(ruta.getName().indexOf(".")));
+                        Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                        imagen.setImage(new Image("file:"+destinoArchivo));
+
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }else{
+                    File[]hijos=carpeta.listFiles();
+                    hijos[0].delete();
                     Path origen= Path.of(ruta.getAbsolutePath());
                     Path destino= Path.of(carpeta.getName());
                     Path destinoArchivo=destino.resolve(Sesion.getTeacher().getName()+" "+Sesion.getTeacher().getLastName()+ruta.getName().substring(ruta.getName().indexOf(".")));
-                    Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                    try {
+                        Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     imagen.setImage(new Image("file:"+destinoArchivo));
-
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
                 }
-            }else{
-                File[]hijos=carpeta.listFiles();
-                hijos[0].delete();
-                Path origen= Path.of(ruta.getAbsolutePath());
-                Path destino= Path.of(carpeta.getName());
-                Path destinoArchivo=destino.resolve(Sesion.getTeacher().getName()+" "+Sesion.getTeacher().getLastName()+ruta.getName().substring(ruta.getName().indexOf(".")));
-                try {
-                    Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                imagen.setImage(new Image("file:"+destinoArchivo));
             }
+        }catch(Exception e){
+
         }
+
     }
 
     @javafx.fxml.FXML

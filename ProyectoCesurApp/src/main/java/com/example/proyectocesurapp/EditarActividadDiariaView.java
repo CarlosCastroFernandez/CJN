@@ -67,6 +67,7 @@ public class EditarActividadDiariaView implements Initializable {
              Sesion.getActivity().setTotaHours(spHoras.getValue());
              Sesion.getActivity().setObservations(taObservations.getText());
             ActividadDiaria actividadDiaria = (new ActividaDiariaDAOImp(DBConnection.getConnection()).update(Sesion.getActivity()));
+            HelloApplication.loadFXML("ventanaAlumno.fxml");
         } else {
             Alert alerta=new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Error");

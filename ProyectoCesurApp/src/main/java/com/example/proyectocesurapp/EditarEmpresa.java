@@ -105,39 +105,47 @@ public class EditarEmpresa implements Initializable {
 
     @javafx.fxml.FXML
     public void actualizar(ActionEvent actionEvent) {
-        tvEmpresas.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
-            if (!txtTelefono.getText().isEmpty() && !txtEmail.getText().isEmpty()
-                    && !txtNombre.getText().isEmpty() && !txtResponsable.getText().isEmpty()) {
-                System.out.println(empresa.toString());
-                empresa.setPhone(Integer.valueOf(txtTelefono.getText()));
-                empresa.setEmail(txtEmail.getText());
-                empresa.setName(txtNombre.getText());
-                empresa.setBoss(txtResponsable.getText());
-                empresa.setObservations(txtObservaciones.getText());
-                Empresa empresaActualizada = (new EmpresaDAOImp(DBConnection.getConnection()).update(empresa));
+                try{
+                    if (!txtTelefono.getText().isEmpty() && !txtEmail.getText().isEmpty()
+                            && !txtNombre.getText().isEmpty() && !txtResponsable.getText().isEmpty()
+                            &&empresa!=null) {
+                        tvEmpresas.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
 
-                listaEmpresas = (new EmpresaDAOImp(DBConnection.getConnection()).loadAllEnterprise());
-                empresa=empresaActualizada;
-                System.out.println(listaEmpresas);
-                tvEmpresas.getItems().clear();
-                observableEmpresas.addAll(listaEmpresas);
-            tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
-            } else {
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setTitle("Error");
-                alerta.setHeaderText("Porfavor comprueba de que los campos estén rellenos");
-                alerta.showAndWait();
-            }
+                        empresa.setPhone(Integer.valueOf(txtTelefono.getText()));
+                        empresa.setEmail(txtEmail.getText());
+                        empresa.setName(txtNombre.getText());
+                        empresa.setBoss(txtResponsable.getText());
+                        empresa.setObservations(txtObservaciones.getText());
+                        Empresa empresaActualizada = (new EmpresaDAOImp(DBConnection.getConnection()).update(empresa));
+
+                        listaEmpresas = (new EmpresaDAOImp(DBConnection.getConnection()).loadAllEnterprise());
+                        empresa=empresaActualizada;
+                        System.out.println(listaEmpresas);
+                        tvEmpresas.getItems().clear();
+                        observableEmpresas.addAll(listaEmpresas);
+                        empresa=null;
+                        tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
+                    } else {
+                        Alert alerta = new Alert(Alert.AlertType.ERROR);
+                        alerta.setTitle("Error");
+                        alerta.setHeaderText("Porfavor comprueba de que los campos estén rellenos y \n" +
+                                "tengas seleccionado/a una empresa en la tabla");
+                        alerta.showAndWait();
+                    }
+                }catch(Exception e){
+                    Alert alerta = new Alert(Alert.AlertType.ERROR);
+                    alerta.setTitle("Error");
+                    alerta.setHeaderText("Comprueba que el campo telefono sea correcto");
+                    alerta.showAndWait();
+                }
+
         }
 
 
-    @Deprecated
-    public void cancelar (ActionEvent actionEvent){
-
-    }
 
     @javafx.fxml.FXML
     public void limpiar(ActionEvent actionEvent) {
+        empresa=null;
         txtTelefono.clear();
         txtEmail.clear();
         txtNombre.clear();
@@ -153,14 +161,24 @@ public class EditarEmpresa implements Initializable {
     public void añadirEmpresa(ActionEvent actionEvent) {
 
         try{
-            Empresa empresaNueva=new Empresa();
-            empresaNueva.setPhone(Integer.valueOf(txtTelefono.getText()));
-            empresaNueva.setEmail(txtEmail.getText());
-            empresaNueva.setName(txtNombre.getText());
-            empresaNueva.setBoss(txtResponsable.getText());
-            empresaNueva.setObservations(txtObservaciones.getText());
-            Empresa empresaAnhadida =(new EmpresaDAOImp(DBConnection.getConnection()).injection(empresaNueva));
-            observableEmpresas.add(empresaAnhadida);
+            if(!txtTelefono.getText().isEmpty()&&!txtObservaciones.getText().isEmpty()&&!txtEmail.getText().isEmpty()
+            &&!txtNombre.getText().isEmpty()&&!txtResponsable.getText().isEmpty()){
+                Empresa empresaNueva=new Empresa();
+                empresaNueva.setPhone(Integer.valueOf(txtTelefono.getText()));
+                empresaNueva.setEmail(txtEmail.getText());
+                empresaNueva.setName(txtNombre.getText());
+                empresaNueva.setBoss(txtResponsable.getText());
+                empresaNueva.setObservations(txtObservaciones.getText());
+                Empresa empresaAnhadida =(new EmpresaDAOImp(DBConnection.getConnection()).injection(empresaNueva));
+                listaEmpresas.add(empresaAnhadida);
+                observableEmpresas.add(empresaAnhadida);
+            }else{
+                Alert alerta = new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Por favor rellene todos los campos vacíos.");
+                alerta.showAndWait();
+            }
+
         }catch(Exception e){
             e.printStackTrace();
             Alert alerta = new Alert(Alert.AlertType.ERROR);
@@ -180,11 +198,32 @@ public class EditarEmpresa implements Initializable {
 
     @javafx.fxml.FXML
     public void borrar(ActionEvent actionEvent) {
-        tvEmpresas.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
-        listaEmpresas.remove(listaEmpresas.get(listaEmpresas.indexOf(empresa)));
-        (new EmpresaDAOImp(DBConnection.getConnection())).delete(empresa);
-        observableEmpresas.setAll(listaEmpresas);
-        tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
+        if(empresa!=null){
+            try{
+                Alert alerta=new Alert(Alert.AlertType.ERROR);
+                alerta.setHeaderText("¿Seguro que deseas eliminar esta empresa?");
+                ButtonType tipo= alerta.showAndWait().get();
+                if(tipo.getButtonData()== ButtonBar.ButtonData.OK_DONE){
+                    tvEmpresas.getSelectionModel().selectedItemProperty().removeListener(selectionListener);
+                    System.out.println(empresa);
+                    listaEmpresas.remove(listaEmpresas.get(listaEmpresas.indexOf(empresa)));
+                    (new EmpresaDAOImp(DBConnection.getConnection())).delete(empresa);
+                    observableEmpresas.setAll(listaEmpresas);
+                    empresa=null;
+                    tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
+                }
+            }catch(Exception e){
+
+            }
+
+
+        }else{
+            Alert alerta=new Alert(Alert.AlertType.ERROR);
+            alerta.setHeaderText("Porfavor selecciona una empresa en la tabla");
+            alerta.showAndWait();
+
+        }
+
 
     }
 }

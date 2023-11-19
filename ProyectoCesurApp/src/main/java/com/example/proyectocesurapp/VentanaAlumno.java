@@ -112,11 +112,23 @@ public class VentanaAlumno implements Initializable {
                 menuItem1.setOnAction(actionEvent -> HelloApplication.loadFXML("editar-actividadDiaria-view.fxml"));
 
                 menuItem2.setOnAction(actionEvent -> {
-                  ActividadDiaria actividadDiariaDelete = Sesion.getAlumn().getActivity().remove(Sesion.getAlumn().getActivity().indexOf(actividadDiaria));
-                    observableActividad.setAll(Sesion.getAlumn().getActivity());
-                    tvUser.setItems(observableActividad);
-                    ActividaDiariaDAOImp delete=new ActividaDiariaDAOImp(DBConnection.getConnection());
-                    delete.deleteActividad(actividadDiariaDelete);
+                    try{
+                        Alert alerta=new Alert(Alert.AlertType.INFORMATION);
+                        alerta.setTitle("Eliminar");
+                        alerta.setHeaderText("¿Seguro que deseas BORRAR esta actividad?");
+                        ButtonType tipo= alerta.showAndWait().get();
+                        if(tipo.getButtonData()== ButtonBar.ButtonData.OK_DONE){
+                            ActividadDiaria actividadDiariaDelete = Sesion.getAlumn().getActivity().remove(Sesion.getAlumn().getActivity().indexOf(actividadDiaria));
+                            observableActividad.setAll(Sesion.getAlumn().getActivity());
+                            tvUser.setItems(observableActividad);
+                            ActividaDiariaDAOImp delete=new ActividaDiariaDAOImp(DBConnection.getConnection());
+                            delete.deleteActividad(actividadDiariaDelete);
+                        }
+                    }catch(Exception e){
+
+                    }
+
+
                 });
             }
 
@@ -132,6 +144,7 @@ public class VentanaAlumno implements Initializable {
             tvUser.setItems(observableActividad);
         } else {
             tvUser.getItems().clear();
+            Sesion.getAlumn().getActivity().clear();
             Sesion.getAlumn().setActivity(dao.loadall(idAlumno));
             observableActividad = FXCollections.observableArrayList();
             observableActividad.addAll(Sesion.getAlumn().getActivity());
@@ -147,7 +160,7 @@ public class VentanaAlumno implements Initializable {
     @javafx.fxml.FXML
     public void añadirTarea(ActionEvent actionEvent) {
         System.out.println("Entra");
-        ActividadDiaria dayActivity = new ActividadDiaria();
+        ActividadDiaria dayActivity1 = new ActividadDiaria();
         if (!comboPracticeType.getSelectionModel().getSelectedItem().equals(null)
                 && !fieldActivity.getText().isEmpty() && !taObservations.getText().isEmpty()) {
             String fecha = String.valueOf(dpDate.getValue());
@@ -159,18 +172,18 @@ public class VentanaAlumno implements Initializable {
                 alert.showAndWait();
             }
 
-            dayActivity.setDate(String.valueOf(dpDate.getValue()));
-            dayActivity.setPracticeType(comboPracticeType.getSelectionModel().getSelectedItem());
-            dayActivity.setTotaHours(spHoras.getValue());
-            dayActivity.setTaskName(fieldActivity.getText().strip());
-            dayActivity.setObservations(taObservations.getText().strip());
+            dayActivity1.setDate(String.valueOf(dpDate.getValue()));
+            dayActivity1.setPracticeType(comboPracticeType.getSelectionModel().getSelectedItem());
+            dayActivity1.setTotaHours(spHoras.getValue());
+            dayActivity1.setTaskName(fieldActivity.getText().strip());
+            dayActivity1.setObservations(taObservations.getText().strip());
 
             ActividaDiariaDAOImp dao = new ActividaDiariaDAOImp(DBConnection.getConnection());
-            Sesion.setActivity(dao.injection(dayActivity));
-            System.out.println(Sesion.getActivity().toString());
-            Sesion.getActivities().add(Sesion.getActivity());
-            Sesion.getAlumn().getActivity().add(Sesion.getActivity());
-            observableActividad.add(Sesion.getActivity());
+            dayActivity1=dao.injection(dayActivity1);
+
+
+            Sesion.getAlumn().getActivity().add(dayActivity1);
+            observableActividad.add(dayActivity1);
             System.out.println("Sale.");
 
         } else {

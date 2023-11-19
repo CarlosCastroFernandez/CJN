@@ -199,11 +199,13 @@ public class EditarAlumnoView implements Initializable {
                 }
                 System.out.println(Sesion.getAlumn());
                 Alumno alumno=(new AlumnoDAOImp(DBConnection.getConnection()).update(Sesion.getAlumn()));
+                HelloApplication.loadFXML("ventanaProfesor.fxml");
             } catch (DNIInvalido | NombreConNumero e) {
                 throw new RuntimeException(e);
             } catch (ApellidoConNumero e) {
                 throw new RuntimeException(e);
             }
+
         }else{
             Alert alerta=new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Error");
