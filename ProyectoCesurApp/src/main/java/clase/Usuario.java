@@ -4,28 +4,74 @@ import exception.ApellidoConNumero;
 import exception.DNIInvalido;
 import exception.NombreConNumero;
 
+/**
+ * La clase Usuario represnta a un usuario del sistema.
+ */
 public class Usuario {
+     /**
+      * Identificador único del usuario.
+      */
      private Integer id;
-     private String nombre;
-     private String apellido1;
-     private String apellido2;
+     /**
+      * Nombre del usuario.
+      */
+     private String name;
+     /**
+      * Primer apellido del usuario.
+      */
+     private String lastName;
+     /**
+      * Segundo apellido del usuario.
+      */
+     private String lastName2;
+     /**
+      * Contraseña del usuario.
+      */
      private String password;
-     private String correo;
+     /**
+      * Correo electrónico del usuario.
+      */
+     private String email;
+     /**
+      * DNI del usuario.
+      */
      private String dni;
-     private Integer telefono;
+     /**
+      * Número de teléfono del usuario.
+      */
+     private Integer phone;
 
-     public Usuario(Integer id,String nombre,String apellido1,String apellido2,
-                    String password,String correo,String dni,Integer telefono) {
-          this.id=id;
-          this.nombre=nombre;
-          this.apellido1=apellido1;
-          this.apellido2=apellido2;
-          this.password =password;
-          this.correo=correo;
-          this.dni =dni;
-          this.telefono=telefono;
+     /**
+      * Constructor de la clase Usuario.
+      * @param id Identificador único del usuario.
+      * @param name Nombre del usuario.
+      * @param lastName Primer apellido del usuario.
+      * @param lastName2 Segundo apellido del usuario.
+      * @param password Contraseña del usuario.
+      * @param email Correo electrónico del usuario.
+      * @param dni Número de identificación del usuario (DNI).
+      * @param phone Número de teléfono del usuario.
+      */
+     public Usuario(Integer id,String name,String lastName,String lastName2,
+                    String password,String email,String dni,Integer phone) {
+          this.id = id;
+          this.name = name;
+          this.lastName = lastName;
+          this.lastName2 = lastName2;
+          this.password = password;
+          this.email = email;
+          this.dni = dni;
+          this.phone = phone;
      }
 
+     /**
+      * Constructor por defecto de la clase Usuario.
+      */
+     public Usuario() {
+
+     }
+
+     //Getters y Setters para todos los atributos de la clase.
      public Integer getId() {
           return id;
      }
@@ -34,101 +80,130 @@ public class Usuario {
           this.id = id;
      }
 
-     public Usuario() {
-
-     }
-     public Integer getTelefono() {
-          return telefono;
-     }
-     public void setTelefono(Integer telefono) {
-          this.telefono = telefono;
+     public String getName() {
+          return name;
      }
 
-     public String getNombre() {
-          return nombre;
+     public String getLastName() {
+          return lastName;
      }
 
-     public String getApellido1() {
-          return apellido1;
-     }
-
-     public String getApellido2() {
-          return apellido2;
+     public String getLastName2() {
+          return lastName2;
      }
 
      public String getPassword() {
           return password;
      }
 
-     public String getCorreo() {
-          return correo;
+     public String getEmail() {
+          return email;
      }
 
      public String getDni() {
           return dni;
      }
-
-     public void setNombre(String nombre) throws NombreConNumero {
-          String numeros="0123456789";
-          for(int i=0;i<nombre.length();i++) {
-               if(numeros.contains(""+nombre.charAt(i))) {
-                    throw new NombreConNumero("El nombre no puede contener numeros");
-               }
-          }
-          this.nombre = nombre;
+     
+     public Integer getPhone() {
+          return phone;
      }
 
-     public void setApellido1(String apellido1) throws ApellidoConNumero {
-          String numeros="0123456789";
-          for(int i=0;i<apellido1.length();i++) {
-               if(numeros.contains(""+apellido1.charAt(i))) {
-                    throw new ApellidoConNumero("El apellido no puede contener numeros");
+     public void setPhone(Integer phone) {
+          this.phone = phone;
+     }
+     
+     /**
+      * Establece el nombre del usuario.
+      * @param name Nombre a establecer para el usuario.
+      * @throws NombreConNumero Si el nombre contiene números.
+      */
+     public void setName(String name) throws NombreConNumero {
+          String numbers="0123456789";
+          for(int i=0;i<name.length();i++) {
+               if(numbers.contains(""+name.charAt(i))) {
+                    throw new NombreConNumero("El nombre no puede contener números");
                }
           }
-          this.apellido1 = apellido1;
+          this.name = name;
      }
 
-     public void setApellido2(String apellido2) throws ApellidoConNumero {
-          String numeros="0123456789";
-          for(int i=0;i<apellido2.length();i++) {
-               if(numeros.contains(""+apellido2.charAt(i))) {
-                    throw new ApellidoConNumero("El apellido no puede contener numeros");
+     /**
+      * Establece el primer apellido del usuario.
+      * @param lastName Primer apellido a establecer para el usuario.
+      * @throws ApellidoConNumero Si el apellido contiene números.
+      */
+     public void setLastName(String lastName) throws ApellidoConNumero {
+          String numbers="0123456789";
+          for(int i=0;i<lastName.length();i++) {
+               if(numbers.contains(""+lastName.charAt(i))) {
+                    throw new ApellidoConNumero("El apellido no puede contener números");
                }
           }
-          this.apellido2 = apellido2;
+          this.lastName = lastName;
      }
 
+     /**
+      * Establece el segundo apellido del usuario.
+      * @param lastName2 Segundo apellido a establecer para el usuario.
+      * @throws ApellidoConNumero Si el apellido contiene números.
+      */
+     public void setLastName2(String lastName2) throws ApellidoConNumero {
+          String numbers="0123456789";
+          for(int i=0;i<lastName2.length();i++) {
+               if(numbers.contains(""+lastName2.charAt(i))) {
+                    throw new ApellidoConNumero("El apellido no puede contener números");
+               }
+          }
+          this.lastName2 = lastName2;
+     }
+
+     /**
+      * Establece la contraseña del usuario.
+      * @param password Contraseña a establecer para el usuario.
+      */
      public void setPassword(String password) {
           this.password = password;
      }
 
-     public void setCorreo(String correo) {
-          this.correo = correo;
+     /**
+      * Establece el correo electrónico del usuario.
+      * @param email Correo electrónico a establecer para el usuario.
+      */
+     public void setEmail(String email) {
+          this.email = email;
      }
 
+     /**
+      * Establece el número de identificación del usuario (DNI).
+      * @param dni Número de identificación a establecer para el usuario.
+      * @throws DNIInvalido Si el formato del DNI es inválido.
+      */
+     public void setDni(String dni) throws DNIInvalido {
+          String letters="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+          for(byte i=0;i<dni.length();i++) {
+               if(!letters.contains(""+dni.charAt(i))&&dni.length()-1>i) {
+                    this.dni = dni;
+               }else if(letters.contains(""+dni.charAt(i))&&dni.length()-1>i) {
+                    throw new DNIInvalido("El dni es invalido");
+               }
+          }
+     }
+
+     /**
+      * Override del método toString para obtener una representación en cadena de la clase Usuario.
+      * @return Cadena que representa al usuario con todos sus atributos.
+      */
      @Override
      public String toString() {
           return "Usuario{" +
                   "id=" + id +
-                  ", nombre='" + nombre + '\'' +
-                  ", apellido1='" + apellido1 + '\'' +
-                  ", apellido2='" + apellido2 + '\'' +
+                  ", nombre='" + name + '\'' +
+                  ", apellido1='" + lastName + '\'' +
+                  ", apellido2='" + lastName2 + '\'' +
                   ", password='" + password + '\'' +
-                  ", correo='" + correo + '\'' +
+                  ", correo='" + email + '\'' +
                   ", dni='" + dni + '\'' +
-                  ", telefono=" + telefono +
+                  ", telefono=" + phone +
                   '}';
-     }
-
-     public void setDni(String dni) throws DNIInvalido {
-          String letras="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-          for(byte i=0;i<dni.length();i++) {
-               if(!letras.contains(""+dni.charAt(i))&&dni.length()-1>i) {
-                    this.dni = dni;
-               }else if(letras.contains(""+dni.charAt(i))&&dni.length()-1>i) {
-                    throw new DNIInvalido("El dni es invalido");
-               }
-          }
-
      }
 }

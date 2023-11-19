@@ -13,7 +13,6 @@ import exception.DNIInvalido;
 import exception.NombreConNumero;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -30,7 +29,6 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 public class VentanaProfesor implements Initializable {
@@ -113,7 +111,7 @@ public class VentanaProfesor implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File carpeta=new File ("./imagenes de "+Sesion.getProfesor().getDni());
+        File carpeta=new File ("./imagenes de "+Sesion.getTeacher().getDni());
         if(carpeta.exists()){
             File[]hijo=carpeta.listFiles();
             Image imagenProfe=new Image("file:"+carpeta.getName()+"/"+hijo[0].getName());
@@ -163,7 +161,7 @@ public class VentanaProfesor implements Initializable {
             @Override
             public String toString(Empresa empresa) {
                 if (empresa!=null){
-                    return empresa.getNombre();
+                    return empresa.getName();
                 }else{
                     return "<<Sin empresa>>";
                 }
@@ -180,47 +178,47 @@ public class VentanaProfesor implements Initializable {
         comboNombreEmpresa.getSelectionModel().selectFirst();
 
         cNombre.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getNombre();
+            String nombre=fila.getValue().getName();
             return new SimpleStringProperty(nombre);
         });
         cApellidos.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getApellido1()+" "+fila.getValue().getApellido2();
+            String nombre=fila.getValue().getLastName()+" "+fila.getValue().getLastName2();
             return new SimpleStringProperty(nombre);
         });
         cEmail.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getCorreo();
+            String nombre=fila.getValue().getEmail();
             return new SimpleStringProperty(nombre);
         });
         cTelefono.setCellValueFactory((fila)->{
-            String nombre=String.valueOf(fila.getValue().getTelefono()) ;
+            String nombre=String.valueOf(fila.getValue().getPhone()) ;
             return new SimpleStringProperty(nombre);
         });
         cFecha.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getFechaNacimiento();
+            String nombre=fila.getValue().getBirthday();
             return new SimpleStringProperty(nombre);
         });
         cCurso.setCellValueFactory((fila)->{
-            String nombre=String.valueOf(fila.getValue().getCurso());
+            String nombre=String.valueOf(fila.getValue().getGrade());
             return new SimpleStringProperty(nombre);
         });
         cProfesor.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getProfesor().getNombre()+" "+fila.getValue().getProfesor().getApellido1();
+            String nombre=fila.getValue().getTeacher().getName()+" "+fila.getValue().getTeacher().getLastName();
             return new SimpleStringProperty(nombre);
         });
         cHorasDUAL.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getHorasDUAL();
+            String nombre=fila.getValue().getHoursDUAL();
             return new SimpleStringProperty(nombre);
         });
         cHorasFCT.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getHorasFCT();
+            String nombre=fila.getValue().getHoursFCT();
             return new SimpleStringProperty(nombre);
         });
         cEmpresa.setCellValueFactory((fila)->{
             String nombre="";
-            if(fila.getValue().getEmpresa()==null){
+            if(fila.getValue().getEnterprise()==null){
                nombre="<<vacio>>";
             }else{
-                nombre=fila.getValue().getEmpresa().getNombre();
+                nombre=fila.getValue().getEnterprise().getName();
             }
 
             return new SimpleStringProperty(nombre);
@@ -241,16 +239,16 @@ public class VentanaProfesor implements Initializable {
                 });
                 menuItem2.setOnAction(actionEvent -> {
                     System.out.println("Paso por aqui");
-                    Alumno alumnoLista=Sesion.getProfesor().getAlumnos().get(Sesion.getProfesor().getAlumnos().indexOf(alumno));
+                    Alumno alumnoLista=Sesion.getTeacher().getAlumn().get(Sesion.getTeacher().getAlumn().indexOf(alumno));
 
                     ActividaDiariaDAOImp actDIB=new ActividaDiariaDAOImp(DBConnection.getConnection());
 
-                    for(int i=0;i<alumnoLista.getActividadDiaria().size();i++){
-                        actDIB.deleteActividad(alumnoLista.getActividadDiaria().get(i));
+                    for(int i = 0; i<alumnoLista.getActivity().size(); i++){
+                        actDIB.deleteActividad(alumnoLista.getActivity().get(i));
                     }
                     (new AlumnoDAOImp(DBConnection.getConnection())).delete(alumnoLista);
                     AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
-                    obs.setAll(conexion.loadAll(Sesion.getProfesor().getId()));
+                    obs.setAll(conexion.loadAll(Sesion.getTeacher().getId()));
 
 
                 });
@@ -259,13 +257,13 @@ public class VentanaProfesor implements Initializable {
         });
         obs= FXCollections.observableArrayList();
         AlumnoDAOImp conexion=new AlumnoDAOImp(DBConnection.getConnection());
-        Sesion.getProfesor().getAlumnos().addAll(conexion.loadAll(Sesion.getProfesor().getId()));
-        System.out.println(Sesion.getProfesor().getAlumnos());
-        obs.addAll(Sesion.getProfesor().getAlumnos());
+        Sesion.getTeacher().getAlumn().addAll(conexion.loadAll(Sesion.getTeacher().getId()));
+        System.out.println(Sesion.getTeacher().getAlumn());
+        obs.addAll(Sesion.getTeacher().getAlumn());
         tabla.setItems(obs);
         tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
             alumno=t1;
-            Sesion.setAlumno(alumno);
+            Sesion.setAlumn(alumno);
         });
 
 
@@ -284,7 +282,7 @@ public class VentanaProfesor implements Initializable {
             alerta.setHeaderText("Porfavor Selecciona un alumno en la tabla");
             alerta.showAndWait();
         }else{
-            Sesion.setAlumno(alumno);
+            Sesion.setAlumn(alumno);
             HelloApplication.loadFXML("ventana-editar.fxml");
         }
 
@@ -306,12 +304,12 @@ public class VentanaProfesor implements Initializable {
                 textApellidos.getText().strip();
 
                 textNombre.getText().strip();
-                alumno.setNombre(textNombre.getText());
+                alumno.setName(textNombre.getText());
                 textDNI.getText().strip();
                 textEmail.getText().strip();
-                alumno.setCorreo(textEmail.getText());
+                alumno.setEmail(textEmail.getText());
                 textTelefono.getText().strip();
-                alumno.setTelefono(Integer.valueOf(textTelefono.getText()));
+                alumno.setPhone(Integer.valueOf(textTelefono.getText()));
                 String fecha = String.valueOf(dateCalender.getValue());
                 System.out.println(fecha);
                 if(fecha.equals("null")){
@@ -321,11 +319,11 @@ public class VentanaProfesor implements Initializable {
                     alerta.setContentText("Asegurese de que los datos de la fecha de nacimiento\n sean correctos.");
                     alerta.showAndWait();
                 }
-                alumno.setFechaNacimiento(fecha);
+                alumno.setBirthday(fecha);
                 alumno.setPassword(contraseñaAlumno.getText());
-                alumno.setObservaciones("");
-                alumno.setProfesorId(Sesion.getProfesor().getId());
-                alumno.setProfesor(Sesion.getProfesor());
+                alumno.setObservations("");
+                alumno.setTeacherID(Sesion.getTeacher().getId());
+                alumno.setTeacher(Sesion.getTeacher());
 
                 alumno.setDni(textDNI.getText());
 
@@ -339,33 +337,33 @@ public class VentanaProfesor implements Initializable {
 
                 } else {
 
-                    alumno.setApellido1((String) apellidos[0]);
-                    alumno.setApellido2(apellidos[1]);
+                    alumno.setLastName((String) apellidos[0]);
+                    alumno.setLastName2(apellidos[1]);
 
                 }
-                alumno.setCurso((Curso) comboCurso.getSelectionModel().getSelectedItem());
+                alumno.setGrade((Curso) comboCurso.getSelectionModel().getSelectedItem());
 
                 if (radioDUal.isSelected()) {
-                    alumno.setHorasDUAL(spinnerDUAL.getValue() + "/270");
+                    alumno.setHoursDUAL(spinnerDUAL.getValue() + "/270");
                 } else {
-                    alumno.setHorasFCT(spinnerFCT.getValue() + "/270");
+                    alumno.setHoursFCT(spinnerFCT.getValue() + "/270");
                 }
                 if (comboNombreEmpresa.getValue() == null) {
-                    alumno.setEmpresa(null);
-                    alumno.setEmpresaId(0);
+                    alumno.setEnterprise(null);
+                    alumno.setEnterpriseID(0);
                 } else {
                     Empresa empresa = (Empresa) comboNombreEmpresa.getSelectionModel().getSelectedItem();
-                    alumno.setEmpresa(empresa);
-                    alumno.setEmpresaId(empresa.getId());
-                    empresa.setAlumnos(new ArrayList<>());
-                    empresa.getAlumnos().add(alumno);
+                    alumno.setEnterprise(empresa);
+                    alumno.setEnterpriseID(empresa.getId());
+                    empresa.setAlumn(new ArrayList<>());
+                    empresa.getAlumn().add(alumno);
                     System.out.println(empresa);
                 }
                 System.out.println(alumno);
 
                 AlumnoDAOImp dao = new AlumnoDAOImp(DBConnection.getConnection());
                Alumno alumnoValido= dao.injection(alumno);
-               Sesion.getProfesor().getAlumnos().add(alumnoValido);
+               Sesion.getTeacher().getAlumn().add(alumnoValido);
                 obs.add(alumnoValido);
 
             }else{
@@ -403,7 +401,7 @@ public class VentanaProfesor implements Initializable {
 
     @javafx.fxml.FXML
     public void logout(ActionEvent actionEvent) {
-        Sesion.setProfesor(null);
+        Sesion.setTeacher(null);
         HelloApplication.loadFXML("login.fxml");
     }
 
@@ -422,13 +420,13 @@ public class VentanaProfesor implements Initializable {
         File ruta= open.showOpenDialog(null);
         System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
         if(ruta!=null){
-            File carpeta=new File("imagenes de "+Sesion.getProfesor().getDni());
+            File carpeta=new File("imagenes de "+Sesion.getTeacher().getDni());
             if(!carpeta.exists()&&(ruta.getName().endsWith("jpg")||ruta.getName().endsWith("png")||ruta.getName().endsWith("PNG")||ruta.getName().endsWith("JPG"))){
                 try {
                     carpeta.mkdir();
                     Path origen= Path.of(ruta.getAbsolutePath());
                     Path destino= Path.of(carpeta.getName());
-                    Path destinoArchivo=destino.resolve(Sesion.getProfesor().getNombre()+" "+Sesion.getProfesor().getApellido1()+ruta.getName().substring(ruta.getName().indexOf(".")));
+                    Path destinoArchivo=destino.resolve(Sesion.getTeacher().getName()+" "+Sesion.getTeacher().getLastName()+ruta.getName().substring(ruta.getName().indexOf(".")));
                     Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
                     imagen.setImage(new Image("file:"+destinoArchivo));
 
@@ -440,7 +438,7 @@ public class VentanaProfesor implements Initializable {
                 hijos[0].delete();
                 Path origen= Path.of(ruta.getAbsolutePath());
                 Path destino= Path.of(carpeta.getName());
-                Path destinoArchivo=destino.resolve(Sesion.getProfesor().getNombre()+" "+Sesion.getProfesor().getApellido1()+ruta.getName().substring(ruta.getName().indexOf(".")));
+                Path destinoArchivo=destino.resolve(Sesion.getTeacher().getName()+" "+Sesion.getTeacher().getLastName()+ruta.getName().substring(ruta.getName().indexOf(".")));
                 try {
                     Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
                 } catch (IOException e) {

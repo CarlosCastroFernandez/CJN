@@ -1,9 +1,6 @@
 package com.example.proyectocesurapp;
 
-import clase.ActividadDiaria;
 import clase.Empresa;
-import clase.Sesion;
-import domain.ActividaDiariaDAOImp;
 import domain.DBConnection;
 import domain.EmpresaDAOImp;
 import javafx.beans.property.SimpleStringProperty;
@@ -58,7 +55,7 @@ public class EditarEmpresa implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cNombre.setCellValueFactory((fila) -> {
-            String nombre = fila.getValue().getNombre();
+            String nombre = fila.getValue().getName();
             return new SimpleStringProperty(nombre);
         });
         cEmail.setCellValueFactory((fila) -> {
@@ -66,16 +63,16 @@ public class EditarEmpresa implements Initializable {
             return new SimpleStringProperty(email);
         });
         cResponsable.setCellValueFactory((fila) -> {
-            String responsable = fila.getValue().getResponsable();
+            String responsable = fila.getValue().getBoss();
             return new SimpleStringProperty(responsable);
         });
         cTelefono.setCellValueFactory((fila) -> {
-            String cTelefono = String.valueOf(fila.getValue().getTelefono());
+            String cTelefono = String.valueOf(fila.getValue().getPhone());
             return new SimpleStringProperty(cTelefono);
         });
 
         cObservaciones.setCellValueFactory((fila) -> {
-            String cObservaciones = fila.getValue().getObservaciones();
+            String cObservaciones = fila.getValue().getObservations();
             return new SimpleStringProperty(cObservaciones);
         });
 
@@ -97,11 +94,11 @@ public class EditarEmpresa implements Initializable {
 
                 System.out.println("PASO POR AQUI");
                 empresa = t1;
-                txtTelefono.setText(""+empresa.getTelefono());
+                txtTelefono.setText(""+empresa.getPhone());
                 txtEmail.setText(empresa.getEmail());
-                txtNombre.setText(empresa.getNombre());
-                txtResponsable.setText(empresa.getResponsable());
-                txtObservaciones.setText(empresa.getObservaciones());
+                txtNombre.setText(empresa.getName());
+                txtResponsable.setText(empresa.getBoss());
+                txtObservaciones.setText(empresa.getObservations());
         };
         tvEmpresas.getSelectionModel().selectedItemProperty().addListener(selectionListener);
     }
@@ -112,11 +109,11 @@ public class EditarEmpresa implements Initializable {
             if (!txtTelefono.getText().isEmpty() && !txtEmail.getText().isEmpty()
                     && !txtNombre.getText().isEmpty() && !txtResponsable.getText().isEmpty()) {
                 System.out.println(empresa.toString());
-                empresa.setTelefono(Integer.valueOf(txtTelefono.getText()));
+                empresa.setPhone(Integer.valueOf(txtTelefono.getText()));
                 empresa.setEmail(txtEmail.getText());
-                empresa.setNombre(txtNombre.getText());
-                empresa.setResponsable(txtResponsable.getText());
-                empresa.setObservaciones(txtObservaciones.getText());
+                empresa.setName(txtNombre.getText());
+                empresa.setBoss(txtResponsable.getText());
+                empresa.setObservations(txtObservaciones.getText());
                 Empresa empresaActualizada = (new EmpresaDAOImp(DBConnection.getConnection()).update(empresa));
 
                 listaEmpresas = (new EmpresaDAOImp(DBConnection.getConnection()).loadAllEnterprise());
@@ -157,12 +154,12 @@ public class EditarEmpresa implements Initializable {
 
         try{
             Empresa empresaNueva=new Empresa();
-            empresaNueva.setTelefono(Integer.valueOf(txtTelefono.getText()));
+            empresaNueva.setPhone(Integer.valueOf(txtTelefono.getText()));
             empresaNueva.setEmail(txtEmail.getText());
-            empresaNueva.setNombre(txtNombre.getText());
-            empresaNueva.setResponsable(txtResponsable.getText());
-            empresaNueva.setObservaciones(txtObservaciones.getText());
-            Empresa empresaAnhadida =(new EmpresaDAOImp(DBConnection.getConnection()).insert(empresaNueva));
+            empresaNueva.setName(txtNombre.getText());
+            empresaNueva.setBoss(txtResponsable.getText());
+            empresaNueva.setObservations(txtObservaciones.getText());
+            Empresa empresaAnhadida =(new EmpresaDAOImp(DBConnection.getConnection()).injection(empresaNueva));
             observableEmpresas.add(empresaAnhadida);
         }catch(Exception e){
             e.printStackTrace();

@@ -2,7 +2,6 @@ package com.example.proyectocesurapp;
 
 import clase.ActividadDiaria;
 import clase.Sesion;
-import domain.ActividadDiariaDAO;
 import domain.ActividaDiariaDAOImp;
 import domain.DBConnection;
 import enums.TipoPractica;
@@ -33,7 +32,7 @@ public class EditarActividadDiariaView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        dpDate.setValue(LocalDate.parse(Sesion.getActividadDiaria().getFecha()));
+        dpDate.setValue(LocalDate.parse(Sesion.getActivity().getDate()));
         comboPracticeType.setConverter(new StringConverter<TipoPractica>() {
             @Override
             public String toString(TipoPractica tipoPractica) {
@@ -51,23 +50,23 @@ public class EditarActividadDiariaView implements Initializable {
         });
 
         comboPracticeType.getItems().addAll(TipoPractica.FCT,TipoPractica.DUAL);
-        comboPracticeType.setValue(Sesion.getActividadDiaria().getTipoPractica());
+        comboPracticeType.setValue(Sesion.getActivity().getPracticeType());
         comboPracticeType.setDisable(true);
-        fieldActivity.setText(Sesion.getActividadDiaria().getNombreTarea());
-        taObservations.setText(Sesion.getActividadDiaria().getObservaciones());
-        spHoras.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,8,Sesion.getActividadDiaria().getTotalHoras(),1));
+        fieldActivity.setText(Sesion.getActivity().getTaskName());
+        taObservations.setText(Sesion.getActivity().getObservations());
+        spHoras.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,8,Sesion.getActivity().getTotalHours(),1));
     }
 
     @javafx.fxml.FXML
     public void guardar(ActionEvent actionEvent) {
         if (!(dpDate.getValue() == null) &&
         !fieldActivity.getText().isEmpty()){
-             Sesion.getActividadDiaria().setNombreTarea(fieldActivity.getText());
-             Sesion.getActividadDiaria().setFecha(String.valueOf(dpDate.getValue()));
-             Sesion.getActividadDiaria().setTipoPractica(comboPracticeType.getValue());
-             Sesion.getActividadDiaria().setTotalHoras(spHoras.getValue());
-             Sesion.getActividadDiaria().setObservaciones(taObservations.getText());
-            ActividadDiaria actividadDiaria = (new ActividaDiariaDAOImp(DBConnection.getConnection()).update(Sesion.getActividadDiaria()));
+             Sesion.getActivity().setTaskName(fieldActivity.getText());
+             Sesion.getActivity().setDate(String.valueOf(dpDate.getValue()));
+             Sesion.getActivity().setPracticeType(comboPracticeType.getValue());
+             Sesion.getActivity().setTotaHours(spHoras.getValue());
+             Sesion.getActivity().setObservations(taObservations.getText());
+            ActividadDiaria actividadDiaria = (new ActividaDiariaDAOImp(DBConnection.getConnection()).update(Sesion.getActivity()));
         } else {
             Alert alerta=new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Error");

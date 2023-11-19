@@ -30,19 +30,19 @@ public class Login implements Initializable {
         ProfesorDAOImp dao=new ProfesorDAOImp(DBConnection.getConnection());
         AlumnoDAOImp daoA=new AlumnoDAOImp(DBConnection.getConnection());
         try {
-            Sesion.setProfesor(dao.loadTeacher(usuarioDni,usuarioContrasenha));
+            Sesion.setTeacher(dao.loadTeacher(usuarioDni,usuarioContrasenha));
 
-            System.out.println(Sesion.getProfesor());
+            System.out.println(Sesion.getTeacher());
             Alert alerta=new Alert(Alert.AlertType.CONFIRMATION);
             alerta.setTitle("Login");
-            alerta.setHeaderText("Bienvenido "+Sesion.getProfesor().getNombre());
+            alerta.setHeaderText("Bienvenido "+Sesion.getTeacher().getName());
             alerta.setContentText("Inicio Correcto");
             alerta.showAndWait();
             HelloApplication.loadFXML("ventanaProfesor.fxml");
 
         } catch (UsuarioInexistente e) {
             try {
-                Sesion.setAlumno(daoA.loadActivity(usuarioDni,usuarioContrasenha));
+                Sesion.setAlumn(daoA.loadActivity(usuarioDni,usuarioContrasenha));
                 HelloApplication.loadFXML("ventanaAlumno.fxml");
             } catch (ContrasenhaIncorrecta ex) {
                 throw new RuntimeException(ex);

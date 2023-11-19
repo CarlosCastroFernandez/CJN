@@ -3,8 +3,6 @@ package domain;
 import clase.ActividadDiaria;
 import clase.Sesion;
 import enums.TipoPractica;
-import exception.ContrasenhaIncorrecta;
-import exception.UsuarioInexistente;
 import lombok.extern.java.Log;
 
 import java.sql.*;
@@ -31,12 +29,12 @@ import java.util.ArrayList;
             while (rs.next()) {
                 ActividadDiaria actividad = new ActividadDiaria();
                 actividad.setId(rs.getInt("id"));
-                actividad.setIdAlumno(rs.getInt("alumnoId"));
-                actividad.setFecha(String.valueOf(rs.getDate("fecha")));
-                actividad.setTipoPractica(TipoPractica.valueOf(rs.getString("tipoPractica")));
-                actividad.setTotalHoras(rs.getInt("totalHoras"));
-                actividad.setNombreTarea(rs.getString("nombre"));
-                actividad.setObservaciones(rs.getString("observaciones"));
+                actividad.setIdAlumn(rs.getInt("alumnoId"));
+                actividad.setDate(String.valueOf(rs.getDate("fecha")));
+                actividad.setPracticeType(TipoPractica.valueOf(rs.getString("tipoPractica")));
+                actividad.setTotaHours(rs.getInt("totalHoras"));
+                actividad.setTaskName(rs.getString("nombre"));
+                actividad.setObservations(rs.getString("observaciones"));
                 actividadDiaria.add(actividad);
             }
         } catch (SQLException e) {
@@ -46,16 +44,16 @@ import java.util.ArrayList;
     }
 
     @Override
-    public ActividadDiaria insercion(ActividadDiaria actividad) {
+    public ActividadDiaria injection(ActividadDiaria actividad) {
        ActividadDiaria actividades=null;
        try {
            PreparedStatement pst = conexion.prepareStatement(insertActivity, Statement.RETURN_GENERATED_KEYS);
-           pst.setString(1, actividad.getNombreTarea());
-           pst.setInt(2, actividad.getTotalHoras());
-           pst.setString(3, actividad.getObservaciones());
-           pst.setString(4, String.valueOf(actividad.getTipoPractica()));
-           pst.setString(5, actividad.getFecha());
-           pst.setInt(6,Sesion.getAlumno().getId());
+           pst.setString(1, actividad.getTaskName());
+           pst.setInt(2, actividad.getTotalHours());
+           pst.setString(3, actividad.getObservations());
+           pst.setString(4, String.valueOf(actividad.getPracticeType()));
+           pst.setString(5, actividad.getDate());
+           pst.setInt(6,Sesion.getAlumn().getId());
            actividades=actividad;
            Integer fila = pst.executeUpdate();
            if(fila==1){
@@ -77,12 +75,12 @@ import java.util.ArrayList;
         ActividadDiaria actividad = actividadDiaria;
         try{
             PreparedStatement preparedStatement = conexion.prepareStatement(actualizacion);
-            preparedStatement.setString(1, actividad.getNombreTarea());
-            preparedStatement.setInt(2, actividad.getTotalHoras());
-            preparedStatement.setString(3, actividad.getObservaciones());
-            preparedStatement.setString(4, String.valueOf(actividad.getTipoPractica()));
-            preparedStatement.setString(5, actividad.getFecha());
-            preparedStatement.setInt(6, Sesion.getAlumno().getId());
+            preparedStatement.setString(1, actividad.getTaskName());
+            preparedStatement.setInt(2, actividad.getTotalHours());
+            preparedStatement.setString(3, actividad.getObservations());
+            preparedStatement.setString(4, String.valueOf(actividad.getPracticeType()));
+            preparedStatement.setString(5, actividad.getDate());
+            preparedStatement.setInt(6, Sesion.getAlumn().getId());
             int filas = preparedStatement.executeUpdate();
         }catch(SQLException e){
             throw new RuntimeException(e);

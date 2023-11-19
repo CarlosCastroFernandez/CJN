@@ -61,7 +61,7 @@ public class VentanaAlumno implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File carpeta = new File("./imagenes de " + Sesion.getAlumno().getDni());
+        File carpeta = new File("./imagenes de " + Sesion.getAlumn().getDni());
         if (carpeta.exists()) {
             File[] hijo = carpeta.listFiles();
             Image imagenAlumno = new Image("file:" + carpeta.getName() + "/" + hijo[0].getName());
@@ -80,23 +80,23 @@ public class VentanaAlumno implements Initializable {
         comboPracticeType.setDisable(true);
         spHoras.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 8, 0, 1));
         cDate.setCellValueFactory((fila) -> {
-            String fecha = fila.getValue().getFecha();
+            String fecha = fila.getValue().getDate();
             return new SimpleStringProperty(fecha);
         });
         cTPractice.setCellValueFactory((fila) -> {
-            String tipoPractica = String.valueOf(fila.getValue().getTipoPractica());
+            String tipoPractica = String.valueOf(fila.getValue().getPracticeType());
             return new SimpleStringProperty(tipoPractica);
         });
         cTHours.setCellValueFactory((fila) -> {
-            String totalHoras = String.valueOf(fila.getValue().getTotalHoras());
+            String totalHoras = String.valueOf(fila.getValue().getTotalHours());
             return new SimpleStringProperty(totalHoras);
         });
         cObservations.setCellValueFactory((fila) -> {
-            String observaciones = fila.getValue().getObservaciones();
+            String observaciones = fila.getValue().getObservations();
             return new SimpleStringProperty(observaciones);
         });
         cActivityRealised.setCellValueFactory((fila) -> {
-            String tareaRealizada = fila.getValue().getNombreTarea();
+            String tareaRealizada = fila.getValue().getTaskName();
             return new SimpleStringProperty(tareaRealizada);
         });
         tvUser.setOnMousePressed(mouseEvent -> {
@@ -112,8 +112,8 @@ public class VentanaAlumno implements Initializable {
                 menuItem1.setOnAction(actionEvent -> HelloApplication.loadFXML("editar-actividadDiaria-view.fxml"));
 
                 menuItem2.setOnAction(actionEvent -> {
-                  ActividadDiaria actividadDiariaDelete = Sesion.getAlumno().getActividadDiaria().remove(Sesion.getAlumno().getActividadDiaria().indexOf(actividadDiaria));
-                    observableActividad.setAll(Sesion.getAlumno().getActividadDiaria());
+                  ActividadDiaria actividadDiariaDelete = Sesion.getAlumn().getActivity().remove(Sesion.getAlumn().getActivity().indexOf(actividadDiaria));
+                    observableActividad.setAll(Sesion.getAlumn().getActivity());
                     tvUser.setItems(observableActividad);
                     ActividaDiariaDAOImp delete=new ActividaDiariaDAOImp(DBConnection.getConnection());
                     delete.deleteActividad(actividadDiariaDelete);
@@ -122,24 +122,24 @@ public class VentanaAlumno implements Initializable {
 
         });
         //Consulta a bbdd: "Todas las actividades diarias que tiene el alumno logeado".
-        Integer idAlumno = Sesion.getAlumno().getId();
+        Integer idAlumno = Sesion.getAlumn().getId();
         ActividaDiariaDAOImp dao = new ActividaDiariaDAOImp(DBConnection.getConnection());
-        Sesion.getAlumno().getActividadDiaria().addAll(dao.loadall(idAlumno));
-        if (Sesion.getAlumno().getActividadDiaria().isEmpty()) {
-            Sesion.getAlumno().getActividadDiaria().addAll(dao.loadall(idAlumno));
+        Sesion.getAlumn().getActivity().addAll(dao.loadall(idAlumno));
+        if (Sesion.getAlumn().getActivity().isEmpty()) {
+            Sesion.getAlumn().getActivity().addAll(dao.loadall(idAlumno));
             observableActividad = FXCollections.observableArrayList();
-            observableActividad.addAll(Sesion.getAlumno().getActividadDiaria());
+            observableActividad.addAll(Sesion.getAlumn().getActivity());
             tvUser.setItems(observableActividad);
         } else {
             tvUser.getItems().clear();
-            Sesion.getAlumno().setActividadDiaria(dao.loadall(idAlumno));
+            Sesion.getAlumn().setActivity(dao.loadall(idAlumno));
             observableActividad = FXCollections.observableArrayList();
-            observableActividad.addAll(Sesion.getAlumno().getActividadDiaria());
+            observableActividad.addAll(Sesion.getAlumn().getActivity());
             tvUser.setItems(observableActividad);
         }
         tvUser.getSelectionModel().selectedItemProperty().addListener((observable, t0, t1) -> {
             actividadDiaria = t1;
-            Sesion.setActividadDiaria(actividadDiaria);
+            Sesion.setActivity(actividadDiaria);
         });
         /* Los datos de esta consulta a Array de Sesion, de este array al observable y del observable a la tabla. */
     }
@@ -159,18 +159,18 @@ public class VentanaAlumno implements Initializable {
                 alert.showAndWait();
             }
 
-            dayActivity.setFecha(String.valueOf(dpDate.getValue()));
-            dayActivity.setTipoPractica(comboPracticeType.getSelectionModel().getSelectedItem());
-            dayActivity.setTotalHoras(spHoras.getValue());
-            dayActivity.setNombreTarea(fieldActivity.getText().strip());
-            dayActivity.setObservaciones(taObservations.getText().strip());
+            dayActivity.setDate(String.valueOf(dpDate.getValue()));
+            dayActivity.setPracticeType(comboPracticeType.getSelectionModel().getSelectedItem());
+            dayActivity.setTotaHours(spHoras.getValue());
+            dayActivity.setTaskName(fieldActivity.getText().strip());
+            dayActivity.setObservations(taObservations.getText().strip());
 
             ActividaDiariaDAOImp dao = new ActividaDiariaDAOImp(DBConnection.getConnection());
-            Sesion.setActividadDiaria(dao.insercion(dayActivity));
-            System.out.println(Sesion.getActividadDiaria().toString());
-            Sesion.getListaActividades().add(Sesion.getActividadDiaria());
-            Sesion.getAlumno().getActividadDiaria().add(Sesion.getActividadDiaria());
-            observableActividad.add(Sesion.getActividadDiaria());
+            Sesion.setActivity(dao.injection(dayActivity));
+            System.out.println(Sesion.getActivity().toString());
+            Sesion.getActivities().add(Sesion.getActivity());
+            Sesion.getAlumn().getActivity().add(Sesion.getActivity());
+            observableActividad.add(Sesion.getActivity());
             System.out.println("Sale.");
 
         } else {
@@ -189,13 +189,13 @@ public class VentanaAlumno implements Initializable {
         File ruta = open.showOpenDialog(null);
         System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
         if (ruta != null) {
-            File carpeta = new File("imágenes de " + Sesion.getAlumno().getDni());
+            File carpeta = new File("imágenes de " + Sesion.getAlumn().getDni());
             if (!carpeta.exists() && (ruta.getName().endsWith("jpg") || ruta.getName().endsWith("png") || ruta.getName().endsWith("PNG") || ruta.getName().endsWith("JPG"))) {
                 try {
                     carpeta.mkdir();
                     Path origen = Path.of(ruta.getAbsolutePath());
                     Path destino = Path.of(carpeta.getName());
-                    Path destinoArchivo = destino.resolve(Sesion.getAlumno().getNombre() + " " + Sesion.getAlumno().getApellido1() + ruta.getName().substring(ruta.getName().indexOf(".")));
+                    Path destinoArchivo = destino.resolve(Sesion.getAlumn().getName() + " " + Sesion.getAlumn().getLastName() + ruta.getName().substring(ruta.getName().indexOf(".")));
                     Files.copy(origen, destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
                     ivUser.setImage(new Image("file:" + destinoArchivo));
                 } catch (IOException e) {
@@ -207,7 +207,7 @@ public class VentanaAlumno implements Initializable {
                 hijos[0].delete();
                 Path origen = Path.of(ruta.getAbsolutePath());
                 Path destino = Path.of(carpeta.getName());
-                Path destinoArchivo = destino.resolve(Sesion.getAlumno().getNombre() + " " + Sesion.getAlumno().getApellido1() + ruta.getName().substring(ruta.getName().indexOf(".")));
+                Path destinoArchivo = destino.resolve(Sesion.getAlumn().getName() + " " + Sesion.getAlumn().getLastName() + ruta.getName().substring(ruta.getName().indexOf(".")));
                 try {
                     Files.copy(origen, destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
                 } catch (IOException e) {

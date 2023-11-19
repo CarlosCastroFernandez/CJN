@@ -46,7 +46,7 @@ public class AlumnoDAOImp implements AlumnoDAO{
                         rs.getInt("telefono"),rs.getString("horasDual"),rs.getString("horasFCT"),
                         rs.getInt("profesor"),String.valueOf(rs.getDate("fechaNacimiento")), rs.getInt("empresa"),
                         Curso.valueOf(rs.getString("curso")) ,rs.getString("observaciones"));
-                salida.setProfesor(new ProfesorDAOImp(DBConnection.getConnection()).loadTeacherById(rs.getInt("profesor")));
+                salida.setTeacher(new ProfesorDAOImp(DBConnection.getConnection()).loadTeacherById(rs.getInt("profesor")));
 
                 if(!contrasenha.equals(salida.getPassword())){
                     throw new ContrasenhaIncorrecta ("Contraseña Incorrecta");
@@ -82,12 +82,12 @@ public class AlumnoDAOImp implements AlumnoDAO{
                         rs.getInt("telefono"),rs.getString("horasDual"),rs.getString("horasFCT"),
                         rs.getInt("profesor"),sdf.format(rs.getDate("fechaNacimiento")), rs.getInt("empresa"),
                         Curso.valueOf(rs.getString("curso")) ,rs.getString("observaciones"));
-                if(alumno.getEmpresaId()!=0){
-                    alumno.setEmpresa((new EmpresaDAOImp(DBConnection.getConnection()).loadEnterprise(alumno.getEmpresaId())));
+                if(alumno.getEnterpriseID()!=0){
+                    alumno.setEnterprise((new EmpresaDAOImp(DBConnection.getConnection()).loadEnterprise(alumno.getEnterpriseID())));
                 }
                 ActividaDiariaDAOImp actividad=new ActividaDiariaDAOImp(DBConnection.getConnection());
-                alumno.setActividadDiaria(actividad.loadall(alumno.getId()));
-                alumno.setProfesor(new ProfesorDAOImp(DBConnection.getConnection()).loadTeacherById(id));
+                alumno.setActivity(actividad.loadall(alumno.getId()));
+                alumno.setTeacher(new ProfesorDAOImp(DBConnection.getConnection()).loadTeacherById(id));
                 salida.add(alumno);
 
             }
@@ -116,16 +116,16 @@ public class AlumnoDAOImp implements AlumnoDAO{
         try {
             PreparedStatement pst=connection.prepareStatement(actualizacion);
             pst.setString(1,a.getDni());
-            pst.setString(2,a.getCorreo());
-            pst.setString(3,a.getNombre());
-            pst.setString(4,a.getApellido1());
-            pst.setString(5,a.getApellido2());
-            pst.setInt(6,a.getTelefono());
-            pst.setInt(7,a.getEmpresaId());
-            pst.setString(8,a.getFechaNacimiento());
-            pst.setString(9,a.getHorasDUAL());
-            pst.setString(10,a.getHorasFCT());
-            pst.setString(11,String.valueOf(a.getCurso()));
+            pst.setString(2,a.getEmail());
+            pst.setString(3,a.getName());
+            pst.setString(4,a.getLastName());
+            pst.setString(5,a.getLastName2());
+            pst.setInt(6,a.getPhone());
+            pst.setInt(7,a.getEnterpriseID());
+            pst.setString(8,a.getBirthday());
+            pst.setString(9,a.getHoursDUAL());
+            pst.setString(10,a.getHoursFCT());
+            pst.setString(11,String.valueOf(a.getGrade()));
             pst.setInt(12,a.getId());
             int filas=pst.executeUpdate();
         } catch (SQLException e) {
@@ -171,19 +171,19 @@ public class AlumnoDAOImp implements AlumnoDAO{
         try {
             PreparedStatement pst=connection.prepareStatement(queryRegister, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1,alumno.getDni());
-            pst.setString(2,alumno.getCorreo());
-            pst.setString(3,alumno.getNombre());
-            pst.setString(4,alumno.getApellido1());
-            pst.setString(5,alumno.getApellido2());
-            pst.setInt(6,alumno.getTelefono());
+            pst.setString(2,alumno.getEmail());
+            pst.setString(3,alumno.getName());
+            pst.setString(4,alumno.getLastName());
+            pst.setString(5,alumno.getLastName2());
+            pst.setInt(6,alumno.getPhone());
             pst.setString(7,alumno.getPassword());
-            pst.setInt(8,alumno.getProfesorId());
-            pst.setInt(9,alumno.getEmpresaId());
-            pst.setString(10,alumno.getFechaNacimiento());
-            pst.setString(11,alumno.getHorasDUAL());
-            pst.setString(12,alumno.getHorasFCT());
-            pst.setString(13,alumno.getCurso().name());
-            pst.setString(14,alumno.getObservaciones());
+            pst.setInt(8,alumno.getTeacherID());
+            pst.setInt(9,alumno.getEnterpriseID());
+            pst.setString(10,alumno.getBirthday());
+            pst.setString(11,alumno.getHoursDUAL());
+            pst.setString(12,alumno.getHoursFCT());
+            pst.setString(13,alumno.getGrade().name());
+            pst.setString(14,alumno.getObservations());
             int filas=pst.executeUpdate();
             if(filas==1){
                 ResultSet rs=pst.getGeneratedKeys();

@@ -1,14 +1,10 @@
 package domain;
 
-import clase.ActividadDiaria;
 import clase.Empresa;
-import clase.Sesion;
-import exception.NombreConNumero;
 import lombok.extern.java.Log;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.PropertyResourceBundle;
 
 @Log
 public class EmpresaDAOImp implements EmpresaDAO {
@@ -66,10 +62,10 @@ public class EmpresaDAOImp implements EmpresaDAO {
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(actualizacion);
             preparedStatement.setString(1, empresaImp.getEmail());
-            preparedStatement.setString(2, empresaImp.getNombre());
-            preparedStatement.setInt(3, empresaImp.getTelefono());
-            preparedStatement.setString(4, empresaImp.getResponsable());
-            preparedStatement.setString(5, empresaImp.getObservaciones());
+            preparedStatement.setString(2, empresaImp.getName());
+            preparedStatement.setInt(3, empresaImp.getPhone());
+            preparedStatement.setString(4, empresaImp.getBoss());
+            preparedStatement.setString(5, empresaImp.getObservations());
             preparedStatement.setInt(6,empresaImp.getId());
             int filas = preparedStatement.executeUpdate();
         }catch(SQLException e){
@@ -79,15 +75,15 @@ public class EmpresaDAOImp implements EmpresaDAO {
     }
 
     @Override
-    public  Empresa insert(Empresa empresa) {
+    public  Empresa injection(Empresa empresa) {
         Empresa empresaIns = null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(insertIntoEmpresa, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, empresa.getEmail());
-            preparedStatement.setString(2, empresa.getNombre());
-            preparedStatement.setInt(3, empresa.getTelefono());
-            preparedStatement.setString(4, empresa.getResponsable());
-            preparedStatement.setString(5, empresa.getObservaciones());
+            preparedStatement.setString(2, empresa.getName());
+            preparedStatement.setInt(3, empresa.getPhone());
+            preparedStatement.setString(4, empresa.getBoss());
+            preparedStatement.setString(5, empresa.getObservations());
             int filas = preparedStatement.executeUpdate();
             if (filas == 1){
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();

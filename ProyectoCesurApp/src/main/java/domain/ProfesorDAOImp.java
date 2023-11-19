@@ -31,15 +31,15 @@ public class ProfesorDAOImp implements ProfesorDAO{
                 profesor=new Profesor(dni, contrasenha);
                 profesor.setId(rs.getInt("id"));
                 profesor.setDni(dni);
-                profesor.setNombre(rs.getString("nombre"));
+                profesor.setName(rs.getString("nombre"));
                 profesor.setPassword(rs.getString("contraseña"));
                 if(!contrasenha.equals(profesor.getPassword())){
                     throw new ContrasenhaIncorrecta("Contraseña Incorrecta");
                 }
-                profesor.setApellido1(rs.getString("apellido1"));
-                profesor.setApellido2(rs.getString("apellido2"));
-                profesor.setCorreo(rs.getString("email"));
-                profesor.setTelefono(rs.getInt("telefono"));
+                profesor.setLastName(rs.getString("apellido1"));
+                profesor.setLastName2(rs.getString("apellido2"));
+                profesor.setEmail(rs.getString("email"));
+                profesor.setPhone(rs.getInt("telefono"));
             }else{
                 log.warning("Usuario no existe");
                 throw new UsuarioInexistente("Usuario no existe");
@@ -67,12 +67,12 @@ public class ProfesorDAOImp implements ProfesorDAO{
                 profesor=new Profesor();
                 profesor.setId(rs.getInt("id"));
                 profesor.setDni(rs.getString("dni"));
-                profesor.setNombre(rs.getString("nombre"));
+                profesor.setName(rs.getString("nombre"));
                 profesor.setPassword(rs.getString("contraseña"));
-                profesor.setApellido1(rs.getString("apellido1"));
-                profesor.setApellido2(rs.getString("apellido2"));
-                profesor.setCorreo(rs.getString("email"));
-                profesor.setTelefono(rs.getInt("telefono"));
+                profesor.setLastName(rs.getString("apellido1"));
+                profesor.setLastName2(rs.getString("apellido2"));
+                profesor.setEmail(rs.getString("email"));
+                profesor.setPhone(rs.getInt("telefono"));
             }else{
                 log.warning("Usuario no existe");
                 throw new UsuarioInexistente("Usuario no existe");
@@ -96,12 +96,12 @@ public class ProfesorDAOImp implements ProfesorDAO{
         try {
             PreparedStatement pst=conexion.prepareStatement(registerTeacher, Statement.RETURN_GENERATED_KEYS);
             pst.setString(1,profesor.getDni());
-            pst.setString(2,profesor.getNombre());
-            pst.setString(3,profesor.getCorreo());
-            pst.setString(4,profesor.getApellido1());
-            pst.setString(5,profesor.getApellido2());
+            pst.setString(2,profesor.getName());
+            pst.setString(3,profesor.getEmail());
+            pst.setString(4,profesor.getLastName());
+            pst.setString(5,profesor.getLastName2());
             pst.setString(6, profesor.getPassword());
-            pst.setInt(7,profesor.getTelefono());
+            pst.setInt(7,profesor.getPhone());
             Integer fila=pst.executeUpdate();
             if(fila==1){
                 ResultSet rs=pst.getGeneratedKeys();

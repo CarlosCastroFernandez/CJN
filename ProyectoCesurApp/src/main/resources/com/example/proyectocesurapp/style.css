@@ -1,13 +1,12 @@
 .ventana{
-    -fx-background-image: url("imagenes/fondo.jpg");
+    -fx-background-image: url("imagenes/fondo3.jpeg");
     -fx-background-size: cover;
     -fx-background-position: center center;
 }
 .ventana2{
-    -fx-background-image: url("imagenes/fondoLogin.png");
+    -fx-background-image: url("imagenes/fondoLogin2.png");
     -fx-background-size: cover;
     -fx-background-position: center center;
-
 }
 #pane{
     -fx-effect: dropshadow(gaussian, rgba(128, 128, 128, 0.7), 10, 0.5, 0.0, 0.0);
@@ -24,9 +23,6 @@
     -fx-background-color: transparent;
 }
 #formulario{
-    /*-fx-background-image: url("imagenes/fondo.jpg");
-    -fx-background-size: cover;
-    -fx-background-position: center center;*/
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 10, 0.5, 0.0, 0.0);
     -fx-background-color: white;
     -fx-background-radius: 10px;
@@ -95,7 +91,7 @@
 
 /* tamaño, bordes y color de fondo de los titulos*/
 .table-view .column-header, .table-view .filler {
-    -fx-background-image: url("imagenes/fondo.jpg");
+    -fx-background-image: url("imagenes/fondo3.jpeg");
     -fx-background-size: cover;
     -fx-background-position: center center;
     -fx-size: 45;
@@ -110,6 +106,12 @@
 
    .imagenRegistro{
        -fx-background-image: url("imagenes/fondoCesur.png");
+       -fx-background-size: cover;
+       -fx-background-position: center center;
+   }
+
+   .button{
+       -fx-background-image: url("imagenes/fondo3.jpeg");
        -fx-background-size: cover;
        -fx-background-position: center center;
    }

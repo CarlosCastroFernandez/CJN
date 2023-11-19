@@ -2,29 +2,74 @@ package clase;
 
 import enums.TipoPractica;
 
+/**
+ * La clase ActividadDiaria representa una actividad diaria realizada por un alumno.
+ */
 public class ActividadDiaria {
+
+    /**
+     * Identificador único de la actividad.
+     */
     private Integer id;
-    private Integer idAlumno;
-    private String fecha;
-    private TipoPractica tipoPractica;
-    private Integer totalHoras;
-    private String nombreTarea;
-    private String observaciones;
 
-    public ActividadDiaria(Integer id, Integer idAlumno, String fecha, TipoPractica tipoPractica, Integer totalHoras, String nombreTarea, String observaciones) {
+    /**
+     * Identificador del alumno asociado a la actividad.
+     */
+    private Integer idAlumn;
+
+    /**
+     * Fecha de la actividad.
+     */
+    private String date;
+
+    /**
+     * Tipo de práctica a la que pertenece la actividad.
+     */
+    private TipoPractica practiceType;
+
+    /**
+     * Total de horas dedicadas a la actividad.
+     */
+    private Integer totalHours;
+
+    /**
+     * Nombre de la actividad realizada.
+     */
+    private String taskName;
+
+    /**
+     * Observaciones adicionales.
+     */
+    private String observations;
+
+    /**
+     * Constructor de la clase ActividadDiaria.
+     * @param id Identificador único de la actividad.
+     * @param idAlumn Identificador del alumno asociado a la actividad.
+     * @param date Fecha de la actividad en formato de cadena.
+     * @param practiceType Tipo de práctica realizada (enum TipoPractica).
+     * @param totalHours Total de horas dedicadas a la actividad.
+     * @param taskName Nombre de la actividad realizada.
+     * @param observations Observaciones adicionales sobre la actividad.
+     */
+    public ActividadDiaria(Integer id, Integer idAlumn, String date, TipoPractica practiceType, Integer totalHours, String taskName, String observations) {
         this.id = id;
-        this.idAlumno = idAlumno;
-        this.fecha = fecha;
-        this.tipoPractica = tipoPractica;
-        this.totalHoras = totalHoras;
-        this.nombreTarea = nombreTarea;
-        this.observaciones = observaciones;
+        this.idAlumn = idAlumn;
+        this.date = date;
+        this.practiceType = practiceType;
+        this.totalHours = totalHours;
+        this.taskName = taskName;
+        this.observations = observations;
     }
 
-    public ActividadDiaria(){
+    /**
+     * Constructor por defecto de la clase ActividadDiaria.
+     */
+    public ActividadDiaria() {
 
     }
 
+    // Getters y setters para los atributos de la clase
     public Integer getId() {
         return id;
     }
@@ -33,64 +78,73 @@ public class ActividadDiaria {
         this.id = id;
     }
 
-    public Integer getIdAlumno() {
-        return idAlumno;
+    public Integer getIdAlumn() {
+        return idAlumn;
     }
 
-    public void setIdAlumno(Integer idAlumno) {
-        this.idAlumno = idAlumno;
+    public void setIdAlumn(Integer idAlumn) {
+        this.idAlumn = idAlumn;
     }
 
-    public String getFecha() {
-        return fecha;
+
+    public String getDate() {
+        return date;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public TipoPractica getTipoPractica() {
-        return tipoPractica;
+
+    public TipoPractica getPracticeType() {
+        return practiceType;
     }
 
-    public void setTipoPractica(TipoPractica tipoPractica) {
-        this.tipoPractica = tipoPractica;
+    public void setPracticeType(TipoPractica practiceType) {
+        this.practiceType = practiceType;
     }
 
-    public Integer getTotalHoras() {
-        return totalHoras;
+
+    public Integer getTotalHours() {
+        return totalHours;
     }
 
-    public void setTotalHoras(Integer totalHoras) {
-        this.totalHoras = totalHoras;
+    public void setTotaHours(Integer totalHours) {
+        this.totalHours = totalHours;
     }
 
-    public String getNombreTarea() {
-        return nombreTarea;
+
+    public String getTaskName() {
+        return taskName;
     }
 
-    public void setNombreTarea(String nombreTarea) {
-        this.nombreTarea = nombreTarea;
+    public void setTaskName(String taskName) {
+        this.taskName = taskName;
     }
 
-    public String getObservaciones() {
-        return observaciones;
+
+    public String getObservations() {
+        return observations;
     }
 
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
+    public void setObservations(String observations) {
+        this.observations = observations;
     }
 
+    /**
+     * Override del método toString para obtener una representación en cadena de la clase ActividadDiaria.
+     * @return Cadena que representa la actividad diaria con todos sus atributos.
+     */
     @Override
     public String toString() {
         return "ActividadDiaria{" +
                 "id=" + id +
-                ", idAlumno=" + idAlumno +
-                ", fecha='" + fecha + '\'' +
-                ", tipoPractica=" + tipoPractica +
-                ", totalHoras=" + totalHoras +
-                ", nombreTarea='" + nombreTarea + '\'' +
-                ", observaciones='" + observaciones + '\'' +
+                ", idAlumno=" + idAlumn +
+                ", fecha='" + date + '\'' +
+                ", tipoPractica=" + practiceType +
+                ", totalHoras=" + totalHours +
+                ", nombreTarea='" + taskName + '\'' +
+                ", observaciones='" + observations + '\'' +
                 '}';
     }
 }

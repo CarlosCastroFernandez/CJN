@@ -22,7 +22,7 @@
                   <Insets bottom="50.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold Italic" size="24.0" />
+                  <Font name="System Bold Italic" size="30.0" />
                </font>
             </Label>
             <GridPane alignment="CENTER" vgap="50.0">
@@ -45,7 +45,7 @@
                            <children>
                               <Label text="Email">
                                  <font>
-                                    <Font name="System Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="txtEmail" />
@@ -55,7 +55,7 @@
                            <children>
                               <Label text="DNI">
                                  <font>
-                                    <Font name="System Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="txtDNI" />
@@ -69,7 +69,7 @@
                            <children>
                               <Label text="Nombre">
                                  <font>
-                                    <Font name="System Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="txtNombre" />
@@ -82,7 +82,7 @@
                            <children>
                               <Label text="Contraseña">
                                  <font>
-                                    <Font name="System Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
                               <PasswordField fx:id="passField" />
@@ -96,7 +96,7 @@
                            <children>
                               <Label text="1º Apellido">
                                  <font>
-                                    <Font name="System Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="txtApellido1" />
@@ -106,7 +106,7 @@
                            <children>
                               <Label text="2º Apellido">
                                  <font>
-                                    <Font name="System Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="txtApellido2" />
@@ -118,9 +118,9 @@
                      <children>
                         <VBox>
                            <children>
-                              <Label text="Telefono">
+                              <Label text="Teléfono">
                                  <font>
-                                    <Font name="System Italic" size="12.0" />
+                                    <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
                               <TextField fx:id="txtTelefono" />

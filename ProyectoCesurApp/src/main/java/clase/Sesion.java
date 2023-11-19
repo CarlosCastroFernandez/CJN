@@ -2,67 +2,100 @@ package clase;
 
 import java.util.ArrayList;
 
+/**
+ * La clase Sesion almacena información sobre la sesión actual del sistema.
+ * Contiene listas estáticas y variables estáticas para diferentes entidades del sistema.
+ */
 public class Sesion {
-    private static ArrayList<ActividadDiaria> listaActividades = new ArrayList<>();
-    private static ArrayList<Alumno>listaAlumnos=new ArrayList<Alumno>();
-    private static  ArrayList<Empresa> listaEmpresas = new ArrayList<>();
-    private static Profesor profesor;
-    private static Alumno alumno;
-    private static ActividadDiaria actividadDiaria;
-    private static Empresa empresa;
+    /**
+     * Lista de actividades diarias.
+     */
+   // private static ArrayList<ActividadDiaria> activities = new ArrayList<>();
 
-    public static ArrayList<Empresa> getListaEmpresas() {
-        return listaEmpresas;
+    /**
+     * Lista de alumnos.
+     */
+   // private static ArrayList<Alumno> alumns =new ArrayList<Alumno>();
+
+    /**
+     * Lista de empresas.
+     */
+  //  private static  ArrayList<Empresa> enterprises = new ArrayList<>();
+
+    /**
+     * Profesor actual.
+     */
+    private static Profesor teacher;
+
+    /**
+     * Alumno actual.
+     */
+    private static Alumno alumn;
+
+    /**
+     * Actividad diaria actual.
+     */
+    private static ActividadDiaria activity;
+
+    /**
+     * Empresa actual.
+     */
+    private static Empresa enterprise;
+
+    //Getters y Setters de la clase Empresa.
+   /* public static ArrayList<Empresa> getEnterprise() {
+        return enterprises;
     }
 
-    public static void setListaEmpresas(ArrayList<Empresa> listaEmpresas) {
-        Sesion.listaEmpresas = listaEmpresas;
+    public static void setEnterprise(ArrayList<Empresa> enterprises) {
+        Sesion.enterprises = enterprises;
     }
 
     public static Empresa getEmpresa(){
-        return empresa;
+        return enterprise;
     }
 
-    public static void setEmpresa(Empresa empresa){
-        Sesion.empresa = empresa;
+    public static void setEnterprise(Empresa enterprise){
+        Sesion.enterprise = enterprise;
+    }*/
+
+    public static ActividadDiaria getActivity(){
+        return activity;
     }
 
-    public static ActividadDiaria getActividadDiaria(){
-        return actividadDiaria;
+    public static void setActivity(ActividadDiaria activity){
+        Sesion.activity = activity;
     }
 
-    public static void setActividadDiaria(ActividadDiaria actividadDiaria){
-        Sesion.actividadDiaria = actividadDiaria;
+    public static Profesor getTeacher() {
+        return teacher;
     }
 
-    public static Profesor getProfesor() {
-        return profesor;
+    public static void setTeacher(Profesor teacher) {
+        Sesion.teacher = teacher;
     }
 
-    public static void setProfesor(Profesor profesor) {
-        Sesion.profesor = profesor;
+    public static Alumno getAlumn() {
+        return alumn;
     }
 
-    public static Alumno getAlumno() {
-        return alumno;
+    public static void setAlumn(Alumno alumn) {
+        Sesion.alumn = alumn;
     }
 
-    public static void setAlumno(Alumno alumno) {
-        Sesion.alumno = alumno;
+   /* public static ArrayList<ActividadDiaria> getActivities() {
+        return activities;
     }
 
-    public static ArrayList<ActividadDiaria> getListaActividades() {
-        return listaActividades;
+    public static void setActivities(ArrayList<ActividadDiaria> activities) {
+        Sesion.activities = activities;
     }
 
+    public static ArrayList<Alumno> getAlumns() {
+        return alumns;
+    }
 
-    public static void setListaActividades(ArrayList<ActividadDiaria> listaActividades) {
-        Sesion.listaActividades = listaActividades;
-    }
-    public static ArrayList<Alumno> getListaAlumno() {
-        return listaAlumnos;
-    }
-    public static void setListaAlumno(ArrayList<Alumno> listaAlumnos) {
-        Sesion.listaAlumnos= listaAlumnos;
-    }
+    public static void setAlumns(ArrayList<Alumno> alumns) {
+        Sesion.alumns = alumns;
+    }*/
 }

@@ -5,6 +5,9 @@ import java.sql.*;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+/**
+ * La clase DBConnection maneja la conexión a la base de datos.
+ */
 public class DBConnection {
     private static Connection connection;
     private static Logger logger;
@@ -16,8 +19,11 @@ public class DBConnection {
         String password ;
         Properties cfg = new Properties();
         try {
+            // Cargando la configuración desde el archivo config.properties.
             InputStream is = DBConnection.class.getClassLoader().getResourceAsStream("config.properties");
             cfg.load(is);
+
+            // Estableciendo la conexión con la base de datos utilizando la configuración cargada.
             logger.info("Configuración cargada");
             //url = "jdbc:mysql://" + cfg.get("host") + ":" + cfg.get("port") + "/" + cfg.get("dbname");
             //user = (String)cfg.get("user");
@@ -33,12 +39,13 @@ public class DBConnection {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
-
-        /*Codigo de Carlos que no tenemos ni idea de para que es:
-        String puerto=(String)cfg.get("port");
-        System.out.println(puerto);*/
-
     }
+
+    /**
+     * Obtiene la conexión a la base de datos.
+     *
+     * @return La conexión a la base de datos.
+     */
     public static Connection getConnection(){
         return connection;
     }
