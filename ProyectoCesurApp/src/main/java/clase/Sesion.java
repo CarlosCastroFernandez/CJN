@@ -10,17 +10,17 @@ public class Sesion {
     /**
      * Lista de actividades diarias.
      */
-   // private static ArrayList<ActividadDiaria> activities = new ArrayList<>();
+    private static ArrayList<ActividadDiaria> activities = new ArrayList<>();
 
     /**
      * Lista de alumnos.
      */
-   // private static ArrayList<Alumno> alumns =new ArrayList<Alumno>();
+   private static ArrayList<Alumno> alumns =new ArrayList<Alumno>();
 
     /**
      * Lista de empresas.
      */
-  //  private static  ArrayList<Empresa> enterprises = new ArrayList<>();
+  private static  ArrayList<Empresa> enterprises = new ArrayList<>();
 
     /**
      * Profesor actual.
@@ -83,7 +83,7 @@ public class Sesion {
         Sesion.alumn = alumn;
     }
 
-   /* public static ArrayList<ActividadDiaria> getActivities() {
+   public static ArrayList<ActividadDiaria> getActivities() {
         return activities;
     }
 
@@ -91,7 +91,7 @@ public class Sesion {
         Sesion.activities = activities;
     }
 
-    public static ArrayList<Alumno> getAlumns() {
+   /* public static ArrayList<Alumno> getAlumns() {
         return alumns;
     }
 
