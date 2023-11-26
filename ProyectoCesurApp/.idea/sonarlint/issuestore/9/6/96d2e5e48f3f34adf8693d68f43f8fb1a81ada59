@@ -1,22 +1,13 @@
 
-`	java:S112A"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112G"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112M"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112<"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112B"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
 c
-java:S1192>"FDefine a constant instead of duplicating this literal "Error" 3 times.(ìŞ…á8¦ÁØÁ¶1
-k	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÂÑùÿÿÿÿ
+java:S11929"FDefine a constant instead of duplicating this literal "Error" 3 times.(ìŞ…á8¦ÁØÁ¶1
+k	java:S1172"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÂÑùÿÿÿÿ
 —
-java:S1186T"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢¤ Ø
+java:S1186O"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢¤ Ø
 œ
-java:S1186X"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘İŸüÿÿÿÿ
-U
-java:S1128
-"3Remove this unused import 'javafx.fxml.FXMLLoader'.(À‡ô³úÿÿÿÿ8¨ç«†»1
-M
-java:S1128"0Remove this unused import 'javafx.scene.Parent'.(²ä¡È8©ç«†»1
-L
-java:S1128"/Remove this unused import 'javafx.scene.Scene'.(Õü²8«ç«†»1
-Q
-java:S1128"/Remove this unused import 'javafx.stage.Stage'.(æÄ¸²úÿÿÿÿ8«ç«†»1
-R
-java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8£¢­†»1
+java:S1186S"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘İŸüÿÿÿÿ
+V
+java:S18546"9Remove this useless assignment to local variable "profe".(Ğ†–ä8®Ãå×À1

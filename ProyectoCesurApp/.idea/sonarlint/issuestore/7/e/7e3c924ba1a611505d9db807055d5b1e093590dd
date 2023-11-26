@@ -1,13 +1,7 @@
 
-v
-java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(µá…Ø8”˜èî∂1
+{
+java:S2293="YReplace the type specification in this constructor call with the diamond operator ("<>").(˘÷…Õ¯ˇˇˇˇ8ìéñÿ¿1
 ç
-java:S1319%"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Áá’‰8èÎ∆î∂1
-å
-java:S1319("oThe type of "ventanaProfesor" should be an interface such as "List" rather than the implementation "ArrayList".(†òﬁ©8èÎ∆î∂1
-ó
-java:S1130"zRemove the declaration of thrown exception 'exception.UsuarioInexistente', as it cannot be thrown from constructor's body.(‡Ï£‡8≤Î∆î∂1
-ö
-java:S1130"}Remove the declaration of thrown exception 'exception.ContrasenhaIncorrecta', as it cannot be thrown from constructor's body.(‡Ï£‡8≤Î∆î∂1
-[
-java:S1172">Remove these unused method parameters "nombre", "contrasenha".(‡Ï£‡8¥Î∆î∂1
+java:S1319Q"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÆŸ…ï8îéñÿ¿1
+Ç
+java:S1319U"eThe type of "alumn" should be an interface such as "List" rather than the implementation "ArrayList".(≠œ‘·8îéñÿ¿1

@@ -1,5 +1,5 @@
 
 
-java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ç‡Õä8¥Àû¼1
-‰
-java:S1319"gThe type of "alumnos" should be an interface such as "List" rather than the implementation "ArrayList".(Ò¨¨úÿÿÿÿ8‚¥Àû¼1
+java:S1319I"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(®ÙÉ•8ë„¬—¿1
+‚
+java:S1319M"eThe type of "alumn" should be an interface such as "List" rather than the implementation "ArrayList".(­ÏÔá8ì„¬—¿1

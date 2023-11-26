@@ -1,16 +1,9 @@
 
-{
-java:S2293["YReplace the type specification in this constructor call with the diamond operator ("<>").(Ø—§Ûÿÿÿÿÿ8î”½ï¼1
-’
-java:S13199"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÍŞœØûÿÿÿÿ8ó”½ï¼1
-Œ
-java:S1319="oThe type of "actividadDiaria" should be an interface such as "List" rather than the implementation "ArrayList".(¨ğ¬‹8ó”½ï¼1
-r	java:S117Z"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“Íšúÿÿÿÿ8ô”½ï¼1
-c	java:S107"BConstructor has 17 parameters, which is greater than 7 authorized.(÷©ô³şÿÿÿÿ8–•½ï¼1
-c	java:S107A"BConstructor has 15 parameters, which is greater than 7 authorized.(÷©ô³şÿÿÿÿ8˜•½ï¼1
-X
-java:S1172"6Remove this unused method parameter "fechaNacimiento".(ìà¨üıÿÿÿÿ8 •½ï¼1
-]
-java:S1172Z";Remove these unused method parameters "dni", "contraseÃ±a".(“Íšúÿÿÿÿ8³•½ï¼1
-X
-java:S1128"6Remove this unused import 'domain.ActividadDiariaDAO'.(Ôºàøÿÿÿÿ8½•½ï¼1
+w
+java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ëæó™8ÚÉÕ×À1
+
+java:S1319¿"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ê¶š¯8İÉÕ×À1
+‹
+java:S1319Ã"hThe type of "activity" should be an interface such as "List" rather than the implementation "ArrayList".(æá…÷ùÿÿÿÿ8İÉÕ×À1
+c	java:S107^"BConstructor has 17 parameters, which is greater than 7 authorized.(—ƒïãùÿÿÿÿ8øÉÕ×À1
+d	java:S107Š"BConstructor has 15 parameters, which is greater than 7 authorized.(—ƒïãùÿÿÿÿ8øÉÕ×À1

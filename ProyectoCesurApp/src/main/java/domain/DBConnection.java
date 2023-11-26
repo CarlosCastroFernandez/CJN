@@ -9,7 +9,14 @@ import java.util.logging.Logger;
  * La clase DBConnection maneja la conexión a la base de datos.
  */
 public class DBConnection {
+    /**
+     * Conexión con la Base de Datos.
+     */
     private static Connection connection;
+
+    /**
+     * Log para la conexión con la Base de Datos.
+     */
     private static Logger logger;
 
     static{
@@ -19,11 +26,11 @@ public class DBConnection {
         String password ;
         Properties cfg = new Properties();
         try {
-            // Cargando la configuración desde el archivo config.properties.
+            //Cargando la configuración desde el archivo config.properties.
             InputStream is = DBConnection.class.getClassLoader().getResourceAsStream("config.properties");
             cfg.load(is);
 
-            // Estableciendo la conexión con la base de datos utilizando la configuración cargada.
+            //Estableciendo la conexión con la Base de Datos utilizando la configuración cargada.
             logger.info("Configuración cargada");
             //url = "jdbc:mysql://" + cfg.get("host") + ":" + cfg.get("port") + "/" + cfg.get("dbname");
             //user = (String)cfg.get("user");

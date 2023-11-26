@@ -7,4 +7,6 @@ module com.example.proyectocesurapp {
     opens com.example.proyectocesurapp.imagenes;
     opens com.example.proyectocesurapp to javafx.fxml;
     exports com.example.proyectocesurapp;
+    exports controllers;
+    opens controllers to javafx.fxml;
 }
