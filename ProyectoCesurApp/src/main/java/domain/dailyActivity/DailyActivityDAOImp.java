@@ -33,7 +33,7 @@ public class DailyActivityDAOImp implements DailyActivityDAO {
     /**
      * Query que hace un update sobre una actividad concreta en la Base de Datos.
      */
-    private static final String QUERY_UPDATE = "update actividadDiaria set nombre=?, totalHoras=?, observaciones=?, tipoPractica=?, fecha=?, alumnoId=?";
+    private static final String QUERY_UPDATE = "update actividadDiaria set nombre=?, totalHoras=?, observaciones=?, tipoPractica=?, fecha=?, alumnoId=? where id=?";
 
     /**
      * Query que borra a una actividad de la Base de Datos en función de su Id.
@@ -152,6 +152,7 @@ public class DailyActivityDAOImp implements DailyActivityDAO {
             preparedStatement.setString(4, String.valueOf(dailyActivityResult.getPracticeType()));
             preparedStatement.setString(5, dailyActivityResult.getDate());
             preparedStatement.setInt(6, Sesion.getAlumn().getId());
+            preparedStatement.setInt(7,dailyActivity.getId());
 
             //Ejecuta la sentencia SQL de actualización.
             Integer rows = preparedStatement.executeUpdate();

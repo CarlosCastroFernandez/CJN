@@ -21,20 +21,12 @@ public class DBConnection {
 
     static{
         logger = Logger.getLogger(DBConnection.class.getName());
-        String url ;
-        String user ;
-        String password ;
         Properties cfg = new Properties();
         try {
             //Cargando la configuración desde el archivo config.properties.
             InputStream is = DBConnection.class.getClassLoader().getResourceAsStream("config.properties");
             cfg.load(is);
-
-            //Estableciendo la conexión con la Base de Datos utilizando la configuración cargada.
             logger.info("Configuración cargada");
-            //url = "jdbc:mysql://" + cfg.get("host") + ":" + cfg.get("port") + "/" + cfg.get("dbname");
-            //user = (String)cfg.get("user");
-            //password = (String)cfg.get("pass");
         } catch (IOException e) {
             logger.severe("Error procesando configuración" + e.getMessage());
             throw new RuntimeException(e);

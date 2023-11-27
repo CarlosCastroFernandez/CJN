@@ -22,7 +22,7 @@ public class App extends Application {
 
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(ruta));
-            Scene scene = new Scene(fxmlLoader.load(), 1125, 600);
+            Scene scene = new Scene(fxmlLoader.load(), 1137, 770);
             myStage.setScene(scene);
         } catch (IOException e) {
             throw new RuntimeException(e);
