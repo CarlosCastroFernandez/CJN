@@ -8,8 +8,6 @@
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
@@ -85,11 +83,4 @@
          </top>
       </BorderPane>
    </center>
-   <left>
-      <ImageView fitHeight="598.0" fitWidth="481.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-y: 2.070px; -fx-scale-x: 1.3px;" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@imagenes/alumnoPC.png" />
-         </image>
-      </ImageView>
-   </left>
 </BorderPane>

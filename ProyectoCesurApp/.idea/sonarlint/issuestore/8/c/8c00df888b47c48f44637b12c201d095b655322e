@@ -1,0 +1,71 @@
+
+`	java:S112p"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112r"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112v"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112§"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112©"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112«"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112­"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112¯"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112ß"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112õ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112Á"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+a	java:S112Ô"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+u
+java:S2293ƒ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞÏ™Óÿÿÿÿÿ
+`
+java:S1192>"JDefine a constant instead of duplicating this literal "horasDual" 4 times.(–€ôæ
+_
+java:S1192b"IDefine a constant instead of duplicating this literal "profesor" 3 times.(Ú§ä
+d
+java:S1192?"IDefine a constant instead of duplicating this literal "horasFCT" 3 times.(¹Ìÿøúÿÿÿÿ
+e
+java:S2095W"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³
+k
+java:S2095Ë"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­İô£øÿÿÿÿ
+f
+java:S2095‚"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº
+f
+java:S2095î"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº
+e
+java:S2095Î"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$
+e
+java:S2095†"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚Û¿
+k
+java:S2095Ÿ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(µ¦®™úÿÿÿÿ
+=
+java:S3010G"'Remove this assignment of "connection".(¨é¶­
+Z
+java:S2147q"ECombine this catch with the one at line 111, which has the same body.(‹ÈŸZ
+`
+java:S2147s"ECombine this catch with the one at line 113, which has the same body.(í­Õçüÿÿÿÿ
+[
+java:S2147u"ECombine this catch with the one at line 115, which has the same body.(¶ƒ´œ
+[
+java:S2147¨"ECombine this catch with the one at line 166, which has the same body.(‹ÈŸZ
+a
+java:S2147ª"ECombine this catch with the one at line 168, which has the same body.(í­Õçüÿÿÿÿ
+\
+java:S2147¬"ECombine this catch with the one at line 170, which has the same body.(¶ƒ´œ
+a
+java:S2147®"ECombine this catch with the one at line 172, which has the same body.(ôœú’şÿÿÿÿ
+T
+java:S1854Ü"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
+E
+java:S1481Ü")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ
+T
+java:S1854ò"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
+E
+java:S1481ò")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ
+T
+java:S1854"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
+w
+java:S3923…"[Remove this conditional structure or edit its code blocks so that they're not all the same.(É­½˜øÿÿÿÿ
+E
+java:S1481")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ
+T
+java:S1854Ò"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
+E
+java:S1481Ò")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ

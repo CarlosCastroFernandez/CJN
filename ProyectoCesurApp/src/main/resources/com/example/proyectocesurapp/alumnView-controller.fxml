@@ -47,8 +47,11 @@
                     <menus>
                       <Menu id="menu" mnemonicParsing="false">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Log Out" />
+                          <MenuItem fx:id="menuLogOut" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
                               <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem mnemonicParsing="false" text="Cuenta" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
                         </items>
                       </Menu>
                     </menus>

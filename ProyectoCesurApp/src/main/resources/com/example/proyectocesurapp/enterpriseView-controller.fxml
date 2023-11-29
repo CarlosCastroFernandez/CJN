@@ -8,21 +8,36 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="705.0" styleClass="ventana" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EnterpriseViewController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="674.0" prefWidth="873.0" styleClass="ventana" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EnterpriseViewController">
    <top>
-      <Label text="Gestión Empresa" BorderPane.alignment="CENTER">
+      <FlowPane alignment="CENTER_LEFT" hgap="400.0" BorderPane.alignment="TOP_LEFT">
          <BorderPane.margin>
             <Insets top="10.0" />
          </BorderPane.margin>
-         <font>
-            <Font name="System Bold Italic" size="30.0" />
-         </font>
-      </Label>
+         <children>
+            <ImageView fx:id="imagenAtras" fitHeight="29.0" fitWidth="200.0" onMouseClicked="#atras" pickOnBounds="true" preserveRatio="true">
+               <FlowPane.margin>
+                  <Insets left="20.0" />
+               </FlowPane.margin>
+               <image>
+                  <Image url="@imagenes/flechaLeft.png" />
+               </image>
+            </ImageView>
+            <Label text="Gestión Empresa">
+               <font>
+                  <Font name="System Bold Italic" size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </FlowPane>
    </top>
    <center>
       <BorderPane id="formulario" BorderPane.alignment="CENTER">
@@ -32,40 +47,58 @@
          <center>
             <SplitPane id="splitpane" dividerPositions="0.3961100569259962">
                <items>
-                  <VBox prefHeight="429.0" prefWidth="292.0">
+                  <VBox prefHeight="429.0" prefWidth="292.0" spacing="15.0">
                      <children>
                         <Label text="Nombre">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
                         </Label>
-                        <TextField fx:id="txtNombre" />
+                        <TextField fx:id="txtNombre" maxWidth="350.0">
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin></TextField>
                         <Label text="Teléfono">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtTelefono" />
+                        <TextField fx:id="txtTelefono" maxWidth="350.0">
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin></TextField>
                         <Label text="Email">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtEmail" />
+                        <TextField fx:id="txtEmail" maxWidth="350.0">
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin></TextField>
                         <Label text="Responsable">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtResponsable" />
+                        <TextField fx:id="txtResponsable" maxWidth="350.0">
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin></TextField>
                         <Label text="Observaciones">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="txtObservaciones" prefHeight="200.0" prefWidth="200.0" />
+                        <TextArea fx:id="txtObservaciones" maxWidth="350.0" prefHeight="200.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin></TextArea>
                         <Button fx:id="botonLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
-                        <HBox>
+                        <HBox spacing="10.0">
                            <children>
                               <Button fx:id="botonAñadirEmpresa" mnemonicParsing="false" onAction="#añadirEmpresa" text="Añadir Empresa" />
                               <Button fx:id="botonActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
@@ -73,6 +106,9 @@
                            </children>
                         </HBox>
                      </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
                   </VBox>
                   <TableView fx:id="tvEmpresas" prefHeight="511.0" prefWidth="453.0">
                     <columns>

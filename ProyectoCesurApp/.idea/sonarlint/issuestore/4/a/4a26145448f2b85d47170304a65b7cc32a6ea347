@@ -1,0 +1,22 @@
+
+`	java:S112V"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ
+a	java:S112‚"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ
+a	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ
+a	java:S112³"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òιόÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ΠΤ–­ÿÿÿÿÿ
+k
+java:S2095’"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­έτ£ψÿÿÿÿ
+e
+java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(οϋΑ³
+e
+java:S2095­"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(Άυχ$
+=
+java:S30101"'Remove this assignment of "connection".(α„
+T
+java:S1854"8Remove this useless assignment to local variable "rows".(Μϋ¨ωÿÿÿÿ
+E
+java:S1481")Remove this unused "rows" local variable.(Μϋ¨ωÿÿÿÿ
+T
+java:S1854±"8Remove this useless assignment to local variable "rows".(Μϋ¨ωÿÿÿÿ
+E
+java:S1481±")Remove this unused "rows" local variable.(Μϋ¨ωÿÿÿÿ

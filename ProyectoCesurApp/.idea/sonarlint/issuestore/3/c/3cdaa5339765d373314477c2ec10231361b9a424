@@ -1,0 +1,9 @@
+
+p
+java:S2293©"YReplace the type specification in this constructor call with the diamond operator ("<>").(«°Ê
+Œ
+java:S1319¿"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(õßŒÿÿÿÿÿ
+„
+java:S1319Ã"hThe type of "activity" should be an interface such as "List" rather than the implementation "ArrayList".(’ø°Ûøÿÿÿÿ
+\	java:S107^"BConstructor has 17 parameters, which is greater than 7 authorized.(ÑÓÁÖüÿÿÿÿ
+]	java:S107Š"BConstructor has 15 parameters, which is greater than 7 authorized.(ÑÓÁÖüÿÿÿÿ

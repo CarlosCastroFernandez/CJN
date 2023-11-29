@@ -217,7 +217,8 @@ public class EditAlumnController implements Initializable {
 
     @javafx.fxml.FXML
     public void cancelar(ActionEvent actionEvent) {
-
+        Sesion.setAlumn(null);
+        App.loadFXML("teacherView-controller.fxml");
     }
 }
 

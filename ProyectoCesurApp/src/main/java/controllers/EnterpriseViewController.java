@@ -1,6 +1,7 @@
 package controllers;
 
 import classes.Enterprise;
+import com.example.proyectocesurapp.App;
 import domain.DBConnection;
 import domain.enterprise.EnterpriseDAOImp;
 import javafx.beans.property.SimpleStringProperty;
@@ -8,8 +9,10 @@ import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,6 +54,8 @@ public class EnterpriseViewController implements Initializable {
     private Button botonBorrar;
     @javafx.fxml.FXML
     private TextField txtEmail;
+    @javafx.fxml.FXML
+    private ImageView imagenAtras;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -225,6 +230,11 @@ public class EnterpriseViewController implements Initializable {
         }
 
 
+    }
+
+    @javafx.fxml.FXML
+    public void atras(Event event) {
+        App.loadFXML("teacherView-controller.fxml");
     }
 }
 

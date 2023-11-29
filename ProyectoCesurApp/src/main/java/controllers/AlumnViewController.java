@@ -59,6 +59,10 @@ public class AlumnViewController implements Initializable {
     private ContextMenu contextMenu = new ContextMenu();
     private MenuItem menuItem1 = new MenuItem();
     private MenuItem menuItem2 = new MenuItem();
+    @javafx.fxml.FXML
+    private MenuItem menuLogOut;
+    @javafx.fxml.FXML
+    private MenuItem menuSalir;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -199,37 +203,54 @@ public class AlumnViewController implements Initializable {
 
     @javafx.fxml.FXML
     public void clickImage(Event event) {
-        FileChooser open = new FileChooser();
-        File ruta = open.showOpenDialog(null);
-        System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
-        if (ruta != null) {
-            File carpeta = new File("imágenes de " + Sesion.getAlumn().getDni());
-            if (!carpeta.exists() && (ruta.getName().endsWith("jpg") || ruta.getName().endsWith("png") || ruta.getName().endsWith("PNG") || ruta.getName().endsWith("JPG"))) {
-                try {
-                    carpeta.mkdir();
+        try{
+            FileChooser open = new FileChooser();
+            File ruta = open.showOpenDialog(null);
+            System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
+            if (ruta != null) {
+                File carpeta = new File("imagenes de " + Sesion.getAlumn().getDni());
+                if (!carpeta.exists() && (ruta.getName().endsWith("jpg") || ruta.getName().endsWith("png") || ruta.getName().endsWith("PNG") || ruta.getName().endsWith("JPG"))) {
+                    try {
+                        carpeta.mkdir();
+                        Path origen = Path.of(ruta.getAbsolutePath());
+                        Path destino = Path.of(carpeta.getName());
+                        Path destinoArchivo = destino.resolve(Sesion.getAlumn().getName() + " " + Sesion.getAlumn().getLastName() + ruta.getName().substring(ruta.getName().indexOf(".")));
+                        Files.copy(origen, destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                        ivUser.setImage(new Image("file:" + destinoArchivo));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
+                } else {
+                    File[] hijos = carpeta.listFiles();
+                    hijos[0].delete();
                     Path origen = Path.of(ruta.getAbsolutePath());
                     Path destino = Path.of(carpeta.getName());
                     Path destinoArchivo = destino.resolve(Sesion.getAlumn().getName() + " " + Sesion.getAlumn().getLastName() + ruta.getName().substring(ruta.getName().indexOf(".")));
-                    Files.copy(origen, destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                    try {
+                        Files.copy(origen, destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     ivUser.setImage(new Image("file:" + destinoArchivo));
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
                 }
-
-            } else {
-                File[] hijos = carpeta.listFiles();
-                hijos[0].delete();
-                Path origen = Path.of(ruta.getAbsolutePath());
-                Path destino = Path.of(carpeta.getName());
-                Path destinoArchivo = destino.resolve(Sesion.getAlumn().getName() + " " + Sesion.getAlumn().getLastName() + ruta.getName().substring(ruta.getName().indexOf(".")));
-                try {
-                    Files.copy(origen, destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                ivUser.setImage(new Image("file:" + destinoArchivo));
             }
+        }catch(Exception e){
+
         }
+
+    }
+
+    @javafx.fxml.FXML
+    public void logOut(ActionEvent actionEvent) {
+        Sesion.setAlumn(null);
+        App.loadFXML("login-controller.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void salir(ActionEvent actionEvent) {
+        Sesion.setAlumn(null);
+        System.exit(0);
     }
 }
 

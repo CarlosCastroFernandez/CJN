@@ -8,8 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -19,6 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <BorderPane prefHeight="740.0" prefWidth="1137.0" styleClass="ventana" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditAlumnController">
    <center>
       <BorderPane prefHeight="600.0" prefWidth="612.0" BorderPane.alignment="CENTER">
@@ -200,14 +199,4 @@
          </top>
       </BorderPane>
    </center>
-   <left>
-      <ImageView fitHeight="320.0" fitWidth="414.0" pickOnBounds="true" preserveRatio="true" style="-fx-scale-y: 2.33px; -fx-scale-x: 2.1px;" BorderPane.alignment="CENTER">
-         <image>
-            <Image url="@imagenes/profesorEdicion.png" />
-         </image>
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
-      </ImageView>
-   </left>
 </BorderPane>
