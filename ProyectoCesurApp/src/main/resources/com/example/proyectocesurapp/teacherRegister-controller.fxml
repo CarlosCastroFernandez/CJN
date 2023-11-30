@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="512.0" prefWidth="842.0" styleClass="imagenRegistro" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherRegisterController">
+<BorderPane prefHeight="512.0" prefWidth="842.0" styleClass="imagenRegistro" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherRegisterController">
    <right>
       <VBox alignment="CENTER" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
@@ -135,8 +135,14 @@
                   <Button fx:id="botonRegistro" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registrarse" text="Registrarse" textAlignment="CENTER">
                      <FlowPane.margin>
                         <Insets />
-                     </FlowPane.margin></Button>
-                  <Button fx:id="botonCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+                     </FlowPane.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font></Button>
+                  <Button fx:id="botonCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font></Button>
                </children>
                <VBox.margin>
                   <Insets top="50.0" />

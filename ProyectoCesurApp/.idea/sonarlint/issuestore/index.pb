@@ -25,3 +25,19 @@ g
 7src/main/java/controllers/EnterpriseViewController.java,9\e\9eca370233b48d3c0654617f84ac9be216c6ec64
 b
 2src/main/java/controllers/AlumnViewController.java,9\7\9728a9c08d39a0b6407262a223e81294f3b0356b
+O
+src/main/java/classes/User.java,4\7\47a19a2d50dd20fa5f956545a25e680040fc13d4
+R
+"src/main/java/classes/Teacher.java,9\6\961be6d777b4cb0f0d049b3bc9555aafcd95ceef
+h
+8src/main/java/controllers/TeacherRegisterController.java,8\6\861c3a30b28c75427d22f0be15d3fac20387d069
+Q
+!src/main/java/classes/Sesion.java,0\1\019e299be578a6bf0ae9a90b00a72a9f3a6d593b
+d
+4src/main/java/controllers/LookActivtyController.java,f\5\f552366dd6ca896899386a64ed229edfef771777
+g
+7src/main/java/controllers/TeacherAccountController.java,9\a\9a776e39e5c7a99da9dccd62594afc9a01fb0d08
+_
+/src/main/java/domain/teacher/TeacherDAOImp.java,2\3\237f91a90ce745c0822bf103c96ec00936a5f9ce
+e
+5src/main/java/controllers/AlumnAccountController.java,6\b\6bbbef547c30d86824ab3fc63f21c1ebfb1f5200

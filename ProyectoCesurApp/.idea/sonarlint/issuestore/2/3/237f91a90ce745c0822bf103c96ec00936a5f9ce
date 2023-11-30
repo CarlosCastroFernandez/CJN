@@ -1,0 +1,35 @@
+
+g	java:S112["FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8€¹¶ûÁ1
+g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8€¹¶ûÁ1
+g	java:S112_"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8€¹¶ûÁ1
+g	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹¶ûÁ1
+h	java:S112ˆ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹¶ûÁ1
+h	java:S112Š"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹¶ûÁ1
+h	java:S112Œ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹¶ûÁ1
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹¶ûÁ1
+h	java:S112¼"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹¶ûÁ1
+h	java:S112Î"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¹¶ûÁ1
+t
+java:S1192W"RDefine a constant instead of duplicating this literal "Usuario no existe" 4 times.(ıìÈ²ùÿÿÿÿ8‚¹¶ûÁ1
+r
+java:S2095Â"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(·Œøÿÿÿÿ8‹¹¶ûÁ1
+D
+java:S3010-"'Remove this assignment of "connection".(á„š8¹¶ûÁ1
+`
+java:S2147\"DCombine this catch with the one at line 90, which has the same body.(‹ÈŸZ8¹¶ûÁ1
+f
+java:S2147^"DCombine this catch with the one at line 92, which has the same body.(í­Õçüÿÿÿÿ8¹¶ûÁ1
+a
+java:S2147`"DCombine this catch with the one at line 94, which has the same body.(¶ƒ´œ8¹¶ûÁ1
+X
+java:S1854y";Remove this useless assignment to local variable "teacher".(’ö´Š8•¹¶ûÁ1
+h
+java:S2147‰"ECombine this catch with the one at line 135, which has the same body.(í­Õçüÿÿÿÿ8•¹¶ûÁ1
+b
+java:S2147‹"ECombine this catch with the one at line 137, which has the same body.(‹ÈŸZ8–¹¶ûÁ1
+c
+java:S2147"ECombine this catch with the one at line 139, which has the same body.(¶ƒ´œ8–¹¶ûÁ1
+W
+java:S1854Ë"9Remove this useless assignment to local variable "filas".(§ôß›8œ¹¶ûÁ1
+H
+java:S1481Ë"*Remove this unused "filas" local variable.(§ôß›8¹¶ûÁ1

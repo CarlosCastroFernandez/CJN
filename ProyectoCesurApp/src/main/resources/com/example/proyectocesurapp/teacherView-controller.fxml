@@ -27,7 +27,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1141.0" styleClass="ventana" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherViewController">
+<BorderPane prefHeight="769.0" prefWidth="1141.0" styleClass="ventana" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherViewController">
    <center>
       <BorderPane id="formulario" BorderPane.alignment="CENTER">
          <BorderPane.margin>
@@ -191,8 +191,14 @@
                               <Insets />
                            </VBox.margin>
                            <children>
-                              <Button fx:id="btnNuevoAlumno" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#nuevoALumno" text="Nuevo Alumno" />
-                              <Button fx:id="botonEmpresa" mnemonicParsing="false" onAction="#goEmpresa" text="Gestionar Empresas" />
+                              <Button fx:id="btnNuevoAlumno" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" mnemonicParsing="false" onAction="#nuevoALumno" text="Nuevo Alumno">
+                                 <font>
+                                    <Font name="System Bold Italic" size="11.0" />
+                                 </font></Button>
+                              <Button fx:id="botonEmpresa" mnemonicParsing="false" onAction="#goEmpresa" text="Gestionar Empresas">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font></Button>
                            </children>
                         </FlowPane>
                      </children>

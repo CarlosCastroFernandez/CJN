@@ -1,71 +1,115 @@
 
-`	java:S112p"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112r"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112t"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112v"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112§"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112©"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112«"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112­"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112¯"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112ß"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112õ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112Á"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-a	java:S112Ô"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-u
-java:S2293ƒ"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞÏ™Óÿÿÿÿÿ
-`
-java:S1192>"JDefine a constant instead of duplicating this literal "horasDual" 4 times.(–€ôæ
-_
-java:S1192b"IDefine a constant instead of duplicating this literal "profesor" 3 times.(Ú§ä
-d
-java:S1192?"IDefine a constant instead of duplicating this literal "horasFCT" 3 times.(¹Ìÿøúÿÿÿÿ
-e
-java:S2095†"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚Û¿
+g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+g	java:S112_"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+g	java:S112a"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+g	java:S112h"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+g	java:S112l"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112—"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112™"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112›"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112´"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112ä"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112æ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112è"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112ê"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°£’ıÁ1
+h	java:S112ì"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8±£’ıÁ1
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8±£’ıÁ1
+h	java:S112³"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Úß™ıÁ1
+h	java:S112Î"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ûß™ıÁ1
+h	java:S112ÿ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8Ûß™ıÁ1
+h	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¶¯›ıÁ1
+|
+java:S2293À"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞÏ™Óÿÿÿÿÿ8±£’ıÁ1
+l
+java:S1192W"JDefine a constant instead of duplicating this literal "apellido2" 3 times.(†Í‹Üûÿÿÿÿ8Ûß™ıÁ1
+r
+java:S1192Z"PDefine a constant instead of duplicating this literal "fechaNacimiento" 3 times.(º”÷Ñùÿÿÿÿ8Ûß™ıÁ1
+l
+java:S1192W"JDefine a constant instead of duplicating this literal "apellido1" 3 times.(†Í‹Üûÿÿÿÿ8Üß™ıÁ1
+g
+java:S1192C"JDefine a constant instead of duplicating this literal "horasDual" 5 times.(–€ôæ8±£’ıÁ1
 k
-java:S2095Ë"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­İô£øÿÿÿÿ
+java:S1192Z"IDefine a constant instead of duplicating this literal "profesor" 5 times.(º”÷Ñùÿÿÿÿ8Üß™ıÁ1
+i
+java:S1192W"GDefine a constant instead of duplicating this literal "nombre" 3 times.(†Í‹Üûÿÿÿÿ8Üß™ıÁ1
+h
+java:S1192["FDefine a constant instead of duplicating this literal "curso" 3 times.(­ò™Ñøÿÿÿÿ8Üß™ıÁ1
+p
+java:S1192["NDefine a constant instead of duplicating this literal "observaciones" 3 times.(­ò™Ñøÿÿÿÿ8Üß™ıÁ1
 k
-java:S2095Ÿ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(µ¦®™úÿÿÿÿ
-e
-java:S2095W"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³
-e
-java:S2095Î"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$
-f
-java:S2095‚"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº
-f
-java:S2095î"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº
-=
-java:S3010G"'Remove this assignment of "connection".(¨é¶­
-Z
-java:S2147q"ECombine this catch with the one at line 111, which has the same body.(‹ÈŸZ
-`
-java:S2147s"ECombine this catch with the one at line 113, which has the same body.(í­Õçüÿÿÿÿ
-[
-java:S2147u"ECombine this catch with the one at line 115, which has the same body.(¶ƒ´œ
-[
-java:S2147¨"ECombine this catch with the one at line 166, which has the same body.(‹ÈŸZ
+java:S1192D"IDefine a constant instead of duplicating this literal "horasFCT" 4 times.(¹Ìÿøúÿÿÿÿ8±£’ıÁ1
+j
+java:S1192Z"HDefine a constant instead of duplicating this literal "empresa" 3 times.(º”÷Ñùÿÿÿÿ8Üß™ıÁ1
+k
+java:S1192Y"IDefine a constant instead of duplicating this literal "telefono" 3 times.(ÏèùÃøÿÿÿÿ8Üß™ıÁ1
+c
+java:S1192X"FDefine a constant instead of duplicating this literal "email" 3 times.(ÿÖşŠ8Üß™ıÁ1
+i
+java:S1192X"LDefine a constant instead of duplicating this literal "contraseÃ±a" 3 times.(ÿÖşŠ8Üß™ıÁ1
+W
+java:S1141V"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8İß™ıÁ1
+W
+java:S1141e"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¸¯›ıÁ1
+l
+java:S2095R"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ç¢È¸8…™ıÁ1
+r
+java:S2095‰"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­İô£øÿÿÿÿ8ß£’ıÁ1
+m
+java:S2095À"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº8ß£’ıÁ1
+l
+java:S2095Ã"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚Û¿8ß£’ıÁ1
+m
+java:S2095¬"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº8ß£’ıÁ1
+r
+java:S2095İ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(µ¦®™úÿÿÿÿ8ß£’ıÁ1
+l
+java:S2095~"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³8ß£’ıÁ1
+r
+java:S2095¤"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(™æÄåüÿÿÿÿ8ß£’ıÁ1
+l
+java:S2095Œ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$8ß£’ıÁ1
+D
+java:S3010L"'Remove this assignment of "connection".(¨é¶­8å£’ıÁ1
 a
-java:S2147ª"ECombine this catch with the one at line 168, which has the same body.(í­Õçüÿÿÿÿ
-\
-java:S2147¬"ECombine this catch with the one at line 170, which has the same body.(¶ƒ´œ
-a
-java:S2147®"ECombine this catch with the one at line 172, which has the same body.(ôœú’şÿÿÿÿ
-T
-java:S1854Ü"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
-E
-java:S1481Ü")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ
-T
-java:S1854ò"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
-E
-java:S1481ò")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ
-T
-java:S1854"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
-w
-java:S3923…"[Remove this conditional structure or edit its code blocks so that they're not all the same.(É­½˜øÿÿÿÿ
-E
-java:S1481")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ
-T
-java:S1854Ò"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ
-E
-java:S1481Ò")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ
+java:S2147^"DCombine this catch with the one at line 92, which has the same body.(¶ƒ´œ8è£’ıÁ1
+f
+java:S2147`"DCombine this catch with the one at line 94, which has the same body.(í­Õçüÿÿÿÿ8è£’ıÁ1
+b
+java:S2147˜"ECombine this catch with the one at line 150, which has the same body.(‹ÈŸZ8ç£’ıÁ1
+h
+java:S2147š"ECombine this catch with the one at line 152, which has the same body.(í­Õçüÿÿÿÿ8î£’ıÁ1
+c
+java:S2147œ"ECombine this catch with the one at line 154, which has the same body.(¶ƒ´œ8î£’ıÁ1
+[
+java:S1854²"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ8ë£’ıÁ1
+L
+java:S1481²")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ8í£’ıÁ1
+b
+java:S2147å"ECombine this catch with the one at line 227, which has the same body.(‹ÈŸZ8î£’ıÁ1
+h
+java:S2147ç"ECombine this catch with the one at line 229, which has the same body.(í­Õçüÿÿÿÿ8˜à™ıÁ1
+c
+java:S2147é"ECombine this catch with the one at line 231, which has the same body.(¶ƒ´œ8˜à™ıÁ1
+h
+java:S2147ë"ECombine this catch with the one at line 233, which has the same body.(ôœú’şÿÿÿÿ8î£’ıÁ1
+[
+java:S1854š"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ8ó£’ıÁ1
+L
+java:S1481š")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ8õ£’ıÁ1
+[
+java:S1854°"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ8ö£’ıÁ1
+L
+java:S1481°")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ8ö£’ıÁ1
+[
+java:S1854Ì"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ8÷£’ıÁ1
+~
+java:S3923Ã"[Remove this conditional structure or edit its code blocks so that they're not all the same.(É­½˜øÿÿÿÿ8÷£’ıÁ1
+L
+java:S1481Ì")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ8ø£’ıÁ1
+[
+java:S1854"8Remove this useless assignment to local variable "rows".(Ìû¨ùÿÿÿÿ8ü£’ıÁ1
+L
+java:S1481")Remove this unused "rows" local variable.(Ìû¨ùÿÿÿÿ8ü£’ıÁ1
+I
+java:S1128",Remove this unused import 'classes.Teacher'.(¤øÖ8™™ıÁ1

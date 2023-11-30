@@ -97,12 +97,24 @@
                            <VBox.margin>
                               <Insets right="10.0" />
                            </VBox.margin></TextArea>
-                        <Button fx:id="botonLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
+                        <Button fx:id="botonLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font></Button>
                         <HBox spacing="10.0">
                            <children>
-                              <Button fx:id="botonAñadirEmpresa" mnemonicParsing="false" onAction="#añadirEmpresa" text="Añadir Empresa" />
-                              <Button fx:id="botonActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar" />
-                              <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrar" text="Borrar" />
+                              <Button fx:id="botonAñadirEmpresa" mnemonicParsing="false" onAction="#añadirEmpresa" text="Añadir Empresa">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font></Button>
+                              <Button fx:id="botonActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font></Button>
+                              <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrar" text="Borrar">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font></Button>
                            </children>
                         </HBox>
                      </children>

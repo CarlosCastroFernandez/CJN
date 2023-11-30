@@ -8,10 +8,7 @@ import domain.teacher.TeacherDAOImp;
 import exception.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,6 +20,8 @@ public class LoginController implements Initializable {
     private PasswordField txtPassword;
     @javafx.fxml.FXML
     private Button botonInicio;
+    @javafx.fxml.FXML
+    private Button botonRegister;
 
     @javafx.fxml.FXML
     public void iniciarSesion(ActionEvent actionEvent) {
@@ -66,6 +65,25 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    @javafx.fxml.FXML
+    public void register(ActionEvent actionEvent) {
+        String cadena="@cesur1234";
+        TextInputDialog text=new TextInputDialog();
+        text.setTitle("Comprobación");
+        text.setHeaderText("Ingrese la clave");
+        text.showAndWait().ifPresent(clave->{
+            if(!clave.equals(cadena)){
+                Alert alerta=new Alert(Alert.AlertType.ERROR);
+                alerta.setTitle("Error");
+                alerta.setHeaderText("Clave incorrecta");
+                alerta.showAndWait();
+            }else{
+                App.loadFXML("teacherRegister-controller.fxml");
+            }
+        });
 
     }
 }

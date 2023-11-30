@@ -4,12 +4,12 @@ a	java:S112‚"FDefine and throw a dedicated exception instead of using a gener
 a	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
 a	java:S112³"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
 t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÐÔ–­ÿÿÿÿÿ
-e
-java:S2095­"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$
-e
-java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³
 k
 java:S2095’"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­Ýô£øÿÿÿÿ
+e
+java:S2095?"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³
+e
+java:S2095­"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$
 =
 java:S30101"'Remove this assignment of "connection".(á„žš
 T

@@ -74,8 +74,14 @@
                   </GridPane>
                   <FlowPane alignment="CENTER" hgap="40.0" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnGuardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardar" text="Guardar" textAlignment="CENTER" />
-                        <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" />
+                        <Button fx:id="btnGuardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardar" text="Guardar" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font></Button>
+                        <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font></Button>
                      </children>
                   </FlowPane>
                </children>
