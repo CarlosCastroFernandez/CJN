@@ -1,27 +1,27 @@
 
-]
-java:S1192‡"FDefine a constant instead of duplicating this literal "Error" 4 times.(ìŞ…á
-l
-java:S3655À"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¬Š´Ëøÿÿÿÿ
-l
-java:S3655Ò"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¬Š´Ëøÿÿÿÿ
-x	java:S1160"^Rename this field "botonAÃ±adirEmpresa" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Êêÿÿÿÿÿ
-H
-java:S1611>"2Remove the parentheses around the "fila" parameter(™ƒ½Õ
-M
-java:S1611B"2Remove the parentheses around the "fila" parameter(ÓåøÂùÿÿÿÿ
-M
-java:S1611F"2Remove the parentheses around the "fila" parameter(ûË€øúÿÿÿÿ
-H
-java:S1611J"2Remove the parentheses around the "fila" parameter(ö±Ùİ
-X
-java:S1117K"=Rename "cTelefono" which hides the field declared at line 35.(ØÔäşÿÿÿÿ
-M
-java:S1611O"2Remove the parentheses around the "fila" parameter(Èå¿œşÿÿÿÿ
-X
-java:S1117P"BRename "cObservaciones" which hides the field declared at line 41.(»“³«
-E	java:S106d"+Replace this use of System.out by a logger.(¥ÒßÃùÿÿÿÿ
-F	java:S106€"+Replace this use of System.out by a logger.(Š®á”ùÿÿÿÿ
-c	java:S100¦"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤æù
-A	java:S106Õ"+Replace this use of System.out by a logger.(ƒê½•
-?	java:S108Ü")Either remove or fill this block of code.(”ı¾
+d
+java:S1192‡"FDefine a constant instead of duplicating this literal "Error" 4 times.(ìŞ…á8÷™ôŠÂ1
+s
+java:S3655Ó"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¬Š´Ëøÿÿÿÿ8àšôŠÂ1
+s
+java:S3655À"PCall "Optional#isPresent()" or "!Optional#isEmpty()" before accessing the value.(¬Š´Ëøÿÿÿÿ8àšôŠÂ1
+	java:S1160"^Rename this field "botonAÃ±adirEmpresa" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(—Êêÿÿÿÿÿ8âšôŠÂ1
+O
+java:S1611>"2Remove the parentheses around the "fila" parameter(™ƒ½Õ8êšôŠÂ1
+T
+java:S1611B"2Remove the parentheses around the "fila" parameter(ÓåøÂùÿÿÿÿ8ìšôŠÂ1
+T
+java:S1611F"2Remove the parentheses around the "fila" parameter(ûË€øúÿÿÿÿ8íšôŠÂ1
+O
+java:S1611J"2Remove the parentheses around the "fila" parameter(ö±Ùİ8îšôŠÂ1
+_
+java:S1117K"=Rename "cTelefono" which hides the field declared at line 35.(ØÔäşÿÿÿÿ8îšôŠÂ1
+T
+java:S1611O"2Remove the parentheses around the "fila" parameter(Èå¿œşÿÿÿÿ8ïšôŠÂ1
+_
+java:S1117P"BRename "cObservaciones" which hides the field declared at line 41.(»“³«8ïšôŠÂ1
+L	java:S106d"+Replace this use of System.out by a logger.(¥ÒßÃùÿÿÿÿ8òšôŠÂ1
+M	java:S106€"+Replace this use of System.out by a logger.(Š®á”ùÿÿÿÿ8ùšôŠÂ1
+j	java:S100¦"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤æù8ıšôŠÂ1
+H	java:S106Ö"+Replace this use of System.out by a logger.(ƒê½•8ˆ›ôŠÂ1
+F	java:S108İ")Either remove or fill this block of code.(”ı¾8Š›ôŠÂ1

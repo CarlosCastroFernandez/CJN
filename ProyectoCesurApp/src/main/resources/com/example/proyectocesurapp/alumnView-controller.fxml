@@ -142,14 +142,20 @@
                                       <Insets bottom="10.0" left="10.0" right="10.0" />
                                   </VBox.margin>
                               </TextArea>
-                              <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#añadirTarea" text="Añadir">
-                                  <VBox.margin>
-                                      <Insets bottom="5.0" left="10.0" />
-                                  </VBox.margin>
-                           <font>
-                              <Font name="System Bold Italic" size="13.0" />
-                           </font>
+                        <FlowPane alignment="CENTER" hgap="20.0" prefHeight="73.0" prefWidth="215.0">
+                           <children>
+                                    <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#añadirTarea" text="Añadir">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font>
+                                    </Button>
+                              <Button fx:id="botonClean" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clean" text="Limpiar">
+                                 <font>
+                                    <Font name="System Bold Italic" size="13.0" />
+                                 </font>
                               </Button>
+                           </children>
+                        </FlowPane>
                           </children>
                      <padding>
                         <Insets left="10.0" right="10.0" top="10.0" />

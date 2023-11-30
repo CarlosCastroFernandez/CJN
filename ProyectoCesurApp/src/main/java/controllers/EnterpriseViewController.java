@@ -197,6 +197,7 @@ public class EnterpriseViewController implements Initializable {
                 txtResponsable.clear();
                 txtObservaciones.clear();
             }
+            tvEmpresas.getSelectionModel().select(null);
         }
 
     }

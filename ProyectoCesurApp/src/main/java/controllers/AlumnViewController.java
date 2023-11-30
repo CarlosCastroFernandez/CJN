@@ -65,6 +65,8 @@ public class AlumnViewController implements Initializable {
     private MenuItem menuSalir;
     @javafx.fxml.FXML
     private MenuItem menuItemCount;
+    @javafx.fxml.FXML
+    private Button botonClean;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -259,6 +261,14 @@ public class AlumnViewController implements Initializable {
     @javafx.fxml.FXML
     public void account(ActionEvent actionEvent) {
         App.loadFXML("alumnAccount-controller.fxml");
+    }
+
+    @javafx.fxml.FXML
+    public void clean(ActionEvent actionEvent) {
+        taObservations.clear();
+        dpDate.setValue(null);
+        spHoras.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,8,0,1));
+        fieldActivity.clear();
     }
 }
 

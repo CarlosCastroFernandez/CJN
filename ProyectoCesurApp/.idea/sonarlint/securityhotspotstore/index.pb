@@ -41,3 +41,7 @@ _
 /src/main/java/domain/teacher/TeacherDAOImp.java,2\3\237f91a90ce745c0822bf103c96ec00936a5f9ce
 e
 5src/main/java/controllers/AlumnAccountController.java,6\b\6bbbef547c30d86824ab3fc63f21c1ebfb1f5200
+^
+.src/main/java/controllers/LoginController.java,e\7\e7c3324293af4a0146a78e5c2cbb4cec9472ab7f
+e
+5src/main/java/domain/enterprise/EnterpriseDAOImp.java,6\c\6c968fd628d663f3eb51039d4df5dad79b60b03e
