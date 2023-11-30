@@ -19,3 +19,9 @@ c
 3src/main/java/com/example/proyectocesurapp/App.java,d\6\d6df583ea9c4c1c1c1e978a1f2503ffddad0e6d3
 P
  src/main/java/classes/Alumn.java,3\c\3cdaa5339765d373314477c2ec10231361b9a424
+b
+2src/main/java/controllers/EditAlumnController.java,a\1\a1a50712091d1b87ed250e3d65d21e6a5bd0a8fa
+g
+7src/main/java/controllers/EnterpriseViewController.java,9\e\9eca370233b48d3c0654617f84ac9be216c6ec64
+b
+2src/main/java/controllers/AlumnViewController.java,9\7\9728a9c08d39a0b6407262a223e81294f3b0356b

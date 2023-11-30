@@ -22,19 +22,19 @@ java:S1192b"IDefine a constant instead of duplicating this literal "profesor" 3
 d
 java:S1192?"IDefine a constant instead of duplicating this literal "horasFCT" 3 times.(¹Ìÿøúÿÿÿÿ
 e
-java:S2095W"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³
+java:S2095†"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚Û¿
 k
 java:S2095Ë"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­İô£øÿÿÿÿ
+k
+java:S2095Ÿ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(µ¦®™úÿÿÿÿ
+e
+java:S2095W"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³
+e
+java:S2095Î"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$
 f
 java:S2095‚"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº
 f
 java:S2095î"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº
-e
-java:S2095Î"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$
-e
-java:S2095†"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚Û¿
-k
-java:S2095Ÿ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(µ¦®™úÿÿÿÿ
 =
 java:S3010G"'Remove this assignment of "connection".(¨é¶­
 Z

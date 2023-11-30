@@ -49,7 +49,7 @@
                         <items>
                           <MenuItem fx:id="menuLogOut" mnemonicParsing="false" onAction="#logOut" text="Log Out" />
                               <SeparatorMenuItem mnemonicParsing="false" />
-                              <MenuItem mnemonicParsing="false" text="Cuenta" />
+                              <MenuItem fx:id="menuItemCount" mnemonicParsing="false" onAction="#account" text="Cuenta" />
                               <SeparatorMenuItem mnemonicParsing="false" />
                               <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
                         </items>

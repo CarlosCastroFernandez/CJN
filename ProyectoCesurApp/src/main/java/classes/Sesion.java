@@ -20,7 +20,15 @@ public class Sesion {
      * Actividad diaria actual.
      */
     private static DailyActivity activity;
+    private static Byte count=0;
 
+    public static Byte getCount() {
+        return count;
+    }
+
+    public static void setCount(Byte count) {
+        Sesion.count = count;
+    }
 
     public static DailyActivity getActivity(){
         return activity;

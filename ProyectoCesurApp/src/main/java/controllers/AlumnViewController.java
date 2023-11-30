@@ -63,6 +63,8 @@ public class AlumnViewController implements Initializable {
     private MenuItem menuLogOut;
     @javafx.fxml.FXML
     private MenuItem menuSalir;
+    @javafx.fxml.FXML
+    private MenuItem menuItemCount;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -138,6 +140,7 @@ public class AlumnViewController implements Initializable {
             }
 
         });
+
         //Consulta a bbdd: "Todas las actividades diarias que tiene el alumno logeado".
         Integer idAlumno = Sesion.getAlumn().getId();
         DailyActivityDAOImp dao = new DailyActivityDAOImp(DBConnection.getConnection());
@@ -251,6 +254,11 @@ public class AlumnViewController implements Initializable {
     public void salir(ActionEvent actionEvent) {
         Sesion.setAlumn(null);
         System.exit(0);
+    }
+
+    @javafx.fxml.FXML
+    public void account(ActionEvent actionEvent) {
+        App.loadFXML("alumnAccount-controller.fxml");
     }
 }
 

@@ -1,6 +1,8 @@
 package domain.alumn;
 
 import classes.Alumn;
+import classes.Sesion;
+import classes.Teacher;
 import domain.DBConnection;
 import domain.dailyActivity.DailyActivityDAOImp;
 import domain.enterprise.EnterpriseDAOImp;
@@ -30,6 +32,7 @@ public class AlumnDAOImp implements AlumnDAO {
      * Query que carga un alumno concreto de la Base de Datos usando su DNI.
      */
     private static final String QUERY_LOAD = "select * from alumno where dni = ?";
+    private static final String QUERY_LOAD2 = "select * from alumno where id = ?";
 
     /**
      * Query que carga todos los alumnos de la Base de Datos de un profesor concreto.
@@ -47,6 +50,8 @@ public class AlumnDAOImp implements AlumnDAO {
      */
     private static final String QUERY_UPDATE ="update alumno set dni=?,email=?,nombre=?,apellido1=?,apellido2=?," +
             "telefono=?,empresa=?,fechaNacimiento=?,horasDual=?,horasFCT=?,curso=? where id=?";
+    private static final String QUERY_UPDATE2 ="update alumno set dni=?,email=?,nombre=?,apellido1=?,apellido2=?," +
+            "telefono=?,contraseña=? where id=?";
 
     /**
      * Query que borra a un alumno de la Base de Datos en función de su Id.
@@ -70,6 +75,40 @@ public class AlumnDAOImp implements AlumnDAO {
      */
     public AlumnDAOImp(Connection c){ connection = c;}
 
+
+    public Alumn load(Integer id){
+        Alumn outPut=null;
+        try {
+            PreparedStatement pst=connection.prepareStatement(QUERY_LOAD2);
+            pst.setInt(1,id);
+            ResultSet rs=pst.executeQuery();
+            if(rs.next()){
+                try {
+                    outPut = new Alumn( rs.getInt("id"), rs.getString("nombre"), rs.getString("apellido1"), rs.getNString("apellido2"),
+                            rs.getString("contraseña"),rs.getString("email"), rs.getString("dni"),
+                            rs.getInt("telefono"),rs.getString("horasDual"),rs.getString("horasFCT"),
+                            rs.getInt("profesor"),String.valueOf(rs.getDate("fechaNacimiento")), rs.getInt("empresa"),
+                            Grade.valueOf(rs.getString("curso")) ,rs.getString("observaciones"));
+                } catch (NameWithNumber e) {
+                    throw new RuntimeException(e);
+                } catch (LastNameWithNumber e) {
+                    throw new RuntimeException(e);
+                } catch (InvalidDNI e) {
+                    throw new RuntimeException(e);
+                }
+
+                //Se carga el profesor asociado al alumno.
+                try {
+                    outPut.setTeacher(new TeacherDAOImp(DBConnection.getConnection()).loadTeacherById(rs.getInt("profesor")));
+                } catch (NonExistentUser e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return outPut;
+    }
     /**
      * Logea un estudiante (Alumn) basado en el DNI y la contraseña proporcionados.
      *
@@ -119,8 +158,30 @@ public class AlumnDAOImp implements AlumnDAO {
         }
         return outPut;
     }
+    public void updateAccount(Alumn a) {
+        try {
+            //Preparación de la consulta SQL utilizando la conexión proporcionada.
+            PreparedStatement preparedStatement = connection.prepareStatement(QUERY_UPDATE2);
 
-    /**
+            //Establecimiento de los parámetros en la sentencia SQL con los datos del alumno proporcionado.
+            preparedStatement.setString(1, a.getDni());
+            preparedStatement.setString(2, a.getEmail());
+            preparedStatement.setString(3, a.getName());
+            preparedStatement.setString(4, a.getLastName());
+            preparedStatement.setString(5, a.getLastName2());
+            preparedStatement.setInt(6, a.getPhone());
+            preparedStatement.setString(7, a.getPassword());
+            preparedStatement.setInt(8, Sesion.getAlumn().getId());
+
+
+            //Ejecuta la sentencia SQL de inserción.
+            Integer rows = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+        /**
      * Carga todos los alumnos asociados a un profesor.
      *
      * @param id ID del profesor
@@ -195,6 +256,7 @@ public class AlumnDAOImp implements AlumnDAO {
      * @param a Alumn con los datos actualizados
      * @return Alumn con los datos actualizados
      */
+
     @Override
     public Alumn update(Alumn a) {
         Alumn alumn = a;

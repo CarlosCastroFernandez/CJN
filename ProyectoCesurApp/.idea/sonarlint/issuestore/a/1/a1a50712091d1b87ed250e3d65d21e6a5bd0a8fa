@@ -1,0 +1,19 @@
+
+h	java:S112Í"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÑÍ¼ÖÁ1
+h	java:S112Ï"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÑÍ¼ÖÁ1
+L
+java:S3740*"/Provide the parametrized type for this generic.(¾àÜ8ÓÍ¼ÖÁ1
+Q
+java:S3740,"/Provide the parametrized type for this generic.(©·Ìµøÿÿÿÿ8ÓÍ¼ÖÁ1
+t
+java:S37769"RRefactor this method to reduce its Cognitive Complexity from 21 to the 15 allowed.(•‘İŸüÿÿÿÿ8ÍÏ¼ÖÁ1
+E	java:S108v")Either remove or fill this block of code.(”ı¾8ØÏ¼ÖÁ1
+\
+java:S1854Ê"9Remove this useless assignment to local variable "alumn".(ˆ»†¶ùÿÿÿÿ8ãÏ¼ÖÁ1
+G
+java:S1940­")Use the opposite operator ("!=") instead.(Ççï8äÏ¼ÖÁ1
+c
+java:S2147Î"ECombine this catch with the one at line 204, which has the same body.(¶ƒ´œ8åÏ¼ÖÁ1
+M	java:S106É"+Replace this use of System.out by a logger.(Û¼¨ëşÿÿÿÿ8ôÏ¼ÖÁ1
+M
+java:S1481Ê"*Remove this unused "alumn" local variable.(ˆ»†¶ùÿÿÿÿ8ôÏ¼ÖÁ1

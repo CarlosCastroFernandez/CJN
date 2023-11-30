@@ -106,6 +106,7 @@ public class TeacherViewController implements Initializable {
     private ContextMenu contextMenu=new ContextMenu();
     private MenuItem menuItem1=new MenuItem();
     private MenuItem menuItem2=new MenuItem();
+    private MenuItem menuItem3=new MenuItem();
     private ObservableList<Grade> obsGrades;
     @javafx.fxml.FXML
     private Button botonEmpresa;
@@ -230,6 +231,9 @@ public class TeacherViewController implements Initializable {
                  menuItem1=new MenuItem("Editar");
                 contextMenu.getItems().add(menuItem1);
                 contextMenu.getItems().add(new SeparatorMenuItem());
+                menuItem3=new MenuItem("Ver actividades");
+                contextMenu.getItems().add(menuItem3);
+                contextMenu.getItems().add(new SeparatorMenuItem());
                  menuItem2=new MenuItem("Borrar");
                 contextMenu.getItems().add(menuItem2);
                 tabla.setContextMenu(contextMenu);
@@ -262,20 +266,31 @@ public class TeacherViewController implements Initializable {
 
                     }
 
-
-
-
+                });
+                menuItem3.setOnAction(actionEvent -> {
+                    App.loadFXML("alumnViewActivity-controller.fxml");
                 });
 
             }
         });
-        obs= FXCollections.observableArrayList();
-        AlumnDAOImp conexion=new AlumnDAOImp(DBConnection.getConnection());
-        Sesion.getTeacher().getAlumn().clear();
-        Sesion.getTeacher().getAlumn().addAll(conexion.loadAll(Sesion.getTeacher().getId()));
-        System.out.println(Sesion.getTeacher().getAlumn());
-        obs.addAll(Sesion.getTeacher().getAlumn());
-        tabla.setItems(obs);
+        if(Sesion.getCount()==1){
+            Sesion.setCount((byte)0);
+            AlumnDAOImp conexion=new AlumnDAOImp(DBConnection.getConnection());
+            Sesion.getTeacher().setAlumn(new ArrayList<>());
+            Sesion.getTeacher().getAlumn().addAll(conexion.loadAll(Sesion.getTeacher().getId()));
+            obs= FXCollections.observableArrayList();
+            obs.addAll(Sesion.getTeacher().getAlumn());
+            tabla.setItems(obs);
+        }else{
+            obs= FXCollections.observableArrayList();
+            AlumnDAOImp conexion=new AlumnDAOImp(DBConnection.getConnection());
+            Sesion.getTeacher().getAlumn().clear();
+            Sesion.getTeacher().getAlumn().addAll(conexion.loadAll(Sesion.getTeacher().getId()));
+            System.out.println(Sesion.getTeacher().getAlumn());
+            obs.addAll(Sesion.getTeacher().getAlumn());
+            tabla.setItems(obs);
+        }
+
         tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
             alumn =t1;
             Sesion.setAlumn(alumn);
@@ -419,6 +434,7 @@ public class TeacherViewController implements Initializable {
 
     @javafx.fxml.FXML
     public void cuenta(ActionEvent actionEvent) {
+        App.loadFXML("teacherAccount-controller.fxml");
     }
 
     @javafx.fxml.FXML

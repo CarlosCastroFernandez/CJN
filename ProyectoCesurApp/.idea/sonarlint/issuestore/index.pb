@@ -19,3 +19,9 @@ k
 ;src/main/java/domain/dailyActivity/DailyActivityDAOImp.java,4\a\4a26145448f2b85d47170304a65b7cc32a6ea347
 P
  src/main/java/classes/Alumn.java,3\c\3cdaa5339765d373314477c2ec10231361b9a424
+b
+2src/main/java/controllers/EditAlumnController.java,a\1\a1a50712091d1b87ed250e3d65d21e6a5bd0a8fa
+g
+7src/main/java/controllers/EnterpriseViewController.java,9\e\9eca370233b48d3c0654617f84ac9be216c6ec64
+b
+2src/main/java/controllers/AlumnViewController.java,9\7\9728a9c08d39a0b6407262a223e81294f3b0356b

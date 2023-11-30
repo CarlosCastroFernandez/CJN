@@ -1,5 +1,6 @@
 package domain.teacher;
 
+import classes.Sesion;
 import classes.Teacher;
 import exception.*;
 import lombok.extern.java.Log;
@@ -33,6 +34,7 @@ public class TeacherDAOImp implements TeacherDAO {
      */
     private static final String QUERY_INJECTION ="insert into profesor(dni,nombre,email,apellido1,apellido2,contraseña,telefono)\n" +
             "VALUE (?,?,?,?,?,?,?)";
+    private static final String QUERY_UPDATE="update profesor set dni=?,nombre=?,email=?,apellido1=?,apellido2=?,contraseña=?,telefono=? where id=?";
 
     /**
      * Constructor que recibe una conexión para la clase TeacherDAOImp.
@@ -186,6 +188,23 @@ public class TeacherDAOImp implements TeacherDAO {
             throw new RuntimeException(e);
         }
         return teacherResult;
+    }
+    public void update(Teacher t){
+        try {
+            PreparedStatement pst=connection.prepareStatement(QUERY_UPDATE);
+            pst.setString(1,t.getDni());
+            pst.setString(2,t.getName());
+            pst.setString(3,t.getEmail());
+            pst.setString(4,t.getLastName());
+            pst.setString(5,t.getLastName2());
+            pst.setString(6,t.getPassword());
+            pst.setInt(7,t.getPhone());
+            pst.setInt(8, Sesion.getTeacher().getId());
+            Integer filas=pst.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
 
