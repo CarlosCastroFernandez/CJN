@@ -582,6 +582,7 @@ public class TeacherViewController implements Initializable {
                 alumn.setTeacherID(Sesion.getTeacher().getId());
                 alumn.setTeacher(Sesion.getTeacher());
                 alumn.setDni(tfDNI.getText());
+                alumn.setActivity(new ArrayList<>());
 
                 String[] apellidos = tfLastName.getText().split(" ");
 
