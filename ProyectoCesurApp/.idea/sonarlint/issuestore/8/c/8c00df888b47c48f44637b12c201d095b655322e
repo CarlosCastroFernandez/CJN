@@ -21,22 +21,18 @@ h	java:S112ÿ"FDefine and throw a dedicated exception instead of using a gener
 h	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¶¯›ıÁ1
 |
 java:S2293À"YReplace the type specification in this constructor call with the diamond operator ("<>").(ŞÏ™Óÿÿÿÿÿ8±£’ıÁ1
-r
-java:S1192Z"PDefine a constant instead of duplicating this literal "fechaNacimiento" 3 times.(º”÷Ñùÿÿÿÿ8Ûß™ıÁ1
-i
-java:S1192W"GDefine a constant instead of duplicating this literal "nombre" 3 times.(†Í‹Üûÿÿÿÿ8Üß™ıÁ1
-k
-java:S1192Y"IDefine a constant instead of duplicating this literal "telefono" 3 times.(ÏèùÃøÿÿÿÿ8Üß™ıÁ1
-c
-java:S1192X"FDefine a constant instead of duplicating this literal "email" 3 times.(ÿÖşŠ8Üß™ıÁ1
 l
 java:S1192W"JDefine a constant instead of duplicating this literal "apellido2" 3 times.(†Í‹Üûÿÿÿÿ8Ûß™ıÁ1
+r
+java:S1192Z"PDefine a constant instead of duplicating this literal "fechaNacimiento" 3 times.(º”÷Ñùÿÿÿÿ8Ûß™ıÁ1
 l
 java:S1192W"JDefine a constant instead of duplicating this literal "apellido1" 3 times.(†Í‹Üûÿÿÿÿ8Üß™ıÁ1
 g
 java:S1192C"JDefine a constant instead of duplicating this literal "horasDual" 5 times.(–€ôæ8±£’ıÁ1
 k
 java:S1192Z"IDefine a constant instead of duplicating this literal "profesor" 5 times.(º”÷Ñùÿÿÿÿ8Üß™ıÁ1
+i
+java:S1192W"GDefine a constant instead of duplicating this literal "nombre" 3 times.(†Í‹Üûÿÿÿÿ8Üß™ıÁ1
 h
 java:S1192["FDefine a constant instead of duplicating this literal "curso" 3 times.(­ò™Ñøÿÿÿÿ8Üß™ıÁ1
 p
@@ -45,30 +41,34 @@ k
 java:S1192D"IDefine a constant instead of duplicating this literal "horasFCT" 4 times.(¹Ìÿøúÿÿÿÿ8±£’ıÁ1
 j
 java:S1192Z"HDefine a constant instead of duplicating this literal "empresa" 3 times.(º”÷Ñùÿÿÿÿ8Üß™ıÁ1
+k
+java:S1192Y"IDefine a constant instead of duplicating this literal "telefono" 3 times.(ÏèùÃøÿÿÿÿ8Üß™ıÁ1
+c
+java:S1192X"FDefine a constant instead of duplicating this literal "email" 3 times.(ÿÖşŠ8Üß™ıÁ1
 i
 java:S1192X"LDefine a constant instead of duplicating this literal "contraseÃ±a" 3 times.(ÿÖşŠ8Üß™ıÁ1
 W
 java:S1141V"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8İß™ıÁ1
 W
 java:S1141e"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8¸¯›ıÁ1
-m
-java:S2095À"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº8ß£’ıÁ1
-l
-java:S2095Œ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$8ß£’ıÁ1
-l
-java:S2095R"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ç¢È¸8…™ıÁ1
-r
-java:S2095İ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(µ¦®™úÿÿÿÿ8ß£’ıÁ1
-r
-java:S2095¤"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(™æÄåüÿÿÿÿ8ß£’ıÁ1
 l
 java:S2095~"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ïûÁ³8ß£’ıÁ1
-m
-java:S2095¬"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº8ß£’ıÁ1
 l
 java:S2095Ã"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(‚Û¿8ß£’ıÁ1
 r
+java:S2095İ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(µ¦®™úÿÿÿÿ8ß£’ıÁ1
+l
+java:S2095Œ"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(¢õ÷$8ß£’ıÁ1
+m
+java:S2095¬"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº8ß£’ıÁ1
+l
+java:S2095R"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(ç¢È¸8…™ıÁ1
+m
+java:S2095À"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(…éº8ß£’ıÁ1
+r
 java:S2095‰"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(­İô£øÿÿÿÿ8ß£’ıÁ1
+r
+java:S2095¤"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(™æÄåüÿÿÿÿ8ß£’ıÁ1
 D
 java:S3010L"'Remove this assignment of "connection".(¨é¶­8å£’ıÁ1
 a
