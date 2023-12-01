@@ -12,85 +12,75 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="740.0" prefWidth="1137.0" styleClass="ventana" stylesheets="@style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditDailyActivityController">
+<BorderPane prefHeight="740.0" prefWidth="1137.0" styleClass="ventana" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditDailyActivityController">
    <center>
-      <BorderPane BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="740.0" prefWidth="1017.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="10.0" right="10.0" />
          </BorderPane.margin>
          <center>
-            <VBox alignment="CENTER" prefHeight="88.0" prefWidth="306.0" spacing="20.0">
+            <GridPane hgap="90.0" maxWidth="500.0" minWidth="499.0" prefHeight="304.0" prefWidth="499.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="599.4245300292969" minWidth="10.0" prefWidth="573.261962890625" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="647.0073547363281" minWidth="10.0" prefWidth="544.238037109375" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="315.5830383300781" minHeight="10.0" prefHeight="163.22747802734375" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="305.0543212890625" minHeight="10.0" prefHeight="172.77252197265625" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label text="Fecha">
-                     <font>
-                        <Font name="System Bold Italic" size="13.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </Label>
-                  <DatePicker fx:id="dpDate" />
-                  <Label text="Tipo Práctica">
-                     <font>
-                        <Font name="System Bold Italic" size="13.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </Label>
-                  <ComboBox fx:id="comboPracticeType" prefHeight="26.0" prefWidth="159.0" />
-                  <Label text="Horas">
-                     <font>
-                        <Font name="System Bold Italic" size="13.0" />
-                     </font>
-                  </Label>
-                  <Spinner fx:id="spHoras" prefHeight="26.0" prefWidth="149.0" />
-                  <Label text="Actividad">
-                     <font>
-                        <Font name="System Bold Italic" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="fieldActivity" maxWidth="300.0" />
-                  <Label text="Observaciones">
-                     <font>
-                        <Font name="System Bold Italic" size="13.0" />
-                     </font>
-                  </Label>
-                  <TextArea fx:id="taObservations" maxHeight="200.0" maxWidth="400.0" prefWidth="252.0" />
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-                  <FlowPane alignment="CENTER" hgap="40.0" prefHeight="200.0" prefWidth="200.0">
+                  <VBox GridPane.columnIndex="1">
                      <children>
-                        <Button fx:id="btnGuardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardar" text="Guardar" textAlignment="CENTER">
+                        <Label text="Tipo Práctica">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
-                           </font></Button>
-                        <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
-                           <font>
-                              <Font name="System Bold Italic" size="13.0" />
-                           </font></Button>
+                           </font>
+                        </Label>
+                        <ComboBox fx:id="comboPracticeType" prefHeight="26.0" prefWidth="191.0" />
                      </children>
-                  </FlowPane>
+                  </VBox>
+                  <VBox>
+                     <children>
+                        <Label text="Fecha">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="dpDate" />
+                     </children>
+                  </VBox>
+                  <VBox GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Horas">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <Spinner fx:id="spHoras" prefHeight="26.0" prefWidth="190.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="45.0" prefWidth="191.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Actividad">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="fieldActivity" maxWidth="300.0" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
+            </GridPane>
          </center>
          <top>
-            <FlowPane alignment="CENTER" BorderPane.alignment="CENTER">
+            <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="93.0" prefWidth="775.0" rowValignment="TOP" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Gestión Actividad Diaria">
+                  <Label alignment="TOP_CENTER" text="Gestión Actividad Diaria">
                      <font>
                         <Font name="System Bold Italic" size="30.0" />
                      </font>
@@ -101,6 +91,32 @@
                </BorderPane.margin>
             </FlowPane>
          </top>
+         <bottom>
+            <VBox alignment="TOP_CENTER" prefHeight="281.0" prefWidth="1117.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Observaciones">
+                     <font>
+                        <Font name="System Bold Italic" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="taObservations" maxHeight="200.0" maxWidth="400.0" prefHeight="133.0" prefWidth="318.0" />
+                  <HBox alignment="CENTER" prefHeight="97.0" prefWidth="1117.0" spacing="50.0">
+                     <children>
+                        <Button fx:id="btnGuardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardar" text="Guardar" textAlignment="CENTER">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </bottom>
       </BorderPane>
    </center>
 </BorderPane>
