@@ -48,7 +48,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtEmail" />
+                              <TextField fx:id="tfEmail" />
                            </children>
                         </VBox>
                         <VBox>
@@ -58,7 +58,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtDNI" />
+                              <TextField fx:id="tfDNI" />
                            </children>
                         </VBox>
                      </children>
@@ -72,7 +72,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtNombre" />
+                              <TextField fx:id="tfName" />
                            </children>
                         </VBox>
                         <VBox>
@@ -85,7 +85,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <PasswordField fx:id="passField" />
+                              <PasswordField fx:id="pfTeacher" />
                            </children>
                         </VBox>
                      </children>
@@ -99,7 +99,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtApellido1" />
+                              <TextField fx:id="tfLastName1" />
                            </children>
                         </VBox>
                         <VBox>
@@ -109,7 +109,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtApellido2" />
+                              <TextField fx:id="tfLastName2" />
                            </children>
                         </VBox>
                      </children>
@@ -123,7 +123,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="txtTelefono" />
+                              <TextField fx:id="tfTelephone" />
                            </children>
                         </VBox>
                      </children>
@@ -132,14 +132,14 @@
             </GridPane>
             <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="40.0" prefHeight="45.0" prefWidth="424.0">
                <children>
-                  <Button fx:id="botonRegistro" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registrarse" text="Registrarse" textAlignment="CENTER">
+                  <Button fx:id="btnRegister" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#registrarse" text="Registrarse" textAlignment="CENTER">
                      <FlowPane.margin>
                         <Insets />
                      </FlowPane.margin>
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font></Button>
-                  <Button fx:id="botonCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar">
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancel" text="Cancelar">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font></Button>

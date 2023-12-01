@@ -8,80 +8,139 @@ import exception.LastNameWithNumber;
 import exception.InvalidDNI;
 import exception.NameWithNumber;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Calse que establece la ventana de registro de profesor.
+ */
 public class TeacherRegisterController implements Initializable {
-    @javafx.fxml.FXML
-    private TextField txtEmail;
-    @javafx.fxml.FXML
-    private PasswordField passField;
-    @javafx.fxml.FXML
-    private TextField txtNombre;
-    @javafx.fxml.FXML
-    private TextField txtApellido1;
-    @javafx.fxml.FXML
-    private TextField txtApellido2;
-    @javafx.fxml.FXML
-    private TextField txtTelefono;
-    @javafx.fxml.FXML
-    private Button botonRegistro;
-    @javafx.fxml.FXML
-    private Button botonCancelar;
-    @javafx.fxml.FXML
-    private TextField txtDNI;
-    @javafx.fxml.FXML
-    private ImageView imagenRegistro;
-    @javafx.fxml.FXML
-    private Pane pane;
+    @FXML
+    private Button btnRegister;
+    @FXML
+    private Button btnCancel;
 
-    @javafx.fxml.FXML
+    /**
+     * TextField para el email del profesor.
+     */
+    @FXML
+    private TextField tfEmail;
+
+    /**
+     * TextField para el DNI del profesor.
+     */
+    @FXML
+    private TextField tfDNI;
+
+    /**
+     * TextField para el nombre del profesor.
+     */
+    @FXML
+    private TextField tfName;
+
+    /**
+     * PasswordField para la contraseña del profesor.
+     */
+    @FXML
+    private PasswordField pfTeacher;
+
+    /**
+     * TextField para el apellido1 del profesor.
+     */
+    @FXML
+    private TextField tfLastName1;
+
+    /**
+     * PasswordField para el apellido2 del profesor.
+     */
+    @FXML
+    private TextField tfLastName2;
+
+    /**
+     * TextField para el teléfono del profesor.
+     */
+    @FXML
+    private TextField tfTelephone;
+
+    /**
+     * Permite el registro de un profesor en la Base de Datos.
+     *
+     * @param actionEvent El evento que activa esta función.
+     */
+    @FXML
     public void registrarse(ActionEvent actionEvent) {
-        String dni=txtDNI.getText();
-        String nombre=txtNombre.getText();
-        String apellido1=txtApellido1.getText();
-        String apellido2=txtApellido2.getText();
-        String email=txtEmail.getText();
-        Integer telefono=Integer.valueOf(txtTelefono.getText());
-        String contraseña=passField.getText();
+        //Obtiene los valores de los diferentes campos de texto en la interfaz de usuario.
+        String dni = tfDNI.getText();
+        String name = tfName.getText();
+        String lastName1 = tfLastName1.getText();
+        String lastName2 = tfLastName2.getText();
+        String email = tfEmail.getText();
+        Integer telephone = Integer.valueOf(tfTelephone.getText());
+        String password = pfTeacher.getText();
+
         try {
-            Teacher profe=new Teacher(null,nombre,apellido1,apellido2,contraseña,email,dni,telefono);
-            TeacherDAOImp dao=new TeacherDAOImp(DBConnection.getConnection());
-            profe=dao.injection(profe);
+            //Crea un nuevo objeto Teacher con los valores recopilados.
+            Teacher teacher = new Teacher(null, name, lastName1, lastName2, password, email, dni, telephone);
+
+            //Crea una instancia de TeacherDAOImp utilizando una conexión a la Base de Datos.
+            TeacherDAOImp teacherDAOImp = new TeacherDAOImp(DBConnection.getConnection());
+
+            //Inserta el nuevo objeto Teacher en la Base de Datos.
+            teacher = teacherDAOImp.injection(teacher);
+
+            //Establecimiento de distintas alertas para el control de errores en cada caso.
         } catch (NameWithNumber e) {
-            Alert alerta=new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("Nombre con número.");
-            alerta.showAndWait();
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Nombre con número.");
+            alert.showAndWait();
             throw new RuntimeException(e);
         } catch (LastNameWithNumber e) {
-            Alert alerta=new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("Apellido con número.");
-            alerta.showAndWait();
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Apellido con número.");
+            alert.showAndWait();
             throw new RuntimeException(e);
         } catch (InvalidDNI e) {
-            Alert alerta=new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("DNI inválido.");
-            alerta.showAndWait();
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("DNI inválido.");
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
+
+        //Una vez acaba el registro se vuelve a la ventana de Login.
         App.loadFXML("login-controller.fxml");
 
     }
 
-    @javafx.fxml.FXML
-    public void cancelar(ActionEvent actionEvent) {
+    /**
+     * Cancela la operación dde registro y vuelve a la ventana de Login.
+     *
+     * @param actionEvent El evento que activa esta función.
+     */
+    @FXML
+    public void cancel(ActionEvent actionEvent) {
+        App.loadFXML("login-controller.fxml");
     }
 
+
+    /**
+     * Método llamado automáticamente cuando se inicializa el controlador de JavaFX.
+     * Se implementa como parte de la interfaz Initializable.
+     * En esta implementación, el método no realiza ninguna acción específica.
+     * Es comúnmente utilizado para realizar inicializaciones adicionales de componentes
+     * o datos en el controlador de la interfaz de usuario de JavaFX.
+     *
+     * @param url            La ubicación utilizada para resolver rutas relativas para recursos.
+     * @param resourceBundle Un recurso específico para localizar bundles de recursos.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        //Do nothing.
     }
 }

@@ -1,13 +1,8 @@
 
-`	java:S112="FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112C"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112I"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112e"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112k"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112q"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
 \
-java:S1192:"FDefine a constant instead of duplicating this literal "Error" 3 times.(ìŞ…á
-k	java:S1173"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÂÑùÿÿÿÿ
-—
-java:S1186P"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¢¤ Ø
-œ
-java:S1186T"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•‘İŸüÿÿÿÿ
-O
-java:S18547"9Remove this useless assignment to local variable "profe".(Ğ†–ä
+java:S1192b"FDefine a constant instead of duplicating this literal "Error" 3 times.(µûø–
+]
+java:S1854]";Remove this useless assignment to local variable "teacher".(£°Ÿ»ıÿÿÿÿ8Ÿá²Â1

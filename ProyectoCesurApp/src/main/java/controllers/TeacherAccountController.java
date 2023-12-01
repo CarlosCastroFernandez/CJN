@@ -10,6 +10,7 @@ import exception.LastNameWithNumber;
 import exception.NameWithNumber;
 import exception.NonExistentUser;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -19,50 +20,99 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Clase que permite ver y editar la información de la cuenta de un profesor.
+ */
 public class TeacherAccountController implements Initializable {
-    @javafx.fxml.FXML
-    private TextField txtName;
-    @javafx.fxml.FXML
-    private TextField txtEmail;
-    @javafx.fxml.FXML
-    private TextField txtDNI;
-    @javafx.fxml.FXML
-    private TextField txtPhone;
-    @javafx.fxml.FXML
-    private Button botonKeep;
-    @javafx.fxml.FXML
-    private Button botonCancel;
-    @javafx.fxml.FXML
-    private PasswordField txtPassword;
-    @javafx.fxml.FXML
-    private TextField txtSurname1;
-    @javafx.fxml.FXML
-    private TextField txtSurname2;
+    @FXML
+    private Button btnSave;
+    @FXML
+    private Button btnCancel;
 
+    /**
+     * TextField del nombre del profesor.
+     */
+    @FXML
+    private TextField tfName;
+
+    /**
+     * TextField con el apellido1 del profesor.
+     */
+    @FXML
+    private TextField tfLastName1;
+
+    /**
+     * TextField con el apellido2 del profesor.
+     */
+    @FXML
+    private TextField tfLastName2;
+
+    /**
+     * TextField con el email del profesor.
+     */
+    @FXML
+    private TextField tfEmail;
+
+    /**
+     * TextField con el DNI del profesor.
+     */
+    @FXML
+    private TextField tfDNI;
+
+    /**
+     * TextField con el teléfono del profesor.
+     */
+    @FXML
+    private TextField tfTelephone;
+
+    /**
+     * PasswordField con la contraseña del profesor.
+     */
+    @FXML
+    private PasswordField pfTeacher;
+
+
+    /**
+     * Método de inicialización del controlador de JavaFX.
+     * Se ejecuta automáticamente al inicializar el controlador.
+     * Establece valores predeterminados en los campos de texto y contraseña
+     * de la interfaz gráfica basándose en la información del profesor almacenada en la sesión actual.
+     *
+     * @param url            La ubicación utilizada para resolver rutas relativas para recursos.
+     * @param resourceBundle Un recurso específico para localizar bundles de recursos.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        txtName.setText(Sesion.getTeacher().getName());
-        txtDNI.setText(Sesion.getTeacher().getDni());
-        txtEmail.setText(Sesion.getTeacher().getEmail());
-        txtSurname1.setText(Sesion.getTeacher().getLastName());
-        txtSurname2.setText(Sesion.getTeacher().getLastName2());
-        txtPhone.setText(""+ Sesion.getTeacher().getPhone());
-        txtPassword.setText(Sesion.getTeacher().getPassword());
-
-
+        tfName.setText(Sesion.getTeacher().getName());
+        tfDNI.setText(Sesion.getTeacher().getDni());
+        tfEmail.setText(Sesion.getTeacher().getEmail());
+        tfLastName1.setText(Sesion.getTeacher().getLastName());
+        tfLastName2.setText(Sesion.getTeacher().getLastName2());
+        tfTelephone.setText("" + Sesion.getTeacher().getPhone());
+        pfTeacher.setText(Sesion.getTeacher().getPassword());
     }
 
-    @javafx.fxml.FXML
+    /**
+     * Método asociado al evento de guardado de los datos del profesor.
+     * Recopila los datos ingresados en la interfaz gráfica para crear un nuevo objeto Teacher,
+     * actualiza los datos del profesor en la Base de Datos y realiza la carga de una nueva vista
+     * con la información actualizada del profesor.
+     *
+     * @param actionEvent El evento que activa esta función.
+     * @throws RuntimeException si se encuentran excepciones como InvalidDNI, NameWithNumber,
+     *         LastNameWithNumber o NonExistentUser durante la ejecución del método.
+     */
+    @FXML
     public void save(ActionEvent actionEvent) {
-        Teacher nuevo=new Teacher();
+        Teacher nuevo = new Teacher();
         try {
-            nuevo.setDni(txtDNI.getText());
-            nuevo.setEmail(txtEmail.getText());
-            nuevo.setName(txtName.getText());
-            nuevo.setLastName(txtSurname1.getText());
-            nuevo.setLastName2(txtSurname2.getText());
-            nuevo.setPassword(txtPassword.getText());
-            nuevo.setPhone(Integer.valueOf(txtPhone.getText()));
+            nuevo.setDni(tfDNI.getText());
+            nuevo.setEmail(tfEmail.getText());
+            nuevo.setName(tfName.getText());
+            nuevo.setLastName(tfLastName1.getText());
+            nuevo.setLastName2(tfLastName2.getText());
+            nuevo.setPassword(pfTeacher.getText());
+            nuevo.setPhone(Integer.valueOf(tfTelephone.getText()));
         } catch (InvalidDNI e) {
             throw new RuntimeException(e);
         } catch (NameWithNumber e) {
@@ -73,9 +123,9 @@ public class TeacherAccountController implements Initializable {
         (new TeacherDAOImp(DBConnection.getConnection())).update(nuevo);
         try {
             Sesion.setTeacher(new TeacherDAOImp(DBConnection.getConnection()).loadTeacherById(Sesion.getTeacher().getId()));
-            Alert alerta=new Alert(Alert.AlertType.INFORMATION);
-            alerta.setHeaderText("Modificado Con Exito");
-            alerta.showAndWait();
+            Alert alert =new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Modificado Con Exito");
+            alert.showAndWait();
             Sesion.setCount((byte)1);
             App.loadFXML("teacherView-controller.fxml");
         } catch (NonExistentUser e) {
@@ -83,7 +133,12 @@ public class TeacherAccountController implements Initializable {
         }
     }
 
-    @javafx.fxml.FXML
+    /**
+     * Cancela el proceso de edición de los datos del profesor y lleva a la ventada de profesor.
+     *
+     * @param actionEvent El evento que activa esta acción.
+     */
+    @FXML
     public void cancel(ActionEvent actionEvent) {
         App.loadFXML("teacherView-controller.fxml");
     }

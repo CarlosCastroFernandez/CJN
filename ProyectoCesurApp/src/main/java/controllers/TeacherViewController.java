@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -32,99 +33,259 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-public class TeacherViewController implements Initializable {
-    @javafx.fxml.FXML
-    private TableView <Alumn>tabla;
-    @javafx.fxml.FXML
-    private Button btnNuevoAlumno;
-    @javafx.fxml.FXML
-    private Menu menu;
-    @javafx.fxml.FXML
-    private MenuItem menuLogout;
-    @javafx.fxml.FXML
-    private MenuItem menuCuenta;
-    @javafx.fxml.FXML
-    private MenuItem menuSalir;
-    @javafx.fxml.FXML
-    private ImageView imagen;
-    @javafx.fxml.FXML
-    private MenuBar menuBar;
-    @javafx.fxml.FXML
-    private TableColumn<Alumn,String> cNombre;
-    @javafx.fxml.FXML
-    private TableColumn <Alumn,String>cApellidos;
-    @javafx.fxml.FXML
-    private TableColumn <Alumn,String>cEmail;
-    @javafx.fxml.FXML
-    private TableColumn <Alumn,String>cTelefono;
-    @javafx.fxml.FXML
-    private TableColumn<Alumn,String> cFecha;
-    @javafx.fxml.FXML
-    private TableColumn<Alumn,String> cCurso;
-    @javafx.fxml.FXML
-    private TableColumn <Alumn,String>cProfesor;
-    @javafx.fxml.FXML
-    private TableColumn <Alumn,String>cEmpresa;
-    @javafx.fxml.FXML
-    private TableColumn<Alumn,String> cHorasDUAL;
-    @javafx.fxml.FXML
-    private TableColumn <Alumn,String>cHorasFCT;
-    private Alumn alumn;
-    private ObservableList<Alumn>obs;
-    @javafx.fxml.FXML
-    private TextField textNombre;
-    @javafx.fxml.FXML
-    private TextField textApellidos;
-    @javafx.fxml.FXML
-    private TextField textEmail;
-    @javafx.fxml.FXML
-    private TextField textTelefono;
-    @javafx.fxml.FXML
-    private ComboBox<Grade>comboCurso;
-    @javafx.fxml.FXML
-    private Spinner spinnerDUAL;
-    @javafx.fxml.FXML
-    private Spinner spinnerFCT;
-    @javafx.fxml.FXML
-    private ComboBox <Enterprise>comboNombreEmpresa;
-    @javafx.fxml.FXML
-    private DatePicker dateCalender;
-    @javafx.fxml.FXML
-    private RadioButton radioDUal;
-    @javafx.fxml.FXML
-    private RadioButton radioFCT;
-    @javafx.fxml.FXML
-    private ToggleGroup botones;
-    @javafx.fxml.FXML
-    private Label labelFCT;
-    @javafx.fxml.FXML
-    private Label labelDUAL;
-    @javafx.fxml.FXML
-    private TextField contraseñaAlumno;
-    @javafx.fxml.FXML
-    private TextField textDNI;
-    private ContextMenu contextMenu=new ContextMenu();
-    private MenuItem menuItem1=new MenuItem();
-    private MenuItem menuItem2=new MenuItem();
-    private MenuItem menuItem3=new MenuItem();
-    private ObservableList<Grade> obsGrades;
-    @javafx.fxml.FXML
-    private Button botonEmpresa;
 
+/**
+ * Clase controladora de la ventana de gestión de alumnos por parte del profesor.
+ */
+public class TeacherViewController implements Initializable {
+    @FXML
+    private Menu menu;
+    @FXML
+    private MenuBar menuBar;
+    @FXML
+    private ToggleGroup botones;
+    @FXML
+    private Button btnNewAlumn;
+    @FXML
+    private MenuItem menuLogOut;
+    @FXML
+    private MenuItem menuAccount;
+    @FXML
+    private MenuItem menuGoOut;
+    @FXML
+    private Button btnEnterprise;
+    /**
+     * ComboBox de los grados disponibles.
+     */
+    @FXML
+    private ComboBox cbGrade;
+
+    /**
+     * ComboBox de las empresas disponibles.
+     */
+    @FXML
+    private ComboBox cbEnterprise;
+
+    /**
+     * TextField del DNI.
+     */
+    @FXML
+    private TextField tfDNI;
+
+    /**
+     * DatePicker.
+     */
+    @FXML
+    private DatePicker dpCalendar;
+
+    /**
+     * TextField con el nombre del alumno.
+     */
+    @FXML
+    private TextField tfName;
+
+    /**
+     * TextField con el apellido del alumno.
+     */
+    @FXML
+    private TextField tfLastName;
+
+    /**
+     * TextField con el email del alumno.
+     */
+    @FXML
+    private TextField tfEmail;
+
+    /**
+     * TextField con el teléfono del alumno.
+     */
+    @FXML
+    private TextField tfTelephone;
+
+    /**
+     * PasswordField con la contraseña del alumno.
+     */
+    @FXML
+    private TextField pfAlumn;
+
+    /**
+     * RadioButton de selección para modalidad Dual.
+     */
+    @FXML
+    private RadioButton radioDUal;
+
+    /**
+     * RadioButton de selección para FCT.
+     */
+    @FXML
+    private RadioButton radioFCT;
+
+    /**
+     * Label para FCT.
+     */
+    @FXML
+    private Label labelFCT;
+
+    /**
+     * Label para Dual.
+     */
+    @FXML
+    private Label labelDUAL;
+
+    /**
+     * Spinner para selección de horas en DUAL.
+     */
+    @FXML
+    private Spinner spinnerDUAL;
+
+    /**
+     * Spinner para selección de horas en FCT.
+     */
+    @FXML
+    private Spinner spinnerFCT;
+
+    /**
+     * ImageView para la imagen de perfil del profesor.
+     */
+    @FXML
+    private ImageView image;
+
+    /**
+     * Column nombra alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cName;
+
+    /**
+     * Column aplellidos alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cLastName;
+
+    /**
+     * Column teléfono alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cTelephone;
+
+    /**
+     * Column fecha de nacimiento alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cBirthday;
+
+    /**
+     * Column grado en el que cursa el alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cGrade;
+
+    /**
+     * Column profesor al que se encuentra el alumno asignado.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cTeacher;
+
+    /**
+     * Column empresa en la que se encuentra el alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cEnterprise;
+
+    /**
+     * Column horas de DUAL que ha cursado el alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cHoursDual;
+
+    /**
+     * Column horass de FCT que ha cursado el alumno.
+     */
+    @FXML
+    private TableColumn<Alumn, String> cHoursFCT;
+
+    /**
+     * Column email del alumno.
+     */
+    @FXML
+    private TableColumn <Alumn, String> cEmail;
+
+    /**
+     * TableView de alumnos.
+     */
+    @FXML
+    private TableView tvAlumn;
+
+    /**
+     * Observable de grados que puede cursar el alumno.
+     */
+    private ObservableList<Grade> observableGrade;
+
+    /**
+     * Observable usado de intermediario entre la Base de Datos y la tabla de alumnos en la vista.
+     */
+    private ObservableList<Alumn> observableAlumn;
+
+    /**
+     * Menu contextual al hacer click derecho en la tabla de alumnos de la vista.
+     */
+    private ContextMenu contextMenu = new ContextMenu();
+
+    /**
+     * Item de menu, Editar.
+     */
+    private MenuItem menuItem1 = new MenuItem();
+
+    /**
+     * Item de menu, Ver actividades.
+     */
+    private MenuItem menuItem2 = new MenuItem();
+
+    /**
+     * Item de menu, Borrar.
+     */
+    private MenuItem menuItem3 = new MenuItem();
+
+    /**
+     * Instancia de alumno.
+     */
+    private Alumn alumn;
+
+
+    /**
+     * Método de inicialización para el controlador de la vista del profesor.
+     * Este método se llama automáticamente después de que se cargue el archivo FXML.
+     * Se encarga de inicializar los elementos de la interfaz de usuario, cargar datos y configurar eventos.
+     *
+     * @param url             Ubicación utilizada para resolver rutas relativas para los recursos.
+     * @param resourceBundle  Objeto ResourceBundle que se puede utilizar para localizar cadenas de texto.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        File carpeta=new File ("./imagenes de "+Sesion.getTeacher().getDni());
-        if(carpeta.exists()){
-            File[]hijo=carpeta.listFiles();
-            Image imagenProfe=new Image("file:"+carpeta.getName()+"/"+hijo[0].getName());
+        //Crea la ruta del directorio de imágenes para el profesor actual.
+        File directory = new File("./imagenes de " + Sesion.getTeacher().getDni());
 
-            System.out.println(carpeta.getName()+"/"+hijo[0].getName());
-            imagen.setImage(imagenProfe);
-        }else{
-            Image imagenPrincipal = new Image(TeacherViewController.class.getClassLoader().getResource("com/example/proyectocesurapp/imagenes/usuario.png").toExternalForm());
-            imagen.setImage(imagenPrincipal);
+        //Verifica si el directorio de imágenes existe.
+        if (directory.exists()) {
+
+            //Si existe, obtiene una lista de archivos en ese directorio.
+            File[] children = directory.listFiles();
+
+            //Carga la primera imagen del directorio en un objeto Image.
+            Image imageTeacher = new Image("file:" + directory.getName() + "/" + children[0].getName());
+
+            //Establece la imagen en un componente ImageView llamado 'image'.
+            image.setImage(imageTeacher);
+
+        } else {
+            //Si el directorio no existe, carga una imagen predeterminada.
+            Image defaultImage = new Image(TeacherViewController.class.getClassLoader().getResource("com/example/proyectocesurapp/imagenes/usuario.png").toExternalForm());
+
+            //Establece la imagen predeterminada en el componente ImageView 'image'.
+            image.setImage(defaultImage);
         }
 
+        //Configuración de los spinners y radios de FCT y Dual en caso de que Dual se haya seleccionado.
         radioDUal.setSelected(true);
         spinnerFCT.setVisible(false);
         labelFCT.setVisible(false);
@@ -134,18 +295,25 @@ public class TeacherViewController implements Initializable {
             spinnerDUAL.setVisible(true);
             labelDUAL.setVisible(true);
         });
+
+        //Configuración de los spinners y radios de FCT y Dual en caso de que FCT se haya seleccionado.
         radioFCT.setOnAction(actionEvent -> {
             spinnerDUAL.setVisible(false);
             labelDUAL.setVisible(false);
             spinnerFCT.setVisible(true);
             labelFCT.setVisible(true);
         });
-        obsGrades =FXCollections.observableArrayList();
-        obsGrades.addAll(Grade.ASIR1, Grade.ASIR2, Grade.DAM1, Grade.DAM2, Grade.DAW1, Grade.DAW2);
-        comboCurso.setConverter(new StringConverter<Grade>() {
+
+        //Mete en el 'observableGrade' los distintos grados disponibles.
+        observableGrade = FXCollections.observableArrayList();
+        observableGrade.addAll(Grade.ASIR1, Grade.ASIR2, Grade.DAM1, Grade.DAM2, Grade.DAW1, Grade.DAW2);
+
+
+        //Interfaz StringConverter para pasar de tipo Grade a cadena y viceversa.
+        cbGrade.setConverter(new StringConverter<Grade>() {
             @Override
             public String toString(Grade grade) {
-                if(grade !=null){
+                if(grade != null){
                     return String.valueOf(grade);
                 }else{
                     return null;
@@ -158,16 +326,19 @@ public class TeacherViewController implements Initializable {
                 return null;
             }
         });
-        comboCurso.setItems(obsGrades);
-        comboNombreEmpresa.setConverter(new StringConverter<Enterprise>() {
+
+        //Rellena el ComboBox 'cbGrade' con el 'observableGrade'.
+        cbGrade.setItems(observableGrade);
+
+        //Interfaz StringConverter para pasar de tipo Enterprise a cadena y viceversa.
+        cbEnterprise.setConverter(new StringConverter<Enterprise>() {
             @Override
             public String toString(Enterprise enterprise) {
-                if (enterprise !=null){
+                if (enterprise != null){
                     return enterprise.getName();
                 }else{
                     return "<<Sin empresa>>";
                 }
-
             }
 
             @Override
@@ -175,139 +346,180 @@ public class TeacherViewController implements Initializable {
                 return null;
             }
         });
-        comboNombreEmpresa.getItems().addAll((new EnterpriseDAOImp(DBConnection.getConnection()).loadAll()));
-        comboNombreEmpresa.getItems().add(null);
-        comboNombreEmpresa.getSelectionModel().selectFirst();
 
-        cNombre.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getName();
-            return new SimpleStringProperty(nombre);
+        //Coge todas las empresas y las mete en el ComboBox 'cbEnterprise'.
+        cbEnterprise.getItems().addAll((new EnterpriseDAOImp(DBConnection.getConnection()).loadAll()));
+        cbEnterprise.getItems().add(null);
+        cbEnterprise.getSelectionModel().selectFirst();
+
+        //Mapeo de columnas de la tabla:
+        cName.setCellValueFactory((row) -> {
+            String name = row.getValue().getName();
+            return new SimpleStringProperty(name);
         });
-        cApellidos.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getLastName()+" "+fila.getValue().getLastName2();
-            return new SimpleStringProperty(nombre);
+
+        cLastName.setCellValueFactory((row) -> {
+            String lastName = row.getValue().getLastName()+" "+row.getValue().getLastName2();
+            return new SimpleStringProperty(lastName);
         });
-        cEmail.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getEmail();
-            return new SimpleStringProperty(nombre);
+
+        cEmail.setCellValueFactory((row) -> {
+            String email = row.getValue().getEmail();
+            return new SimpleStringProperty(email);
         });
-        cTelefono.setCellValueFactory((fila)->{
-            String nombre=String.valueOf(fila.getValue().getPhone()) ;
-            return new SimpleStringProperty(nombre);
+        cTelephone.setCellValueFactory((row) -> {
+            String telephone = String.valueOf(row.getValue().getPhone()) ;
+            return new SimpleStringProperty(telephone);
         });
-        cFecha.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getBirthday();
-            return new SimpleStringProperty(nombre);
+        cBirthday.setCellValueFactory((row) -> {
+            String birthday = row.getValue().getBirthday();
+            return new SimpleStringProperty(birthday);
         });
-        cCurso.setCellValueFactory((fila)->{
-            String nombre=String.valueOf(fila.getValue().getGrade());
-            return new SimpleStringProperty(nombre);
+        cGrade.setCellValueFactory((row) -> {
+            String grade = String.valueOf(row.getValue().getGrade());
+            return new SimpleStringProperty(grade);
         });
-        cProfesor.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getTeacher().getName()+" "+fila.getValue().getTeacher().getLastName();
-            return new SimpleStringProperty(nombre);
+        cTeacher.setCellValueFactory((row) -> {
+            String teacher = row.getValue().getTeacher().getName()+" "+row.getValue().getTeacher().getLastName();
+            return new SimpleStringProperty(teacher);
         });
-        cHorasDUAL.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getHoursDUAL();
-            return new SimpleStringProperty(nombre);
+        cHoursDual.setCellValueFactory((row) -> {
+            String hoursDual = row.getValue().getHoursDUAL();
+            return new SimpleStringProperty(hoursDual);
         });
-        cHorasFCT.setCellValueFactory((fila)->{
-            String nombre=fila.getValue().getHoursFCT();
-            return new SimpleStringProperty(nombre);
+        cHoursFCT.setCellValueFactory((row) -> {
+            String hoursFct = row.getValue().getHoursFCT();
+            return new SimpleStringProperty(hoursFct);
         });
-        cEmpresa.setCellValueFactory((fila)->{
-            String nombre="";
-            if(fila.getValue().getEnterprise()==null){
-               nombre="<<vacio>>";
+        cEnterprise.setCellValueFactory((row) -> {
+            String enterprise = "";
+            if(row.getValue().getEnterprise() == null){
+               enterprise = "<<vacio>>";
             }else{
-                nombre=fila.getValue().getEnterprise().getName();
+                enterprise = row.getValue().getEnterprise().getName();
             }
-
-            return new SimpleStringProperty(nombre);
+            return new SimpleStringProperty(enterprise);
         });
-        tabla.setOnMousePressed(mouseEvent -> {
-            if(mouseEvent.isSecondaryButtonDown()&& alumn !=null){
-                 contextMenu=new ContextMenu();
-                 menuItem1=new MenuItem("Editar");
+
+        //Declaración y seteo de los distintos menús contextuales al hacer click derecho en la tabla de alumnos de la vista.
+        tvAlumn.setOnMousePressed(mouseEvent -> {
+            if(mouseEvent.isSecondaryButtonDown() && alumn != null){
+                contextMenu = new ContextMenu();
+                menuItem1 = new MenuItem("Editar");
                 contextMenu.getItems().add(menuItem1);
                 contextMenu.getItems().add(new SeparatorMenuItem());
-                menuItem3=new MenuItem("Ver actividades");
-                contextMenu.getItems().add(menuItem3);
-                contextMenu.getItems().add(new SeparatorMenuItem());
-                 menuItem2=new MenuItem("Borrar");
+                menuItem2 = new MenuItem("Borrar");
                 contextMenu.getItems().add(menuItem2);
-                tabla.setContextMenu(contextMenu);
-                contextMenu.show(tabla,mouseEvent.getScreenX(),mouseEvent.getScreenY());
+                contextMenu.getItems().add(new SeparatorMenuItem());
+                menuItem3 = new MenuItem("Ver actividades");
+                contextMenu.getItems().add(menuItem3);
+
+                tvAlumn.setContextMenu(contextMenu);
+                contextMenu.show(tvAlumn,mouseEvent.getScreenX(), mouseEvent.getScreenY());
+
                 menuItem1.setOnAction(actionEvent -> {
-                    System.out.println("Paso por aqui");
                     App.loadFXML("editAlumn-controller.fxml");
                 });
+
                 menuItem2.setOnAction(actionEvent -> {
-                    try{
-                        Alert alerta=new Alert(Alert.AlertType.INFORMATION);
-                        alerta.setTitle("Eliminar");
-                        alerta.setHeaderText("¿Seguro que deseas BORRAR al alumno?");
-                        alerta.setContentText("Si ELIMINAS a este alumno boraras TODAS sus ACTIVIDADES");
-                        ButtonType tipo= alerta.showAndWait().get();
-                        if(tipo.getButtonData()== ButtonBar.ButtonData.OK_DONE){
-                            System.out.println("Paso por aqui");
-                            Alumn alumnLista =Sesion.getTeacher().getAlumn().get(Sesion.getTeacher().getAlumn().indexOf(alumn));
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Eliminar");
+                        alert.setHeaderText("¿Seguro que deseas BORRAR al alumno?");
+                        alert.setContentText("Si ELIMINAS a este alumno boraras TODAS sus ACTIVIDADES");
+                        ButtonType type = alert.showAndWait().get();
 
-                            DailyActivityDAOImp actDIB=new DailyActivityDAOImp(DBConnection.getConnection());
+                        if(type.getButtonData() == ButtonBar.ButtonData.OK_DONE){
+                            Alumn alumnIndex = Sesion.getTeacher().getAlumn().get(Sesion.getTeacher().getAlumn().indexOf(alumn));
 
-                            for(int i = 0; i< alumnLista.getActivity().size(); i++){
-                                actDIB.delete(alumnLista.getActivity().get(i));
+                            DailyActivityDAOImp actDIB = new DailyActivityDAOImp(DBConnection.getConnection());
+
+                            for(int i = 0; i< alumnIndex.getActivity().size(); i++){
+                                actDIB.delete(alumnIndex.getActivity().get(i));
                             }
-                            (new AlumnDAOImp(DBConnection.getConnection())).delete(alumnLista);
-                            AlumnDAOImp conexion=new AlumnDAOImp(DBConnection.getConnection());
-                            obs.setAll(conexion.loadAll(Sesion.getTeacher().getId()));
+
+                            (new AlumnDAOImp(DBConnection.getConnection())).delete(alumnIndex);
+                            AlumnDAOImp alumnDAOImp = new AlumnDAOImp(DBConnection.getConnection());
+                            observableAlumn.setAll(alumnDAOImp.loadAll(Sesion.getTeacher().getId()));
                         }
-                    }catch(Exception e){
-
-                    }
-
                 });
+
                 menuItem3.setOnAction(actionEvent -> {
                     App.loadFXML("alumnViewActivity-controller.fxml");
                 });
-
             }
         });
-        if(Sesion.getCount()==1){
-            Sesion.setCount((byte)0);
-            AlumnDAOImp conexion=new AlumnDAOImp(DBConnection.getConnection());
+
+        //Si Sesion.getCount() es igual a 1.
+        if (Sesion.getCount() == 1) {
+
+            //Establece el valor de Sesion.getCount() a 0.
+            Sesion.setCount((byte) 0);
+
+            //Crea una instancia de AlumnDAOImp utilizando una conexión a la Base de Datos.
+            AlumnDAOImp alumnDAOImp = new AlumnDAOImp(DBConnection.getConnection());
+
+            //Crea una nueva lista vacía de alumnos y la establece en el profesor actual de la sesión.
             Sesion.getTeacher().setAlumn(new ArrayList<>());
-            Sesion.getTeacher().getAlumn().addAll(conexion.loadAll(Sesion.getTeacher().getId()));
-            obs= FXCollections.observableArrayList();
-            obs.addAll(Sesion.getTeacher().getAlumn());
-            tabla.setItems(obs);
-        }else{
-            obs= FXCollections.observableArrayList();
-            AlumnDAOImp conexion=new AlumnDAOImp(DBConnection.getConnection());
+
+            //Carga todos los alumnos asociados al profesor actual y los agrega a la lista de alumnos del profesor en la sesión.
+            Sesion.getTeacher().getAlumn().addAll(alumnDAOImp.loadAll(Sesion.getTeacher().getId()));
+
+            //Crea un ObservableList llamado 'observableAlumn'.
+            observableAlumn = FXCollections.observableArrayList();
+
+            //Agrega todos los alumnos obtenidos a 'observableAlumn'
+            observableAlumn.addAll(Sesion.getTeacher().getAlumn());
+
+            //Configura 'tvAlumn' para mostrar los elementos de 'observableAlumn'.
+            tvAlumn.setItems(observableAlumn);
+
+        } else {  //Si Sesion.getCount() no es igual a 1.
+
+            //Crea un nuevo ObservableList llamado 'observableAlumn'.
+            observableAlumn = FXCollections.observableArrayList();
+
+            //Crea una instancia de AlumnDAOImp utilizando una conexión a la Base de Datos.
+            AlumnDAOImp alumnDAOImp = new AlumnDAOImp(DBConnection.getConnection());
+
+            //Elimina todos los elementos de la lista de alumnos del profesor actual en la sesión.
             Sesion.getTeacher().getAlumn().clear();
-            Sesion.getTeacher().getAlumn().addAll(conexion.loadAll(Sesion.getTeacher().getId()));
-            System.out.println(Sesion.getTeacher().getAlumn());
-            obs.addAll(Sesion.getTeacher().getAlumn());
-            tabla.setItems(obs);
+
+            //Carga todos los alumnos asociados al profesor actual y los agrega a la lista de alumnos del profesor en la sesión.
+            Sesion.getTeacher().getAlumn().addAll(alumnDAOImp.loadAll(Sesion.getTeacher().getId()));
+
+            //Agrega todos los alumnos obtenidos a 'observableAlumn'.
+            observableAlumn.addAll(Sesion.getTeacher().getAlumn());
+
+            //Configura 'tvAlumn' para mostrar los elementos de 'observableAlumn'.
+            tvAlumn.setItems(observableAlumn);
         }
 
-        tabla.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
-            alumn =t1;
+        //Al pulsar sobre un alumno en la tabla de la vista, lo mete en sesión.
+        tvAlumn.getSelectionModel().selectedItemProperty().addListener((observable,t0,t1) -> {
+            alumn = (Alumn) t1;
             Sesion.setAlumn(alumn);
         });
 
-
+        //Establece los spinner y sus valores por defecto, así como sus máximos y mínimos.
         spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
         spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,270,0,1));
     }
 
+    /**
+     * Método asociado a un evento de edición.
+     * Verifica si se ha seleccionado un alumno en la tabla.
+     * Si no se ha seleccionado ningún alumno, muestra una alerta pidiendo seleccionar un alumno.
+     * Si se ha seleccionado un alumno, establece el alumno seleccionado en la sesión y carga una ventana de edición.
+     *
+     * @param actionEvent El evento que activa esta función.
+     */
     @Deprecated
-    public void editar(ActionEvent actionEvent) {
-        if(alumn ==null){
-            Alert alerta=new Alert(Alert.AlertType.INFORMATION);
-            alerta.setTitle("Seleccion Tabla");
-            alerta.setHeaderText("Porfavor Selecciona un alumno en la tabla");
-            alerta.showAndWait();
+    public void edit(ActionEvent actionEvent) {
+        if(alumn == null){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Seleccion Tabla");
+            alert.setHeaderText("Porfavor Selecciona un alumno en la tabla");
+            alert.showAndWait();
         }else{
             Sesion.setAlumn(alumn);
             App.loadFXML("ventana-editar.fxml");
@@ -315,30 +527,47 @@ public class TeacherViewController implements Initializable {
 
     }
 
+    /**
+     * Método para eliminar alumnos.
+     *
+     * @param actionEvent El evento que activa esta función.
+     */
     @Deprecated
-    public void borrar(ActionEvent actionEvent) {
+    public void delete(ActionEvent actionEvent) {
+        //Do nothing.
     }
 
-    @javafx.fxml.FXML
-    public void nuevoALumno(ActionEvent actionEvent) {
+    /**
+     * Método asociado al evento de creación de un nuevo alumno.
+     * Recopila datos de entrada de la interfaz de usuario para crear un nuevo objeto Alumn.
+     * Verifica la validez de los campos ingresados y muestra alertas en caso de campos incorrectos o faltantes.
+     * Después de verificar la validez de los datos, crea un nuevo objeto Alumn y lo agrega a la sesión actual del profesor.
+     *
+     * @param actionEvent El evento que activa esta función.
+     * @throws NameWithNumber Si el nombre del alumno contiene números.
+     * @throws InvalidDNI Si el DNI del alumno es inválido.
+     * @throws LastNameWithNumber Si el apellido del alumno contiene números.
+     */
+    @FXML
+    public void newAlumn(ActionEvent actionEvent) {
         try {
+            /*Código para recopilar datos de la interfaz de usuario y crear un nuevo objeto Alumn
+            * junto a verificación de la validez de los datos ingresados y manejo de excepciones en caso de errores.*/
             Alumn alumn = new Alumn();
-            if (!textApellidos.getText().isEmpty() && !textNombre.getText().isEmpty() && !textEmail.getText().isEmpty()
-                    && !textTelefono.getText().isEmpty() && !comboCurso.getSelectionModel().getSelectedItem().equals(null)
-                    && !contraseñaAlumno.getText().isEmpty() && !textDNI.getText().isEmpty()) {
+            if (!tfLastName.getText().isEmpty() && !tfName.getText().isEmpty() && !tfEmail.getText().isEmpty()
+                    && !tfTelephone.getText().isEmpty() && !cbGrade.getSelectionModel().getSelectedItem().equals(null)
+                    && !pfAlumn.getText().isEmpty() && !tfDNI.getText().isEmpty()) {
 
+                tfLastName.getText().strip();
+                tfName.getText().strip();
+                alumn.setName(tfName.getText());
+                tfDNI.getText().strip();
+                tfEmail.getText().strip();
+                alumn.setEmail(tfEmail.getText());
+                tfTelephone.getText().strip();
+                alumn.setPhone(Integer.valueOf(tfTelephone.getText()));
+                String fecha = String.valueOf(dpCalendar.getValue());
 
-                textApellidos.getText().strip();
-
-                textNombre.getText().strip();
-                alumn.setName(textNombre.getText());
-                textDNI.getText().strip();
-                textEmail.getText().strip();
-                alumn.setEmail(textEmail.getText());
-                textTelefono.getText().strip();
-                alumn.setPhone(Integer.valueOf(textTelefono.getText()));
-                String fecha = String.valueOf(dateCalender.getValue());
-                System.out.println(fecha);
                 if(fecha.equals("null")){
                     Alert alerta = new Alert(Alert.AlertType.ERROR);
                     alerta.setTitle("Error");
@@ -346,144 +575,182 @@ public class TeacherViewController implements Initializable {
                     alerta.setContentText("Asegurese de que los datos de la fecha de nacimiento\n sean correctos.");
                     alerta.showAndWait();
                 }
+
                 alumn.setBirthday(fecha);
-                alumn.setPassword(contraseñaAlumno.getText());
+                alumn.setPassword(pfAlumn.getText());
                 alumn.setObservations("");
                 alumn.setTeacherID(Sesion.getTeacher().getId());
                 alumn.setTeacher(Sesion.getTeacher());
+                alumn.setDni(tfDNI.getText());
 
-                alumn.setDni(textDNI.getText());
+                String[] apellidos = tfLastName.getText().split(" ");
 
-                String[] apellidos = textApellidos.getText().split(" ");
                 if (apellidos.length != 2) {
                     Alert alerta = new Alert(Alert.AlertType.ERROR);
                     alerta.setTitle("Error");
                     alerta.setHeaderText("Apellidos Mal Transcritos");
                     alerta.setContentText("Asegurese de que los apellidos sean dos y \nseparados por un espacio.");
                     alerta.showAndWait();
-
                 } else {
-
                     alumn.setLastName((String) apellidos[0]);
                     alumn.setLastName2(apellidos[1]);
-
                 }
-                alumn.setGrade((Grade) comboCurso.getSelectionModel().getSelectedItem());
+
+                alumn.setGrade((Grade) cbGrade.getSelectionModel().getSelectedItem());
 
                 if (radioDUal.isSelected()) {
                     alumn.setHoursDUAL(spinnerDUAL.getValue() + "/270");
                 } else {
                     alumn.setHoursFCT(spinnerFCT.getValue() + "/270");
                 }
-                if (comboNombreEmpresa.getValue() == null) {
+
+                if (cbEnterprise.getValue() == null) {
                     alumn.setEnterprise(null);
                     alumn.setEnterpriseID(0);
                 } else {
-                    Enterprise enterprise = (Enterprise) comboNombreEmpresa.getSelectionModel().getSelectedItem();
+                    Enterprise enterprise = (Enterprise) cbEnterprise.getSelectionModel().getSelectedItem();
                     alumn.setEnterprise(enterprise);
                     alumn.setEnterpriseID(enterprise.getId());
                     enterprise.setAlumn(new ArrayList<>());
                     enterprise.getAlumn().add(alumn);
-                    System.out.println(enterprise);
                 }
-                System.out.println(alumn);
 
-                AlumnDAOImp dao = new AlumnDAOImp(DBConnection.getConnection());
-               Alumn alumnValido = dao.injection(alumn);
+                AlumnDAOImp alumnDAOImp = new AlumnDAOImp(DBConnection.getConnection());
+               Alumn alumnValido = alumnDAOImp.injection(alumn);
                Sesion.getTeacher().getAlumn().add(alumnValido);
-                obs.add(alumnValido);
+               observableAlumn.add(alumnValido);
 
             }else{
-                Alert alerta = new Alert(Alert.AlertType.ERROR);
-                alerta.setWidth(300);
-                alerta.setTitle("Error");
-                alerta.setHeaderText("Campos Incorrectos");
-                alerta.setContentText("Asegurese de que los datos de todos los campos son correctos.");
-                alerta.showAndWait();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setWidth(300);
+                alert.setTitle("Error");
+                alert.setHeaderText("Campos Incorrectos");
+                alert.setContentText("Asegurese de que los datos de todos los campos son correctos.");
+                alert.showAndWait();
             }
 
         } catch (NameWithNumber e) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("Nombre con Numeros");
-            alerta.setContentText("El nombre del alumno no puede contener numeros.");
-            alerta.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Nombre con Numeros");
+            alert.setContentText("El nombre del alumno no puede contener numeros.");
+            alert.showAndWait();
             throw new RuntimeException(e);
         } catch (InvalidDNI e) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("DNI Invalido");
-            alerta.setContentText("El DNI es Imposible que pueda existir.");
-            alerta.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("DNI Invalido");
+            alert.setContentText("El DNI es Imposible que pueda existir.");
+            alert.showAndWait();
             throw new RuntimeException(e);
         } catch (LastNameWithNumber e) {
-            Alert alerta = new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("Apellido Con Numeros");
-            alerta.setContentText("El Apellido del alumno no puede contener numeros.");
-            alerta.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Apellido Con Numeros");
+            alert.setContentText("El Apellido del alumno no puede contener numeros.");
+            alert.showAndWait();
             throw new RuntimeException(e);
         }
     }
 
-    @javafx.fxml.FXML
-    public void logout(ActionEvent actionEvent) {
+    /**
+     * Permite hacer LogOut del profesor en sesión.
+     *
+     * @param actionEvent El evento que activa esta función.
+     */
+    @FXML
+    public void logOut(ActionEvent actionEvent) {
         Sesion.setTeacher(null);
         App.loadFXML("login-controller.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void cuenta(ActionEvent actionEvent) {
+    /**
+     * Permite ver la información de la cuenta del profesor.
+     *
+     * @param actionEvent El evento que activa esta función.
+     */
+    @FXML
+    public void account(ActionEvent actionEvent) {
         App.loadFXML("teacherAccount-controller.fxml");
     }
 
-    @javafx.fxml.FXML
-    public void salir(ActionEvent actionEvent) {
+    /**
+     * Permite salir de la aplicación.
+     *
+     * @param actionEvent El evento que activa esta función.
+     */
+    @FXML
+    public void goOut(ActionEvent actionEvent) {
         System.exit(0);
     }
 
-    @javafx.fxml.FXML
-    public void clickImagen(Event event) {
-        try{
-            FileChooser open=new FileChooser();
-            File ruta= open.showOpenDialog(null);
-            System.out.println(ruta.getName().substring(ruta.getName().indexOf(".")));
-            if(ruta!=null){
-                File carpeta=new File("imagenes de "+Sesion.getTeacher().getDni());
-                if(!carpeta.exists()&&(ruta.getName().endsWith("jpg")||ruta.getName().endsWith("png")||ruta.getName().endsWith("PNG")||ruta.getName().endsWith("JPG"))){
-                    try {
-                        carpeta.mkdir();
-                        Path origen= Path.of(ruta.getAbsolutePath());
-                        Path destino= Path.of(carpeta.getName());
-                        Path destinoArchivo=destino.resolve(Sesion.getTeacher().getName()+" "+Sesion.getTeacher().getLastName()+ruta.getName().substring(ruta.getName().indexOf(".")));
-                        Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
-                        imagen.setImage(new Image("file:"+destinoArchivo));
+    /**
+     * Permite cambiar la imagen de perfil del profesor.
+     *
+     * @param event El evento que activa esta función.
+     */
+    @FXML
+    public void clickImage(Event event) {
+        //Abre un FileChooser para seleccionar un archivo de imagen.
+        FileChooser fileChooser = new FileChooser();
+        File route = fileChooser.showOpenDialog(null);
 
+        //Verifica si se seleccionó un archivo.
+        if (route != null) {
+
+            //Crea el directorio para almacenar las imágenes del profesor actual.
+            File directory = new File("imagenes de " + Sesion.getTeacher().getDni());
+
+            //Comprueba si el directorio no existe y si el archivo seleccionado es una imagen (jpg o png).
+            if (!directory.exists() && (route.getName().endsWith("jpg") || route.getName().endsWith("png") || route.getName().endsWith("PNG") || route.getName().endsWith("JPG"))) {
+                try {
+
+                    //Crea el directorio.
+                    directory.mkdir();
+
+                    //Obtiene la ruta de origen y destino para copiar la imagen seleccionada.
+                    Path origin = Path.of(route.getAbsolutePath());
+                    Path destiny = Path.of(directory.getName());
+                    Path destinyFile = destiny.resolve(Sesion.getTeacher().getName() + " " + Sesion.getTeacher().getLastName() + route.getName().substring(route.getName().indexOf(".")));
+
+                    //Copia la imagen seleccionada al directorio del profesor y establece la imagen en el componente ImageView.
+                    Files.copy(origin, destinyFile, StandardCopyOption.REPLACE_EXISTING);
+                    image.setImage(new Image("file:" + destinyFile));
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            } else { //Si el directorio existe o el archivo no es una imagen válido (jpg o png).
+
+                //Obtiene los archivos existentes en el directorio y elimina el primero.
+                File[] children = directory.listFiles();
+                children[0].delete();
+
+                //Obtiene la ruta de origen y destino para copiar la imagen seleccionada.
+                Path origin = Path.of(route.getAbsolutePath());
+                Path destiny = Path.of(directory.getName());
+                Path destinyFile = destiny.resolve(Sesion.getTeacher().getName() + " " + Sesion.getTeacher().getLastName() + route.getName().substring(route.getName().indexOf(".")));
+
+                try {
+                    //Copia la imagen seleccionada al directorio del profesor y establece la imagen en el componente ImageView.
+                    Files.copy(origin, destinyFile, StandardCopyOption.REPLACE_EXISTING);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                }else{
-                    File[]hijos=carpeta.listFiles();
-                    hijos[0].delete();
-                    Path origen= Path.of(ruta.getAbsolutePath());
-                    Path destino= Path.of(carpeta.getName());
-                    Path destinoArchivo=destino.resolve(Sesion.getTeacher().getName()+" "+Sesion.getTeacher().getLastName()+ruta.getName().substring(ruta.getName().indexOf(".")));
-                    try {
-                        Files.copy(origen,destinoArchivo, StandardCopyOption.REPLACE_EXISTING);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    imagen.setImage(new Image("file:"+destinoArchivo));
+                    image.setImage(new Image("file:" + destinyFile));
                 }
             }
-        }catch(Exception e){
-
-        }
 
     }
 
-    @javafx.fxml.FXML
-    public void goEmpresa(ActionEvent actionEvent) {
+    /**
+     * Método que sirve para ir a la ventana de gestión de empresas.
+     *
+     * @param actionEvent Evento que activa esta función.
+     */
+    @FXML
+    public void goEnterprise(ActionEvent actionEvent) {
         App.loadFXML("enterpriseView-controller.fxml");
     }
+
 }

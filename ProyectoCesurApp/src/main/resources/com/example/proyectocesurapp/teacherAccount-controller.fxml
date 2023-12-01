@@ -45,7 +45,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtName" maxWidth="200.0" />
+                  <TextField fx:id="tfName" maxWidth="200.0" />
                </children>
             </VBox>
             <VBox layoutX="10.0" layoutY="4.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" GridPane.columnIndex="1">
@@ -55,13 +55,13 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtSurname1" maxWidth="200.0" />
+                  <TextField fx:id="tfLastName1" maxWidth="200.0" />
                   <Label text="Apellido2">
                      <font>
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtSurname2" maxWidth="200.0" />
+                  <TextField fx:id="tfLastName2" maxWidth="200.0" />
                </children>
             </VBox>
             <VBox layoutX="291.0" layoutY="4.0" prefHeight="215.0" prefWidth="274.0" GridPane.rowIndex="1">
@@ -71,7 +71,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtEmail" maxWidth="200.0" />
+                  <TextField fx:id="tfEmail" maxWidth="200.0" />
                </children>
             </VBox>
             <VBox layoutX="10.0" layoutY="56.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -81,7 +81,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtDNI" maxWidth="200.0" />
+                  <TextField fx:id="tfDNI" maxWidth="200.0" />
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
@@ -91,7 +91,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtPhone" maxWidth="200.0" />
+                  <TextField fx:id="tfTelephone" maxWidth="200.0" />
                </children>
             </VBox>
             <VBox layoutX="11.0" layoutY="252.0" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -101,7 +101,7 @@
                         <Font name="System Bold Italic" size="13.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="txtPassword" maxWidth="200.0" />
+                  <PasswordField fx:id="pfTeacher" maxWidth="200.0" />
                </children>
             </VBox>
          </children>
@@ -113,12 +113,12 @@
    <bottom>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="botonKeep" mnemonicParsing="false" onAction="#save" text="Guardar">
+            <Button fx:id="btnSave" mnemonicParsing="false" onAction="#save" text="Guardar">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="botonCancel" mnemonicParsing="false" onAction="#cancel" text="Cancelar">
+            <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancel" text="Cancelar">
                <font>
                   <Font name="System Bold Italic" size="13.0" />
                </font>
