@@ -23,7 +23,7 @@
             <Insets top="10.0" />
          </BorderPane.margin>
          <children>
-            <ImageView fx:id="imagenAtras" fitHeight="29.0" fitWidth="200.0" onMouseClicked="#atras" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imageReturn" fitHeight="29.0" fitWidth="200.0" onMouseClicked="#comeBack" pickOnBounds="true" preserveRatio="true">
                <FlowPane.margin>
                   <Insets left="20.0" />
                </FlowPane.margin>
@@ -57,7 +57,7 @@
                               <Insets top="10.0" />
                            </VBox.margin>
                         </Label>
-                        <TextField fx:id="txtNombre" maxWidth="350.0">
+                        <TextField fx:id="tfName" maxWidth="350.0">
                            <VBox.margin>
                               <Insets right="10.0" />
                            </VBox.margin></TextField>
@@ -66,7 +66,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtTelefono" maxWidth="350.0">
+                        <TextField fx:id="tfTelephone" maxWidth="350.0">
                            <VBox.margin>
                               <Insets right="10.0" />
                            </VBox.margin></TextField>
@@ -75,7 +75,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtEmail" maxWidth="350.0">
+                        <TextField fx:id="tfEmail" maxWidth="350.0">
                            <VBox.margin>
                               <Insets right="10.0" />
                            </VBox.margin></TextField>
@@ -84,7 +84,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtResponsable" maxWidth="350.0">
+                        <TextField fx:id="tfLeader" maxWidth="350.0">
                            <VBox.margin>
                               <Insets right="10.0" />
                            </VBox.margin></TextField>
@@ -93,25 +93,25 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="txtObservaciones" maxWidth="350.0" prefHeight="200.0" prefWidth="200.0">
+                        <TextArea fx:id="taObservations" maxWidth="350.0" prefHeight="200.0" prefWidth="200.0">
                            <VBox.margin>
                               <Insets right="10.0" />
                            </VBox.margin></TextArea>
-                        <Button fx:id="botonLimpiar" mnemonicParsing="false" onAction="#limpiar" text="Limpiar">
+                        <Button fx:id="btnClean" mnemonicParsing="false" onAction="#cleanEnterprise" text="Limpiar">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font></Button>
                         <HBox spacing="10.0">
                            <children>
-                              <Button fx:id="botonAñadirEmpresa" mnemonicParsing="false" onAction="#añadirEmpresa" text="Añadir Empresa">
+                              <Button fx:id="btnAddEnterprise" mnemonicParsing="false" onAction="#addEnterprise" text="Añadir Empresa">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font></Button>
-                              <Button fx:id="botonActualizar" mnemonicParsing="false" onAction="#actualizar" text="Actualizar">
+                              <Button fx:id="btnUpdateEnterprise" mnemonicParsing="false" onAction="#updateEnterprise" text="Actualizar">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font></Button>
-                              <Button fx:id="botonBorrar" mnemonicParsing="false" onAction="#borrar" text="Borrar">
+                              <Button fx:id="btnDeleteEnterprise" mnemonicParsing="false" onAction="#deleteEnterprise" text="Borrar">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font></Button>
@@ -122,13 +122,13 @@
                         <Insets left="10.0" />
                      </padding>
                   </VBox>
-                  <TableView fx:id="tvEmpresas" prefHeight="511.0" prefWidth="453.0">
+                  <TableView fx:id="tvEnterprises" prefHeight="511.0" prefWidth="453.0">
                     <columns>
-                      <TableColumn fx:id="cNombre" prefWidth="75.0" text="Nombre" />
-                      <TableColumn fx:id="cTelefono" prefWidth="75.0" text="Telefono" />
+                      <TableColumn fx:id="cName" prefWidth="75.0" text="Nombre" />
+                      <TableColumn fx:id="cTelephone" prefWidth="75.0" text="Telefono" />
                         <TableColumn fx:id="cEmail" prefWidth="75.0" text="Email" />
-                        <TableColumn fx:id="cResponsable" prefWidth="75.0" text="Responsable" />
-                        <TableColumn fx:id="cObservaciones" prefWidth="75.0" text="Observaciones" />
+                        <TableColumn fx:id="cLeader" prefWidth="75.0" text="Responsable" />
+                        <TableColumn fx:id="cObservations" prefWidth="75.0" text="Observaciones" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

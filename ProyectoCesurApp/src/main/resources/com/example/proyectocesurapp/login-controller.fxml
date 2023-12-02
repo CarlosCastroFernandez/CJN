@@ -50,12 +50,12 @@
                   </VBox>
                   <FlowPane alignment="CENTER" hgap="60.0" prefHeight="44.0" prefWidth="418.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="Dni" textAlignment="RIGHT">
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="DNI" textAlignment="RIGHT">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtEmail" prefHeight="26.0" prefWidth="150.0" />
+                        <TextField fx:id="tfDNI" prefHeight="26.0" prefWidth="150.0" />
                      </children>
                      <VBox.margin>
                         <Insets bottom="20.0" top="5.0" />
@@ -68,7 +68,7 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="txtPassword" prefHeight="26.0" prefWidth="150.0">
+                        <PasswordField fx:id="pfPassword" prefHeight="26.0" prefWidth="150.0">
                            <FlowPane.margin>
                               <Insets />
                            </FlowPane.margin>
@@ -83,12 +83,12 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                      <children>
-                        <Button fx:id="botonInicio" mnemonicParsing="false" onAction="#iniciarSesion" text="Iniciar Sesion">
+                        <Button fx:id="btnLogin" mnemonicParsing="false" onAction="#login" text="Iniciar Sesion">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Button>
-                        <Button fx:id="botonRegister" mnemonicParsing="false" onAction="#register" text="Registro">
+                        <Button fx:id="btnRegister" mnemonicParsing="false" onAction="#register" text="Registro">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
