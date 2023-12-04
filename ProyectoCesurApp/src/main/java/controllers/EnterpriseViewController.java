@@ -19,6 +19,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Clase controladora de la ventana de gestión de empresas.
+ */
 public class EnterpriseViewController implements Initializable {
     @FXML
     private Button btnClean;

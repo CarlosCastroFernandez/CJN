@@ -14,6 +14,9 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Clase controladora de la ventana de Login.
+ */
 public class LoginController implements Initializable {
     @FXML
     private Button btnLogin;

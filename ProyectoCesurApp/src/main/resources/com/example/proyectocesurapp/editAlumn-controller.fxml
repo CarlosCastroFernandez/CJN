@@ -46,7 +46,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textDNI" maxWidth="210.0" minWidth="100.0" prefHeight="26.0" prefWidth="157.0" />
+                        <TextField fx:id="tfDNI" maxWidth="210.0" minWidth="100.0" prefHeight="26.0" prefWidth="157.0" />
                      </children>
                   </VBox>
                   <VBox GridPane.columnIndex="1">
@@ -56,7 +56,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textNombre" maxWidth="210.0" minWidth="50.0" prefHeight="26.0" prefWidth="158.0" />
+                        <TextField fx:id="tfName" maxWidth="210.0" minWidth="50.0" prefHeight="26.0" prefWidth="158.0" />
                      </children>
                   </VBox>
                   <VBox GridPane.rowIndex="2">
@@ -66,7 +66,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textEmail" maxWidth="210.0" />
+                        <TextField fx:id="tfEmail" maxWidth="210.0" />
                      </children>
                   </VBox>
                   <VBox GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -76,7 +76,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textTelefono" maxWidth="210.0" />
+                        <TextField fx:id="tfTelephone" maxWidth="210.0" />
                      </children>
                   </VBox>
                   <VBox GridPane.rowIndex="3">
@@ -86,7 +86,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <DatePicker fx:id="dateCalender" />
+                        <DatePicker fx:id="dpCalendar" />
                      </children>
                   </VBox>
                   <VBox GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -96,7 +96,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="comboCurso" prefHeight="26.0" prefWidth="147.0" />
+                        <ComboBox fx:id="comboGrade" prefHeight="26.0" prefWidth="147.0" />
                      </children>
                   </VBox>
                   <VBox GridPane.rowIndex="4">
@@ -106,7 +106,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="comboNombreEmpresa" prefHeight="26.0" prefWidth="185.0" />
+                        <ComboBox fx:id="comboNameEnterprise" prefHeight="26.0" prefWidth="185.0" />
                      </children>
                   </VBox>
                   <HBox spacing="40.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -118,7 +118,7 @@
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                               </Label>
-                              <ChoiceBox fx:id="choiceTipoPractica" prefHeight="26.0" prefWidth="71.0" />
+                              <ChoiceBox fx:id="choicePracticeType" prefHeight="26.0" prefWidth="71.0" />
                            </children>
                         </VBox>
                         <VBox>
@@ -131,7 +131,7 @@
                               <AnchorPane>
                                  <children>
                                     <Spinner fx:id="spinnerFCT" prefHeight="26.0" prefWidth="89.0" />
-                                    <Spinner fx:id="spinnerDUAL" layoutX="-1.0" prefHeight="26.0" prefWidth="96.0" />
+                                    <Spinner fx:id="spHours" layoutX="-1.0" prefHeight="26.0" prefWidth="96.0" />
                                  </children>
                               </AnchorPane>
                            </children>
@@ -145,7 +145,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textApellido2" maxWidth="210.0" />
+                        <TextField fx:id="tfLastName2" maxWidth="210.0" />
                      </children>
                   </VBox>
                   <VBox GridPane.rowIndex="1">
@@ -155,10 +155,10 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textApellido1" maxWidth="210.0" />
+                        <TextField fx:id="tfLastName1" maxWidth="210.0" />
                      </children>
                   </VBox>
-                  <Button fx:id="btnGuardar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardar" prefHeight="26.0" prefWidth="66.0" text="Guardar" textAlignment="CENTER" GridPane.rowIndex="5">
+                  <Button fx:id="btnSave" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="66.0" text="Guardar" textAlignment="CENTER" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="50.0" />
                      </GridPane.margin>
@@ -166,7 +166,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnCancelar" mnemonicParsing="false" onAction="#cancelar" text="Cancelar" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="btnCancel" mnemonicParsing="false" onAction="#cancel" text="Cancelar" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="50.0" />
                      </GridPane.margin>

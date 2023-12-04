@@ -1,35 +1,22 @@
 
-h	java:S112â"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÿæ˜‹Â1
-h	java:S112î"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8€ç˜‹Â1
-c
-java:S1192L"FDefine a constant instead of duplicating this literal "file:" 3 times.(º¡¸´8ç˜‹Â1
-X
-java:S1141Ú"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚ç˜‹Â1
-X
-java:S1141ë"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8‚ç˜‹Â1
+h	java:S112å"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8àéä¯Ã1
+h	java:S112ó"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8áéä¯Ã1
+d
+java:S1192œ"FDefine a constant instead of duplicating this literal "file:" 3 times.(Ëò©ñ8Å¶à¯Ã1
 Z
-java:S2589×"7Remove this expression which always evaluates to "true"(š¤øÎüÿÿÿÿ8Äç˜‹Â1
-Z
-java:S2589®"7Remove this expression which always evaluates to "true"(ø˜êáúÿÿÿÿ8Äç˜‹Â1
-L	java:S106N"+Replace this use of System.out by a logger.(ŞÊÉôşÿÿÿÿ8Ñç˜‹Â1
+java:S2589"7Remove this expression which always evaluates to "true"(ø˜êáúÿÿÿÿ8ñ¶à¯Ã1
+T
+java:S1611­"1Remove the parentheses around the "row" parameter(¸­è‹üÿÿÿÿ8€·à¯Ã1
 O
-java:S1611["2Remove the parentheses around the "fila" parameter(Á¦ÿ¹8Óç˜‹Â1
-O
-java:S1611_"2Remove the parentheses around the "fila" parameter(¬·à´8Óç˜‹Â1
+java:S1611±"1Remove the parentheses around the "row" parameter(ãâÔ8·à¯Ã1
 T
-java:S1611c"2Remove the parentheses around the "fila" parameter(¨›Ãƒûÿÿÿÿ8Ôç˜‹Â1
+java:S1611µ"1Remove the parentheses around the "row" parameter(üŒªÈøÿÿÿÿ8‚·à¯Ã1
 T
-java:S1611g"2Remove the parentheses around the "fila" parameter(½›Ÿøÿÿÿÿ8Ôç˜‹Â1
+java:S1611¹"1Remove the parentheses around the "row" parameter(û‡Êüÿÿÿÿ8‚·à¯Ã1
 T
-java:S1611k"2Remove the parentheses around the "fila" parameter(éšâÑşÿÿÿÿ8Õç˜‹Â1
-F	java:S108ˆ")Either remove or fill this block of code.(”ı¾8Øç˜‹Â1
-k	java:S100«"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(àöÊ¡8Üç˜‹Â1
-H	java:S106¬"+Replace this use of System.out by a logger.(äÂâœ8Üç˜‹Â1
+java:S1611½"1Remove the parentheses around the "row" parameter(±¦†ãúÿÿÿÿ8ƒ·à¯Ã1
 
-java:S2159®"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(ø˜êáúÿÿÿÿ8İç˜‹Â1
-H	java:S106Å"+Replace this use of System.out by a logger.(‹´ä¬8àç˜‹Â1
-M	java:S106Ö"+Replace this use of System.out by a logger.(àÿÙŠûÿÿÿÿ8ãç˜‹Â1
-]	java:S899ç";Do something with the "boolean" value returned by "delete".(ù™×òıÿÿÿÿ8çç˜‹Â1
+java:S2159"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(ø˜êáúÿÿÿÿ8·à¯Ã1
+]	java:S899ê";Do something with the "boolean" value returned by "delete".(¾š³Öùÿÿÿÿ8ºêä¯Ã1
 q
-java:S4042ç"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ù™×òıÿÿÿÿ8çç˜‹Â1
-F	java:S108ó")Either remove or fill this block of code.(”ı¾8éç˜‹Â1
+java:S4042ê"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(¾š³Öùÿÿÿÿ8ºêä¯Ã1

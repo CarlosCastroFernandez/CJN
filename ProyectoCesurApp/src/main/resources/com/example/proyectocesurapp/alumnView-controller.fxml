@@ -54,7 +54,7 @@
                               <SeparatorMenuItem mnemonicParsing="false" />
                               <MenuItem fx:id="menuItemCount" mnemonicParsing="false" onAction="#account" text="Cuenta" />
                               <SeparatorMenuItem mnemonicParsing="false" />
-                              <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#salir" text="Salir" />
+                              <MenuItem fx:id="menuGetOut" mnemonicParsing="false" onAction="#goOut" text="Salir" />
                         </items>
                       </Menu>
                     </menus>
@@ -127,7 +127,7 @@
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                               </Label>
-                        <TextField fx:id="fieldActivity">
+                        <TextField fx:id="tfActivity">
                            <VBox.margin>
                               <Insets bottom="5.0" left="10.0" right="30.0" />
                            </VBox.margin>
@@ -147,12 +147,12 @@
                               </TextArea>
                         <FlowPane alignment="CENTER" hgap="20.0" prefHeight="73.0" prefWidth="215.0">
                            <children>
-                                    <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#añadirTarea" text="Añadir">
+                                    <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addActivity" text="Añadir">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>
                                     </Button>
-                              <Button fx:id="botonClean" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clean" text="Limpiar">
+                              <Button fx:id="btnClean" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#clean" text="Limpiar">
                                  <font>
                                     <Font name="System Bold Italic" size="13.0" />
                                  </font>

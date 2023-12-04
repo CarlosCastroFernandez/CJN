@@ -49,3 +49,11 @@ g
 7src/main/java/controllers/TeacherAccountController.java,9\a\9a776e39e5c7a99da9dccd62594afc9a01fb0d08
 j
 :src/main/java/controllers/EditDailyActivityController.java,a\2\a2b037f73c3b6cd3371f01a8ecdf287b5bb415bd
+^
+.src/main/java/exception/IncorrectPassword.java,2\a\2a77de91437aa1b615cf5050726a3de6656984e5
+_
+/src/main/java/exception/LastNameWithNumber.java,c\0\c01bd5011cfc263d97c0aa3b9aa41e2e7b7ba195
+U
+%src/main/java/enums/PracticeType.java,4\e\4e4a5c62bf065dfa51b97352c595f7fb6c93e448
+X
+(src/main/java/classes/DailyActivity.java,b\0\b0af6e8409377a4b186bca1fe8a8491f065fd910

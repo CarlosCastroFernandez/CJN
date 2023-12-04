@@ -13,6 +13,7 @@ import exception.LastNameWithNumber;
 import exception.InvalidDNI;
 import exception.NameWithNumber;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.util.StringConverter;
@@ -23,49 +24,111 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+/**
+ * Clase controladora para editar la información del perfil del alumno.
+ */
 public class EditAlumnController implements Initializable {
-    @javafx.fxml.FXML
-    private TextField textDNI;
-    @javafx.fxml.FXML
-    private TextField textNombre;
-    @javafx.fxml.FXML
-    private TextField textEmail;
-    @javafx.fxml.FXML
-    private TextField textTelefono;
-    @javafx.fxml.FXML
-    private DatePicker dateCalender;
-    @javafx.fxml.FXML
-    private ComboBox<Grade> comboCurso;
-    @javafx.fxml.FXML
-    private ComboBox<Enterprise> comboNombreEmpresa;
-    @javafx.fxml.FXML
-    private Spinner spinnerFCT;
-    @javafx.fxml.FXML
-    private Spinner spinnerDUAL;
-    @javafx.fxml.FXML
-    private TextField textApellido1;
-    @javafx.fxml.FXML
-    private TextField textApellido2;
-    @javafx.fxml.FXML
-    private ChoiceBox<PracticeType> choiceTipoPractica;
-    @javafx.fxml.FXML
-    private Button btnGuardar;
-    @javafx.fxml.FXML
-    private Button btnCancelar;
+    @FXML
+    private Button btnSave;
+    @FXML
+    private Button btnCancel;
 
+    /**
+     * Spinner para las horas dedicadas a las prácticas FCT por el alumno.
+     */
+    @FXML
+    private Spinner spinnerFCT;
+
+    /**
+     * TextField para el DNI del alumno.
+     */
+    @FXML
+    private TextField tfDNI;
+
+    /**
+     * TextField para el nombre del alumno.
+     */
+    @FXML
+    private TextField tfName;
+
+    /**
+     * TextField para el email del alumno.
+     */
+    @FXML
+    private TextField tfEmail;
+
+    /**
+     * TextField para el teléfono del alumno.
+     */
+    @FXML
+    private TextField tfTelephone;
+
+    /**
+     * DatePicker para la fecha de nacimiento del alumno.
+     */
+    @FXML
+    private DatePicker dpCalendar;
+
+    /**
+     * ComboBox para la selección del grado al que pertenece el alumno.
+     */
+    @FXML
+    private ComboBox<Grade> comboGrade;
+
+    /**
+     * ComboBox para seleccionar la empresa a la que pertenece el alumno.
+     */
+    @FXML
+    private ComboBox<Enterprise> comboNameEnterprise;
+
+    /**
+     * ChoiceBox para seleccionar el tipo de práctica (Dual o FCT).
+     */
+    @FXML
+    private ChoiceBox choicePracticeType;
+
+    /**
+     * Spinner para seleccionar el total de horas dedicadas al tipo de prácticas.
+     */
+    @FXML
+    private Spinner spHours;
+
+    /**
+     * TextField para el segundo apellido del alumno.
+     */
+    @FXML
+    private TextField tfLastName2;
+
+    /**
+     * TextField para el primer apellido del alumno.
+     */
+    @FXML
+    private TextField tfLastName1;
+
+    /**
+     * Inicializa los campos de la interfaz de usuario con los datos del alumno actual al cargar la ventana.
+     *
+     * @param url            La ubicación utilizada para resolver rutas relativas de archivos.
+     * @param resourceBundle El paquete de recursos utilizado para localizar archivos de recursos.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        textNombre.setText(Sesion.getAlumn().getName());
-        textApellido1.setText(Sesion.getAlumn().getLastName());
-        textApellido2.setText(Sesion.getAlumn().getLastName2());
-        textTelefono.setText("" + Sesion.getAlumn().getPhone());
-        textDNI.setText(Sesion.getAlumn().getDni());
-        textEmail.setText(Sesion.getAlumn().getEmail());
-        DateTimeFormatter fecha=DateTimeFormatter.ofPattern("yyy-MM-dd");
-        String fechaAlumno=Sesion.getAlumn().getBirthday();
-        LocalDate converterFecha=LocalDate.parse(fechaAlumno,fecha);
-        dateCalender.setValue(converterFecha);
-        choiceTipoPractica.setConverter(new StringConverter<PracticeType>() {
+        //Configura los campos de texto con los datos del alumno.
+        tfName.setText(Sesion.getAlumn().getName());
+        tfLastName1.setText(Sesion.getAlumn().getLastName());
+        tfLastName2.setText(Sesion.getAlumn().getLastName2());
+        tfTelephone.setText("" + Sesion.getAlumn().getPhone());
+        tfDNI.setText(Sesion.getAlumn().getDni());
+        tfEmail.setText(Sesion.getAlumn().getEmail());
+
+        //Configura el DatePicker con la fecha de nacimiento del alumno.
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("yyy-MM-dd");
+        String alumnDate = Sesion.getAlumn().getBirthday();
+        LocalDate converterDate = LocalDate.parse(alumnDate,date);
+        dpCalendar.setValue(converterDate);
+
+        //Configura las opciones de ChoiceBox y ComboBox.
+        choicePracticeType.setConverter(new StringConverter<PracticeType>() {
             @Override
             public String toString(PracticeType practiceType) {
                 if (practiceType != null) {
@@ -73,16 +136,13 @@ public class EditAlumnController implements Initializable {
                 } else {
                     return null;
                 }
-
             }
-
             @Override
             public PracticeType fromString(String s) {
                 return null;
             }
         });
-        try {
-            comboCurso.setConverter(new StringConverter<Grade>() {
+            comboGrade.setConverter(new StringConverter<Grade>() {
                 @Override
                 public String toString(Grade grade) {
                     if (grade != null) {
@@ -90,16 +150,14 @@ public class EditAlumnController implements Initializable {
                     } else {
                         return null;
                     }
-
                 }
-
                 @Override
                 public Grade fromString(String s) {
                     return null;
                 }
             });
 
-            comboNombreEmpresa.setConverter(new StringConverter<Enterprise>() {
+            comboNameEnterprise.setConverter(new StringConverter<Enterprise>() {
                 @Override
                 public String toString(Enterprise enterprise) {
                     if (enterprise != null) {
@@ -107,116 +165,130 @@ public class EditAlumnController implements Initializable {
                     } else {
                         return "<<Sin Empresa>>";
                     }
-
                 }
-
                 @Override
                 public Enterprise fromString(String s) {
                     return null;
                 }
             });
-        } catch (Exception e) {
+        choicePracticeType.getItems().addAll(PracticeType.DUAL, PracticeType.FCT);
+        choicePracticeType.getSelectionModel().selectedItemProperty().addListener((observableValue, tipoPractica, t1) -> {
 
-        }
-        choiceTipoPractica.getItems().addAll(PracticeType.DUAL, PracticeType.FCT);
-        choiceTipoPractica.getSelectionModel().selectedItemProperty().addListener((observableValue, tipoPractica, t1) -> {
-
-                if (t1== PracticeType.DUAL) {
-                    choiceTipoPractica.setValue(PracticeType.DUAL);
+                if (t1 == PracticeType.DUAL) {
+                    choicePracticeType.setValue(PracticeType.DUAL);
                     spinnerFCT.setVisible(false);
                     spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, 0, 1));
-                    spinnerDUAL.setVisible(true);
-
+                    spHours.setVisible(true);
                 } else{
-                choiceTipoPractica.setValue(PracticeType.FCT);
-                spinnerDUAL.setVisible(false);
-                spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, 0, 1));
+                choicePracticeType.setValue(PracticeType.FCT);
+                spHours.setVisible(false);
+                spHours.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, 0, 1));
                 spinnerFCT.setVisible(true);
             }
         });
 
         try {
             if (Sesion.getAlumn().getHoursDUAL().contains("/270")) {
-                choiceTipoPractica.setValue(PracticeType.DUAL);
+                choicePracticeType.setValue(PracticeType.DUAL);
                 spinnerFCT.setVisible(false);
             }
         } catch (NullPointerException e) {
-            choiceTipoPractica.setValue(PracticeType.FCT);
-            spinnerDUAL.setVisible(false);
+            choicePracticeType.setValue(PracticeType.FCT);
+            spHours.setVisible(false);
         }
-
-        comboCurso.getItems().addAll(Grade.ASIR1, Grade.ASIR2, Grade.DAM1, Grade.DAM2, Grade.DAW1, Grade.DAW2);
-        comboCurso.setValue(Sesion.getAlumn().getGrade());
-        comboNombreEmpresa.getItems().addAll(new EnterpriseDAOImp(DBConnection.getConnection()).loadAll());
-        comboNombreEmpresa.setValue(Sesion.getAlumn().getEnterprise());
-        comboNombreEmpresa.getItems().add(null);
+        comboGrade.getItems().addAll(Grade.ASIR1, Grade.ASIR2, Grade.DAM1, Grade.DAM2, Grade.DAW1, Grade.DAW2);
+        comboGrade.setValue(Sesion.getAlumn().getGrade());
+        comboNameEnterprise.getItems().addAll(new EnterpriseDAOImp(DBConnection.getConnection()).loadAll());
+        comboNameEnterprise.setValue(Sesion.getAlumn().getEnterprise());
+        comboNameEnterprise.getItems().add(null);
         try{
-            String[] horasIniciales = Sesion.getAlumn().getHoursDUAL().split("/");
-            if (choiceTipoPractica.getValue().equals(PracticeType.DUAL)) {
-                spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(horasIniciales[0]), 1));
+            String[] initialHours = Sesion.getAlumn().getHoursDUAL().split("/");
+            if (choicePracticeType.getValue().equals(PracticeType.DUAL)) {
+                spHours.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(initialHours[0]), 1));
             } else {
-                spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(horasIniciales[0]), 1));
+                spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(initialHours[0]), 1));
             }
         }catch(Exception e){
-            String[] horasIniciales = Sesion.getAlumn().getHoursFCT().split("/");
-            if (choiceTipoPractica.getValue().equals(PracticeType.DUAL)) {
-                spinnerDUAL.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(horasIniciales[0]), 1));
+            String[] initialHours = Sesion.getAlumn().getHoursFCT().split("/");
+            if (choicePracticeType.getValue().equals(PracticeType.DUAL)) {
+                spHours.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(initialHours[0]), 1));
             } else {
-                spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(horasIniciales[0]), 1));
+                spinnerFCT.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 270, Integer.valueOf(initialHours[0]), 1));
             }
         }
     }
 
-    @javafx.fxml.FXML
-    public void guardar(ActionEvent actionEvent) {
-        if(!textDNI.getText().isEmpty()&&!textNombre.getText().isEmpty()&&!textEmail.getText().isEmpty()
-        &&!textApellido1.getText().isEmpty()&&!textApellido2.getText().isEmpty()&&!(dateCalender.getValue()==null) &&
-        !textTelefono.getText().isEmpty()){
+    /**
+     * Método asociado al evento de guardar los datos del alumno en la interfaz de usuario y en la Base de Datos.
+     *
+     * @param actionEvent El evento que desencadena la acción.
+     */
+    @FXML
+    public void save(ActionEvent actionEvent) {
+        //Verifica si todos los campos requeridos no están vacíos.
+        if (!tfDNI.getText().isEmpty() && !tfName.getText().isEmpty() && !tfEmail.getText().isEmpty()
+                && !tfLastName1.getText().isEmpty() && !tfLastName2.getText().isEmpty() && !(dpCalendar.getValue() == null)
+                && !tfTelephone.getText().isEmpty()) {
+
             try {
-                Sesion.getAlumn().setDni(textDNI.getText());
-                Sesion.getAlumn().setName(textNombre.getText());
-                Sesion.getAlumn().setLastName(textApellido1.getText());
-                Sesion.getAlumn().setLastName2(textApellido2.getText());
-                Sesion.getAlumn().setEmail(textEmail.getText());
-                Sesion.getAlumn().setBirthday(String.valueOf(dateCalender.getValue()));
-                Sesion.getAlumn().setPhone(Integer.valueOf(textTelefono.getText()));
-                Sesion.getAlumn().setGrade(comboCurso.getValue());
-                if(comboNombreEmpresa.getValue()==null){
+                //Actualiza los datos del alumno con los valores de los campos en la interfaz.
+                Sesion.getAlumn().setDni(tfDNI.getText());
+                Sesion.getAlumn().setName(tfName.getText());
+                Sesion.getAlumn().setLastName(tfLastName1.getText());
+                Sesion.getAlumn().setLastName2(tfLastName2.getText());
+                Sesion.getAlumn().setEmail(tfEmail.getText());
+                Sesion.getAlumn().setBirthday(String.valueOf(dpCalendar.getValue()));
+                Sesion.getAlumn().setPhone(Integer.valueOf(tfTelephone.getText()));
+                Sesion.getAlumn().setGrade(comboGrade.getValue());
+
+                //Verifica si la empresa seleccionada es nula y actualiza los datos del alumno en consecuencia.
+                if (comboNameEnterprise.getValue() == null) {
                     Sesion.getAlumn().setEnterpriseID(0);
                     Sesion.getAlumn().setEnterprise(null);
-                }else{
-                    Sesion.getAlumn().setEnterprise(comboNombreEmpresa.getValue());
-                    Sesion.getAlumn().setEnterpriseID(comboNombreEmpresa.getValue().getId());
+                } else {
+                    Sesion.getAlumn().setEnterprise(comboNameEnterprise.getValue());
+                    Sesion.getAlumn().setEnterpriseID(comboNameEnterprise.getValue().getId());
                 }
 
-                if(choiceTipoPractica.getValue()== PracticeType.DUAL){
-                    Sesion.getAlumn().setHoursDUAL(spinnerDUAL.getValue()+"/270");
+                //Verifica el tipo de práctica seleccionada y actualiza las horas correspondientes del alumno.
+                if (choicePracticeType.getValue() == PracticeType.DUAL) {
+                    Sesion.getAlumn().setHoursDUAL(spHours.getValue() + "/270");
                     Sesion.getAlumn().setHoursFCT(null);
-                    new AlumnDAOImp(DBConnection.getConnection()).updateHours(Sesion.getAlumn(),"horasFCT");
-                }else{
-                    Sesion.getAlumn().setHoursFCT(spinnerFCT.getValue()+"/270");
+                    new AlumnDAOImp(DBConnection.getConnection()).updateHours(Sesion.getAlumn(), "horasFCT");
+                } else {
+                    Sesion.getAlumn().setHoursFCT(spinnerFCT.getValue() + "/270");
                     Sesion.getAlumn().setHoursDUAL(null);
-                    new AlumnDAOImp(DBConnection.getConnection()).updateHours(Sesion.getAlumn(),"horasDual");
+                    new AlumnDAOImp(DBConnection.getConnection()).updateHours(Sesion.getAlumn(), "horasDual");
                 }
-                System.out.println(Sesion.getAlumn());
-                Alumn alumn =(new AlumnDAOImp(DBConnection.getConnection()).update(Sesion.getAlumn()));
+
+                //Realiza la actualización en la Base de Datos.
+                Alumn alumn = (new AlumnDAOImp(DBConnection.getConnection()).update(Sesion.getAlumn()));
+
+                //Redirige a la ventana de profesor después de guardar los datos del alumno.
                 App.loadFXML("teacherView-controller.fxml");
             } catch (InvalidDNI | NameWithNumber e) {
+                //En caso de error, se lanza una excepción.
                 throw new RuntimeException(e);
             } catch (LastNameWithNumber e) {
                 throw new RuntimeException(e);
             }
 
-        }else{
-            Alert alerta=new Alert(Alert.AlertType.ERROR);
-            alerta.setTitle("Error");
-            alerta.setHeaderText("Porfavor comprueba de que los campos esten rellenos");
-            alerta.showAndWait();
+        } else {
+            //Si hay campos vacíos, muestra una alerta de error.
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Por favor, verifica que todos los campos estén rellenados");
+            alert.showAndWait();
         }
-            }
+    }
 
-    @javafx.fxml.FXML
-    public void cancelar(ActionEvent actionEvent) {
+    /**
+     * Método para cancelar la edición de los datos del alumno y que te devuelve a la ventana de profesor.
+     *
+     * @param actionEvent El evento que desencadena la acción.
+     */
+    @FXML
+    public void cancel(ActionEvent actionEvent) {
         Sesion.setAlumn(null);
         App.loadFXML("teacherView-controller.fxml");
     }
