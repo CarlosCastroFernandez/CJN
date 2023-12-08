@@ -262,7 +262,12 @@ public class EditAlumnController implements Initializable {
                 }
 
                 //Realiza la actualización en la Base de Datos.
+
                 Alumn alumn = (new AlumnDAOImp(DBConnection.getConnection()).update(Sesion.getAlumn()));
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Exito");
+                alert.setHeaderText("Alumno modificado con EXITO");
+                alert.showAndWait();
 
                 //Redirige a la ventana de profesor después de guardar los datos del alumno.
                 App.loadFXML("teacherView-controller.fxml");
@@ -272,6 +277,7 @@ public class EditAlumnController implements Initializable {
             } catch (LastNameWithNumber e) {
                 throw new RuntimeException(e);
             }
+
 
         } else {
             //Si hay campos vacíos, muestra una alerta de error.

@@ -73,48 +73,68 @@ public class TeacherRegisterController implements Initializable {
      */
     @FXML
     public void registrarse(ActionEvent actionEvent) {
-        //Obtiene los valores de los diferentes campos de texto en la interfaz de usuario.
-        String dni = tfDNI.getText();
-        String name = tfName.getText();
-        String lastName1 = tfLastName1.getText();
-        String lastName2 = tfLastName2.getText();
-        String email = tfEmail.getText();
-        Integer telephone = Integer.valueOf(tfTelephone.getText());
-        String password = pfTeacher.getText();
+        try{
+            //Obtiene los valores de los diferentes campos de texto en la interfaz de usuario.
+            String dni = tfDNI.getText();
+            String name = tfName.getText();
+            String lastName1 = tfLastName1.getText();
+            String lastName2 = tfLastName2.getText();
+            String email = tfEmail.getText();
+            Integer telephone = Integer.valueOf(tfTelephone.getText());
+            String password = pfTeacher.getText();
+            if(tfDNI.getText().isEmpty()||tfName.getText().isEmpty()|| tfLastName1.getText().isEmpty()||tfLastName2.getText().isEmpty()||tfEmail.getText().isEmpty()||tfTelephone.getText().isEmpty()||pfTeacher.getText().isEmpty()){
+                Alert alert=new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Comprueba de que no haya ningun campo VACIO");
+                alert.showAndWait();
 
-        try {
-            //Crea un nuevo objeto Teacher con los valores recopilados.
-            Teacher teacher = new Teacher(null, name, lastName1, lastName2, password, email, dni, telephone);
+            }else{
+                try {
+                    //Crea un nuevo objeto Teacher con los valores recopilados.
+                    Teacher teacher = new Teacher(null, name, lastName1, lastName2, password, email, dni, telephone);
 
-            //Crea una instancia de TeacherDAOImp utilizando una conexión a la Base de Datos.
-            TeacherDAOImp teacherDAOImp = new TeacherDAOImp(DBConnection.getConnection());
+                    //Crea una instancia de TeacherDAOImp utilizando una conexión a la Base de Datos.
+                    TeacherDAOImp teacherDAOImp = new TeacherDAOImp(DBConnection.getConnection());
 
-            //Inserta el nuevo objeto Teacher en la Base de Datos.
-            teacher = teacherDAOImp.injection(teacher);
+                    //Inserta el nuevo objeto Teacher en la Base de Datos.
+                    teacher = teacherDAOImp.injection(teacher);
 
-            //Establecimiento de distintas alertas para el control de errores en cada caso.
-        } catch (NameWithNumber e) {
+                    //Establecimiento de distintas alertas para el control de errores en cada caso.
+                } catch (NameWithNumber e) {
+                    Alert alert=new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Nombre con número.");
+                    alert.showAndWait();
+                    throw new RuntimeException(e);
+                } catch (LastNameWithNumber e) {
+                    Alert alert=new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Apellido con número.");
+                    alert.showAndWait();
+                    throw new RuntimeException(e);
+                } catch (InvalidDNI e) {
+                    Alert alert=new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("DNI inválido.");
+                    alert.showAndWait();
+                    throw new RuntimeException(e);
+                }
+                Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Exito");
+                alert.setHeaderText("Registro con EXITO.");
+                alert.showAndWait();
+
+                //Una vez acaba el registro se vuelve a la ventana de Login.
+                App.loadFXML("login-controller.fxml");
+            }
+        }catch (NumberFormatException e){
             Alert alert=new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("Nombre con número.");
-            alert.showAndWait();
-            throw new RuntimeException(e);
-        } catch (LastNameWithNumber e) {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Apellido con número.");
-            alert.showAndWait();
-            throw new RuntimeException(e);
-        } catch (InvalidDNI e) {
-            Alert alert=new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("DNI inválido.");
+            alert.setHeaderText("Numero de telefono INVALIDO.");
+            alert.setContentText("Introduce uno real");
             alert.showAndWait();
             throw new RuntimeException(e);
         }
-
-        //Una vez acaba el registro se vuelve a la ventana de Login.
-        App.loadFXML("login-controller.fxml");
 
     }
 
