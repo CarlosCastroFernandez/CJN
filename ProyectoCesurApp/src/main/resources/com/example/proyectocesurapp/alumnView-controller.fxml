@@ -54,6 +54,10 @@
                               <SeparatorMenuItem mnemonicParsing="false" />
                               <MenuItem fx:id="menuItemCount" mnemonicParsing="false" onAction="#account" text="Cuenta" />
                               <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem fx:id="menuItemTeacher" mnemonicParsing="false" onAction="#changeMyTeacher" text="Mi Profesor" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
+                              <MenuItem fx:id="menuItemEnterprise" mnemonicParsing="false" onAction="#changeMyEnterprise" text="Mi Empresa" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
                               <MenuItem fx:id="menuGetOut" mnemonicParsing="false" onAction="#goOut" text="Salir" />
                         </items>
                       </Menu>

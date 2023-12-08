@@ -22,18 +22,34 @@ public class App extends Application {
         stage.show();
     }
     public static void loadFXML(String ruta){
-
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(ruta));
-            Scene scene = new Scene(fxmlLoader.load(), 1137, 770);
-            Image icono=new Image(App.class.getResource("imagenes/IconCesur.png").toExternalForm());
-            myStage.getIcons().add(icono);
-            myStage.setTitle("Cesur");
-            myStage.setScene(scene);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if(ruta.equals("alumnMyEnterprise-controller.fxml")||ruta.equals("alumnMyTeacher-controller.fxml")){
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(ruta));
+                Scene scene = new Scene(fxmlLoader.load(), 600, 770);
+                Image icono=new Image(App.class.getResource("imagenes/IconCesur.png").toExternalForm());
+                myStage.getIcons().add(icono);
+                myStage.setResizable(false);
+                myStage.setTitle("Cesur");
+                myStage.setScene(scene);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(ruta));
+                Scene scene = new Scene(fxmlLoader.load(), 1137, 770);
+                Image icono=new Image(App.class.getResource("imagenes/IconCesur.png").toExternalForm());
+                myStage.getIcons().add(icono);
+                myStage.setResizable(true);
+                myStage.setTitle("Cesur");
+                myStage.setScene(scene);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
-    }
+        }
+
+
 
 
     public static void main(String[] args) {

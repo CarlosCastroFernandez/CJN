@@ -30,6 +30,16 @@
 #splitpane {
     -fx-background-color: transparent;
 }
+.imagenTeacher{
+    -fx-background-image: url("imagenes/teacherAnime.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+.imagenMyEnterprise{
+    -fx-background-image: url("imagenes/imagenMyEnterprise.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
 /* formato para las celdas del tableview*/
    .table-cell {
        -fx-padding: 0.5em 0.5em 0.1em 0.3em;

@@ -139,6 +139,10 @@ public class AlumnViewController implements Initializable {
      * Segunda opción del menú contextual.
      */
     private MenuItem menuItem2 = new MenuItem();
+    @FXML
+    private MenuItem menuItemTeacher;
+    @FXML
+    private MenuItem menuItemEnterprise;
 
     /**
      * Inicializa la interfaz de usuario al cargar la vista.
@@ -419,6 +423,16 @@ public class AlumnViewController implements Initializable {
         dpDate.setValue(null);
         spHoras.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,8,0,1));
         tfActivity.clear();
+    }
+
+    @FXML
+    public void changeMyTeacher(ActionEvent actionEvent) {
+        App.loadFXML("alumnMyTeacher-controller.fxml");
+    }
+
+    @FXML
+    public void changeMyEnterprise(ActionEvent actionEvent) {
+        App.loadFXML("alumnMyEnterprise-controller.fxml");
     }
 }
 

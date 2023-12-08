@@ -139,6 +139,7 @@ public class AlumnDAOImp implements AlumnDAO {
 
                 //Se carga el profesor asociado al alumno.
                 outPut.setTeacher(new TeacherDAOImp(DBConnection.getConnection()).loadTeacherById(resultSet.getInt("profesor")));
+                outPut.setEnterprise(new EnterpriseDAOImp(DBConnection.getConnection()).load(outPut.getEnterpriseID()));
 
                 //Comprueba si la contraseña proporcionada no coincide con la contraseña del alumno.
                 if(!password.equals(outPut.getPassword())){

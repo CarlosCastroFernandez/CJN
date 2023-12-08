@@ -610,6 +610,7 @@ public class TeacherViewController implements Initializable {
                     alumn.setEnterpriseID(0);
                 } else {
                     Enterprise enterprise = (Enterprise) cbEnterprise.getSelectionModel().getSelectedItem();
+                    System.out.println(enterprise);
                     alumn.setEnterprise(enterprise);
                     alumn.setEnterpriseID(enterprise.getId());
                     enterprise.setAlumn(new ArrayList<>());
