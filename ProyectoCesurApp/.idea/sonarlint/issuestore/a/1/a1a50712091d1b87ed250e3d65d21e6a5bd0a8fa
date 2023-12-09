@@ -1,6 +1,6 @@
 
-h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÏúÙ°Ã1
-h	java:S112‘"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÏúÙ°Ã1
+h	java:S112”"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÏúÙ°Ã1
+h	java:S112–"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÏúÙ°Ã1
 L
 java:S3740("/Provide the parametrized type for this generic.(¾àÜ8İÚÅ°Ã1
 Q
@@ -10,10 +10,10 @@ java:S3740^"/Provide the parametrized type for this generic.(Öä¯·ıÿÿÿÿ8İÚÅ°Ã1
 t
 java:S3776s"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(•‘İŸüÿÿÿÿ8§ÛÅ°Ã1
 \
-java:S1854‰"9Remove this useless assignment to local variable "alumn".(ˆ»†¶ùÿÿÿÿ8ªûÙ°Ã1
+java:S1854Š"9Remove this useless assignment to local variable "alumn".(ˆ»†¶ùÿÿÿÿ8ªûÙ°Ã1
 L
 java:S1940æ")Use the opposite operator ("!=") instead.(±š¦…úÿÿÿÿ8«ûÙ°Ã1
 c
-java:S2147"ECombine this catch with the one at line 269, which has the same body.(¶ƒ´œ8«ûÙ°Ã1
+java:S2147•"ECombine this catch with the one at line 274, which has the same body.(¶ƒ´œ8«ûÙ°Ã1
 M
-java:S1481‰"*Remove this unused "alumn" local variable.(ˆ»†¶ùÿÿÿÿ8°ûÙ°Ã1
+java:S1481Š"*Remove this unused "alumn" local variable.(ˆ»†¶ùÿÿÿÿ8°ûÙ°Ã1

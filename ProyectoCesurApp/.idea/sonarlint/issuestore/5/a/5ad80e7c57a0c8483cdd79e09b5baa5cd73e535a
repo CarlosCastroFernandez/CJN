@@ -1,9 +1,9 @@
 
-h	java:S112ÿ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‘«¨µÂ1
-h	java:S112†"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
-h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
-h	java:S112Ò"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
-h	java:S112ã"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
+h	java:S112€"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8‘«¨µÂ1
+h	java:S112‡"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
+h	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
+h	java:S112Ó"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
+h	java:S112ä"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8“«¨µÂ1
 Q
 java:S3740="/Provide the parametrized type for this generic.(Ÿî€èüÿÿÿÿ8“«¨µÂ1
 L
@@ -78,6 +78,7 @@ G
 java:S2201·")The return value of "strip" must be used.(ò‹š8ô«¨µÂ1
 L
 java:S1905Ô")Remove this unnecessary cast to "String".(ÛõÔóıÿÿÿÿ8÷«¨µÂ1
-]	java:S899Ø";Do something with the "boolean" value returned by "delete".(¾š³Öùÿÿÿÿ8ş«¨µÂ1
+H	java:S106å"+Replace this use of System.out by a logger.(ƒê½•8ºæ¯õÄ1
+]	java:S899Ù";Do something with the "boolean" value returned by "delete".(¾š³Öùÿÿÿÿ8ş«¨µÂ1
 q
-java:S4042Ø"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(¾š³Öùÿÿÿÿ8ş«¨µÂ1
+java:S4042Ù"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(¾š³Öùÿÿÿÿ8ş«¨µÂ1

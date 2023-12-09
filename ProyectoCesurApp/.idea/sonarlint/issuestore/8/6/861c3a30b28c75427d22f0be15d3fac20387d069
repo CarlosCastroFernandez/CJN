@@ -1,8 +1,11 @@
 
-`	java:S112e"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112k"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
-`	java:S112q"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112l"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112r"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+`	java:S112x"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+h	java:S112ˆ"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8á¯õÄ1
 \
-java:S1192b"FDefine a constant instead of duplicating this literal "Error" 3 times.(µûø–
+java:S1192W"FDefine a constant instead of duplicating this literal "Error" 5 times.(µûø–
+W
+java:S1141\"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ8’á¯õÄ1
 ]
-java:S1854]";Remove this useless assignment to local variable "teacher".(£°Ÿ»ıÿÿÿÿ8Ÿá²Â1
+java:S1854d";Remove this useless assignment to local variable "teacher".(£°Ÿ»ıÿÿÿÿ8Ÿá²Â1
