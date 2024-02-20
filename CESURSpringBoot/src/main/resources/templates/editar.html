@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Actividad</title>
+</head>
+<body>
+<h1 th:if="${actividad.id!=null}" th:text="${actividad.taskName}"></h1>
+<h1 th:unless="${actividad.id!=null}">Nueva Actividad</h1>
+<form action="" method="POST">
+    <input th:value="${actividad.id}" type="hidden" name="id">
+    <input th:value="${actividad.taskName}" name="taskName">
+    <input th:value="${actividad.date}"  name="date">
+    <input th:value="${actividad.totalHours}" type="number" name="totalHours">
+    <input th:value="${actividad.practiceType}"  name="practiceType">
+    <input th:value="${actividad.observations}" name="observations">
+    <input type="submit" value="Guardar">
+
+</form>
+<a href="/cesurapp/alumno">Volver</a>
+</body>
+</html>

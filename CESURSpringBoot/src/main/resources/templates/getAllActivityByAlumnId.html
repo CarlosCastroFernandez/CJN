@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Actividades</title>
+</head>
+<body>
+<h1>Lista Actividades</h1>
+<table border="1">
+    <thead>
+
+
+    <tr>
+        <th>id</th>
+        <th>Alumno</th>
+        <th>Fecha</th>
+        <th>Tipo de Practica</th>
+        <th>Total de Horas</th>
+        <th>nombre Actividad</th>
+        <th>Observaciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="actividad: ${actividades}">
+        <td th:text="${actividad.getId()}"></td>
+        <td th:text="${actividad.getIdAlumn().getName()}"></td>
+        <td th:text="${actividad.getDate()}"></td>
+        <td th:text="${actividad.getPracticeType().toString()}"></td>
+        <td th:text="${actividad.getTotalHours()}"></td>
+        <td >
+            <a th:href=" '/cesurapp/edit/'+${actividad.getId()}" th:text="${actividad.getTaskName()}"></a>
+        </td>
+        <td th:text="${actividad.getObservations()}"></td>
+    </tr>
+    </tbody>
+    <button><a href="/cesurapp/new">Añadir Actividad</a></button>
+</table>
+
+</body>
+</html>

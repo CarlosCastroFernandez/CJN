@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista De Alumnos</title>
+</head>
+<body>
+<h1>Listado De Alumnos</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>nombre</th>
+        <th>DNI</th>
+        <th>Email</th>
+        <th>Apellido1</th>
+        <th>Apellido2</th>
+        <th>Telefono</th>
+        <th>Profesor</th>
+        <th>Empresa</th>
+        <th>Fecha Nacimiento</th>
+        <th>Horas Dual</th>
+        <th>Horas FCT</th>
+        <th>Curso</th>
+        <th>Observaciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="alumn: ${alumn}">
+        <td th:text="${alumn.id}"></td>
+        <td>
+            <a th:href="'/cesurapp/alumno/'+${alumn.id}" th:text="${alumn.name}"></a>
+        </td>
+        <td th:text="${alumn.dni}"></td>
+        <td th:text="${alumn.email}"></td>
+        <td th:text="${alumn.lastName}"></td>
+        <td th:text="${alumn.lastName2}"></td>
+        <td th:text="${alumn.phone}"></td>
+        <td th:text="${alumn.teacher.name}"></td>
+        <td th:text="${alumn.enterprise}"></td>
+        <td th:text="${alumn.birthday}"></td>
+        <td th:text="${alumn.hoursDUAL}"></td>
+        <td th:text="${alumn.hoursFCT}"></td>
+        <td th:text="${alumn.grade}"></td>
+        <td th:text="${alumn.observations}"></td>
+
+    </tr>
+
+
+    </tbody>
+
+</table>
+<button><a href="/cesurapp/alumno/new">Añadir Actividad</a></button>
+</body>
+</html>

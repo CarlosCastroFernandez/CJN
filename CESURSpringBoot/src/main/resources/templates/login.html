@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="./estilos.css">
+
+</head>
+<body>
+
+<form action="/cesurapp/succesfull" method="GET">
+    <input th:value="${alumno.email}" name="email"></br>
+    <input th:value="${alumno.password}"  name="password">
+    <input type="submit" value="Guardar">
+
+</form>
+
+</body>
+</html>
