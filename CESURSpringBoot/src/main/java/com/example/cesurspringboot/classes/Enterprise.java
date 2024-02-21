@@ -56,6 +56,18 @@ public class Enterprise {
     private List<Alumn> alumn;
 
     /**
+     * Constructor de la clase Empresa que recibe varios parámetros para inicializar sus atributos.
+     *
+     * @param id Identificador único de la empresa.
+     * @param email Correo electrónico de la empresa.
+     * @param name Nombre de la empresa.
+     * @param phone Número de teléfono de la empresa.
+     * @param boss Persona responsable de la empresa.
+     * @param observations Observaciones o notas adicionales sobre la empresa.
+     */
+
+
+    /**
      * Constructor vacío de la clase Empresa.
      */
     public Enterprise() {

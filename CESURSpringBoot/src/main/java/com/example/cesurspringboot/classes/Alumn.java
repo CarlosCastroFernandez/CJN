@@ -320,12 +320,14 @@ public class Alumn  {
     }
 
 
-    /**
-     * Establece las observaciones del usuario.
-     * @param observations Número de identificación a establecer para el usuario.
-     */
+
     public void setObservations(String observations) {
         this.observations = observations;
     }
+
+    /**
+     * Override del método toString para obtener una representación en cadena de la clase Alumno.
+     * @return Cadena que representa al alumno con todos sus atributos.
+     */
 
 }
