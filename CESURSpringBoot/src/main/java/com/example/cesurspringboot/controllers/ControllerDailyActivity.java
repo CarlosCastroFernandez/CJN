@@ -11,16 +11,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.cesurspringboot.repositories.RepositoryAlumn;
 
+/**
+ * Controlador para gestionar las actividades diarias de los alumnos.
+ */
 @Controller
 @RequestMapping("/")
 public class ControllerDailyActivity {
+    /**
+     * Acceso al repositorio de RepositoryDailyActivity.
+     */
     @Autowired
     private RepositoryDailyActivity repositoryActivity;
+    /**
+     * Acceso al repositorio de RepositoryAlumn.
+     */
 
     @Autowired
     private RepositoryAlumn repositoryAlumn;
 
-
+    /**
+     * Obtiene todas las actividades de un alumno por su ID.
+     *
+     * @param id      ID del alumno.
+     * @param model   Modelo para la vista.
+     * @param request Petición HTTP.
+     * @return Vista con la lista de actividades del alumno o redirige al inicio de sesión.
+     */
     @GetMapping("/{id}")
     public String getAllActivityByAlumnId(@PathVariable Long id,Model model,HttpServletRequest request){
         HttpSession session=request.getSession();
@@ -37,6 +53,14 @@ public class ControllerDailyActivity {
         }
 
     }
+    /**
+     * Crea una nueva actividad diaria.
+     *
+     * @param dailyActivity Actividad diaria a crear.
+     * @param request       Petición HTTP.
+     * @param model         Modelo para la vista.
+     * @return Redirige a la lista de actividades del alumno o al inicio de sesión.
+     */
 
     @PostMapping("/new")
     public String newActividad(@ModelAttribute DailyActivity dailyActivity,HttpServletRequest request,Model model){
@@ -61,6 +85,13 @@ public class ControllerDailyActivity {
         }
 
     }
+    /**
+     * Muestra el formulario para crear una nueva actividad diaria.
+     *
+     * @param model   Modelo para la vista.
+     * @param request Petición HTTP.
+     * @return Vista del formulario para crear una nueva actividad o redirige al inicio de sesión.
+     */
     @GetMapping("/new")
     public String newActividad(Model model,HttpServletRequest request){
         DailyActivity actividad=new DailyActivity();
@@ -78,6 +109,13 @@ public class ControllerDailyActivity {
 
 
     }
+    /**
+     * Muestra el formulario para editar una actividad.
+     *
+     * @param idActividad ID de la actividad a editar.
+     * @param model       Modelo para almacenar datos.
+     * @return La vista correspondiente.
+     */
     @GetMapping("/edit/{idActividad}")
     public String editDailyActivity(@PathVariable Long idActividad, Model model, HttpServletRequest request){
         HttpSession session=request.getSession();
@@ -92,6 +130,14 @@ public class ControllerDailyActivity {
         }
 
     }
+    /**
+     * Procesa el formulario para editar una actividad.
+     *
+     * @param idActividad   ID de la actividad a editar.
+     * @param dailyActivity Objeto DailyActivity con los datos de la actividad editada.
+     * @param request       Objeto HttpServletRequest para acceder a la sesión.
+     * @return La redirección a la vista correspondiente.
+     */
     @PostMapping("/edit/{idActividad}")
     public String editActivityPost(@PathVariable Long idActividad, @ModelAttribute DailyActivity dailyActivity,HttpServletRequest request,Model model){
        /* Alumn alumno=repositoryAlumn.findById(Long.valueOf(21)).get();
@@ -112,12 +158,25 @@ public class ControllerDailyActivity {
         }
 
     }
+    /**
+     * Muestra el formulario de inicio de sesión.
+     *
+     * @param modelo Modelo para la vista.
+     * @return Vista del formulario de inicio de sesión.
+     */
 
     @GetMapping("/login")
     public String getLogin(Model modelo){
         modelo.addAttribute("alumno",new Alumn());
         return "login";
     }
+    /**
+     * Verifica las credenciales del alumno al iniciar sesión.
+     *
+     * @param alumno  Alumno con las credenciales.
+     * @param request Petición HTTP.
+     * @return Redirige a la lista de actividades del alumno si las credenciales son correctas, de lo contrario, redirige al inicio de sesión.
+     */
     @GetMapping("/succesfull")
     public String getAlumno(@ModelAttribute Alumn alumno, HttpServletRequest request){
         Boolean existencia=repositoryAlumn.existsAlumnByDni(alumno.getDni());
@@ -135,6 +194,14 @@ public class ControllerDailyActivity {
             return "redirect:/login";
         }
     }
+    /**
+     * Procesa la solicitud para borrar una actividad.
+     *
+     * @param id     ID de la actividad a borrar.
+     * @param request Objeto HttpServletRequest para acceder a la sesión.
+     * @param model   Modelo para almacenar datos.
+     * @return La redirección a la vista correspondiente.
+     */
 
     @PostMapping("/borrarActividad/{id}")
     public String borrarActividad(@PathVariable Long id, HttpServletRequest request,Model model){
@@ -157,6 +224,13 @@ public class ControllerDailyActivity {
 
 
     }
+    /**
+     * Cierra la sesión del usuario.
+     *
+     * @param model   Modelo para almacenar datos.
+     * @param request Objeto HttpServletRequest para acceder a la sesión.
+     * @return La vista de inicio de sesión.
+     */
     @GetMapping("logout")
     public String logout(Model model, HttpServletRequest request)  {
             HttpSession session=request.getSession();
