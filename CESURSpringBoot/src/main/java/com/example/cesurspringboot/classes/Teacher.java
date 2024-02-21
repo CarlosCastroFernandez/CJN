@@ -141,12 +141,24 @@ public class Teacher  {
      *
      * @param name Nombre del profesor.
      * @param password Contraseña del profesor.
-
      */
     public Teacher(String name, String password)   {
         this.alumn = new ArrayList<Alumn>();
     }
 
+    /**
+     * Constructor personalizado de la clase Teacher.
+     *
+     * @param alumn     Lista de alumnos asignados al profesor.
+     * @param id        Identificador único del profesor.
+     * @param name      Nombre del profesor.
+     * @param lastName  Primer apellido del profesor.
+     * @param lastName2 Segundo apellido del profesor.
+     * @param password  Contraseña del profesor.
+     * @param email     Correo electrónico del profesor.
+     * @param dni       Documento Nacional de Identidad (DNI) del profesor.
+     * @param phone     Número de teléfono del profesor.
+     */
     public Teacher(ArrayList<Alumn> alumn, Integer id, String name, String lastName, String lastName2, String password, String email, String dni, Integer phone) {
         this.alumn = alumn;
         this.id = id;
@@ -166,7 +178,6 @@ public class Teacher  {
     }
 
     //Getters y Setters de la clase Profesor.
-
     public List<Alumn> getAlumn() {
         return alumn;
     }

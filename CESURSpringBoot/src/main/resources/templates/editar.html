@@ -3,25 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Actividad</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom, #b1dbff, #b5feed); /* gradiente de color azul a verde */
+        }
+
+        h1 {
+            margin-right: 20px;
+            color: #002858; /* Color azul */
+        }
+
+        h2 {
+            color: #F5C22F; /* Color amarillo */
+        }
+
+        /* Estilos CSS para el recuadro */
+        .recuadro {
+            border-radius: 20px;
+            padding: 20px; /* Espaciado interno de 20 píxeles */
+            width: 300px; /* Ancho del recuadro */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(248, 248, 248, 0.8); /* Gris semi transparente */
+        }
+
+        .recuadro input {
+            width: 100%; /* Ajusta el ancho de los campos de entrada al 100% del contenedor */
+            padding: 10px; /* Ajusta el relleno para más espacio interno */
+            margin-bottom: 10px; /* Ajusta el margen inferior entre los campos de entrada */
+            border: 1px solid #ccc; /* Añade un borde ligero para separar visualmente los campos */
+            border-radius: 10px; /* Ajusta el radio de los bordes de los campos de entrada */
+        }
+
+        .recuadro input[type="submit"] {
+            width: 125px; /* Ancho automático (ajustado al contenido) */
+            padding: 8px 15px; /* Ajusta el relleno para el botón */
+            margin-bottom: 0; /* Elimina el margen inferior del botón */
+            font-size: 16px; /* Ajusta el tamaño de la fuente del botón */
+            background-color: #F5C22F; /* Ajusta el color de fondo según tu preferencia */
+            color: #002858;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: #002858; /* Color azul */
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+    </style>
 </head>
 <body>
-<h1 th:if="${actividad.id!=null}" th:text="${actividad.taskName}"></h1>
-<h1 th:unless="${actividad.id!=null}">Nueva Actividad</h1>
+<h1>Nueva Actividad</h1>
 <form action="" method="POST">
-    <input th:value="${actividad.id}" type="hidden" name="id">
-    <input th:value="${actividad.taskName}" name="taskName">
-    <input th:value="${actividad.date}"  name="date">
-    <input th:value="${actividad.totalHours}" type="number" name="totalHours">
-    <input th:value="${actividad.practiceType}"  name="practiceType">
-    <input th:value="${actividad.observations}" name="observations">
-    <input type="submit" value="Guardar">
-
+    <div class="recuadro">
+    <h2 class="CESURYellow" th:if="${actividad.id!=null}" th:text="${actividad.taskName}"></h2>
+    <h2 class="CESURYellow" th:unless="${actividad.id!=null}"></h2>
+        <input th:value="${actividad.id}" type="hidden" name="id">
+        <input th:value="${actividad.taskName}" name="taskName" placeholder="Nombre de la actividad">
+        <input th:value="${actividad.date}" name="date" placeholder="Fecha">
+        <input th:value="${actividad.totalHours}" type="number" name="totalHours" placeholder="Total de horas">
+        <input th:value="${actividad.practiceType}" name="practiceType" placeholder="Tipo de práctica">
+        <input th:value="${actividad.observations}" name="observations" placeholder="Observaciones">
+        <input type="submit" value="Guardar">
+        <br>
+        <form th:action="'/borrarActividad/'+${actividad.id}" method="POST">
+            <input type="submit" value="Borrar">
+        </form>
+        <a th:href="'/'+${actividad.id}">Volver</a>
+    </div>
 </form>
-<a th:href="'/'+${actividad.id}">Volver</a>
-
-<form th:action="'/borrarActividad/'+${actividad.id}" method="POST">
-    <input type="submit" value="Borrar">
-</form>
-
 </body>
 </html>
