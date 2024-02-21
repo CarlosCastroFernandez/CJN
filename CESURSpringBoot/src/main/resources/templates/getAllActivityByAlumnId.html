@@ -29,13 +29,15 @@
         <td th:text="${actividad.getPracticeType().toString()}"></td>
         <td th:text="${actividad.getTotalHours()}"></td>
         <td >
-            <a th:href=" '/cesurapp/edit/'+${actividad.getId()}" th:text="${actividad.getTaskName()}"></a>
+            <a th:href=" '/edit/'+${actividad.getId()}" th:text="${actividad.getTaskName()}"></a>
         </td>
         <td th:text="${actividad.getObservations()}"></td>
     </tr>
     </tbody>
-    <button><a href="/cesurapp/new">Añadir Actividad</a></button>
+
 </table>
+<button><a href="/new">Añadir Actividad</a></button>
+<button><a href="/logout">Cerrar Session</a></button>
 
 </body>
 </html>

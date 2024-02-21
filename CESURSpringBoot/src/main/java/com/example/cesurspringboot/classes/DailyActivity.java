@@ -4,6 +4,7 @@ package com.example.cesurspringboot.classes;
 import com.example.cesurspringboot.classes.enums.PracticeType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Cascade;
 
 /**
  * La clase ActividadDiaria representa una actividad diaria realizada por un alumno.
@@ -23,7 +24,7 @@ public class DailyActivity {
      * Identificador del alumno asociado a la actividad.
      */
     @JoinColumn(name = "alumnoid")
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JsonIgnore
     private Alumn idAlumn;
 

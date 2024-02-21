@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="./estilos.css">
+    <link rel="stylesheet" href="estilos.css">
 
 </head>
 <body>
 
-<form action="/cesurapp/succesfull" method="GET">
-    <input th:value="${alumno.email}" name="email"></br>
+<form action="/succesfull" method="GET">
+    <h4>DNI</h4>
+    <input th:value="${alumno.dni}" name="dni"></br>
     <input th:value="${alumno.password}"  name="password">
-    <input type="submit" value="Guardar">
+    <input type="submit" value="Entrar">
 
 </form>
 

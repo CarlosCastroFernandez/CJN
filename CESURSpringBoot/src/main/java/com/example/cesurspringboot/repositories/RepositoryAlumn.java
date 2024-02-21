@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RepositoryAlumn extends JpaRepository<Alumn,Long> {
 
-    public Boolean existsAlumnByEmail(String email);
-    public Alumn getAlumnByEmail(String email);
+    public Boolean existsAlumnByDni(String dni);
+    public Alumn getAlumnByDni(String dni);
 
 }

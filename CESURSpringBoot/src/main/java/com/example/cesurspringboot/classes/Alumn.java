@@ -130,7 +130,7 @@ public class Alumn  {
     /**
      * Lista de actividades asociadas al alumno.
      */
-    @OneToMany(mappedBy = "idAlumn", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "idAlumn", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     private List<DailyActivity> activity;
 
     /**
@@ -316,13 +316,7 @@ public class Alumn  {
      * @param dni Número de identificación a establecer para el usuario.
      */
     public void setDni(String dni) {
-        String letters="abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        for(byte i=0;i<dni.length();i++) {
-            if(!letters.contains(""+dni.charAt(i))&&dni.length()-1>i) {
-                this.dni = dni;
-            }else if(letters.contains(""+dni.charAt(i))&&dni.length()-1>i) {
-            }
-        }
+      this.dni=dni;
     }
 
 

@@ -1,6 +1,5 @@
 package com.example.cesurspringboot.controllers;
 
-import com.example.cesurspringboot.SessionService;
 import com.example.cesurspringboot.classes.Alumn;
 import com.example.cesurspringboot.classes.DailyActivity;
 import com.example.cesurspringboot.repositories.RepositoryDailyActivity;
@@ -12,10 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.cesurspringboot.repositories.RepositoryAlumn;
 
-import java.util.List;
-
 @Controller
-@RequestMapping("/cesurapp")
+@RequestMapping("/")
 public class ControllerDailyActivity {
     @Autowired
     private RepositoryDailyActivity repositoryActivity;
@@ -23,32 +20,57 @@ public class ControllerDailyActivity {
     @Autowired
     private RepositoryAlumn repositoryAlumn;
 
-    @Autowired
-    private SessionService sessionService;
 
     @GetMapping("/{id}")
-    public String getAllActivityByAlumnId(@PathVariable Long id,Model model){
+    public String getAllActivityByAlumnId(@PathVariable Long id,Model model,HttpServletRequest request){
+        HttpSession session=request.getSession();
+        Alumn alumnoSession=(Alumn)session.getAttribute("alumno");
 
-        Alumn alumno=repositoryAlumn.findById(id).get();
-        model.addAttribute("actividades",repositoryActivity.getAllByIdAlumn(alumno));
-        return "getAllActivityByAlumnId";
+        if(alumnoSession!=null){
+            Alumn alumno=alumnoSession;
+            model.addAttribute("actividades",repositoryActivity.getAllByIdAlumn(alumno));
+            System.out.println(repositoryActivity.getAllByIdAlumn(alumno));
+            return "getAllActivityByAlumnId";
+        }else{
+            model.addAttribute("alumno",new Alumn());
+            return "login";
+        }
+
     }
 
     @PostMapping("/new")
-    public String newActividad(@ModelAttribute DailyActivity dailyActivity){
-        Alumn alumno=repositoryAlumn.findById(Long.valueOf(21)).get();
-        dailyActivity.setIdAlumn(alumno);
-        System.out.println(dailyActivity);
-        repositoryActivity.save(dailyActivity);
-        return "redirect:/cesurapp/"+Long.valueOf( dailyActivity.getIdAlumn().getId()) ;
+    public String newActividad(@ModelAttribute DailyActivity dailyActivity,HttpServletRequest request,Model model){
+        /*Alumn alumno=repositoryAlumn.findById(Long.valueOf(21)).get();
+        dailyActivity.setIdAlumn(alumno);*/
+        HttpSession session=request.getSession();
+        Alumn alumno=(Alumn) session.getAttribute("alumno");
+        if(alumno!=null){
+            System.out.println(dailyActivity);
+            dailyActivity.setIdAlumn(alumno);
+            repositoryActivity.save(dailyActivity);
+            return "redirect:/"+Long.valueOf( dailyActivity.getIdAlumn().getId()) ;
+        }else{
+            model.addAttribute("alumno",new Alumn());
+            return "login";
+        }
+
     }
     @GetMapping("/new")
-    public String newActividad(Model model){
+    public String newActividad(Model model,HttpServletRequest request){
         DailyActivity actividad=new DailyActivity();
-        actividad.setIdAlumn( sessionService.alumnoActivo());
 
-        model.addAttribute("actividad",actividad);
-        return "editar";
+        HttpSession session=request.getSession();
+        Alumn alumno=(Alumn) session.getAttribute("alumno");
+        if(alumno!=null){
+            actividad.setIdAlumn(alumno);
+            model.addAttribute("actividad",actividad);
+            return "editar";
+        }else{
+            model.addAttribute("alumno",new Alumn());
+            return "login";
+        }
+
+
     }
     @GetMapping("/edit/{idActividad}")
     public String editDailyActivity(@PathVariable Long idActividad, Model model){
@@ -57,14 +79,15 @@ public class ControllerDailyActivity {
     }
     @PostMapping("/edit/{idActividad}")
     public String editActivityPost(@PathVariable Long idActividad, @ModelAttribute DailyActivity dailyActivity,HttpServletRequest request){
-        Alumn alumno=repositoryAlumn.findById(Long.valueOf(21)).get();
-        dailyActivity.setIdAlumn(alumno);
-        /*Object login=request.getAttribute("alumno");
-        if(login!=null){
-            dailyActivity.setIdAlumn((Alumn) login);
-        }*/
+       /* Alumn alumno=repositoryAlumn.findById(Long.valueOf(21)).get();
+        dailyActivity.setIdAlumn(alumno);*/
+        HttpSession sesion=request.getSession();
+        Alumn alumno= (Alumn) sesion.getAttribute("alumno");
+        if(alumno!=null){
+            dailyActivity.setIdAlumn((Alumn) alumno);
+        }
         repositoryActivity.save(dailyActivity);
-        return "redirect:/cesurapp/"+Long.valueOf( dailyActivity.getIdAlumn().getId());
+        return "redirect:/"+Long.valueOf( ((Alumn) alumno).getId());
     }
 
     @GetMapping("/login")
@@ -74,19 +97,45 @@ public class ControllerDailyActivity {
     }
     @GetMapping("/succesfull")
     public String getAlumno(@ModelAttribute Alumn alumno, HttpServletRequest request){
-        Boolean existencia=repositoryAlumn.existsAlumnByEmail(alumno.getEmail());
+        Boolean existencia=repositoryAlumn.existsAlumnByDni(alumno.getDni());
+        System.out.println(existencia.toString());
         if(existencia){
-            Alumn alumnoBBDD=repositoryAlumn.getAlumnByEmail(alumno.getEmail());
+            Alumn alumnoBBDD=repositoryAlumn.getAlumnByDni(alumno.getDni());
             if(alumnoBBDD.getPassword().equals(alumno.getPassword())){
                 HttpSession s=request.getSession();
                 s.setAttribute("alumno",alumnoBBDD);
-                return "redirect:/cesurapp/"+Long.valueOf( alumnoBBDD.getId());
+                return "redirect:/"+Long.valueOf( alumnoBBDD.getId());
             }else{
-                return "redirect:/cesurapp/login";
+                return "redirect:/login";
             }
         }else{
-            return "redirect:/cesurapp/login";
+            return "redirect:/login";
         }
     }
+
+    @PostMapping("/borrarActividad/{id}")
+    public String borrarActividad(@PathVariable Long id, HttpServletRequest request,Model model){
+        HttpSession session=request.getSession();
+        Alumn alumno= (Alumn) session.getAttribute("alumno");
+        if(alumno!=null){
+            DailyActivity actividad=repositoryActivity.findById(id).get();
+            repositoryActivity.delete(actividad);
+            return "redirect:/"+alumno.getId();
+        }else{
+            model.addAttribute("alumno",new Alumn());
+            return "login";
+        }
+
+
+    }
+    @GetMapping("logout")
+    public String logout(Model model, HttpServletRequest request)  {
+            HttpSession session=request.getSession();
+                session.invalidate();
+                model.addAttribute("alumno",new Alumn());
+                return "login";
+
+    }
+
 
 }
