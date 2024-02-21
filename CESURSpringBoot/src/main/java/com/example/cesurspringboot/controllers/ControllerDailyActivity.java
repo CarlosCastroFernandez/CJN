@@ -30,6 +30,15 @@ public class ControllerDailyActivity {
     private RepositoryAlumn repositoryAlumn;
 
     /**
+     * Redirección a la ruta /login
+
+     * @return retorna la redireccion a login
+     */
+    @GetMapping("/")
+    public String devueltaLogin(){
+        return "redirect:/login";
+    }
+    /**
      * Obtiene todas las actividades de un alumno por su ID.
      *
      * @param id      ID del alumno.
