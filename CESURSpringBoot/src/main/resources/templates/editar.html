@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Editar Actividad</title>
@@ -11,43 +12,41 @@
             height: 100vh;
             margin: 0;
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom, #b1dbff, #b5feed); /* gradiente de color azul a verde */
+            background: linear-gradient(to bottom, #b1dbff, #b5feed);
         }
 
         h1 {
             margin-right: 20px;
-            color: #002858; /* Color azul */
+            color: #002858;
         }
 
         h2 {
-            color: #F5C22F; /* Color amarillo */
+            color: #F5C22F;
         }
 
-        /* Estilos CSS para el recuadro */
         .recuadro {
             border-radius: 20px;
-            padding: 20px; /* Espaciado interno de 20 píxeles */
-            width: 300px; /* Ancho del recuadro */
+            padding: 20px;
+            width: 300px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            background-color: rgba(248, 248, 248, 0.8); /* Gris semi transparente */
+            background-color: rgba(248, 248, 248, 0.8);
         }
 
         .recuadro input {
-            width: 100%; /* Ajusta el ancho de los campos de entrada al 100% del contenedor */
-            padding: 10px; /* Ajusta el relleno para más espacio interno */
-            margin-bottom: 10px; /* Ajusta el margen inferior entre los campos de entrada */
-            border: 1px solid #ccc; /* Añade un borde ligero para separar visualmente los campos */
-            border-radius: 10px; /* Ajusta el radio de los bordes de los campos de entrada */
+            width: 93%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
         }
 
         .recuadro input[type="submit"] {
-            width: 125px; /* Ancho automático (ajustado al contenido) */
-            padding: 8px 15px; /* Ajusta el relleno para el botón */
-            margin-bottom: 0; /* Elimina el margen inferior del botón */
-            font-size: 16px; /* Ajusta el tamaño de la fuente del botón */
-            background-color: #F5C22F; /* Ajusta el color de fondo según tu preferencia */
+            width: 125px;
+            padding: 8px 15px;
+            margin-bottom: 0;
+            font-size: 16px;
+            background-color: #F5C22F;
             color: #002858;
             border: none;
             cursor: pointer;
@@ -56,17 +55,17 @@
 
         a {
             text-decoration: none;
-            color: #002858; /* Color azul */
+            color: #002858;
             margin-top: 10px;
             font-weight: bold;
         }
-
     </style>
 </head>
+
 <body>
 <h1>Nueva Actividad</h1>
-<form action="" method="POST">
-    <div class="recuadro">
+<div class="recuadro">
+    <form action="" method="POST">
         <h2 class="CESURYellow" th:if="${actividad.id!=null}" th:text="${actividad.taskName}"></h2>
         <h2 class="CESURYellow" th:unless="${actividad.id!=null}"></h2>
         <input th:value="${actividad.id}" type="hidden" name="id">
@@ -76,13 +75,13 @@
         <input th:value="${actividad.practiceType}" name="practiceType" placeholder="Tipo de práctica">
         <input th:value="${actividad.observations}" name="observations" placeholder="Observaciones">
         <input type="submit" value="Guardar">
-        <br>
-    </div>
-</form>
-<a th:href="'/'+${actividad.idAlumn.id}">Volver</a>
-<form th:if="${actividad.id!=null}" th:action="'/borrarActividad/'+${actividad.id}" method="POST">
-    <input type="submit" value="Borrar">
-</form>
-
+    </form>
+    <br>
+    <form th:if="${actividad.id!=null}" th:action="'/borrarActividad/'+${actividad.id}" method="POST">
+        <input type="submit" value="Borrar">
+    </form>
+    <a th:href="'/'+${actividad.idAlumn.id}">Volver</a>
+</div>
 </body>
+
 </html>
